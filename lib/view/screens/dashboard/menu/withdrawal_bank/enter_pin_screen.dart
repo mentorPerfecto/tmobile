@@ -44,13 +44,13 @@ class _EnterPinScreenState extends ConsumerState<EnterPinScreen> {
                         text: enterPin,
                         fontSize: 22.spMin,
                         fontWeight: FontWeight.w600,
-                        fontFamily: ttHoves,
+                        fontFamily: soraFont,
                       ),
                       TextView(
                         text: inputPinToContinue,
                         fontSize: 15.spMin,
                         fontWeight: FontWeight.w400,
-                        fontFamily: ttHoves,
+                        fontFamily: soraFont,
                         color: theme.colorScheme.secondary,
                       )
                     ],
@@ -68,7 +68,7 @@ class _EnterPinScreenState extends ConsumerState<EnterPinScreen> {
                   hintCharacter: '-',
                   hintStyle: const TextStyle(
                     color: AppColors.kTextBlack,
-                    fontFamily: ttHoves,
+                    fontFamily: soraFont,
                   ),
 
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,7 +97,7 @@ class _EnterPinScreenState extends ConsumerState<EnterPinScreen> {
                   text: forgotPin,
                   fontSize: 15.spMin,
                   fontWeight: FontWeight.w500,
-                  fontFamily: ttHoves,
+                  fontFamily: soraFont,
                   color: AppColors.kPrimary1,
                 ),
                 Gap(15.h),

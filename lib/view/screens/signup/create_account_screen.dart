@@ -27,7 +27,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
           style: TextStyle(
             color: theme.colorScheme.primary,
             fontSize: 16.spMin,
-            fontFamily: ttHoves,
+            fontFamily: soraFont,
             fontWeight: FontWeight.w400,
           ),
           children: <TextSpan>[

@@ -64,13 +64,13 @@ class _SuccessScreenState extends ConsumerState<SuccessScreen> {
                 TextView(
                   text: widget.successText ?? successText,
                   fontSize: 22.spMin,
-                  fontFamily: ttHoves,
+                  fontFamily: soraFont,
                   fontWeight: FontWeight.w600,
                 ),
                 TextView(
                   text: widget.infoText,
                   fontSize: 15.spMin,
-                  fontFamily: ttHoves,
+                  fontFamily: soraFont,
                   maxLines: 3,
                   textAlign: TextAlign.center,
                   fontWeight: FontWeight.w400,

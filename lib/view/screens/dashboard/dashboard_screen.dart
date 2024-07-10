@@ -108,12 +108,12 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
               themeMode == ThemeMode.light ? AppColors.kPrimary1 : AppColors.kPrimary150,
           unselectedItemColor: theme.colorScheme.secondary,
           selectedLabelStyle: TextStyle(
-            fontFamily: ttHoves,
+            fontFamily: soraFont,
             fontSize: 10.spMin,
             fontWeight: FontWeight.w400,
           ),
           unselectedLabelStyle: TextStyle(
-            fontFamily: ttHoves,
+            fontFamily: soraFont,
             fontSize: 10.spMin,
             fontWeight: FontWeight.w400,
           ),

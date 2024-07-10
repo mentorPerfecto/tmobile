@@ -204,7 +204,7 @@
 //     );
 //     notifyListeners();
 //     final doc = pw.Document(pageMode: PdfPageMode.fullscreen);
-//     // final font = await rootBundle.load("assets/fonts/TTHoves-Black.ttf");
+//     // final font = await rootBundle.load("assets/fonts/soraFont-Black.ttf");
 //     // final ttf = pw.Font.ttf(font);
 //     final imageByteData = await rootBundle.load(AppImages.blueAppLogo);
 //     // Convert ByteData to Uint8List

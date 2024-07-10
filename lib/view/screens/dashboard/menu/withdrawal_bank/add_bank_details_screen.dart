@@ -68,7 +68,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                       text: addBankDetails,
                       fontSize: 18.spMin,
                       fontWeight: FontWeight.w600,
-                      fontFamily: ttHoves,
+                      fontFamily: soraFont,
                     ),
                     Gap(20.h),
                     CustomTextField(
@@ -193,7 +193,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                               fontSize: 16.spMin,
                               fontWeight: FontWeight.w400,
                               maxLines: 2,
-                              fontFamily: ttHoves,
+                              fontFamily: soraFont,
                               color: themeMode == ThemeMode.light
                                   ? AppColors.kBlack4
                                   : AppColors.kTextGray,

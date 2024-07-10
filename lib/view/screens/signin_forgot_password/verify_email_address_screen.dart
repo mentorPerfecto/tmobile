@@ -133,7 +133,7 @@ class EmailChecks extends StatelessWidget {
         ),
         TextView(
           text: emailMustContain!,
-          fontFamily: ttHoves,
+          fontFamily: soraFont,
           fontSize: 14.spMin,
           fontWeight: FontWeight.w400,
           color: AppColors.kSubText,

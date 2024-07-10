@@ -45,7 +45,7 @@ class AppBars {
           ? TextView(
               text: text,
               fontSize: textSize == null ? 16.spMin : textSize.spMin,
-              fontFamily: ttHoves,
+              fontFamily: soraFont,
               fontWeight: FontWeight.w600,
             )
           : const SizedBox.shrink(),

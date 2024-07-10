@@ -47,6 +47,7 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                   key: provider.registrationFormKey,
                   child: Column(
                     children: [
+                      TextView(text: '',),
                       CustomTextField(
                         fieldLabel: '',
                         hint: firstNameText,
@@ -159,13 +160,13 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                                         ? AppColors.kNeutralBlack
                                         : AppColors.kWhite,
                                     fontSize: 14.spMin,
-                                    fontFamily: ttHoves,
+                                    fontFamily: soraFont,
                                     fontWeight: FontWeight.w400),
                                 children: <TextSpan>[
                                   TextSpan(
                                       text: termsAndConditions,
                                       style: TextStyle(
-                                        fontFamily: ttHoves,
+                                        fontFamily: soraFont,
                                         // decoration: TextDecoration.underline,
                                         color: themeMode == ThemeMode.light
                                             ? AppColors.kPrimary1
@@ -184,7 +185,7 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                                   TextSpan(
                                       text: privacyPolicy,
                                       style: TextStyle(
-                                        fontFamily: ttHoves,
+                                        fontFamily: soraFont,
                                         // decoration: TextDecoration.underline,
                                         color: themeMode == ThemeMode.light
                                             ? AppColors.kPrimary1

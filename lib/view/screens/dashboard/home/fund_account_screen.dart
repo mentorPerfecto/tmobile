@@ -41,7 +41,7 @@
 //                       text: fundYourAccount,
 //                       fontSize: 16.spMin,
 //                       fontWeight: FontWeight.w500,
-//                       fontFamily: ttHoves,
+//                       fontFamily: soraFont,
 //                       color: AppColors.kTextBlack,
 //                     )
 //                   ],

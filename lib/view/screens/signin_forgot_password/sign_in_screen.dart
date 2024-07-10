@@ -29,7 +29,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
           style: TextStyle(
             color: theme.colorScheme.primary,
             fontSize: 16.spMin,
-            fontFamily: ttHoves,
+            fontFamily: soraFont,
             fontWeight: FontWeight.w400,
           ),
           children: <TextSpan>[
@@ -140,7 +140,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                         color: themeMode == ThemeMode.light
                             ? AppColors.kPrimary1
                             : AppColors.kPrimary150,
-                        fontFamily: ttHoves,
+                        fontFamily: soraFont,
                         fontSize: 16.spMin,
                         fontWeight: FontWeight.w400,
                       ),

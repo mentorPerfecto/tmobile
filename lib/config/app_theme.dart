@@ -12,7 +12,7 @@ class AppTheme {
     brightness: Brightness.light,
     primarySwatch: Colors.blue,
 
-    fontFamily: ttHoves,
+    fontFamily: soraFont,
     canvasColor: AppColors.kWhite,
     colorScheme: ColorScheme.fromSeed(
       errorContainer: AppColors.kErrorContainer,
@@ -64,11 +64,11 @@ class AppTheme {
       titleLarge: TextStyle(
         fontSize: 22.spMin,
         fontWeight: FontWeight.w600,
-        fontFamily: ttHoves,
+        fontFamily: soraFont,
         color: AppColors.kTextBlack,
       ),
       titleMedium: TextStyle(
-        fontFamily: ttHoves,
+        fontFamily: soraFont,
         fontSize: 15.spMin,
         fontWeight: FontWeight.w400,
         color: AppColors.kSubText,
@@ -76,13 +76,13 @@ class AppTheme {
       headlineSmall: TextStyle(
         fontSize: 30.spMin,
         fontWeight: FontWeight.w600,
-        fontFamily: ttHoves,
+        fontFamily: soraFont,
         color: AppColors.kWhite,
       ),
       bodyLarge: TextStyle(
         fontSize: 16.spMin,
         fontWeight: FontWeight.w400,
-        fontFamily: ttHoves,
+        fontFamily: soraFont,
         color: AppColors.kWhite,
       ),
     ),
@@ -97,7 +97,7 @@ class AppTheme {
     dividerColor: AppColors.kDarkDividerColor,
     scaffoldBackgroundColor: AppColors.kDarkModebackground,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    fontFamily: ttHoves,
+    fontFamily: soraFont,
     colorScheme: const ColorScheme.dark(
         secondary: AppColors.kDarkSecondary,
         primary: AppColors.kTextWhite,
@@ -125,11 +125,11 @@ class AppTheme {
       titleLarge: TextStyle(
         fontSize: 22.spMin,
         fontWeight: FontWeight.w600,
-        fontFamily: ttHoves,
+        fontFamily: soraFont,
         color: AppColors.kTextWhite,
       ),
       titleMedium: TextStyle(
-        fontFamily: ttHoves,
+        fontFamily: soraFont,
         fontSize: 15.spMin,
         fontWeight: FontWeight.w400,
         color: AppColors.kTextGray,
@@ -137,13 +137,13 @@ class AppTheme {
       headlineSmall: TextStyle(
         fontSize: 30.spMin,
         fontWeight: FontWeight.w600,
-        fontFamily: ttHoves,
+        fontFamily: soraFont,
         color: AppColors.kTextWhite,
       ),
       bodyLarge: TextStyle(
         fontSize: 16.spMin,
         fontWeight: FontWeight.w400,
-        fontFamily: ttHoves,
+        fontFamily: soraFont,
         color: AppColors.kTextWhite,
       ),
     ),

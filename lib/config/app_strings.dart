@@ -43,7 +43,7 @@ final sentOTPUserEmail = 'We sent an OTP to $userEmail.';
 final enterEmailCodeForEmailVerification =
     'Enter code sent to $userEmail to verify your email address';
 final enterEmailCodeStart = 'Enter code sent to $userEmail to reset password';
-const ttHoves = 'TTHoves';
+const soraFont = 'Sora';
 const verified = 'Verified';
 const verifiedListing = 'Verified Listing';
 const exVerified = 'Extended Verification';
@@ -290,4 +290,4 @@ const enterCodeGottenFromLandlordToAddProperty =
     ' 1. Enter code gotten from landlord to add property';
 const submitIdentificationDocument = ' 2. Next, submit identification documents';
 
-const soraFont = 'Sora';
+// const soraFont = 'Sora';

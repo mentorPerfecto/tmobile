@@ -67,13 +67,13 @@ class _ErrorScreenState extends ConsumerState<ErrorScreen> {
                       TextView(
                         text: "Error!",
                         fontSize: 22.spMin,
-                        fontFamily: ttHoves,
+                        fontFamily: soraFont,
                         fontWeight: FontWeight.w600,
                       ),
                       TextView(
                         text: widget.infoText,
                         fontSize: 15.spMin,
-                        fontFamily: ttHoves,
+                        fontFamily: soraFont,
                         fontWeight: FontWeight.w400,
                         color: themeMode == ThemeMode.light
                             ? AppColors.kSubText

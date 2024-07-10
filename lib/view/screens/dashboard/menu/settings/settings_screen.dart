@@ -34,7 +34,7 @@ class SettingsScreen extends ConsumerWidget {
                 text: settings,
                 fontSize: 22.spMin,
                 fontWeight: FontWeight.w600,
-                fontFamily: ttHoves,
+                fontFamily: soraFont,
               ),
               Gap(
                 20.h,
@@ -61,7 +61,7 @@ class SettingsScreen extends ConsumerWidget {
                             text: changePassword,
                             fontSize: 16.spMin,
                             fontWeight: FontWeight.w500,
-                            fontFamily: ttHoves,
+                            fontFamily: soraFont,
                           )
                         ],
                       ),
@@ -104,7 +104,7 @@ class SettingsScreen extends ConsumerWidget {
               //                   : setupPin,
               //               fontSize: 16.spMin,
               //               fontWeight: FontWeight.w500,
-              //               fontFamily: ttHoves,
+              //               fontFamily: soraFont,
               //             )
               //           ],
               //         ),

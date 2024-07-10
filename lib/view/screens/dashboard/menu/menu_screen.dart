@@ -251,7 +251,7 @@ class SettingsItem extends StatelessWidget {
               text: title,
               fontSize: 16.spMin,
               fontWeight: FontWeight.w500,
-              fontFamily: ttHoves,
+              fontFamily: soraFont,
               color: titleColor,
             )
           ],
@@ -308,7 +308,7 @@ class _SettingsThemeItemState extends ConsumerState<SettingsThemeItem> {
                   text: widget.title,
                   fontSize: 16.spMin,
                   fontWeight: FontWeight.w500,
-                  fontFamily: ttHoves,
+                  fontFamily: soraFont,
                   color: themeProvider.themeMode == ThemeMode.light
                       ? AppColors.kTextBlack
                       : AppColors.kWhite,

@@ -89,7 +89,7 @@ class UserAccountCard extends ConsumerWidget {
                                 text: title,
                                 fontSize: titleDouble,
                                 fontWeight: titleFontWeight,
-                                fontFamily: ttHoves,
+                                fontFamily: soraFont,
                                 color: titleColor,
                                 maxLines: 2,
                               ),
@@ -98,7 +98,7 @@ class UserAccountCard extends ConsumerWidget {
                               //   text: subTitleText,
                               //   fontSize: subTitleDouble,
                               //   fontWeight: subTitleFontWeight,
-                              //   fontFamily: ttHoves,
+                              //   fontFamily: soraFont,
                               //   color: subTitleColor,
                               // )
                             ],

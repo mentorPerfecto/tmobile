@@ -223,7 +223,7 @@ class MyWithdrawalBankCard extends ConsumerWidget {
             //           fontWeight: FontWeight.w600,
             //           textOverflow: TextOverflow.ellipsis,
             //           color: AppColors.kTextBlack,
-            //           fontFamily: ttHoves,
+            //           fontFamily: soraFont,
             //         ),
             //         Gap(3.h),
             //         TextView(
@@ -231,7 +231,7 @@ class MyWithdrawalBankCard extends ConsumerWidget {
             //           fontSize: 10.spMin,
             //           fontWeight: FontWeight.w400,
             //           color: AppColors.kSubText,
-            //           fontFamily: ttHoves,
+            //           fontFamily: soraFont,
             //         )
             //       ],
             //     ),
@@ -265,7 +265,7 @@ class MyWithdrawalBankCard extends ConsumerWidget {
                     fontSize: 18.spMin,
                     fontWeight: FontWeight.w600,
                     textOverflow: TextOverflow.ellipsis,
-                    fontFamily: ttHoves,
+                    fontFamily: soraFont,
                   ),
                   Gap(3.h),
                   TextView(
@@ -275,7 +275,7 @@ class MyWithdrawalBankCard extends ConsumerWidget {
                     color: themeMode == ThemeMode.light
                         ? AppColors.kSubText
                         : AppColors.kTextWhite,
-                    fontFamily: ttHoves,
+                    fontFamily: soraFont,
                   )
                 ],
               ),
@@ -296,7 +296,7 @@ class MyWithdrawalBankCard extends ConsumerWidget {
                   fontSize: 10.spMin,
                   fontWeight: FontWeight.w500,
                   color: verificationTextStatus,
-                  fontFamily: ttHoves,
+                  fontFamily: soraFont,
                 ),
               ),
             )

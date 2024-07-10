@@ -49,7 +49,7 @@ class TextView extends ConsumerWidget {
         style: textStyle ??
             TextStyle(
               height: height,
-              fontFamily: fontFamily ?? 'TTHoves',
+              fontFamily: fontFamily ?? soraFont,
               fontSize: fontSize != null ? fontSize! : 14.spMin,
               fontWeight: fontWeight ?? FontWeight.w400,
               // color: color ?? AppColors.kTextBlack,

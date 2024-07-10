@@ -137,7 +137,7 @@ class _EmailVerificationScreenState
                   hintCharacter: '-',
                   hintStyle: TextStyle(
                     color: theme.colorScheme.primary,
-                    fontFamily: ttHoves,
+                    fontFamily: soraFont,
                   ),
                   onChanged: (value) =>
                       authProvider.updateVerifyButtonState(value),
@@ -191,7 +191,7 @@ class _EmailVerificationScreenState
                       TextSpan(
                         text: resendCode,
                         style: TextStyle(
-                          fontFamily: ttHoves,
+                          fontFamily: soraFont,
                           fontSize: 16.spMin,
                           fontWeight: FontWeight.w400,
                           color: theme.colorScheme.primary,
@@ -204,7 +204,7 @@ class _EmailVerificationScreenState
                                     color: AppColors.kPrimary1,
                                     fontSize: 16.spMin,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: ttHoves,
+                                    fontFamily: soraFont,
                                   ),
                                 )
                               : TextSpan(
@@ -213,7 +213,7 @@ class _EmailVerificationScreenState
                                     color: AppColors.kPrimary1,
                                     fontSize: 16.spMin,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: ttHoves,
+                                    fontFamily: soraFont,
                                   ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {

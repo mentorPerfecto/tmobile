@@ -138,7 +138,7 @@ class PasswordValidatedFieldsState
               color: widget.readOnly
                   ? AppColors.kBlack4
                   : theme.colorScheme.primary,
-              fontFamily: 'TTHoves',
+              fontFamily: 'soraFont',
               fontSize: 15.spMin,
               fontWeight: FontWeight.w400,
             ),

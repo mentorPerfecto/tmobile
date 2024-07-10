@@ -47,7 +47,7 @@ class AccountBalanceContainer extends ConsumerWidget {
         children: [
           TextView(
             text: balance,
-            fontFamily: ttHoves,
+            fontFamily: soraFont,
             fontSize: 12.spMin,
             fontWeight: FontWeight.w400,
             color: AppColors.kWhite,
@@ -59,7 +59,7 @@ class AccountBalanceContainer extends ConsumerWidget {
             // text: ,
             fontSize: 21.spMin,
             fontWeight: FontWeight.w600,
-            fontFamily: ttHoves,
+            fontFamily: soraFont,
             color: AppColors.kWhite,
           ),
           if (role == 3 || role == 2)

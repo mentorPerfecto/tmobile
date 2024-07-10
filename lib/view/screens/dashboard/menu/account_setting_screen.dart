@@ -137,7 +137,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                                   text: personalInformation,
                                   fontSize: 18.spMin,
                                   fontWeight: FontWeight.w600,
-                                  fontFamily: ttHoves,
+                                  fontFamily: soraFont,
                                 ),
                                 Gap(20.h),
                                 CustomTextField(
@@ -250,7 +250,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                             //   borderColor: AppColors.kErrorPrimary,
                             //   borderRadius: 38.r,
                             //   height: 48.h,
-                            //   fontFamily: ttHoves,
+                            //   fontFamily: soraFont,
                             //   fontSize: 16.spMin,
                             //   fontWeight: FontWeight.w500,
                             //   textColor: AppColors.kWhite,
@@ -326,7 +326,7 @@ class tampayTenantIDDetails extends StatelessWidget {
               text: tampayTenantIdHeading,
               fontSize: 18.spMin,
               fontWeight: FontWeight.w600,
-              fontFamily: ttHoves,
+              fontFamily: soraFont,
             ),
             Gap(15.h),
             Container(
@@ -354,7 +354,7 @@ class tampayTenantIDDetails extends StatelessWidget {
                         text: name,
                         fontSize: 16.spMin,
                         fontWeight: FontWeight.w500,
-                        fontFamily: ttHoves,
+                        fontFamily: soraFont,
                         color: AppColors.kTextBlack,
                       ),
                       Gap(4.h),
@@ -363,7 +363,7 @@ class tampayTenantIDDetails extends StatelessWidget {
                         color: AppColors.kSubText,
                         fontSize: 13.spMin,
                         fontWeight: FontWeight.w400,
-                        fontFamily: ttHoves,
+                        fontFamily: soraFont,
                       ),
                       Gap(
                         6.h,
@@ -377,7 +377,7 @@ class tampayTenantIDDetails extends StatelessWidget {
                                   fontSize: 13.spMin,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.kSubText,
-                                  fontFamily: ttHoves,
+                                  fontFamily: soraFont,
                                 ),
                                 children: [
                                   TextSpan(
@@ -386,7 +386,7 @@ class tampayTenantIDDetails extends StatelessWidget {
                                       fontSize: 13.spMin,
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.kTextBlack,
-                                      fontFamily: ttHoves,
+                                      fontFamily: soraFont,
                                     ),
                                   )
                                 ]),

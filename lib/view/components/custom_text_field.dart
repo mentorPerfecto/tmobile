@@ -136,7 +136,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
               style: theme.textTheme.bodyMedium!.copyWith(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.w400,
-                fontFamily: 'TTHoves',
+                fontFamily: 'soraFont',
                 fontSize: widget.fontSize ?? 14.spMin,
               ),
               keyboardType: widget.keyboardType,
@@ -161,7 +161,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
 
                       ///Check if this is the best color for the darkmode
                       : theme.hintColor,
-                  fontFamily: 'TTHoves',
+                  fontFamily: 'soraFont',
                   fontSize: 15.spMin,
                   fontWeight: FontWeight.w400,
                 ),
