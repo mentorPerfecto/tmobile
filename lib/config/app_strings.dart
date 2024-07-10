@@ -289,3 +289,5 @@ const instructions = 'Instructions';
 const enterCodeGottenFromLandlordToAddProperty =
     ' 1. Enter code gotten from landlord to add property';
 const submitIdentificationDocument = ' 2. Next, submit identification documents';
+
+const soraFont = 'Sora';

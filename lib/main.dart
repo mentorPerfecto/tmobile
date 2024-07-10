@@ -38,7 +38,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   Widget build(BuildContext context) {
     var themeProvider = ref.watch(themeViewModel);
     return ScreenUtilInit(
-      designSize: const Size(360, 800),
+      designSize: const Size(375, 812),
       // designSize:  Size(WidgetsBinding.instance.window.physicalSize.width/3, WidgetsBinding.instance.window.physicalSize.height/3),
       minTextAdapt: true,
       splitScreenMode: true,
