@@ -26,7 +26,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
 
   @override
   void initState() {
-   ref.read(dashboardViewModel).initDashboard(widget.setIndex ?? 0);
+  /// ref.read(dashboardViewModel).initDashboard(widget.setIndex ?? 0);
 
    // var profileProvider = ref.read(profileViewModel);
    // var dashProvider = ref.read(dashboardViewModel);
@@ -89,7 +89,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
             backgroundColor: theme.scaffoldBackgroundColor,
             automaticallyImplyLeading: false,
             title: TextView(
-              text: dashProvider.getTitle(profileProvider.profileData?.role).toString(),
+              text: "dashProvider.getTitle(2).toString()",
               textStyle: theme.textTheme.titleLarge!.copyWith(
                 fontSize: 20.spMin,
               ),
@@ -178,18 +178,6 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                   ),
                   label: wallet,
                 ),
-              BottomNavigationBarItem(
-                icon: Image.asset(
-                  dashProvider.currentIndex == 4
-                      ? themeMode == ThemeMode.light
-                      ? AppImages.selectedMore
-                      : AppImages.selectedMoreDark
-                      : AppImages.more,
-                  width: 24.w,
-                  height: 24.h,
-                ),
-                label: more,
-              ),
             ],
             onTap: (index) {
               // dashProvider.getDeviceLocation();

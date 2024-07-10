@@ -34,7 +34,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
           ),
           children: <TextSpan>[
             TextSpan(
-              text: createUserAccount,
+              text: createAccount,
               style: TextStyle(
                 color: themeMode == ThemeMode.light
                     ? AppColors.kPrimary1

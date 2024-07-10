@@ -1,6 +1,6 @@
 import 'package:tampay/src/models.dart';
 
-const welcomeTotampay = 'Welcome to tampay';
+// const welcomeTotampay = 'Welcome to tampay';
 const addAnotherFee = 'Add another fee';
 const selectIDType = 'Select Identification Type';
 const addFeeText = 'Add Fee';
@@ -78,7 +78,6 @@ const explore = 'Explore';
 const guest = ' Guest';
 const createAccount = 'Create Account';
 const viewTenant = 'View Tenants';
-const createUserAccount = 'Create account';
 const next = 'Next';
 const nameOfYourProperty = 'Name of your property';
 const propertyLocation = 'Where is your property located?';
