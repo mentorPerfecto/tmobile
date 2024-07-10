@@ -30,11 +30,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     return Scaffold(
       backgroundColor: theme.primaryColor,
       body: Center(
-        child: Image.asset(
-          AppImages.logo,
-          width: 266.w,
-          height: 258.h,
-        ),
+          // child: Image.asset(
+          //   AppImages.logo,
+          //   width: 266.w,
+          //   height: 258.h,
+          // ),
       ),
     );
   }

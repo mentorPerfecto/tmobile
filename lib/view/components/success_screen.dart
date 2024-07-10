@@ -47,12 +47,12 @@ class _SuccessScreenState extends ConsumerState<SuccessScreen> {
           children: [
             Column(
               children: [
-                Image.asset(
-                  AppImages.success,
-                  // width: 40,
-                  width: 265.w,
-                  height: 155.h,
-                ),
+                // Image.asset(
+                //   AppImages.success,
+                //   // width: 40,
+                //   width: 265.w,
+                //   height: 155.h,
+                // ),
               ],
             ),
             Gap(

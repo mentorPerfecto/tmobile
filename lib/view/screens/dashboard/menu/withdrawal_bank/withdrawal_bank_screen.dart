@@ -237,23 +237,23 @@ class MyWithdrawalBankCard extends ConsumerWidget {
             //     ),
             //   ],
             // ),
-            Container(
-              width: 40.w,
-              height: 40.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.r),
-                color: themeMode == ThemeMode.light
-                    ? AppColors.kEnabledButton
-                    : AppColors.kPrimary150,
-              ),
-              child: Center(
-                child: Image.asset(
-                  AppImages.bankAccount,
-                  width: 24.w,
-                  height: 24.h,
-                ),
-              ),
-            ),
+            // Container(
+            //   width: 40.w,
+            //   height: 40.h,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(4.r),
+            //     color: themeMode == ThemeMode.light
+            //         ? AppColors.kEnabledButton
+            //         : AppColors.kPrimary150,
+            //   ),
+            //   child: Center(
+            //     child: Image.asset(
+            //       AppImages.bankAccount,
+            //       width: 24.w,
+            //       height: 24.h,
+            //     ),
+            //   ),
+            // ),
             Gap(10.w),
             Expanded(
               child: Column(

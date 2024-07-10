@@ -49,7 +49,7 @@ class DropDownButtonMain extends ConsumerWidget {
             ),
             value: title,
             icon: Image.asset(
-              AppImages.dropDown,
+              AppImages.dropDownIcon,
               color: themeMode == ThemeMode.light
                   ? AppColors.kTextBlack
                   : AppColors.kWhite,

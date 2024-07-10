@@ -38,21 +38,21 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: 100.h,
-                width: 100.w,
-                decoration: BoxDecoration(
-                  color: AppColors.kIconContainer,
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                child: Center(
-                  child: Image.asset(
-                    AppImages.passwordLogo,
-                    height: 64.h,
-                    width: 64.w,
-                  ),
-                ),
-              ),
+              // Container(
+              //   height: 100.h,
+              //   width: 100.w,
+              //   decoration: BoxDecoration(
+              //     color: AppColors.kIconContainer,
+              //     borderRadius: BorderRadius.circular(16.r),
+              //   ),
+              //   child: Center(
+              //     child: Image.asset(
+              //       AppImages.passwordLogo,
+              //       height: 64.h,
+              //       width: 64.w,
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: 40.h,
               ),

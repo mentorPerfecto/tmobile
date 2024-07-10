@@ -394,14 +394,14 @@ class tampayTenantIDDetails extends StatelessWidget {
                           Gap(
                             5.w,
                           ),
-                          InkWell(
-                            onTap: onTap,
-                            child: Image.asset(
-                              AppImages.copyTextIcon,
-                              width: 16.w,
-                              height: 16.h,
-                            ),
-                          )
+                          // InkWell(
+                          //   onTap: onTap,
+                          //   child: Image.asset(
+                          //     AppImages.copyTextIcon,
+                          //     width: 16.w,
+                          //     height: 16.h,
+                          //   ),
+                          // )
                         ],
                       )
                     ],
@@ -467,7 +467,7 @@ class GenderDropDownContainer extends ConsumerWidget {
                 ),
                // value:  gender ?? "Select Gender",
                 icon: Image.asset(
-                  AppImages.dropDown,
+                  AppImages.dropDownIcon,
                   color: theme.colorScheme.primary,
                 ),
                 iconSize: 24,

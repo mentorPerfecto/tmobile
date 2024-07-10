@@ -94,20 +94,20 @@ class _EmailVerificationScreenState
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 60.h,
-                      width: 60.w,
-                      decoration: BoxDecoration(
-                          color: AppColors.kIconContainer,
-                          borderRadius: BorderRadius.circular(16.r)),
-                      child: Center(
-                        child: Image.asset(
-                          AppImages.emailLogo,
-                          height: 30.h,
-                          width: 30.w,
-                        ),
-                      ),
-                    ),
+                    // Container(
+                    //   height: 60.h,
+                    //   width: 60.w,
+                    //   decoration: BoxDecoration(
+                    //       color: AppColors.kIconContainer,
+                    //       borderRadius: BorderRadius.circular(16.r)),
+                    //   child: Center(
+                    //     child: Image.asset(
+                    //       AppImages.emailLogo,
+                    //       height: 30.h,
+                    //       width: 30.w,
+                    //     ),
+                    //   ),
+                    // ),
                     TextView(
                       text: widget.title,
                       textStyle: theme.textTheme.titleLarge,

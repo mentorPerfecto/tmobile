@@ -46,14 +46,14 @@ class _ErrorScreenState extends ConsumerState<ErrorScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  AppImages.errorImage,
-                  width: 265.w,
-                  height: 205.h,
-                  color: themeMode == ThemeMode.dark
-                      ? theme.scaffoldBackgroundColor
-                      : null,
-                ),
+                // Image.asset(
+                //   AppImages.errorImage,
+                //   width: 265.w,
+                //   height: 205.h,
+                //   color: themeMode == ThemeMode.dark
+                //       ? theme.scaffoldBackgroundColor
+                //       : null,
+                // ),
                 SizedBox(
                   height: 20.h,
                 ),

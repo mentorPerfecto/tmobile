@@ -4,7 +4,6 @@ import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 
-
 class EmptyListStateWidget extends ConsumerWidget {
   const EmptyListStateWidget({
     required this.stateDesc,
@@ -30,15 +29,15 @@ class EmptyListStateWidget extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            profileProvider.profileData?.role?.toInt() == 2
-                ? themeMode == ThemeMode.light
-                    ? AppImages.emptyPropertyLogoForTenant
-                    : AppImages.emptyPropertyLogoForTenantDarkTheme
-                : AppImages.emptyListIcon,
-            width: 150.w,
-            height: 150.h,
-          ),
+          // Image.asset(
+          //   profileProvider.profileData?.role?.toInt() == 2
+          //       ? themeMode == ThemeMode.light
+          //           ? AppImages.emptyPropertyLogoForTenant
+          //           : AppImages.emptyPropertyLogoForTenantDarkTheme
+          //       : AppImages.emptyListIcon,
+          //   width: 150.w,
+          //   height: 150.h,
+          // ),
           TextView(
             text: stateDesc,
             color: theme.colorScheme.primary.withOpacity(.8),

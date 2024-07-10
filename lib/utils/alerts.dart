@@ -125,19 +125,19 @@ Future<void> displayFreezingListingConfirmationMessage(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      width: 48.w,
-                      height: 48.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(28.r),
-                        color: AppColors.kEnabledButton,
-                      ),
-                      child: Center(
-                        child: Image.asset(
-                          AppImages.freezingListingIcon,
-                        ),
-                      ),
-                    ),
+                    // Container(
+                    //   width: 48.w,
+                    //   height: 48.h,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(28.r),
+                    //     color: AppColors.kEnabledButton,
+                    //   ),
+                    //   child: Center(
+                    //     child: Image.asset(
+                    //       AppImages.freezingListingIcon,
+                    //     ),
+                    //   ),
+                    // ),
                     Gap(20.h),
                     TextView(
                       text: title,
@@ -555,11 +555,11 @@ Future<void> displayUnverifiedPropertyWarningAlert(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Image.asset(
-                      AppImages.warningIcon,
-                      width: 64.w,
-                      height: 64.h,
-                    ),
+                    // Image.asset(
+                    //   AppImages.warningIcon,
+                    //   width: 64.w,
+                    //   height: 64.h,
+                    // ),
                     Gap(20.h),
                     Column(
                       children: [
@@ -990,14 +990,14 @@ Future<void> displayTenantValidationAlert(
                 child: Column(
                   children: [
                     //A user Logo
-                    Image.asset(
-                      AppImages.tenantAccount,
-                      height: 50.h,
-                      width: 50.h,
-                      color: themeMode == ThemeMode.light
-                          ? AppColors.kPrimary1
-                          : AppColors.kPrimaryLight,
-                    ),
+                    // Image.asset(
+                    //   AppImages.tenantAccount,
+                    //   height: 50.h,
+                    //   width: 50.h,
+                    //   color: themeMode == ThemeMode.light
+                    //       ? AppColors.kPrimary1
+                    //       : AppColors.kPrimaryLight,
+                    // ),
                     SizedBox(
                       height: 15.h,
                     ),

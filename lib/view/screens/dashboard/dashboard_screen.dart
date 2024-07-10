@@ -132,64 +132,64 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
             ),
             items: //write a ternary operator for the tenant,cause it should have only four navigation bar items.
             [
-              BottomNavigationBarItem(
-                  icon: Image.asset(
-                    dashProvider.currentIndex == 0
-                        ? themeMode == ThemeMode.light
-                        ? AppImages.selectedHome
-                        : AppImages.selectedHomeDark
-                        : AppImages.home,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
-                  label: home),
-              BottomNavigationBarItem(
-                  icon: Image.asset(
-                    dashProvider.currentIndex == 1
-                        ? themeMode == ThemeMode.light
-                        ? AppImages.selectedMarket
-                        : AppImages.selectedMarketPlaceDark
-                        : AppImages.shop,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
-                  label: marketPlace),
-              BottomNavigationBarItem(
-                  icon: Image.asset(
-                    dashProvider.currentIndex == 2
-                        ? themeMode == ThemeMode.light
-                        ? AppImages.selectedProperties
-                        : AppImages.selectedPropertiesDark
-                        : AppImages.properties,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
-                  label: properties),
-              if (profileProvider.profileData?.role != 2)
-                BottomNavigationBarItem(
-                  icon: Image.asset(
-                    dashProvider.currentIndex == 3
-                        ? themeMode == ThemeMode.light
-                        ? AppImages.selectedWallet
-                        : AppImages.selectedWalletDark
-                        : AppImages.wallet,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
-                  label: wallet,
-                ),
-              BottomNavigationBarItem(
-                icon: Image.asset(
-                  dashProvider.currentIndex == 4
-                      ? themeMode == ThemeMode.light
-                      ? AppImages.selectedMore
-                      : AppImages.selectedMoreDark
-                      : AppImages.more,
-                  width: 24.w,
-                  height: 24.h,
-                ),
-                label: more,
-              ),
+            // BottomNavigationBarItem(
+            //     icon: Image.asset(
+            //       dashProvider.currentIndex == 0
+            //           ? themeMode == ThemeMode.light
+            //           ? AppImages.selectedHome
+            //           : AppImages.selectedHomeDark
+            //           : AppImages.home,
+            //       width: 24.w,
+            //       height: 24.h,
+            //     ),
+            //     label: home),
+            // BottomNavigationBarItem(
+            //     icon: Image.asset(
+            //       dashProvider.currentIndex == 1
+            //           ? themeMode == ThemeMode.light
+            //           ? AppImages.selectedMarket
+            //           : AppImages.selectedMarketPlaceDark
+            //           : AppImages.shop,
+            //       width: 24.w,
+            //       height: 24.h,
+            //     ),
+            //     label: marketPlace),
+            // BottomNavigationBarItem(
+            //     icon: Image.asset(
+            //       dashProvider.currentIndex == 2
+            //           ? themeMode == ThemeMode.light
+            //           ? AppImages.selectedProperties
+            //           : AppImages.selectedPropertiesDark
+            //           : AppImages.properties,
+            //       width: 24.w,
+            //       height: 24.h,
+            //     ),
+            //     label: properties),
+            // if (profileProvider.profileData?.role != 2)
+            //   BottomNavigationBarItem(
+            //     icon: Image.asset(
+            //       dashProvider.currentIndex == 3
+            //           ? themeMode == ThemeMode.light
+            //           ? AppImages.selectedWallet
+            //           : AppImages.selectedWalletDark
+            //           : AppImages.wallet,
+            //       width: 24.w,
+            //       height: 24.h,
+            //     ),
+            //     label: wallet,
+            //   ),
+            // BottomNavigationBarItem(
+            //   icon: Image.asset(
+            //     dashProvider.currentIndex == 4
+            //         ? themeMode == ThemeMode.light
+            //         ? AppImages.selectedMore
+            //         : AppImages.selectedMoreDark
+            //         : AppImages.more,
+            //     width: 24.w,
+            //     height: 24.h,
+            //   ),
+            //   label: more,
+            // ),
             ],
             onTap: (index) {
               // dashProvider.getDeviceLocation();

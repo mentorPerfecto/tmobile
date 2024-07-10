@@ -50,12 +50,12 @@ class SettingsScreen extends ConsumerWidget {
                     children: [
                       Row(
                         children: [
-                          Image.asset(
-                            AppImages.securityPassword,
-                            width: 19.w,
-                            height: 20.h,
-                            color: theme.indicatorColor,
-                          ),
+                          // Image.asset(
+                          //   AppImages.securityPassword,
+                          //   width: 19.w,
+                          //   height: 20.h,
+                          //   color: theme.indicatorColor,
+                          // ),
                           Gap(5.w),
                           TextView(
                             text: changePassword,

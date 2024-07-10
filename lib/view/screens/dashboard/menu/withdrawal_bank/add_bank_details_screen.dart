@@ -122,7 +122,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                           ),
                           value: userProfileProvider.bankName,
                           icon: Image.asset(
-                            AppImages.dropDown,
+                            AppImages.dropDownIcon,
                             color: theme.colorScheme.primary,
                           ),
                           iconSize: 24,

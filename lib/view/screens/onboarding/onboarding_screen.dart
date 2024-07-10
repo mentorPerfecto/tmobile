@@ -18,12 +18,12 @@ class OnboardingScreen extends ConsumerWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(
-              AppImages.onboarding2BackgroungImage,
-            ),
-          ),
+            // image: DecorationImage(
+            //   fit: BoxFit.cover,
+            //   image: AssetImage(
+            //     AppImages.onboarding2BackgroungImage,
+            //   ),
+            // ),
         ),
         child: Padding(
           padding: EdgeInsets.only(
@@ -65,11 +65,11 @@ class OnboardingScreen extends ConsumerWidget {
                               )),
                         )
                       : Container(),
-                  Image.asset(
-                    AppImages.logo,
-                    height: 250.h,
-                    width: 270.w,
-                  ),
+                  // Image.asset(
+                  //   AppImages.logo,
+                  //   height: 250.h,
+                  //   width: 270.w,
+                  // ),
                 ],
               ),
               SizedBox(

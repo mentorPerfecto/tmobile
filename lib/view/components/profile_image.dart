@@ -67,13 +67,13 @@ class ProfileImage extends ConsumerWidget {
                         ),
                       );
                     },
-                    errorWidget: (context, url, __) => Image.asset(
-                      (imageType == ProfileImageType.user)
-                          ? AppImages.account
-                          : AppImages.account,
-                      // ignore: deprecated_member_use
-                      color: placeHolderColor, scale: 2.5,
-                    ),
+                    // errorWidget: (context, url, __) => Image.asset(
+                    //   (imageType == ProfileImageType.user)
+                    //       ? AppImages.account
+                    //       : AppImages.account,
+                    //   // ignore: deprecated_member_use
+                    //   color: placeHolderColor, scale: 2.5,
+                    // ),
                     // placeholder: (context, url) => SvgPicture.asset(
                     //   (imageType == ProfileImageType.organization)
                     //       ? AppAsset.organizationIcon

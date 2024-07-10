@@ -102,7 +102,7 @@ class ImageView extends StatelessWidget {
             alignment: alignment,
             fadeInDuration: const Duration(seconds: 1),
             fadeInCurve: Curves.easeInCirc,
-            placeholder: placeholder ?? AppImages.logoOne,
+            placeholder: placeholder ?? "", //TODO:add image to the empty apostrophe.
             image: url!,
             imageErrorBuilder: (context, error, stackTrace) =>
                 errorWidget ??
