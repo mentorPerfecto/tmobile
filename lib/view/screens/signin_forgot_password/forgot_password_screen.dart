@@ -84,7 +84,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                   children: [
                     CustomTextField(
                       fieldLabel: '',
-                      hint: emailAddressText,
+                      hint: emailText,
                       controller: provider.forgotPwdEmailController,
                       validator: (value) =>
                           Validators().validateEmptyTextField(value),

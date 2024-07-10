@@ -18,39 +18,7 @@ class CreatePasswordScreen extends ConsumerStatefulWidget {
 }
 
 class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
-  //Contains alreadyHaveAnAccount text widget
-  alreadyHaveAnAccount(ThemeData theme) {
-    return Center(
-      child: RichText(
-        text: TextSpan(
-          text: haveAnAccount,
-          style: TextStyle(
-            color: theme.colorScheme.primary,
-            fontSize: 16.spMin,
-            fontFamily: ttHoves,
-            fontWeight: FontWeight.w400,
-          ),
-          children: <TextSpan>[
-            TextSpan(
-              text: signIn,
-              style: TextStyle(
-                color: AppColors.kPrimary1,
-                fontSize: 16.spMin,
-                fontWeight: FontWeight.w400,
-              ),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () => navigateReplace(
-                  context,
-                  const SignInScreen(
-                    backBtnVisibility: true,
-                  ),
-                ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +31,7 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
           context,
           backgroundColor: theme.scaffoldBackgroundColor,
           arrowBackColor: theme.colorScheme.primary,
-          text: createAccount
+          text: createPassword
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -105,7 +73,7 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                       ),
                       CustomTextField(
                         fieldLabel: '',
-                        hint: emailAddressText,
+                        hint: emailText,
                         controller: provider.registerEmailController,
                         validator: (value) => Validators().validateEmail(value),
 
@@ -239,7 +207,7 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 60.h,
                 ),
                 DefaultButtonMain(
                   height: 48.h,
@@ -252,10 +220,6 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                     provider.userRegistration(context);
                   },
                 ),
-                SizedBox(
-                  height: 40.h,
-                ),
-                alreadyHaveAnAccount(theme)
               ],
             ),
           ),

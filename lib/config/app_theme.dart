@@ -89,6 +89,7 @@ class AppTheme {
   );
 
   static ThemeData darkTheme = ThemeData(
+    hintColor: AppColors.kDesaturatedDarkBlue,
     primaryColorLight: AppColors.kPrimary150,
     cardColor: AppColors.kContainerBackground,
     brightness: Brightness.dark,

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const kPrimary1 = Color(0xff023E8A);
+  //tpaymobile
+  static const kPrimary1 = Color(0xff3A66FE);
   static const kPrimaryDark = Color(0xff060B29);
+  static const kDesaturatedDarkBlue = Color(0xff49527C);
+  static const kNavyBlue = Color(0xff020513);
+
+//
   static const kWhite = Color(0xFFFFFFFF);
   static const kLightModebackground = Color(0xFFFFFFFF);
   static const kDarkModebackground = Color(0xff060B29);

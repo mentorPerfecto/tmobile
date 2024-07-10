@@ -106,7 +106,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                     children: [
                       CustomTextField(
                         fieldLabel: '',
-                        hint: emailAddressText,
+                        hint: emailText,
                         controller: provider.loginEmailController,
                         validator: (value) =>
                             Validators().validateEmptyTextField(value),

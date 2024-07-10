@@ -1,5 +1,9 @@
 import 'package:tampay/src/models.dart';
 
+//tpay mobile
+const userName = 'Username';
+const createAccount = 'Create Account';
+const createPassword = 'Create Password';
 // const welcomeTotampay = 'Welcome to tampay';
 const addAnotherFee = 'Add another fee';
 const selectIDType = 'Select Identification Type';
@@ -26,7 +30,7 @@ const credit = "credit";
 const bankNameText = 'Bank Name';
 const accountNameNotFound = "no account name found";
 const personalInformation = 'Personal Information';
-const phoneNumberText = 'Phone Number';
+const phoneNumberText = 'Phone number';
 const tampayTenantIdHeading = 'Unique tampay Tenant\'s ID';
 const uniqueIDText = 'Unique ID: ';
 const updateChanges = "Update Changes";
@@ -69,14 +73,14 @@ const enterFeesForProperty = 'Enter fees to be paid for your property';
 const addPhotos = "Add Photos";
 const accountNumberText = 'Account Number';
 const accountNameText = 'Account Name';
-const referralCode = 'Referral Code';
+const referralCode = 'Referral Code (optional)';
 const accountDetails = 'Please enter your details to create an account';
 const tenant = 'Tenant';
 const propertiesForSale = 'Properties for sale';
 const propertiesForLease = 'Properties for lease';
 const explore = 'Explore';
 const guest = ' Guest';
-const createAccount = 'Create Account';
+
 const viewTenant = 'View Tenants';
 const next = 'Next';
 const nameOfYourProperty = 'Name of your property';
@@ -110,7 +114,7 @@ const more = 'More';
 const balance = 'Balance';
 const firstNameText = 'First Name';
 const lastNameText = 'Last Name';
-const emailAddressText = 'Email Address';
+const emailText = 'Email';
 const password = 'Password';
 const oldPassword = 'Old Password';
 const enterPwd = 'Enter your password';
@@ -124,7 +128,7 @@ const continueText = 'Continue';
 const okayText = 'Ok';
 const done = 'Done';
 const newPassword = 'New Password';
-const haveAnAccount = 'Already have an account? ';
+const haveAnAccount = 'Already a user? ';
 const dontHaveAnAccount = 'Don\'t have an account? ';
 const forgortPassword = 'Forgot Password?';
 const login = 'Login';
@@ -178,6 +182,7 @@ const deletePropertyText = 'Delete Property';
 const freezePropertyText = 'Freeze Property';
 const unFreezePropertyText = 'Unfreeze Property';
 const deleteAccountText = 'Delete Account';
+
 ///Dummy Texts.
 const totalText = "N1,005,000";
 const serviceText = "N100,000";
@@ -194,6 +199,7 @@ const propertyDetailsText =
     "Tempor integer aliquam in vitae malesuada fringilla.";
 const todayText = "Today";
 const listings = 'Listings';
+
 ///Dummmy Texts.
 const settings = 'Settings';
 const forgotPin = 'Forgot PIN?';
@@ -261,8 +267,10 @@ const enterNoOfTenants = "Enter Number Of Tenants";
 const oneUsrCheckText = "1 usercheck = ";
 const copied = 'Copied';
 const share = 'Share';
-const joinPropertyWithtampayCode = 'Please use the following code to join my property as a tenant on tampay:';
-const tenantValidationOnMyPropertyWithtampayCode = 'Please use the following code to perform tenant validation on tampay.';
+const joinPropertyWithtampayCode =
+    'Please use the following code to join my property as a tenant on tampay:';
+const tenantValidationOnMyPropertyWithtampayCode =
+    'Please use the following code to perform tenant validation on tampay.';
 const howToUse = 'How to use';
 const tokenUsed = "Tokens Used";
 const tokenRemaining = "Tokens Remaining";
@@ -276,8 +284,7 @@ const prprtyRenovation = 'Property Renovation';
 const realEstateConsultant = 'Real Estate Consultants';
 const comingSoon = 'Coming Soon';
 const enquire = 'Enquire';
-const youMustHaveAVerifiedListing =
-    'You must have at least one landlord listing';
+const youMustHaveAVerifiedListing = 'You must have at least one landlord listing';
 const instructions = 'Instructions';
 const enterCodeGottenFromLandlordToAddProperty =
     ' 1. Enter code gotten from landlord to add property';

@@ -156,7 +156,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                                 Gap(10.h),
                                 CustomTextField(
                                   fieldLabel: '',
-                                  hint: emailAddressText,
+                                  hint: emailText,
                                   controller: userProfileProvider
                                       .emailAddressController,
                                   readOnly: true,

@@ -34,7 +34,7 @@ class CustomTextField extends ConsumerStatefulWidget {
     this.textColor,
     this.maxLines,
     this.isFilled = true,
-    this.fillColor = Colors.transparent,
+    this.fillColor = AppColors.kNavyBlue,
     // const Color(0xffF9F9F9),
     this.borderColor,
     this.validator,
@@ -157,10 +157,10 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                   color: widget.readOnly
                       ? themeMode == ThemeMode.light
                           ? AppColors.kBlack4
-                          : AppColors.kWhite
+                          : AppColors.kDesaturatedDarkBlue
 
                       ///Check if this is the best color for the darkmode
-                      : theme.colorScheme.primary,
+                      : theme.hintColor,
                   fontFamily: 'TTHoves',
                   fontSize: 15.spMin,
                   fontWeight: FontWeight.w400,
@@ -206,11 +206,6 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                     ? OutlineInputBorder(
                         borderRadius:
                             BorderRadius.circular(widget.borderRadius),
-                        borderSide: BorderSide(
-                          color: themeMode == ThemeMode.light
-                              ? AppColors.kDisabledButton
-                              : AppColors.kDarkSecondary,
-                        ),
                       )
                     : InputBorder.none,
                 focusedBorder: OutlineInputBorder(

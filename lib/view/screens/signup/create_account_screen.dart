@@ -81,10 +81,11 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                     children: [
                       CustomTextField(
                         fieldLabel: firstNameText,
-                        hint: 'eg.John Doe',
+                        hint: 'eg.John',
                         controller: provider.firstNameController,
                         validator: (value) =>
                             Validators().validateEmptyTextField(value),
+                            
 
                         //onChanged: (value)=> provider.updateButtonState(),
                       ),
@@ -92,8 +93,8 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                         height: 10.h,
                       ),
                       CustomTextField(
-                        fieldLabel: '',
-                        hint: lastNameText,
+                        fieldLabel: lastNameText,
+                        hint: 'eg.Doe',
                         controller: provider.lastNameController,
                         validator: (value) =>
                             Validators().validateEmptyTextField(value),
@@ -104,21 +105,28 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                         height: 10.h,
                       ),
                       CustomTextField(
-                        fieldLabel: '',
-                        hint: emailAddressText,
+                        fieldLabel: emailText,
+                        hint: 'eg.JohnDoe@adress.com',
                         controller: provider.registerEmailController,
                         validator: (value) => Validators().validateEmail(value),
-
                         //onChanged: (value)=> provider.updateButtonState(),
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
                       CustomTextField(
+                        fieldLabel: userName,
+                        hint: "eg.john01",
+                        controller: provider.refCodeController,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CustomTextField(
                         borderRadius: 6.r,
                         borderWidth: 1.w,
-                        fieldLabel: "",
-                        hint: referralCode,
+                        fieldLabel: phoneNumberText,
+                        hint: "+234",
                         controller: provider.refCodeController,
                       ),
 
@@ -128,18 +136,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                       CustomTextField(
                         borderRadius: 6.r,
                         borderWidth: 1.w,
-                        fieldLabel: "",
-                        hint: referralCode,
-                        controller: provider.refCodeController,
-                      ),
-
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      CustomTextField(
-                        borderRadius: 6.r,
-                        borderWidth: 1.w,
-                        fieldLabel: "",
+                        fieldLabel: "Enter referall code",
                         hint: referralCode,
                         controller: provider.refCodeController,
                       ),
@@ -148,12 +145,12 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 30.h,
                 ),
                 DefaultButtonMain(
                   height: 48.h,
                   width: 380.w,
-                  text: createAccount,
+                  text: continueText,
                   borderRadius: 40.r,
                   color: AppColors.kPrimary1,
                   buttonState: provider.buttonRegisterState!.buttonState,
@@ -162,7 +159,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                   },
                 ),
                 SizedBox(
-                  height: 40.h,
+                  height: 10.h,
                 ),
                 alreadyHaveAnAccount(theme)
               ],
