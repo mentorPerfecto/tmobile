@@ -49,7 +49,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           builder: BotToastInit(),
           navigatorObservers: [BotToastNavigatorObserver()],
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
+          theme: AppTheme.darkTheme,
           home: child,
         );
       },

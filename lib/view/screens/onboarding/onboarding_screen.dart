@@ -72,28 +72,28 @@ class OnboardingScreen extends ConsumerWidget {
                   // ),
                 ],
               ),
-              SizedBox(
-                // height: 100.h,
-                width: 320.w,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TextView(
-                      text: welcomeTotampay,
-                      textAlign: TextAlign.center,
-                      textStyle: theme.textTheme.headlineSmall,
-                      maxLines: 2,
-                    ),
-                    TextView(
-                      text: accountDetails,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      textStyle: theme.textTheme.bodyLarge,
-                    ),
-                  ],
-                ),
-              ),
+              // SizedBox(
+              //   // height: 100.h,
+              //   width: 320.w,
+              //   child: Column(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     children: [
+              //       TextView(
+              //         text: welcomeTotampay,
+              //         textAlign: TextAlign.center,
+              //         textStyle: theme.textTheme.headlineSmall,
+              //         maxLines: 2,
+              //       ),
+              //       TextView(
+              //         text: accountDetails,
+              //         maxLines: 2,
+              //         textAlign: TextAlign.center,
+              //         textStyle: theme.textTheme.bodyLarge,
+              //       ),
+              //     ],
+              //   ),
+              // ),
               SizedBox(
                 // height: 155.h,
                 width: 380.w,

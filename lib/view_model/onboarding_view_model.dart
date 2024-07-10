@@ -9,6 +9,7 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 final onboardingViewModel =
     ChangeNotifierProvider((ref) => OnboardingViewModel());
 
@@ -26,8 +27,8 @@ class OnboardingViewModel extends ChangeNotifier {
       if (DummyData.firstTimeOnApp == true ||
           DummyData.firstTimeOnApp == null ||
           DummyData.accessToken == null) {
-        // navigateReplace(context, const OnboardingScreen());
-        await navigateReplace(context, const DashBoardScreen());
+         navigateReplace(context, const OnboardingScreen());
+
       } else {
         logger.i("Check User");
         //  DummyData.localUserID = sharedPreferences.getString("UserID");`
@@ -46,7 +47,7 @@ class OnboardingViewModel extends ChangeNotifier {
             if (value != null) {
               DummyData.firstName = value.firstName.toString();
               DummyData.lastName = value.lastName.toString();
-              await navigateReplace(context, const DashBoardScreen());
+             // await navigateReplace(context, const DashBoardScreen());
             } else {
               SharedPreferences prefs =
               await SharedPreferences.getInstance();

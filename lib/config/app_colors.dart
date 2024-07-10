@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const kPrimary1 = Color(0xff023E8A);
-  static const kPrimaryDark = Color(0xff0248A3);
+  static const kPrimaryDark = Color(0xff060B29);
   static const kWhite = Color(0xFFFFFFFF);
   static const kLightModebackground = Color(0xFFFFFFFF);
-  static const kDarkModebackground = Color(0xff151515);
+  static const kDarkModebackground = Color(0xff060B29);
   static const kTextBlack = Color(0xff101010);
   static const kDisabledButton = Color(0xffEAECF0);
   static const kLightAsh = Color(0xffCED0D4);
