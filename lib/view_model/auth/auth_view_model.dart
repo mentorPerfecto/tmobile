@@ -13,7 +13,7 @@ import 'package:tampay/src/repository.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tampay/view/screens/signin_forgot_password/verify_email_address_screen.dart';
+import 'package:tampay/view/screens/auth/signin_forgot_password/verify_email_address_screen.dart';
 
 final authViewModel = ChangeNotifierProvider((ref) => AuthViewModel());
 
@@ -217,14 +217,14 @@ class AuthViewModel extends ChangeNotifier {
             if (value['data']['verifyOtp'].toString() == '1') {
               DummyData.emailAddress = _loginEmailController.text.toString();
               notifyListeners();
-              navigatePush(
-                  context,
-                  EmailVerificationScreen(
-                    title: verifyEmail,
-                    subTitle: enterEmailCodeForEmailVerification,
-                    email: _loginEmailController.text.toString(),
-                    pwd: _loginPwdController.text.toString(),
-                  ));
+              // navigatePush(
+              //     context,
+              //     EmailVerificationScreen(
+              //       title: verifyEmail,
+              //       subTitle: enterEmailCodeForEmailVerification,
+              //       email: _loginEmailController.text.toString(),
+              //       pwd: _loginPwdController.text.toString(),
+              //     ));
             } else {
               showToast(
                 msg: 'Login successful',
@@ -298,16 +298,16 @@ class AuthViewModel extends ChangeNotifier {
 
             DummyData.emailAddress = _forgotPwdEmailController.text.toString();
             notifyListeners();
-            navigatePush(
-                context,
-                EmailVerificationScreen(
-                  title: verifyEmail,
-                  subTitle: enterEmailCodeStart,
-                  isForgotPassword: true,
-                  pwd: '',
+            // navigatePush(
+            //     context,
+            //     EmailVerificationScreen(
+            //       title: verifyEmail,
+            //       subTitle: enterEmailCodeStart,
+            //       isForgotPassword: true,
+            //       pwd: '',
 
-                  email: _forgotPwdEmailController.text.toString(),
-                ));
+            //       email: _forgotPwdEmailController.text.toString(),
+            //     ));
           } else if (value['status'].toString() == 'error') {
             showToast(
               msg: value['message'].toString(),
@@ -402,14 +402,14 @@ class AuthViewModel extends ChangeNotifier {
             if (value['data']['verifyOtp'].toString() == '1') {
               DummyData.emailAddress = email.toLowerCase();
               notifyListeners();
-              navigatePush(
-                  context,
-                  EmailVerificationScreen(
-                    title: verifyEmail,
-                    subTitle: enterEmailCodeForEmailVerification,
-                    email: email.toLowerCase(),
-                    pwd: password,
-                  ));
+              // navigatePush(
+              //     context,
+              //     EmailVerificationScreen(
+              //       title: verifyEmail,
+              //       subTitle: enterEmailCodeForEmailVerification,
+              //       email: email.toLowerCase(),
+              //       pwd: password,
+              //     ));
             } else {
               DummyData.emailAddress = email.toLowerCase();
               DummyData.password = password;
