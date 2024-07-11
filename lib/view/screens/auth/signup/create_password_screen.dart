@@ -75,7 +75,10 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                     navigatePush(
                         context,
                         const EmailVerificationScreen(
+                          isSignIn: false,
+                          isForgotPassword: false,
                           email: hintEmail,
+                          actionText: createAccount,
                         ));
                   },
                 ),

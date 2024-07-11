@@ -10,14 +10,22 @@ import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/auth/auth_success_screen.dart';
+import 'package:tampay/view/screens/auth/signin_forgot_password/create_new_password_screen.dart';
 
 class EmailVerificationScreen extends ConsumerStatefulWidget {
   final String email;
-
+  final String actionText;
+  final bool isSignIn;
   final bool isForgotPassword;
   // final  VoidCallback? onPressed;
 
-  const EmailVerificationScreen({super.key, required this.email, this.isForgotPassword = false});
+  const EmailVerificationScreen({
+    super.key,
+    required this.email,
+    required this.isSignIn,
+    required this.actionText,
+    required this.isForgotPassword,
+  });
 
   @override
   ConsumerState<EmailVerificationScreen> createState() => _EmailVerificationScreenState();
@@ -85,21 +93,22 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextView(
-                    text: "Verify Email",
+                    text: verifyEmail,
                     textStyle: theme.textTheme.titleLarge,
                   ),
                   Gap(20.h),
                   Text.rich(
                     TextSpan(
-                      text: "We've sent you an OTP code via Email. "
-                          "Please enter 6-digit code sent to ",
-                      style: theme.textTheme.titleMedium!.copyWith(color: AppColors.kTextWhite),
+                      text: weHaveSentAnOTP,
+                      style: theme.textTheme.titleMedium!.copyWith(
+                        color: AppColors.kTextWhite,
+                        fontSize: 12.sp,
+                      ),
                       children: [
                         TextSpan(
                           text: widget.email,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: AppColors.kPrimary1,
-                            fontSize: 15.sp,
                             fontFamily: soraFont,
                             fontWeight: FontWeight.w400,
                           ),
@@ -113,10 +122,9 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextView(
+                        const TextView(
                           text: enterCode,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w400,
                         ),
                         Gap(10.h),
                         PinCodeTextField(
@@ -176,7 +184,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                 ],
               ),
               DefaultButtonMain(
-                text: createAccount,
+                text: widget.actionText,
                 color: AppColors.kPrimary1,
                 buttonState: authProvider.buttonVerifyState!.buttonState,
                 onPressed: () {
@@ -184,8 +192,10 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                     pinFormKey.currentState!.save();
                     navigatePush(
                         context,
-                        const AuthSuccessScreen(
-                          infoText: successfulAccountCreation,
+                        widget.isForgotPassword
+                            ? CreateNewPasswordScreen()
+                            : AuthSuccessScreen(
+                                infoText: widget.isSignIn ? welcomeBack : successfulAccountCreation,
                           newPage: DashBoardScreen(),
                         ));
                   }

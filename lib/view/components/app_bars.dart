@@ -44,7 +44,7 @@ class AppBars {
       title: text != null
           ? TextView(
               text: text,
-              fontSize: textSize == null ? 16.spMin : textSize.spMin,
+              fontSize: textSize == null ? 20.spMin : textSize.spMin,
               fontFamily: soraFont,
               fontWeight: FontWeight.w600,
             )

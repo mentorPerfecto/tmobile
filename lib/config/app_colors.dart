@@ -9,6 +9,7 @@ class AppColors {
   static const kManatee = Color(0xff8E97AA);
   static const kGreenishTeal = Color(0xff5DBE7E);
   static const kGrey400 = Color(0xff1D2739);
+  static const kHarvestGold = Color(0xffF7C164);
 //
   static const kWhite = Color(0xFFFFFFFF);
   static const kLightModebackground = Color(0xFFFFFFFF);

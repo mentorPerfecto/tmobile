@@ -121,7 +121,11 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
           children: [
             widget.fieldLabel.isNotEmpty ? Column(
               children: [
-                TextView(text: widget.fieldLabel,),
+                      TextView(
+                        text: widget.fieldLabel,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
                 const Gap(10),
               ],
             ) : const SizedBox.shrink(),
@@ -162,7 +166,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                       ///Check if this is the best color for the darkmode
                       : theme.hintColor,
                   fontFamily: 'soraFont',
-                  fontSize: 15.spMin,
+                  fontSize: 14.spMin,
                   fontWeight: FontWeight.w400,
                 ),
                 prefixIcon: widget.prefixIcon,

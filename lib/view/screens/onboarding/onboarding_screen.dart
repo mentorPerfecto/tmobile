@@ -6,165 +6,193 @@ import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/src/screens.dart';
 
+// ignore: must_be_immutable
 class OnboardingScreen extends ConsumerWidget {
-  final bool? showBackButton;
-  const OnboardingScreen({Key? key, this.showBackButton = false})
-      : super(key: key);
+ 
+  OnboardingScreen({
+    Key? key,
+  }) : super(key: key);
+
+  final PageController _controller = PageController();
+  List<OnBoardingDisplay> onboardingDisplayList = [
+    OnBoardingDisplay(
+      displayImage: Stack(
+        children: [
+          Image.asset(
+            AppImages.onboardingUltimateCashBackgroundImage,
+            height: 200.h,
+            width: 200.w,
+          ),
+          Positioned(
+            left: 70,
+            bottom: 80,
+            child: Image.asset(
+              AppImages.tPayLogo,
+              width: 55.w,
+              height: 55.h,
+            ),
+          )
+        ],
+      ),
+      displayText: "Ultimate Cash in, \nCash out App",
+    ),
+    OnBoardingDisplay(
+      displayImage: Container(
+        width: 150,
+        height: 150,
+        decoration: BoxDecoration(
+          color: AppColors.kTransparent,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.kHarvestGold.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3), // Shadow offset (x, y)
+            ),
+          ],
+        ),
+        child: Image.asset(
+          AppImages.onboardingFasterTransactionLogo,
+          width: 105.w,
+          height: 105.h,
+        ),
+      ),
+      displayText: "Convenient &,\nFaster Transactions",
+    ),
+    OnBoardingDisplay(
+      displayImage: Container(
+        width: 150,
+        height: 150,
+        decoration: BoxDecoration(
+          color: AppColors.kTransparent,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.kPrimary1.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3), // Shadow offset (x, y)
+            ),
+          ],
+        ),
+        child: Image.asset(
+          AppImages.onboardingCryptoSwapLogo,
+          width: 105.w,
+          height: 105.h,
+        ),
+      ),
+      displayText: "Easy crypto swaps",
+    ),
+  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(themeViewModel).themeMode;
-    var theme = Theme.of(context);
+    ThemeData theme = Theme.of(context);
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            // image: DecorationImage(
-            //   fit: BoxFit.cover,
-            //   image: AssetImage(
-            //     AppImages.onboarding2BackgroungImage,
-            //   ),
-            // ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: 30.h,
-            top: 50.h,
-            left: 20.w,
-            right: 20.w,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  showBackButton == true
-                      ? Align(
-                          alignment: Alignment.bottomLeft,
-                          child: InkWell(
-                              onTap: () {
-                                navigateBack(context);
-                              },
-                              child: Container(
-                                height: 45.h,
-                                width: 45.w,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.kBlack4.withOpacity(0.35)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 5.w),
-                                    child: Icon(
-                                      Icons.arrow_back_ios,
-                                      size: 20.spMin,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              )),
-                        )
-                      : Container(),
-                  // Image.asset(
-                  //   AppImages.logo,
-                  //   height: 250.h,
-                  //   width: 270.w,
-                  // ),
-                ],
-              ),
-              // SizedBox(
-              //   // height: 100.h,
-              //   width: 320.w,
-              //   child: Column(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: [
-              //       TextView(
-              //         text: welcomeTotampay,
-              //         textAlign: TextAlign.center,
-              //         textStyle: theme.textTheme.headlineSmall,
-              //         maxLines: 2,
-              //       ),
-              //       TextView(
-              //         text: accountDetails,
-              //         maxLines: 2,
-              //         textAlign: TextAlign.center,
-              //         textStyle: theme.textTheme.bodyLarge,
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              SizedBox(
-                // height: 155.h,
-                width: 380.w,
-                child: Column(
-                  children: [
-                    DefaultButtonMain(
-                      borderRadius: 38.r,
-                      onPressed: () => navigatePush(
-                        context,
-                        const CreateAccountScreen(),
-                      ),
-                      color: AppColors.kPrimary1,
-                      height: 48.h,
-                      // width: 380.w,
-                      text: createAccount,
-                      textColor: AppColors.kWhite,
-                      fontSize: 16.spMin,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: soraFont,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    DefaultButtonMain(
-                      borderRadius: 38.r,
-                      onPressed: () => navigatePush(
-                        context,
-                        const SignInScreen(
-                          backBtnVisibility: true,
-                        ),
-                      ),
-                      color: AppColors.kWhite,
-                      height: 48.h,
-                      // width: 380.w,
-                      text: login,
-                      textColor: AppColors.kTextBlack,
-                      fontSize: 16.spMin,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: soraFont,
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    // Padding(
-                    //   padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       TextView(
-                    //         text: privacyPolicy,
-                    //         color: AppColors.kWhite,
-                    //         fontSize: 16.spMin,
-                    //         fontWeight: FontWeight.w500,
-                    //         fontFamily: soraFont,
-                    //       ),
-                    //       TextView(
-                    //         text: termsOfService,
-                    //         color: AppColors.kWhite,
-                    //         fontSize: 16.spMin,
-                    //         fontWeight: FontWeight.w500,
-                    //         fontFamily: soraFont,
-                    //       ),
-                    //     ],
-                    //   ),
-                    // )
-                  ],
+        backgroundColor: theme.scaffoldBackgroundColor,
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 15.w,
+              vertical: 20.h,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                PageView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  controller: _controller,
+                  itemCount: onboardingDisplayList.length,
+                  itemBuilder: (context, index) {
+                    return onboardingDisplayList[index];
+                  },
                 ),
-              )
+                Gap(40.h),
+                OnBoardingButtomActions(),
+              ],
+            ),
+          ),
+        ));
+  }
+}
+
+class OnBoardingDisplay extends StatelessWidget {
+  const OnBoardingDisplay({
+    super.key,
+    required this.displayImage,
+    required this.displayText,
+  });
+  final Widget displayImage;
+  final String displayText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        displayImage,
+        Gap(12.h),
+        TextView(
+          textAlign: TextAlign.center,
+          text: displayText,
+          maxLines: 2,
+          textStyle: TextStyle(
+            fontFamily: soraFont,
+            fontSize: 24.spMin,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class OnBoardingButtomActions extends StatelessWidget {
+  const OnBoardingButtomActions({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 200.h,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+                3,
+                (index) => Container(
+                      padding: EdgeInsets.only(right: 2.w),
+                      height: 4.h,
+                      width: 40.w,
+                      color: index == 1 ? AppColors.kWhite : Colors.green,
+                    )),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DefaultButtonMain(
+                padding: EdgeInsets.symmetric(horizontal: 26.w),
+                text: login,
+                borderColor: AppColors.kPrimary1,
+                textColor: AppColors.kPrimary1,
+                onPressed: () {
+                  navigatePush(context, const SignInScreen());
+                },
+              ),
+              Gap(10.w),
+              DefaultButtonMain(
+                padding: EdgeInsets.symmetric(horizontal: 26.w),
+                color: AppColors.kPrimary1,
+                text: signUp,
+                onPressed: () {
+                  navigatePush(context, const CreateAccountScreen());
+                },
+              ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

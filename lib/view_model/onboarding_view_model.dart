@@ -27,7 +27,7 @@ class OnboardingViewModel extends ChangeNotifier {
       if (DummyData.firstTimeOnApp == true ||
           DummyData.firstTimeOnApp == null ||
           DummyData.accessToken == null) {
-         navigateReplace(context, const OnboardingScreen());
+        navigateReplace(context, OnboardingScreen());
 
       } else {
         logger.i("Check User");
