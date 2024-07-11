@@ -5,7 +5,7 @@ import 'package:tampay/src/models.dart';
 import 'package:tampay/src/repository.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/signup/create_password_screen.dart';
+import 'package:tampay/view/screens/auth/signup/create_password_screen.dart';
 
 final registrationViewModel =
     ChangeNotifierProvider((ref) => RegistrationViewModel());
@@ -13,6 +13,7 @@ final registrationViewModel =
 class RegistrationViewModel extends ChangeNotifier {
   final authService = AuthBackend();
   final registrationFormKey = GlobalKey<FormState>();
+  final registerationCreatePasswordFormKey = GlobalKey<FormState>();
 
   final TextEditingController _registerEmailController = TextEditingController();
   final TextEditingController _registerPwdController = TextEditingController();
@@ -20,25 +21,34 @@ class RegistrationViewModel extends ChangeNotifier {
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _refCodeController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+
   CustomButtonState _buttonRegisterState = CustomButtonState(
+    buttonState: ButtonState.disabled,
+    text: continueText,
+  );
+
+  CustomButtonState _buttonRegisterStateCreatePassword = CustomButtonState(
     buttonState: ButtonState.disabled,
     text: createAccount,
   );
 
   bool _obscurePasswordText = true;
   bool _obscureConfirmPwdText = true;
-  bool _isChecked = false;
 
-  bool get isChecked => _isChecked;
 
   TextEditingController get registerEmailController => _registerEmailController;
   TextEditingController get registerPwdController => _registerPwdController;
+  TextEditingController get userNameController => _userNameController;
+  TextEditingController get phoneNumberController => _phoneNumberController;
   TextEditingController get registerConfirmPwdController =>
       _registerConfirmPwdController;
   TextEditingController get firstNameController => _firstNameController;
   TextEditingController get lastNameController => _lastNameController;
   TextEditingController get refCodeController => _refCodeController;
-  CustomButtonState? get buttonRegisterState => _buttonRegisterState;
+  CustomButtonState get buttonRegisterState => _buttonRegisterState;
+  CustomButtonState get buttonRegisterStateCreatePassword => _buttonRegisterStateCreatePassword;
   bool get obscurePasswordText => _obscurePasswordText;
 
   bool get obscureConfirmPwdText => _obscureConfirmPwdText;
@@ -53,24 +63,27 @@ class RegistrationViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void toggleCheckerVisibility() {
-    _isChecked = !_isChecked;
-    updateRegisterButtonState();
+  void updateRegisterButtonState() {
+    if (_firstNameController.text.isNotEmpty &
+        _lastNameController.text.isNotEmpty &
+        _registerEmailController.text.isNotEmpty &
+        _userNameController.text.isNotEmpty &
+        _phoneNumberController.text.isNotEmpty) {
+      _buttonRegisterState = CustomButtonState(
+        buttonState: ButtonState.idle,
+        text: continueText,
+      );
+    } 
     notifyListeners();
   }
 
-  void updateRegisterButtonState() {
-    if (_isChecked != true) {
-      _buttonRegisterState = CustomButtonState(
-        buttonState: ButtonState.disabled,
-        text: login,
-      );
-    } else {
-      _buttonRegisterState = CustomButtonState(
+  void updateRegisterButtonCreatePasswordState() {
+    if (_registerPwdController.text.isNotEmpty & _registerConfirmPwdController.text.isNotEmpty) {
+      _buttonRegisterStateCreatePassword = CustomButtonState(
         buttonState: ButtonState.idle,
-        text: login,
+        text: createAccount,
       );
-    }
+    } 
     notifyListeners();
   }
 

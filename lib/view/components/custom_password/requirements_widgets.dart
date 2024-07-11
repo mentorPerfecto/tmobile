@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 
 class PassCheckRequirements extends ConsumerWidget {
@@ -33,21 +34,15 @@ class PassCheckRequirements extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(themeViewModel).themeMode;
-    var theme = Theme.of(context);
+   
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3.5),
       child: Row(
         children: [
           /// requirement IconData based on check!
-          if (passCheck!)
-            Icon(
-              Icons.check_circle_rounded,
-              color: theme.colorScheme.primary,
-            )
-          else
-            Icon(
+          Icon(
               Icons.check_circle_outline_rounded,
-              color: theme.colorScheme.secondary,
+            color: passCheck! ? AppColors.kGreenishTeal : AppColors.kManatee,
             ),
           const SizedBox(width: 8),
 
@@ -55,9 +50,7 @@ class PassCheckRequirements extends ConsumerWidget {
           Text(
             requirementText!,
             style: TextStyle(
-              color: passCheck!
-                  ? theme.colorScheme.primary
-                  : theme.colorScheme.secondary,
+              color: passCheck! ? AppColors.kGreenishTeal : AppColors.kManatee,
             ),
           ),
         ],

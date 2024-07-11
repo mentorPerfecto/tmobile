@@ -40,7 +40,7 @@ class CustomTextField extends ConsumerStatefulWidget {
     this.validator,
     this.obscureInput = false,
     this.onObscureText,
-    this.borderRadius = 5.11,
+    this.borderRadius = 12,
     this.maxlength,
     this.enabled = true,
     this.useForgotPass = false,
@@ -205,7 +205,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 enabledBorder: widget.isFilled
                     ? OutlineInputBorder(
                         borderRadius:
-                            BorderRadius.circular(widget.borderRadius),
+                            BorderRadius.circular(widget.borderRadius.r),
                       )
                     : InputBorder.none,
                 focusedBorder: OutlineInputBorder(

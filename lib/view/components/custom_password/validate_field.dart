@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/view/components/custom_password/requirements_widgets.dart';
 
+import '../../../src/components.dart';
 import '../../../view_model/theme_view_model.dart';
 
 class PasswordValidatedFields extends ConsumerStatefulWidget {
@@ -33,7 +34,7 @@ class PasswordValidatedFields extends ConsumerStatefulWidget {
     this.isFilled = true,
     // const Color(0xffF9F9F9),
     this.borderColor,
-    this.fillColor = Colors.transparent,
+    this.fillColor = AppColors.kNavyBlue,
     this.readOnly = false,
 
     /// Password requirements initialization
@@ -120,86 +121,82 @@ class PasswordValidatedFieldsState
         /// Use `Form` to validate the field easily
         ///
 
-        TextFormField(
-          textInputAction: widget.textInputAction,
-          controller: widget.textEditingController,
-          keyboardType: TextInputType.text,
-          obscureText: widget.obscureInput,
-          readOnly: widget.readOnly,
-          style: theme.textTheme.bodyMedium!.copyWith(
-            color: theme.colorScheme.primary,
-            fontWeight: FontWeight.w400,
-            fontSize: 14.spMin,
-          ),
-          decoration: InputDecoration(
-            hintText: 'Password',
-            // labelText: 'Password',
-            hintStyle: theme.textTheme.bodyMedium!.copyWith(
-              color: widget.readOnly
-                  ? AppColors.kBlack4
-                  : theme.colorScheme.primary,
-              fontFamily: 'soraFont',
-              fontSize: 15.spMin,
-              fontWeight: FontWeight.w400,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TextView(
+              text: password,
             ),
-            // labelStyle: theme.textTheme.bodyLarge!.copyWith(
-            //   color: AppColors.kGrey,
-            //   fontFamily: 'HergonGrotesk',
-            // ),
-            suffixIcon: GestureDetector(
-              onTap: widget.onObscureText,
-              child: Icon(
-                widget.obscureInput
-                    ? Icons.visibility_off_outlined
-                    : Icons.visibility_outlined,
-                size: 20.r,
+            Gap(10.h),
+            TextFormField(
+              textInputAction: widget.textInputAction,
+              controller: widget.textEditingController,
+              keyboardType: TextInputType.text,
+              obscureText: widget.obscureInput,
+              readOnly: widget.readOnly,
+              style: theme.textTheme.bodyMedium!.copyWith(
                 color: theme.colorScheme.primary,
+                fontWeight: FontWeight.w400,
+                fontSize: 14.spMin,
               ),
+              decoration: InputDecoration(
+                hintStyle: theme.textTheme.bodyMedium!.copyWith(
+                  color: widget.readOnly ? AppColors.kBlack4 : AppColors.kDesaturatedDarkBlue,
+                  fontFamily: soraFont,
+                  fontSize: 15.spMin,
+                  fontWeight: FontWeight.w400,
+                ),
+                // labelStyle: theme.textTheme.bodyLarge!.copyWith(
+                //   color: AppColors.kGrey,
+                //   fontFamily: 'HergonGrotesk',
+                // ),
+                suffixIcon: GestureDetector(
+                  onTap: widget.onObscureText,
+                  child: Icon(
+                    widget.obscureInput ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                    size: 20.r,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                filled: true,
+                fillColor: widget.readOnly ? theme.cardColor : widget.fillColor,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                border: widget.readOnly ? InputBorder.none : null,
+                // fillColor: widget.fillColor ?? theme.cardColor,
+                enabledBorder: widget.isFilled
+                    ? OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(widget.borderRadius),
+                      )
+                    : InputBorder.none,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                  borderSide:
+                      BorderSide(color: AppColors.kPrimary1, width: widget.borderWidth!.spMin),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                  borderSide: const BorderSide(color: AppColors.kErrorPrimary),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                  borderSide: const BorderSide(color: AppColors.kErrorPrimary),
+                ),
+                errorStyle: const TextStyle(color: AppColors.kErrorPrimary),
+                errorMaxLines: 4,
+                // prefixIcon: Icon(Icons.lock),
+              ),
+              onEditingComplete: widget.onEditComplete,
+              onFieldSubmitted: widget.onFieldSubmitted,
+              focusNode: widget.focusNode,
+              cursorColor: widget.cursorColor,
+              onChanged: (value) {
+                setState(() {
+                  _pass = value;
+                });
+              },
+              validator: passwordValidation,
             ),
-            filled: true,
-            fillColor: widget.readOnly ? theme.cardColor : widget.fillColor,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            border: widget.readOnly ? InputBorder.none : null,
-            // fillColor: widget.fillColor ?? theme.cardColor,
-            enabledBorder: widget.isFilled
-                ? OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(widget.borderRadius),
-                    borderSide: BorderSide(
-                      color: themeMode == ThemeMode.light
-                          ? AppColors.kDisabledButton
-                          : AppColors.kDarkSecondary,
-                    ),
-                  )
-                : InputBorder.none,
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius),
-              borderSide: BorderSide(
-                  color: const Color(0xff3565A1),
-                  width: widget.borderWidth!.spMin),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius),
-              borderSide: const BorderSide(color: AppColors.kErrorPrimary),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius),
-              borderSide: const BorderSide(color: AppColors.kErrorPrimary),
-            ),
-            errorStyle: const TextStyle(color: AppColors.kErrorPrimary),
-            errorMaxLines: 4,
-            // prefixIcon: Icon(Icons.lock),
-          ),
-          onEditingComplete: widget.onEditComplete,
-          onFieldSubmitted: widget.onFieldSubmitted,
-          focusNode: widget.focusNode,
-          cursorColor: widget.cursorColor,
-          onChanged: (value) {
-            setState(() {
-              _pass = value;
-            });
-          },
-          validator: passwordValidation,
+          ],
         ),
 
         SizedBox(height: 15.h),
@@ -209,39 +206,34 @@ class PasswordValidatedFieldsState
 
         /// [default requirements]
         /// `1 Upper case` requirement
-        if (widget.textEditingController!.text.isEmpty)
-          Container()
-        else
+        // if (widget.textEditingController!.text.isEmpty)
+        //   Container()
+        // else
           Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PassCheckRequirements(
-                passCheck: _pass.contains(RegExp('[A-Z]')),
-                requirementText: '1 Uppercase [A-Z]',
-              ),
+            const TextView(text: passWordMustContain),
+            Gap(12.h),
 
-              /// `1 lowercase` requirement
-              PassCheckRequirements(
-                passCheck: _pass.contains(RegExp('[a-z]')),
-                requirementText: '1 lowercase [a-z]',
-              ),
+            /// `8 character length` requirement
+            PassCheckRequirements(
+              passCheck: _pass.length >= 8,
+              requirementText: eightCharacters,
+            ),
 
-              /// `1 numeric value` requirement
+            ///`1 Uppercase letter` requirement
               PassCheckRequirements(
-                passCheck: _pass.contains(RegExp('[0-9]')),
-                requirementText: '1 numeric value [0-9]',
+              passCheck: _pass.contains(RegExp('[A-Z]')),
+              requirementText: oneUppercase,
               ),
-
+                      
               /// `1 special character` requirement
               PassCheckRequirements(
                 passCheck: _pass.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]')),
-                requirementText: r'1 special character [#, $, % etc..]',
+              requirementText: oneSpecialCharacter,
               ),
 
-              /// `6 character length` requirement
-              PassCheckRequirements(
-                passCheck: _pass.length >= 6,
-                requirementText: '6 characters minimum',
-              ),
+            
             ],
           ),
       ],

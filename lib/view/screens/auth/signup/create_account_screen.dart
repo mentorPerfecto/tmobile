@@ -1,20 +1,17 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tampay/repository/network/api_constants.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/src/screens.dart';
 
-
 class CreateAccountScreen extends ConsumerStatefulWidget {
   const CreateAccountScreen({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<CreateAccountScreen> createState() =>
-      _CreateAccountScreenState();
+  ConsumerState<CreateAccountScreen> createState() => _CreateAccountScreenState();
 }
 
 class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
@@ -59,12 +56,10 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
     var theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBars.mainAppBar(
-        context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.colorScheme.primary,
-        text: createAccount
-      ),
+      appBar: AppBars.mainAppBar(context,
+          backgroundColor: theme.scaffoldBackgroundColor,
+          arrowBackColor: theme.colorScheme.primary,
+          text: createAccount),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -81,12 +76,12 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                     children: [
                       CustomTextField(
                         fieldLabel: firstNameText,
-                        hint: 'eg.John',
+                        hint: hintFirstName,
                         controller: provider.firstNameController,
-                        validator: (value) =>
-                            Validators().validateEmptyTextField(value),
-                            
-
+                        validator: (value) => Validators().validateEmptyTextField(value),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
                         //onChanged: (value)=> provider.updateButtonState(),
                       ),
                       SizedBox(
@@ -94,11 +89,12 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                       ),
                       CustomTextField(
                         fieldLabel: lastNameText,
-                        hint: 'eg.Doe',
+                        hint: hintLastName,
                         controller: provider.lastNameController,
-                        validator: (value) =>
-                            Validators().validateEmptyTextField(value),
-
+                        validator: (value) => Validators().validateEmptyTextField(value),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
                         //onChanged: (value)=> provider.updateButtonState(),
                       ),
                       SizedBox(
@@ -106,41 +102,47 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                       ),
                       CustomTextField(
                         fieldLabel: emailText,
-                        hint: 'eg.JohnDoe@adress.com',
+                        hint: hintEmail,
                         controller: provider.registerEmailController,
                         validator: (value) => Validators().validateEmail(value),
                         //onChanged: (value)=> provider.updateButtonState(),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
                       CustomTextField(
                         fieldLabel: userName,
-                        hint: "eg.john01",
-                        controller: provider.refCodeController,
+                        hint: hintUserName,
+                        controller: provider.userNameController,
+                        validator: (value) => Validators().validateUserName(value),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
                       CustomTextField(
-                        borderRadius: 6.r,
-                        borderWidth: 1.w,
                         fieldLabel: phoneNumberText,
-                        hint: "+234",
-                        controller: provider.refCodeController,
+                        hint: hintPhoneNumber,
+                        controller: provider.phoneNumberController,
+                        validator: (value) => Validators().validatePhoneNumber(value),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
                       ),
-
                       SizedBox(
                         height: 10.h,
                       ),
                       CustomTextField(
-                        borderRadius: 6.r,
                         borderWidth: 1.w,
-                        fieldLabel: "Enter referall code",
+                        fieldLabel: enterReferallCode,
                         hint: referralCode,
                         controller: provider.refCodeController,
                       ),
-
                     ],
                   ),
                 ),
@@ -148,12 +150,9 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                   height: 30.h,
                 ),
                 DefaultButtonMain(
-                  height: 48.h,
-                  width: 380.w,
                   text: continueText,
-                  borderRadius: 40.r,
                   color: AppColors.kPrimary1,
-                  buttonState: provider.buttonRegisterState!.buttonState,
+                  buttonState: provider.buttonRegisterState.buttonState,
                   onPressed: () {
                     provider.userRegistration(context);
                   },
