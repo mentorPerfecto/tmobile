@@ -6,6 +6,11 @@ class AppColors {
   static const kPrimaryDark = Color(0xff060B29);
   static const kDesaturatedDarkBlue = Color(0xff49527C);
   static const kNavyBlue = Color(0xff020513);
+  static const kUnselectedBottomItemColor = Color(0xff667185);
+  static const kCardAccount = Color(0xff161B37);
+  static const kCardText = Color(0xff98A2B3);
+  static const kBlueButton = Color(0xff3A66FF);
+  static const kPurple = Color(0xff7436DC);
 
 //
   static const kWhite = Color(0xFFFFFFFF);
@@ -73,7 +78,7 @@ class AppColors {
   static const kWhite400 = Color(0xffF7F7F7);
 
   ///Dark Theme
-  static const Color kDarkDividerColor = Color(0xff262932);
+  static const Color kDarkDividerColor = Color(0xff344054);
   static const kPrimary1Dark = Color(0xFF023E8A); // Primary color
   static const kTextWhite = Color(0xFFFFFFFF); // Text color for dark backgrounds
   static const kBackgroundDark = Color(0xff0D0D0D); // Background color for dark theme
@@ -96,7 +101,7 @@ class AppColors {
   static const Color lightBackgroundColor = Color(0xffffffff);
   // static const Color lightBackgroundColor = Color(0xfffcfafa);
   static const Color lightCanvasColor = Color(0xffF1F1F1);
-  static const Color lightDividerColor = Color(0xffF1F1F1);
+  static const Color lightDividerColor = Color(0xff344054);
   static const Color lightSecondaryColor = Color(0xffCFD3D8);
 
   ////

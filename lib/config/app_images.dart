@@ -17,7 +17,7 @@ class AppImages {
   static const helpCenterLogo = '${_baseUrl}help_center.png';
   static const inProgressLogo = '${_baseUrl}in_progress_logo.png';
   static const inviteYourFriendsLogo = '${_baseUrl}invite_your_friends.png';
-  static const loogOutLogo = '${_baseUrl}log_out.png';
+  static const logOutLogo = '${_baseUrl}log_out.png';
   static const receiveMoneyLogo = '${_baseUrl}money_recieve_white.png';
   static const sendMoneyLogo = '${_baseUrl}money_send.png';
   static const onboardingCryptoSwapLogo = '${_baseUrl}onboarding_crypto_swap_image.png';
@@ -30,7 +30,7 @@ class AppImages {
   static const placeholderNotificationLogo = '${_baseUrl}placeholder_logo_notifications.png';
   static const plusCircleLogo = '${_baseUrl}plus_sign_circle.png';
   static const privacyPolicyLogo = '${_baseUrl}privacy_policy.png';
-  static const referallsInvitesLogo = '${_baseUrl}referalls_invite.png';
+  static const referralsInvitesLogo = '${_baseUrl}referalls_invite.png';
   static const securityLogo = '${_baseUrl}security_logo.png';
   static const successLogo = '${_baseUrl}success_logo.png';
   static const copyLogo = '${_baseUrl}t_pay_copy.png';

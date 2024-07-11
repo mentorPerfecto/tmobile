@@ -108,10 +108,14 @@ const viewTransaction = 'View your transaction\nhistory and payments';
 const newestListing = 'Newest listing for rent';
 const viewAll = 'View All';
 const home = 'Home';
+const buy = 'Buy';
+const sell = 'Sell';
+const profile = 'Profile';
 const marketPlace = 'Market Place';
 const wallet = 'Wallet';
 const more = 'More';
 const balance = 'Balance';
+const totalPayout = 'total payout (USD)';
 const firstNameText = 'First Name';
 const lastNameText = 'Last Name';
 const emailText = 'Email';
@@ -286,8 +290,15 @@ const comingSoon = 'Coming Soon';
 const enquire = 'Enquire';
 const youMustHaveAVerifiedListing = 'You must have at least one landlord listing';
 const instructions = 'Instructions';
+const selectCoin = 'Select coin';
+const assetsText = 'Assets';
+const currentRates = 'Current Rates';
+const ratesText = 'Rates';
 const enterCodeGottenFromLandlordToAddProperty =
     ' 1. Enter code gotten from landlord to add property';
 const submitIdentificationDocument = ' 2. Next, submit identification documents';
+const inviteYourFriendsText = 'Invite your friends';
+const inviteYourFriendsInfo = 'Earn 25% commission when someone you refer makes a trade';
+
 
 // const soraFont = 'Sora';
