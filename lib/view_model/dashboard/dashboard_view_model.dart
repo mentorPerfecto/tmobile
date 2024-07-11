@@ -28,6 +28,12 @@ class DashboardViewModel extends ChangeNotifier {
 
 
 
+  setPageIndex({int? selectedPageIndex}) {
+    _currentIndex = selectedPageIndex ?? 0;
+    notifyListeners();
+    // getDeviceLocation();
+  }
+
   Future<void> setBottomBarItem(BuildContext context, int selectedPageIndex) async {
     _currentIndex = selectedPageIndex;
     notifyListeners();

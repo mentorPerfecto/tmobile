@@ -71,122 +71,117 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
         return exit;
       },
       child: Scaffold(
-        appBar: AppBar(
-          actions: [Container()],
-          backgroundColor: theme.scaffoldBackgroundColor,
-          automaticallyImplyLeading: false,
-          title: TextView(
-            text: "dashProvider.getTitle(2).toString()",
-            textStyle: theme.textTheme.titleLarge!.copyWith(
-              fontSize: 20.spMin,
+        // appBar: AppBar(
+        //   actions: [Container()],
+        //   backgroundColor: theme.scaffoldBackgroundColor,
+        //   automaticallyImplyLeading: false,
+        //   title: TextView(
+        //     text: "dashProvider.getTitle(2).toString()",
+        //     textStyle: theme.textTheme.titleLarge!.copyWith(
+        //       fontSize: 20.spMin,
+        //     ),
+        //   ),
+        //   centerTitle: false,
+        //   leadingWidth: 50,
+        //   leading: dashProvider.currentIndex == 0 &&
+        //           int.parse(profileProvider.profileData?.role?.toString() ?? '1') > 1
+        //       ? Center(
+        //           //
+        //           child: ProfileImage(
+        //           imageType: ProfileImageType.user,
+        //           imageUrl: profileProvider.profileData?.profileImage ?? 'ded',
+        //           width: 40.w,
+        //           height: 40.h,
+        //         ))
+        //       : null,
+        // ),
+        body: dashboardPages[dashProvider.currentIndex],
+        backgroundColor: theme.scaffoldBackgroundColor,
+        bottomNavigationBar: Container(
+          height: 74.h,
+          padding: EdgeInsets.symmetric(vertical: 8.h),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(16.r),
+                topLeft: Radius.circular(16.r)),
+            // boxShadow: [
+            //   BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+            // ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16.r),
+              topRight: Radius.circular(16.r),
+            ),
+            child: BottomNavigationBar(
+              showUnselectedLabels: true,
+              useLegacyColorScheme: false,
+              backgroundColor: theme.scaffoldBackgroundColor,
+              selectedItemColor: AppColors.kPrimary1,
+              unselectedItemColor: AppColors.kUnselectedBottomItemColor,
+              type: BottomNavigationBarType.fixed,
+              selectedLabelStyle: TextStyle(
+                fontFamily: soraFont,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w600,
+              ),
+              unselectedLabelStyle: TextStyle(
+                fontFamily: soraFont,
+                fontSize: 12.sp,
+                color: AppColors.kUnselectedBottomItemColor,
+                fontWeight: FontWeight.w600,
+              ),
+              items: [
+                BottomNavigationBarItem(
+                    icon: ImageView.asset(
+                        // dashProvider.currentIndex == 0
+
+                        AppImages.dashboardHomeLogo,
+                        width: 20.w,
+                        height: 20.h,
+                        color: dashProvider.currentIndex == 0
+                            ? AppColors.kPrimary1
+                            : null),
+                    label: home),
+                BottomNavigationBarItem(
+                    icon: ImageView.asset(
+                      AppImages.dashboardBuyLogo,
+                      width: 22.w,
+                      height: 22.h,
+                        color: dashProvider.currentIndex == 1
+                            ? AppColors.kPrimary1
+                            : null
+                    ),
+                    label: buy),
+                BottomNavigationBarItem(
+                    icon: ImageView.asset(
+                      AppImages.dashboardSellLogo,
+                      width: 22.w,
+                      height: 22.h,
+                        color: dashProvider.currentIndex == 2
+                            ? AppColors.kPrimary1
+                            : null
+                    ),
+                    label: sell),
+                BottomNavigationBarItem(
+                    icon: ImageView.asset(
+                      AppImages.profileLogo,
+                      width: 22.w,
+                      height: 22.h,
+                        color: dashProvider.currentIndex == 3
+                            ? AppColors.kPrimary1
+                            : null
+                    ),
+                    label: profile),
+
+              ],
+              onTap: (index) {
+                // dashProvider.getDeviceLocation();
+                dashProvider.setPageIndex(selectedPageIndex: index);
+              },
+              currentIndex: dashProvider.currentIndex,
             ),
           ),
-          centerTitle: false,
-          leadingWidth: 50,
-          leading: dashProvider.currentIndex == 0 &&
-                  int.parse(profileProvider.profileData?.role?.toString() ?? '1') > 1
-              ? Center(
-                  //
-                  child: ProfileImage(
-                  imageType: ProfileImageType.user,
-                  imageUrl: profileProvider.profileData?.profileImage ?? 'ded',
-                  width: 40.w,
-                  height: 40.h,
-                ))
-              : null,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: dashboardPages[dashProvider.currentIndex],
-        ),
-        backgroundColor: theme.scaffoldBackgroundColor,
-        bottomNavigationBar: BottomNavigationBar(
-          showUnselectedLabels: false,
-          useLegacyColorScheme: false,
-          backgroundColor: theme.scaffoldBackgroundColor,
-          selectedItemColor:
-              themeMode == ThemeMode.light ? AppColors.kPrimary1 : AppColors.kPrimary150,
-          unselectedItemColor: theme.colorScheme.secondary,
-          selectedLabelStyle: TextStyle(
-            fontFamily: soraFont,
-            fontSize: 10.spMin,
-            fontWeight: FontWeight.w400,
-          ),
-          unselectedLabelStyle: TextStyle(
-            fontFamily: soraFont,
-            fontSize: 10.spMin,
-            fontWeight: FontWeight.w400,
-          ),
-          items: //write a ternary operator for the tenant,cause it should have only four navigation bar items.
-              [
-            // BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       dashProvider.currentIndex == 0
-            //           ? themeMode == ThemeMode.light
-            //           ? AppImages.selectedHome
-            //           : AppImages.selectedHomeDark
-            //           : AppImages.home,
-            //       width: 24.w,
-            //       height: 24.h,
-            //     ),
-            //     label: home),
-            // BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       dashProvider.currentIndex == 1
-            //           ? themeMode == ThemeMode.light
-            //           ? AppImages.selectedMarket
-            //           : AppImages.selectedMarketPlaceDark
-            //           : AppImages.shop,
-            //       width: 24.w,
-            //       height: 24.h,
-            //     ),
-            //     label: marketPlace),
-            // BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       dashProvider.currentIndex == 2
-            //           ? themeMode == ThemeMode.light
-            //           ? AppImages.selectedProperties
-            //           : AppImages.selectedPropertiesDark
-            //           : AppImages.properties,
-            //       width: 24.w,
-            //       height: 24.h,
-            //     ),
-            //     label: properties),
-            // if (profileProvider.profileData?.role != 2)
-            //   BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       dashProvider.currentIndex == 3
-            //           ? themeMode == ThemeMode.light
-            //           ? AppImages.selectedWallet
-            //           : AppImages.selectedWalletDark
-            //           : AppImages.wallet,
-            //       width: 24.w,
-            //       height: 24.h,
-            //     ),
-            //     label: wallet,
-            //   ),
-            // BottomNavigationBarItem(
-            //   icon: Image.asset(
-            //     dashProvider.currentIndex == 4
-            //         ? themeMode == ThemeMode.light
-            //         ? AppImages.selectedMore
-            //         : AppImages.selectedMoreDark
-            //         : AppImages.more,
-            //     width: 24.w,
-            //     height: 24.h,
-            //   ),
-            //   label: more,
-            // ),
-          ],
-          onTap: (index) {
-            // dashProvider.getDeviceLocation();
-            dashProvider.setBottomBarItem(context, index);
-            ref
-                .watch(authViewModel)
-                .updateRole(int.parse(profileProvider.profileData?.role.toString() ?? '1'));
-            // ref.watch(profileViewModel).fetchKYC(context);
-          },
-          currentIndex: dashProvider.currentIndex,
         ),
       ),
     );

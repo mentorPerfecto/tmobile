@@ -54,7 +54,7 @@ class _MyAppState extends ConsumerState<MyApp> {
         );
       },
 
-      child: const SplashScreen(),
+      child: const DashBoardScreen(),
     );
   }
 }

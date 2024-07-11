@@ -54,7 +54,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12.w),
-                child: const tampayDivider(),
+                child: const TampayDivider(),
               ),
               // int.parse(profileProvider.profileData?.role.toString() ?? '0') > 1
               //     ? Padding(
