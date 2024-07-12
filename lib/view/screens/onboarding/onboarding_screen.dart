@@ -7,13 +7,18 @@ import 'package:tampay/src/utils.dart';
 import 'package:tampay/src/screens.dart';
 
 // ignore: must_be_immutable
-class OnboardingScreen extends ConsumerWidget {
- 
+class OnboardingScreen extends ConsumerStatefulWidget {
   OnboardingScreen({
     Key? key,
   }) : super(key: key);
 
-  final PageController _controller = PageController();
+  @override
+  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
+  final PageController _controller = PageController(initialPage: 0);
+  int _currentPage = 0;
   List<OnBoardingDisplay> onboardingDisplayList = [
     OnBoardingDisplay(
       displayImage: Stack(
@@ -38,16 +43,16 @@ class OnboardingScreen extends ConsumerWidget {
     ),
     OnBoardingDisplay(
       displayImage: Container(
-        width: 150,
-        height: 150,
+       
         decoration: BoxDecoration(
           color: AppColors.kTransparent,
+          shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
               color: AppColors.kHarvestGold.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3), // Shadow offset (x, y)
+              spreadRadius: 100,
+              blurRadius: 200,
+              
             ),
           ],
         ),
@@ -61,16 +66,17 @@ class OnboardingScreen extends ConsumerWidget {
     ),
     OnBoardingDisplay(
       displayImage: Container(
-        width: 150,
-        height: 150,
+       
         decoration: BoxDecoration(
           color: AppColors.kTransparent,
+          shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
+              blurStyle: BlurStyle.outer,
               color: AppColors.kPrimary1.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3), // Shadow offset (x, y)
+              spreadRadius: 100,
+              blurRadius: 200,
+            
             ),
           ],
         ),
@@ -85,8 +91,9 @@ class OnboardingScreen extends ConsumerWidget {
   ];
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(themeViewModel).themeMode;
+  Widget build(
+    BuildContext context,
+  ) {
     ThemeData theme = Theme.of(context);
     return Scaffold(
         backgroundColor: theme.scaffoldBackgroundColor,
@@ -99,16 +106,27 @@ class OnboardingScreen extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                PageView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  controller: _controller,
-                  itemCount: onboardingDisplayList.length,
-                  itemBuilder: (context, index) {
-                    return onboardingDisplayList[index];
-                  },
+                SizedBox(
+                  width: 300.w,
+                  height: 300.h,
+                  child: PageView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    controller: _controller,
+                    onPageChanged: (page) {
+                      setState(() {
+                        _currentPage = page;
+                      });
+                    },
+                    itemCount: onboardingDisplayList.length,
+                    itemBuilder: (context, index) {
+                      return onboardingDisplayList[_currentPage];
+                    },
+                  ),
                 ),
-                Gap(40.h),
-                OnBoardingButtomActions(),
+                Gap(5.h),
+                OnBoardingButtomActions(
+                  currentPage: _currentPage,
+                ),
               ],
             ),
           ),
@@ -149,8 +167,9 @@ class OnBoardingDisplay extends StatelessWidget {
 class OnBoardingButtomActions extends StatelessWidget {
   const OnBoardingButtomActions({
     super.key,
+    required this.currentPage
   });
-
+  final int currentPage;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -166,7 +185,7 @@ class OnBoardingButtomActions extends StatelessWidget {
                       padding: EdgeInsets.only(right: 2.w),
                       height: 4.h,
                       width: 40.w,
-                      color: index == 1 ? AppColors.kWhite : Colors.green,
+                      color: currentPage == index ? AppColors.kScreaminGreen : AppColors.kWhite,
                     )),
           ),
           Row(

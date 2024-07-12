@@ -31,6 +31,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
             fontSize: 12.spMin,
             fontFamily: soraFont,
             fontWeight: FontWeight.w400,
+           
           ),
           children: <TextSpan>[
             TextSpan(
@@ -39,6 +40,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 color: AppColors.kPrimary1,
                 fontSize: 12.spMin,
                 fontWeight: FontWeight.w400,
+               
               ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () => navigateReplace(
@@ -139,6 +141,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
         ),
       ),
       persistentFooterButtons: [
+          
         youANewUser(theme, themeMode),
       ],
     );

@@ -65,9 +65,64 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
                 buttonState: provider.buttonChangePwdState!.buttonState,
                 onPressed: () {
                   showModalBottomSheet(
+                      barrierColor: AppColors.kTransparent,
                       context: context,
                       builder: (context) {
-                        return Container();
+                        return Container(
+                          height: 360.h,
+                          decoration: BoxDecoration(
+                            color: AppColors.kPrimaryDark,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(
+                                12.r,
+                              ),
+                              topRight: Radius.circular(
+                                12.r,
+                              ),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 15.h,
+                              horizontal: 15.w,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset(
+                                  AppImages.successLogo,
+                                  width: 72.w,
+                                  height: 72.h,
+                                ),
+                                Column(
+                                  children: [
+                                    TextView(
+                                      text: "Successful",
+                                      fontSize: 16.spMin,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                    Gap(15.h),
+                                    TextView(
+                                      textAlign: TextAlign.center,
+                                      text: "You have successfully changed your password.\n"
+                                          "You can login back into your account",
+                                      fontSize: 12.spMin,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ],
+                                ),
+                                DefaultButtonMain(
+                                  textColor: AppColors.kWhite,
+                                  color: AppColors.kPrimary1,
+                                  text: "Back to login",
+                                  onPressed: () {
+                                    navigatePush(context, const SignInScreen());
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        );
                       });
                 },
               ),
