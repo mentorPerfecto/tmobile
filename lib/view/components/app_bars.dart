@@ -20,6 +20,7 @@ class AppBars {
   }) {
     return AppBar(
       backgroundColor: backgroundColor,
+      surfaceTintColor: Colors.transparent,
       leading: Visibility(
         visible: isVisible,
         child: InkWell(

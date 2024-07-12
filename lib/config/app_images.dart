@@ -38,7 +38,8 @@ class AppImages {
   static const profileLogo = '${_baseUrl}t_pay_profile.png';
   static const unverifiedBadgeLogo = '${_baseUrl}unverified_badge.png';
   static const verifiedBadgeLogo = '${_baseUrl}verified_badge.png';
- 
+  static const referActionLogo = '${_baseUrl}refer_action_logo.png';
+
  
  
 }
