@@ -212,7 +212,7 @@ class PasswordValidatedFieldsState
           Column(
           crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            const TextView(text: passWordMustContain),
+           const TextView(text: passWordMustContain,),
             Gap(12.h),
 
             /// `8 character length` requirement

@@ -39,7 +39,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                 ..onTap = () => navigateReplace(
                       context,
                       const SignInScreen(
-                        backBtnVisibility: true,
+                     
                       ),
                     ),
             ),

@@ -21,6 +21,22 @@ const wellDone = "Well done";
 const successfulAccountCreation = "Your account has been successfully created, "
     "welcome to TamPay crypto ";
 const viewDashboard = "View Dashboard";
+const signUp = 'Sign Up';
+const verifyEmail = 'Verify Email';
+const weHaveSentAnOTP = "We've sent you an OTP code via Email. "
+    "Please enter 6-digit code sent to ";
+const enterPassword = 'Enter password';
+const forgotPassword = 'Forgot Password?';
+const login = 'Login';
+const continueText = 'Continue';
+const youreANewUser = 'You a new user? ';
+const welcomeBack = 'Welcome back';
+const resetPass = 'Reset Password';
+const confirmPassword = 'Confirm Password';
+const pleaseEnterEmailAttachedToYouToResetMail =
+    "Please enter the email attached to your account to\n"
+    " reset your password";
+const createNewPassword = 'Create New Password';
 // const welcomeTotampay = 'Welcome to tampay';
 const addAnotherFee = 'Add another fee';
 const selectIDType = 'Select Identification Type';
@@ -142,17 +158,12 @@ const enterPwd = 'Enter your password';
 const enterOtpCode = 'Enter OTP Code';
 const somethingWentWrong = 'Something went wrong';
 const checkErrorLogs = 'CHECK ERROR LOGS';
-const welcomeBack = 'Welcome back!';
-const resetPass = 'Reset Password';
-const confirmPassword = 'Confirm Password';
-const continueText = 'Continue';
+
 const okayText = 'Ok';
 const done = 'Done';
 const newPassword = 'New Password';
 const haveAnAccount = 'Already a user? ';
-const dontHaveAnAccount = 'Don\'t have an account? ';
-const forgortPassword = 'Forgot Password?';
-const login = 'Login';
+
 const pinSetSuccessfully = 'Pin set successfully';
 const selectImage = 'Please select image for both sides';
 const addAmenities = 'Add amenities';
@@ -170,7 +181,7 @@ const emailSuccessfullyVerified = 'Your email verification was successful';
 const pwdResetSuccessful = 'your password has been reset';
 const resendOTP = 'Resend OTP';
 const resendCode = 'Resend Code';
-const verifyEmail = 'Verify email address';
+
 const agreeTo = 'I agree with the ';
 const incorrectPassword = 'Incorrect Password';
 const termsAndConditions = 'Terms and Conditions';

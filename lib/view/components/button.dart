@@ -96,8 +96,8 @@ class DefaultButtonMain extends StatelessWidget {
                     text.toString(),
                     style: TextStyle(
                       color: textColor ?? Colors.white,
-                      fontSize: fontSize ?? 16.0.spMin,
-                      fontWeight: fontWeight ?? FontWeight.w500,
+                      fontSize: fontSize ?? 14.0.spMin,
+                      fontWeight: fontWeight ?? FontWeight.w600,
                       fontFamily: fontFamily ?? soraFont,
                     ),
                   ),

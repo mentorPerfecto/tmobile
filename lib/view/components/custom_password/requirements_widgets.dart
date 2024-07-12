@@ -51,6 +51,9 @@ class PassCheckRequirements extends ConsumerWidget {
             requirementText!,
             style: TextStyle(
               color: passCheck! ? AppColors.kGreenishTeal : AppColors.kManatee,
+              fontFamily: soraFont,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ],

@@ -55,7 +55,8 @@ class _MyAppState extends ConsumerState<MyApp> {
         );
       },
 
-      child:  DashBoardScreen(),
+
+      child: OnboardingScreen(),
     );
   }
 }

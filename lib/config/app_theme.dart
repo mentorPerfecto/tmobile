@@ -89,6 +89,9 @@ class AppTheme {
   );
 
   static ThemeData darkTheme = ThemeData(
+    bottomSheetTheme: BottomSheetThemeData(
+      modalBarrierColor: AppColors.kTransparent,
+    ),
     hintColor: AppColors.kDesaturatedDarkBlue,
     primaryColorLight: AppColors.kPrimary150,
     cardColor: AppColors.kContainerBackground,

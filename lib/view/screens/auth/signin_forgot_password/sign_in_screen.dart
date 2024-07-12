@@ -8,9 +8,9 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/providers.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
-  final bool backBtnVisibility;
-
-  const SignInScreen({super.key, required this.backBtnVisibility});
+  const SignInScreen({
+    super.key,
+  });
 
   @override
   ConsumerState<SignInScreen> createState() => _SignInScreenState();
@@ -21,26 +21,26 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   FocusNode passwordFocusNode = FocusNode();
   // bool isChecked = false;
   //Contains alreadyHaveAnAccount text widget
-  doNotHaveAccount(ThemeData theme, ThemeMode themeMode) {
+  youANewUser(ThemeData theme, ThemeMode themeMode) {
     return Center(
       child: RichText(
         text: TextSpan(
-          text: dontHaveAnAccount,
+          text: youreANewUser,
           style: TextStyle(
             color: theme.colorScheme.primary,
-            fontSize: 16.spMin,
+            fontSize: 12.spMin,
             fontFamily: soraFont,
             fontWeight: FontWeight.w400,
+           
           ),
           children: <TextSpan>[
             TextSpan(
-              text: createAccount,
+              text: signUp,
               style: TextStyle(
-                color: themeMode == ThemeMode.light
-                    ? AppColors.kPrimary1
-                    : AppColors.kPrimary150,
-                fontSize: 16.spMin,
+                color: AppColors.kPrimary1,
+                fontSize: 12.spMin,
                 fontWeight: FontWeight.w400,
+               
               ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () => navigateReplace(
@@ -63,9 +63,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        isVisible: widget.backBtnVisibility,
         backgroundColor: theme.scaffoldBackgroundColor,
         arrowBackColor: theme.colorScheme.primary,
+        text: login,
       ),
       body: SafeArea(
         child: Padding(
@@ -73,104 +73,76 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
             vertical: 15.h,
             horizontal: 15.w,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 15.h,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Form(
+                key: loginFormKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomTextField(
+                      fieldLabel: emailText,
+                      hint: hintEmail,
+                      controller: provider.loginEmailController,
+                      validator: (value) => Validators().validateEmail(value),
+                      //onChanged: (value)=> provider.updateButtonState(),
+                      onChanged: (p0) {
+                        provider.updateButtonLoginState();
+                      },
+                    ),
+                    Gap(15.h),
+                    CustomTextField(
+                      password: true,
+                      obscureInput: provider.loginObscurePass,
+                      onObscureText: provider.toggleLoginPwdVisibility,
+                      fieldLabel: password,
+                      hint: enterPassword,
+                      controller: provider.loginPwdController,
+                      validator: (value) => Validators().validatePassword(value),
+                      //onChanged: (value)=> provider.updateButtonState(),
+                      onChanged: (p0) {
+                        provider.updateButtonLoginState();
+                      },
+                    ),
+                    Gap(5.h),
+                    TextView(
+                      text: forgotPassword,
+                      color: AppColors.kPrimary1,
+                      onTap: () {
+                        navigatePush(context, const ForgotPasswordScreen());
+                      },
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 235.w,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextView(
-                        text: welcomeBack,
-                        textStyle: theme.textTheme.titleLarge,
+              ),
+              DefaultButtonMain(
+                text: continueText,
+                color: AppColors.kPrimary1,
+                buttonState: provider.buttonLoginState!.buttonState,
+                onPressed: () {
+                  if (loginFormKey.currentState!.validate()) {
+                    loginFormKey.currentState!.save();
+                    navigatePush(
+                      context,
+                      const EmailVerificationScreen(
+                        isSignIn: true,
+                        isForgotPassword: false,
+                        email: hintEmail,
+                        actionText: login,
                       ),
-                      TextView(
-                        text: pleaseEnterDetails,
-                        textStyle: theme.textTheme.titleMedium,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Form(
-                  key: loginFormKey,
-                  child: Column(
-                    children: [
-                      CustomTextField(
-                        fieldLabel: '',
-                        hint: emailText,
-                        controller: provider.loginEmailController,
-                        validator: (value) =>
-                            Validators().validateEmptyTextField(value),
-                        //onChanged: (value)=> provider.updateButtonState(),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      CustomTextField(
-                        fieldLabel: '',
-                        hint: password,
-                        focusNode: passwordFocusNode,
-                        password: true,
-                        validator: (value) =>
-                            Validators().validateEmptyTextField(value),
-                        controller: provider.loginPwdController,
-                        obscureInput: provider.loginObscurePass,
-                        onObscureText: provider.toggleLoginPwdVisibility,
-                        //onChanged: (value)=> provider.updateButtonState(),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                Text.rich(
-                  TextSpan(
-                      text: forgortPassword,
-                      style: TextStyle(
-                        color: themeMode == ThemeMode.light
-                            ? AppColors.kPrimary1
-                            : AppColors.kPrimary150,
-                        fontFamily: soraFont,
-                        fontSize: 16.spMin,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => navigatePush(
-                            context, const ForgotPasswordScreen())),
-                ),
-                SizedBox(
-                  height: 30.h,
-                ),
-                DefaultButtonMain(
-                  height: 48.h,
-                  text: signIn,
-                  borderRadius: 40.r,
-                  color: AppColors.kPrimary1,
-                  buttonState: provider.buttonLoginState!.buttonState,
-                  onPressed: () {
-                    if (loginFormKey.currentState!.validate()) {
-                      loginFormKey.currentState!.save();
-                      provider.userLogin(context);
-                    }
-                  },
-                ),
-              ],
-            ),
+                    );
+                  }
+                },
+              ),
+            ],
           ),
         ),
       ),
       persistentFooterButtons: [
-        doNotHaveAccount(theme, themeMode),
+          
+        youANewUser(theme, themeMode),
       ],
     );
   }

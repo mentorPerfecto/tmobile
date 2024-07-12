@@ -13,7 +13,7 @@ import 'package:tampay/src/repository.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tampay/view/screens/auth/signin_forgot_password/verify_email_address_screen.dart';
+
 
 final authViewModel = ChangeNotifierProvider((ref) => AuthViewModel());
 
@@ -36,9 +36,7 @@ class AuthViewModel extends ChangeNotifier {
   String _roleName = '';
 
   // int? selectedRole;
-  final TextEditingController _resetPwdConfirmController = TextEditingController();
 
-  final TextEditingController _resetPwdController = TextEditingController();
 
   bool _loginObscurePass = true;
   bool _obscureOldPass = true;
@@ -60,8 +58,8 @@ class AuthViewModel extends ChangeNotifier {
 
   final loginFormKey = GlobalKey<FormState>();
   final changePasswordFormKey = GlobalKey<FormState>();
-  final forgotPassFormKey = GlobalKey<FormState>();
   final resetPassFormKey = GlobalKey<FormState>();
+  final forgotPassFormKey = GlobalKey<FormState>();
   final pinFormKey = GlobalKey<FormState>();
 
   // final loginFormKey = GlobalKey<FormState>();
@@ -72,31 +70,24 @@ class AuthViewModel extends ChangeNotifier {
   //
 
   CustomButtonState _buttonLoginState = CustomButtonState(
-    buttonState: ButtonState.idle,
+    buttonState: ButtonState.disabled,
     text: login,
   );
 
-  CustomButtonState _buttonRoleState = CustomButtonState(
-    buttonState: ButtonState.idle,
-    text: login,
-  );
-
+ 
   CustomButtonState _buttonVerifyState = CustomButtonState(
     buttonState: ButtonState.disabled,
     text: continueText,
   );
 
-  CustomButtonState _buttonResetPwdState = CustomButtonState(
-    buttonState: ButtonState.idle,
-    text: continueText,
-  );
+ 
   CustomButtonState _buttonChangePwdState = CustomButtonState(
-    buttonState: ButtonState.idle,
+    buttonState: ButtonState.disabled,
     text: continueText,
   );
 
   CustomButtonState _buttonForgotPWdState = CustomButtonState(
-    buttonState: ButtonState.idle,
+    buttonState: ButtonState.disabled,
     text: login,
   );
 
@@ -108,18 +99,15 @@ class AuthViewModel extends ChangeNotifier {
 
   TextEditingController get forgotPwdEmailController => _forgotPwdEmailController;
 
-  TextEditingController get resetPwdConfirmController => _resetPwdConfirmController;
-
-  TextEditingController get resetPwdController => _resetPwdController;
+ 
   bool get loginObscurePass => _loginObscurePass;
   bool get obscureOldPass => _obscureOldPass;
   bool get obscureNewPass => _obscureNewPass;
   bool get obscureConfirmPass => _obscureConfirmNewPass;
   CustomButtonState? get buttonLoginState => _buttonLoginState;
-  CustomButtonState? get buttonRoleState => _buttonRoleState;
+ 
   CustomButtonState? get buttonVerifyState => _buttonVerifyState;
   CustomButtonState? get buttonForgotPWdState => _buttonForgotPWdState;
-  CustomButtonState? get buttonResetPwdState => _buttonResetPwdState;
   CustomButtonState? get buttonChangePwdState => _buttonChangePwdState;
 
   toggleOldPassVisibility() {
@@ -142,10 +130,7 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  toggleResetPwdVisibility() {
-    _obscureResetPass = !_obscureResetPass;
-    notifyListeners();
-  }
+ 
 
   toggleResetConfirmPwdVisibility() {
     _obscureResetConfirmPass = !_obscureResetConfirmPass;
@@ -189,6 +174,27 @@ class AuthViewModel extends ChangeNotifier {
         buttonState: ButtonState.idle,
         text: login,
       );
+    }
+    notifyListeners();
+  }
+
+  void updateButtonLoginState() {
+    if (_loginEmailController.text.isNotEmpty & _loginPwdController.text.isNotEmpty) {
+      _buttonLoginState = CustomButtonState(buttonState: ButtonState.idle);
+    }
+    notifyListeners();
+  }
+
+  void updateCreateNewPassButtonState() {
+    if (_newPasswordController.text.isNotEmpty & _confirmNewPasswordController.text.isNotEmpty) {
+      _buttonChangePwdState = CustomButtonState(buttonState: ButtonState.idle);
+    }
+    notifyListeners();
+  }
+
+  void updatePassResetButtonState() {
+    if (_forgotPwdEmailController.text.isNotEmpty) {
+      _buttonForgotPWdState = CustomButtonState(buttonState: ButtonState.idle);
     }
     notifyListeners();
   }
@@ -424,7 +430,6 @@ class AuthViewModel extends ChangeNotifier {
                 if (value != null) {
                   DummyData.firstName = value.firstName.toString();
                   DummyData.lastName = value.lastName.toString();
-
                 }
               });
               notifyListeners();
@@ -448,7 +453,7 @@ class AuthViewModel extends ChangeNotifier {
   Future<void> verifyFPwdEmail(context,
       {required String email, required String pwd, bool isForgotPassword = false}) async {
     if (isForgotPassword) {
-      navigatePush(context, const VerifyEmailScreen());
+      // navigatePush(context, const VerifyEmailScreen());
     } else {
       try {
         _buttonVerifyState = CustomButtonState(
@@ -462,7 +467,7 @@ class AuthViewModel extends ChangeNotifier {
           otp: _pinCode.toString(),
         )
             .then((value) async {
-              logger.f(value);
+          logger.f(value);
           if (value != null) {
             if (value['status'].toString() == 'true') {
               _buttonVerifyState = CustomButtonState(
@@ -523,74 +528,70 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> resetPwd(
-    context,
-  ) async {
-    try {
-      _buttonResetPwdState = CustomButtonState(
-        buttonState: ButtonState.loading,
-        text: continueText,
-      );
-      notifyListeners();
-      await authService
-          .resetPassword(
-        email: _forgotPwdEmailController.text.toString().toLowerCase(),
-        password: _resetPwdConfirmController.text.toString(),
-        otp: _pinCode.toString(),
-      )
-          .then((value) async {
-        if (value != null) {
-          if (value['status'].toString() == 'true') {
-            _buttonResetPwdState = CustomButtonState(
-              buttonState: ButtonState.idle,
-              text: continueText,
-            );
+  // Future<void> resetPwd(
+  //   context,
+  // ) async {
+  //   try {
+  //     _buttonResetPwdState = CustomButtonState(
+  //       buttonState: ButtonState.loading,
+  //       text: continueText,
+  //     );
+  //     notifyListeners();
+  //     await authService
+  //         .resetPassword(
+  //       email: _forgotPwdEmailController.text.toString().toLowerCase(),
+  //       password: _resetPwdConfirmController.text.toString(),
+  //       otp: _pinCode.toString(),
+  //     )
+  //         .then((value) async {
+  //       if (value != null) {
+  //         if (value['status'].toString() == 'true') {
+  //           _buttonResetPwdState = CustomButtonState(
+  //             buttonState: ButtonState.idle,
+  //             text: continueText,
+  //           );
 
-            Navigator.of(context).pushAndRemoveUntil(
-              // the new route
-              MaterialPageRoute(
-                  builder: (BuildContext context) => const SuccessScreen(
-                        infoText: pwdResetSuccessful,
-                        newPage: SignInScreen(
-                          backBtnVisibility: false,
-                        ),
-                        navigateButtonText: continueText,
-                      )),
+  //           Navigator.of(context).pushAndRemoveUntil(
+  //             // the new route
+  //             MaterialPageRoute(
+  //                 builder: (BuildContext context) => const SuccessScreen(
+  //                       infoText: pwdResetSuccessful,
+  //                       newPage: SignInScreen(),
+  //                       navigateButtonText: continueText,
+  //                     )),
 
-              // this function should return true when we're done removing routes
-              // but because we want to remove all other screens, we make it
-              // always return false
-              (Route route) => false,
-            );
-          } else if (value['status'].toString() == 'false') {
-            showToast(
-              msg: value['message'].toString(),
-              isError: false,
-            );
-            notifyListeners();
-          }
-        }
-      }).whenComplete(() {
-        _buttonResetPwdState = CustomButtonState(
-          buttonState: ButtonState.idle,
-          text: continueText,
-        );
-        notifyListeners();
-      });
-    } catch (e, s) {
-      showToast(
-        msg: somethingWentWrong,
-        isError: true,
-      );
-      logger
-        ..i(checkErrorLogs)
-        ..e(s);
-    }
-  }
+  //             // this function should return true when we're done removing routes
+  //             // but because we want to remove all other screens, we make it
+  //             // always return false
+  //             (Route route) => false,
+  //           );
+  //         } else if (value['status'].toString() == 'false') {
+  //           showToast(
+  //             msg: value['message'].toString(),
+  //             isError: false,
+  //           );
+  //           notifyListeners();
+  //         }
+  //       }
+  //     }).whenComplete(() {
+  //       _buttonResetPwdState = CustomButtonState(
+  //         buttonState: ButtonState.idle,
+  //         text: continueText,
+  //       );
+  //       notifyListeners();
+  //     });
+  //   } catch (e, s) {
+  //     showToast(
+  //       msg: somethingWentWrong,
+  //       isError: true,
+  //     );
+  //     logger
+  //       ..i(checkErrorLogs)
+  //       ..e(s);
+  //   }
+  // }
 
-  Future<void> changePwd(
-    context, {required int setIndex}
-  ) async {
+  Future<void> changePwd(context, {required int setIndex}) async {
     try {
       _buttonChangePwdState = CustomButtonState(
         buttonState: ButtonState.loading,
@@ -611,7 +612,9 @@ class AuthViewModel extends ChangeNotifier {
               context,
               SuccessScreen(
                   infoText: "Your password have been reset",
-                  newPage:  DashBoardScreen(setIndex: setIndex ,),
+                  newPage: DashBoardScreen(
+                    setIndex: setIndex,
+                  ),
                   navigateButtonText: "Go Back To Menu"),
             );
             showToast(
@@ -644,54 +647,53 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> switchUserRole(BuildContext context) async {
-    navigatePush(context, SuccessLoadingScreen(informationText: "Switching to $roleName account"));
-    // await getAccessToken();
-    try {
-      _buttonRoleState = CustomButtonState(
-        buttonState: ButtonState.loading,
-        text: continueText,
-      );
-      notifyListeners();
-      await authService
-          .switchUserRole(role: role, accessToken: DummyData.accessToken!.toString())
-          .then((value) async {
-        if (value != null) {
-          if (value['status'].toString() == 'true') {
-            _buttonRoleState = CustomButtonState(
-              buttonState: ButtonState.idle,
-              text: continueText,
-            );
-            showToast(
-              msg: 'Account changed successfully',
-              isError: false,
-            );
-            // _isSwitchingRole = false;
-            notifyListeners();
+  // Future<void> switchUserRole(BuildContext context) async {
+  //   navigatePush(context, SuccessLoadingScreen(informationText: "Switching to $roleName account"));
+  //   // await getAccessToken();
+  //   try {
+  //     _buttonRoleState = CustomButtonState(
+  //       buttonState: ButtonState.loading,
+  //       text: continueText,
+  //     );
+  //     notifyListeners();
+  //     await authService
+  //         .switchUserRole(role: role, accessToken: DummyData.accessToken!.toString())
+  //         .then((value) async {
+  //       if (value != null) {
+  //         if (value['status'].toString() == 'true') {
+  //           _buttonRoleState = CustomButtonState(
+  //             buttonState: ButtonState.idle,
+  //             text: continueText,
+  //           );
+  //           showToast(
+  //             msg: 'Account changed successfully',
+  //             isError: false,
+  //           );
+  //           // _isSwitchingRole = false;
+  //           notifyListeners();
+  //         } else {
+  //           navigateBack(context);
+  //           notifyListeners();
+  //           showToast(
+  //             msg: value['message'].toString(),
+  //             isError: false,
+  //           );
+  //         }
 
-          } else {
-            navigateBack(context);
-            notifyListeners();
-            showToast(
-              msg: value['message'].toString(),
-              isError: false,
-            );
-          }
-
-          WidgetRebirth.createRebirth(context: context);
-        }
-      });
-    } catch (e, s) {
-      WidgetRebirth.createRebirth(context: context);
-      // showToast(
-      //   msg: somethingWentWrong,
-      //   isError: true,
-      // );
-      logger
-        ..i(checkErrorLogs)
-        ..e(s);
-    }
-  }
+  //         WidgetRebirth.createRebirth(context: context);
+  //       }
+  //     });
+  //   } catch (e, s) {
+  //     WidgetRebirth.createRebirth(context: context);
+  //     // showToast(
+  //     //   msg: somethingWentWrong,
+  //     //   isError: true,
+  //     // );
+  //     logger
+  //       ..i(checkErrorLogs)
+  //       ..e(s);
+  //   }
+  // }
 
   Future<void> updateRole(int value) async {
     _role = value;
