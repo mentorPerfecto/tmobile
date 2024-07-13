@@ -74,29 +74,29 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                   key: provider.registrationFormKey,
                   child: Column(
                     children: [
-                      CustomTextField(
-                        fieldLabel: firstNameText,
-                        hint: hintFirstName,
-                        controller: provider.firstNameController,
-                        validator: (value) => Validators().validateEmptyTextField(value),
-                        onChanged: (p0) {
-                          provider.updateRegisterButtonState();
-                        },
-                        //onChanged: (value)=> provider.updateButtonState(),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      CustomTextField(
-                        fieldLabel: lastNameText,
-                        hint: hintLastName,
-                        controller: provider.lastNameController,
-                        validator: (value) => Validators().validateEmptyTextField(value),
-                        onChanged: (p0) {
-                          provider.updateRegisterButtonState();
-                        },
-                        //onChanged: (value)=> provider.updateButtonState(),
-                      ),
+                      // CustomTextField(
+                      //   fieldLabel: firstNameText,
+                      //   hint: hintFirstName,
+                      //   controller: provider.firstNameController,
+                      //   validator: (value) => Validators().validateEmptyTextField(value),
+                      //   onChanged: (p0) {
+                      //     provider.updateRegisterButtonState();
+                      //   },
+                      //   //onChanged: (value)=> provider.updateButtonState(),
+                      // ),
+                      // SizedBox(
+                      //   height: 10.h,
+                      // ),
+                      // CustomTextField(
+                      //   fieldLabel: lastNameText,
+                      //   hint: hintLastName,
+                      //   controller: provider.lastNameController,
+                      //   validator: (value) => Validators().validateEmptyTextField(value),
+                      //   onChanged: (p0) {
+                      //     provider.updateRegisterButtonState();
+                      //   },
+                      //   //onChanged: (value)=> provider.updateButtonState(),
+                      // ),
                       SizedBox(
                         height: 10.h,
                       ),
@@ -117,7 +117,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                         fieldLabel: userName,
                         hint: hintUserName,
                         controller: provider.userNameController,
-                        validator: (value) => Validators().validateUserName(value),
+                        validator: (value) => Validators().validateEmptyTextField(value),
                         onChanged: (p0) {
                           provider.updateRegisterButtonState();
                         },
@@ -128,6 +128,11 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                       CustomTextField(
                         fieldLabel: phoneNumberText,
                         hint: hintPhoneNumber,
+                   
+                        prefix: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextView( text: "+234",),
+                        ),
                         controller: provider.phoneNumberController,
                         validator: (value) => Validators().validatePhoneNumber(value),
                         onChanged: (p0) {
@@ -139,7 +144,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                       ),
                       CustomTextField(
                         borderWidth: 1.w,
-                        fieldLabel: enterReferallCode,
+                        fieldLabel: enterReferralCode,
                         hint: referralCode,
                         controller: provider.refCodeController,
                       ),

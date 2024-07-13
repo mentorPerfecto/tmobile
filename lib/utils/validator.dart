@@ -1,8 +1,12 @@
 /// Class of validation functions that the app will use
 ///   - This class should be used as a mixin using the `with` keyword
 class Validators {
+  // final phoneNumberRegExp = RegExp(
+  //   r'^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{9})$',
+  // );
+  //
   final phoneNumberRegExp = RegExp(
-    r'^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{9})$',
+    r'^\d{10}$',
   );
   final emailRegExp = RegExp(
     r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$",
@@ -50,6 +54,7 @@ class Validators {
     }
     return null;
   }
+
 
   String? validateDate(String? value) {
     if (value!.trim().isEmpty) {

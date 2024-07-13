@@ -22,7 +22,7 @@ class RegistrationViewModel extends ChangeNotifier {
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _refCodeController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController(text: "+234");
 
   CustomButtonState _buttonRegisterState = CustomButtonState(
     buttonState: ButtonState.disabled,
@@ -44,8 +44,8 @@ class RegistrationViewModel extends ChangeNotifier {
   TextEditingController get phoneNumberController => _phoneNumberController;
   TextEditingController get registerConfirmPwdController =>
       _registerConfirmPwdController;
-  TextEditingController get firstNameController => _firstNameController;
-  TextEditingController get lastNameController => _lastNameController;
+  // TextEditingController get firstNameController => _firstNameController;
+  // TextEditingController get lastNameController => _lastNameController;
   TextEditingController get refCodeController => _refCodeController;
   CustomButtonState get buttonRegisterState => _buttonRegisterState;
   CustomButtonState get buttonRegisterStateCreatePassword => _buttonRegisterStateCreatePassword;
@@ -64,8 +64,9 @@ class RegistrationViewModel extends ChangeNotifier {
   }
 
   void updateRegisterButtonState() {
-    if (_firstNameController.text.isNotEmpty &
-        _lastNameController.text.isNotEmpty &
+    if (
+    // _firstNameController.text.isNotEmpty &
+    //     _lastNameController.text.isNotEmpty &
         _registerEmailController.text.isNotEmpty &
         _userNameController.text.isNotEmpty &
         _phoneNumberController.text.isNotEmpty) {

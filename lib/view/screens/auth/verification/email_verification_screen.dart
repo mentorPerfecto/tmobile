@@ -145,9 +145,11 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                           keyboardType: TextInputType.number,
                           animationType: AnimationType.fade,
                           pinTheme: PinTheme(
-                              borderWidth: 1.r,
+                              inactiveBorderWidth: 1.r,
+                              activeBorderWidth: 1.r,
+
                               shape: PinCodeFieldShape.box,
-                              borderRadius: BorderRadius.circular(6.r),
+                              borderRadius: BorderRadius.circular(10.r),
                               fieldHeight: 48.h,
                               fieldWidth: 48.w,
                               inactiveColor: AppColors.kWhite200,

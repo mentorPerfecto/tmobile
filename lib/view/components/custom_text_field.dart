@@ -28,6 +28,7 @@ class CustomTextField extends ConsumerStatefulWidget {
     this.password = false,
     this.trailing,
     this.inputFormatter,
+    this.prefix,
     this.onTap,
     this.textCapitalization = TextCapitalization.none,
     this.textAlign = TextAlign.start,
@@ -66,6 +67,7 @@ class CustomTextField extends ConsumerStatefulWidget {
   final EdgeInsetsGeometry? padding;
   final List<TextInputFormatter>? inputFormatter;
   final Widget? prefixIcon;
+  final Widget? prefix;
   final bool? password;
   final bool? showSuffixIcon;
   final bool? showSuffixText;
@@ -130,7 +132,6 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
               ],
             ) : const SizedBox.shrink(),
             TextFormField(
-
               onChanged: widget.onChanged,
               maxLength: widget.maxlength,
               inputFormatters: widget.inputFormatter,
@@ -170,6 +171,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                   fontWeight: FontWeight.w400,
                 ),
                 prefixIcon: widget.prefixIcon,
+                prefix: widget.prefix,
                 suffixText: widget.showSuffixText! ? widget.suffixText : '',
                 suffixIcon: widget.textAlign == TextAlign.center
                     ? null

@@ -35,7 +35,6 @@ class AppTheme {
     // dialogBackgroundColor: AppColors.lightBackgroundColor,
     scaffoldBackgroundColor: AppColors.kLightModebackground,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-
     // colorScheme: const ColorScheme.light(
     //     secondary: AppColors.lightSecondaryColor,
     //     primary: AppColors.lightSecondaryColor,

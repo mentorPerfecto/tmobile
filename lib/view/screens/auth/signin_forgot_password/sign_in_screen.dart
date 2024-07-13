@@ -31,7 +31,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
             fontSize: 12.spMin,
             fontFamily: soraFont,
             fontWeight: FontWeight.w400,
-           
+
           ),
           children: <TextSpan>[
             TextSpan(
@@ -40,7 +40,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 color: AppColors.kPrimary1,
                 fontSize: 12.spMin,
                 fontWeight: FontWeight.w400,
-               
+
               ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () => navigateReplace(
@@ -100,7 +100,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       fieldLabel: password,
                       hint: enterPassword,
                       controller: provider.loginPwdController,
-                      validator: (value) => Validators().validatePassword(value),
+                      validator: (value) => Validators().validateEmptyTextField(value),
                       //onChanged: (value)=> provider.updateButtonState(),
                       onChanged: (p0) {
                         provider.updateButtonLoginState();
@@ -117,33 +117,35 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                   ],
                 ),
               ),
-              DefaultButtonMain(
-                text: continueText,
-                color: AppColors.kPrimary1,
-                buttonState: provider.buttonLoginState!.buttonState,
-                onPressed: () {
-                  if (loginFormKey.currentState!.validate()) {
-                    loginFormKey.currentState!.save();
-                    navigatePush(
-                      context,
-                      const EmailVerificationScreen(
-                        isSignIn: true,
-                        isForgotPassword: false,
-                        email: hintEmail,
-                        actionText: login,
-                      ),
-                    );
-                  }
-                },
-              ),
+             Column(
+               children: [
+                 DefaultButtonMain(
+                   text: continueText,
+                   color: AppColors.kPrimary1,
+                   buttonState: provider.buttonLoginState!.buttonState,
+                   onPressed: () {
+                     if (loginFormKey.currentState!.validate()) {
+                       loginFormKey.currentState!.save();
+                       navigatePush(
+                         context,
+                         const EmailVerificationScreen(
+                           isSignIn: true,
+                           isForgotPassword: false,
+                           email: hintEmail,
+                           actionText: login,
+                         ),
+                       );
+                     }
+                   },
+                 ),
+                 Gap(15),
+                 youANewUser(theme, themeMode),
+               ],
+             )
             ],
           ),
         ),
       ),
-      persistentFooterButtons: [
-          
-        youANewUser(theme, themeMode),
-      ],
     );
   }
 }
