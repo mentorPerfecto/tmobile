@@ -200,7 +200,6 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
 
               ],
               onTap: (index) {
-                initData();
                 // dashProvider.getDeviceLocation();
                 dashProvider.setPageIndex(selectedPageIndex: index);
               },
