@@ -22,7 +22,7 @@ class RegistrationViewModel extends ChangeNotifier {
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _refCodeController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController(text: "+234");
+  final TextEditingController _phoneNumberController = TextEditingController();
 
   CustomButtonState _buttonRegisterState = CustomButtonState(
     buttonState: ButtonState.disabled,

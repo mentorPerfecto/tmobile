@@ -11,9 +11,10 @@ import 'package:tampay/src/config.dart';
 import 'package:flutter/material.dart';
 
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/src/utils.dart';
 
 class AddBankDetailsScreen extends ConsumerStatefulWidget {
-  const AddBankDetailsScreen({Key? key}) : super(key: key);
+  const AddBankDetailsScreen({super.key});
 
   @override
   ConsumerState<AddBankDetailsScreen> createState() =>
@@ -47,6 +48,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
         context,
         backgroundColor: theme.scaffoldBackgroundColor,
         arrowBackColor: theme.colorScheme.primary,
+        text: addBankDetails, isVisible: false
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -65,44 +67,25 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextView(
-                      text: addBankDetails,
-                      fontSize: 18.spMin,
-                      fontWeight: FontWeight.w600,
+                      text: 'Please ensure that your bank account name matches your BVN name',
+                      fontSize: 14.spMin,
                       fontFamily: soraFont,
+                      maxLines: 3,
+                      textAlign: TextAlign.center,
                     ),
                     Gap(20.h),
-                    CustomTextField(
-                      controller: userProfileProvider.accountNumberController,
-                      textColor: themeMode == ThemeMode.light
-                          ? AppColors.kBlack4
-                          : AppColors.kTextGray,
-                      fieldLabel: '',
-                      maxlength: 10,
-                      hint: accountNumberText,
-                      keyboardType: TextInputType.number,
-                      onChanged: (accountNumber) {
-                        userProfileProvider.updateSaveBankButtonState();
-                        userProfileProvider
-                            .changeShowBanks(accountNumber!.length == 10);
-                        if (userProfileProvider
-                                    .accountNumberController.text.length ==
-                                10 &&
-                            userProfileProvider.bankCode!.isNotEmpty) {
-                          userProfileProvider.validateUserBankAccount();
-                        }
-                      },
-                    ),
-                    Gap(10.h),
+                    const TextView(text: "Bank name"),
+                    const Gap(10),
                     Container(
-                      height: 45.h,
+                      height: 50.h,
                       decoration: BoxDecoration(
                         color: AppColors.kTransparent,
                         borderRadius: BorderRadius.circular(
-                          6.r,
+                          10.r,
                         ),
                         border: Border.all(
-                          width: 1.2.w,
-                          color: AppColors.kDisabledButton,
+                          width: 1.w,
+                          color: AppColors.kPrimary1,
                         ),
                       ),
                       padding: EdgeInsets.symmetric(
@@ -121,8 +104,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                             ),
                           ),
                           value: userProfileProvider.bankName,
-                          icon: Image.asset(
-                            AppImages.dropDownIcon,
+                          icon: Icon( Icons.keyboard_arrow_down_rounded,
                             color: theme.colorScheme.primary,
                           ),
                           iconSize: 24,
@@ -151,71 +133,83 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                       ),
                     ),
                     Gap(20.h),
+                    CustomTextField(
+                      controller: userProfileProvider.accountNumberController,
+                      textColor: themeMode == ThemeMode.light
+                          ? AppColors.kBlack4
+                          : AppColors.kTextGray,
+                      fieldLabel: 'Account Number',
+                      // maxlength: 10,
+                      hint: accountNumberText,
+                      keyboardType: TextInputType.number,
+                      onChanged: (accountNumber) {
+                        userProfileProvider.updateSaveBankButtonState();
+                        userProfileProvider
+                            .changeShowBanks(accountNumber!.length == 10);
+                        if (userProfileProvider
+                                    .accountNumberController.text.length ==
+                                10 &&
+                            userProfileProvider.bankCode!.isNotEmpty) {
+                          userProfileProvider.validateUserBankAccount();
+                        }
+                      },
+                    ),
+
+
                     userProfileProvider.isLoadingVerifiedBanks
-                        ? Container(
-                            // color: Colors.red,
-                            // height: 50.h,
-                            alignment: Alignment.center,
-                            child: SizedBox(
-                              height: 70,
-                              width: 70,
-                              child: LoadingIndicator(
-                                indicatorType: Indicator.ballGridPulse,
-                                colors: const [
-                                  AppColors.kPrimary2,
-                                ],
-                                strokeWidth: 2,
-                                backgroundColor: theme.scaffoldBackgroundColor,
-                                pathBackgroundColor: theme.colorScheme.primary,
+                        ? Column(
+                          children: [
+                            Gap(10.h),
+                            Container(
+                                // color: Colors.red,
+                                // height: 50.h,
+                                alignment: Alignment.center,
+                                child: SizedBox(
+                                  height: 70,
+                                  width: 70,
+                                  child: LoadingIndicator(
+                                    indicatorType: Indicator.ballGridPulse,
+                                    colors: const [
+                                      AppColors.kPrimary2,
+                                    ],
+                                    strokeWidth: 2,
+                                    backgroundColor: theme.scaffoldBackgroundColor,
+                                    pathBackgroundColor: theme.colorScheme.primary,
+                                  ),
+                                ),
                               ),
-                            ),
-                          )
-                        : Container(
-                            // height: 48.h,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColors.kDisabledButton,
-                              ),
-                              color: themeMode == ThemeMode.light
-                                  ? AppColors.kDisabledButton
-                                  : theme.cardColor,
-                              borderRadius: BorderRadius.circular(
-                                6.r,
-                              ),
-                            ),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 16.w,
-                              vertical: 8.h,
-                            ),
-                            child: TextView(
-                              text: userProfileProvider.accountName,
-                              fontSize: 16.spMin,
-                              fontWeight: FontWeight.w400,
-                              maxLines: 2,
-                              fontFamily: soraFont,
-                              color: themeMode == ThemeMode.light
-                                  ? AppColors.kBlack4
-                                  : AppColors.kTextGray,
-                            ),
-                          )
+                          ],
+                        )
+                        :     TextView(text: "Daniel Mason Ovie", color: AppColors.kDisabledButton, fontSize: 13.spMin,),
                   ],
                 ),
               ),
-              DefaultButtonMain(
-                onPressed: () {
-                  userProfileProvider.addUserAccountNumber(
-                    context,
-                  );
-                },
-                height: 48.h,
-                borderRadius: 40.r,
-                color: AppColors.kPrimary1,
-                text: saveInfo,
-                buttonState:
+              Column(
+                children: [
+                  DefaultButtonMain(
+                    textColor: AppColors.kWhite,
+                    color: AppColors.kPrimary1,
+                    text: saveInfo,
+                    buttonState:
                     userProfileProvider.buttonSaveBankDetailsState.buttonState,
-                textColor: AppColors.kWhite,
-              ),
+                    onPressed: () {
+                      userProfileProvider.addUserAccountNumber(
+                        context,
+                      );
+                    },
+                  ),
+                  Gap(15.h),
+                  DefaultButtonMain(
+                    textColor: AppColors.kPrimary1,
+                    color: AppColors.kTransparent,
+                    text: "Skip",
+                    onPressed: () {
+                      navigateBack(context);
+                      navigateBack(context);
+                    },
+                  ),
+                ],
+              )
             ],
           ),
         ),

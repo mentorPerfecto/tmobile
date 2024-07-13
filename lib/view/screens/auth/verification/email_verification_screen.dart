@@ -195,11 +195,11 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                     navigatePush(
                         context,
                         widget.isForgotPassword
-                            ? CreateNewPasswordScreen()
-                            : AuthSuccessScreen(
+                            ? CreateNewPasswordScreen() :
+                        widget.isSignIn ? AuthSuccessScreen(
                                 infoText: widget.isSignIn ? welcomeBack : successfulAccountCreation,
-                          newPage: DashBoardScreen(),
-                        ));
+                          newPage: const DashBoardScreen(),
+                        ) : const DashBoardScreen(isSignUp:  true,),);
                   }
                 },
               ),

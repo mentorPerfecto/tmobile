@@ -207,17 +207,17 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 filled: widget.isFilled,
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                fillColor: widget.readOnly ? theme.cardColor : widget.fillColor,
+                fillColor: widget.readOnly ? AppColors.kNavyBlue  : widget.fillColor,
                 enabledBorder: widget.isFilled
                     ? OutlineInputBorder(
                         borderRadius:
                             BorderRadius.circular(widget.borderRadius.r),
                       )
                     : InputBorder.none,
-                focusedBorder: OutlineInputBorder(
+                focusedBorder:   OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide: BorderSide(
-                      color: theme.primaryColor,
+                      color: widget.readOnly? AppColors.kNavyBlue : theme.primaryColor,
                       width: widget.borderWidth!.spMin),
                 ),
                 errorBorder: OutlineInputBorder(
