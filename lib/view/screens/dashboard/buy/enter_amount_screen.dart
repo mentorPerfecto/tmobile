@@ -128,7 +128,7 @@ class TextFieldsForAmount extends StatelessWidget {
           showSuffixText: true,
           suffixText: ngn,
         ),
-        Gap(5.h),
+        Gap(10.h),
         Container(
           height: 36.h,
           width: 36.w,
@@ -144,7 +144,7 @@ class TextFieldsForAmount extends StatelessWidget {
             ),
           ),
         ),
-        Gap(5.h),
+       
         CustomTextField(
           fieldLabel: iWillReceive,
           keyboardType: TextInputType.number,

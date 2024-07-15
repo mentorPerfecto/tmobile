@@ -17,7 +17,6 @@ import 'package:tampay/view/screens/dashboard/buy/buy_coin_screen.dart';
 final buyViewModel = ChangeNotifierProvider((ref) => BuyViewModel());
 
 class BuyViewModel extends ChangeNotifier {
- 
   List<CryptoCoinResponse> _cryptoList = [];
   FocusNode paymentNode = FocusNode();
   FocusNode receipientNode = FocusNode();
@@ -28,11 +27,11 @@ class BuyViewModel extends ChangeNotifier {
   );
   TextEditingController _paymentController = TextEditingController();
   TextEditingController _receipientController = TextEditingController();
-  
+
   CustomButtonState get enterAmountButtonState => _enterAmountButtonState;
   TextEditingController get paymentController => _paymentController;
   TextEditingController get receipientController => _receipientController;
-  
+
   void updateEnterAmountButtonState() {
     if (_paymentController.text.isNotEmpty & _receipientController.text.isNotEmpty) {
       _enterAmountButtonState = CustomButtonState(
@@ -61,6 +60,7 @@ class BuyViewModel extends ChangeNotifier {
 
   Future<void> copyToClipboard(String value) async {
     await Clipboard.setData(ClipboardData(text: value));
+    showToast(msg: "Copied $value to clipboard", isError: false);
   }
 
   Future<void> getCryptoCoins() async {

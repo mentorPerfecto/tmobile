@@ -34,6 +34,8 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
     timer = Timer.periodic(
       const Duration(seconds: 1),
       (timer) {
+        logger.e("seconds:$_secondsRemaining");
+        logger.e("minutes:$_minutesRemaining");
         if (_minutesRemaining & _secondsRemaining == 0) {
           timer.cancel();
         } else {
@@ -41,11 +43,14 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
             setState(() {
               _secondsRemaining--;
             });
+            logger.e("seconds remaining:$_secondsRemaining");
           } else if (_secondsRemaining == 0) {
             setState(() {
-              _minutesRemaining--;
+              _minutesRemaining -= 1;
               _secondsRemaining == 59;
             });
+            logger.e("seconds:$_secondsRemaining");
+            logger.e("minutes Remaining:$_minutesRemaining");
           }
         }
       },
@@ -200,6 +205,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                                   AppImages.copyLogo,
                                   width: 18.w,
                                   height: 18.h,
+                                  color: AppColors.kPrimary1,
                                 ),
                               )
                             ],
@@ -211,179 +217,186 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                 ),
               ),
               Gap(20.h),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextView(
-                    text: "Payment details",
-                    fontSize: 14.spMin,
-                  ),
-                  Gap(20.h),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const TextView(
-                        text: "Bank Name",
-                        color: AppColors.kGrey400,
-                      ),
-                      Row(
-                        children: [
-                          const TextView(
-                            text: 'Fidelity Bank',
-                            color: AppColors.kGrey400,
-                          ),
-                          Gap(5.w),
-                          InkWell(
-                            onTap: () {
-                              buySectionProvider.copyToClipboard('Fidelity Bank');
-                            },
-                            child: Image.asset(
-                              AppImages.copyLogo,
-                              width: 18.w,
-                              height: 18.h,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  Gap(20.h),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const TextView(
-                        text: "Account Number",
-                        color: AppColors.kGrey400,
-                      ),
-                      Row(
-                        children: [
-                          const TextView(
-                            text: '0550241576',
-                            color: AppColors.kGrey400,
-                          ),
-                          Gap(5.w),
-                          InkWell(
-                            onTap: () {
-                              buySectionProvider.copyToClipboard('0550241576');
-                            },
-                            child: Image.asset(
-                              AppImages.copyLogo,
-                              width: 18.w,
-                              height: 18.h,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  Gap(20.h),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const TextView(
-                        text: "Name of Merchant",
-                        color: AppColors.kGrey400,
-                      ),
-                      Row(
-                        children: [
-                          const TextView(
-                            text: 'Pius Moses',
-                            color: AppColors.kGrey400,
-                          ),
-                          Gap(5.w),
-                          InkWell(
-                            onTap: () {
-                              buySectionProvider.copyToClipboard('Pius Moses');
-                            },
-                            child: Image.asset(
-                              AppImages.copyLogo,
-                              width: 18.w,
-                              height: 18.h,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  Gap(20.h),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 12.h,
-                      horizontal: 12.w,
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 15.0.h, horizontal: 15.0.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextView(
+                      text: "Payment details",
+                      fontSize: 14.spMin,
                     ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.kSunFlower),
-                      borderRadius: BorderRadius.circular(8.r),
-                      color: AppColors.kFloralWhite,
-                    ),
-                    child: Column(
+                    Gap(20.h),
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextView(
-                          text: "Note:",
-                          fontSize: 14.spMin,
-                          color: AppColors.kMidnight950,
+                        const TextView(
+                          text: "Bank Name",
+                          color: AppColors.kGrey400,
                         ),
-                        Gap(20.h),
-                        Text.rich(
-                          TextSpan(
-                            text: "1. ",
-                            style: TextStyle(
-                              fontSize: 10.spMin,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.kMidnight950,
-                              fontFamily: soraFont,
+                        Row(
+                          children: [
+                            const TextView(
+                              text: 'Fidelity Bank',
+                              color: AppColors.kGrey400,
                             ),
-                            children: [
-                              TextSpan(
-                                text: "Do not reference ",
-                                style: TextStyle(
-                                  fontSize: 10.spMin,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.kMidnight950,
-                                  fontFamily: soraFont,
-                                ),
+                            Gap(5.w),
+                            InkWell(
+                              onTap: () {
+                                buySectionProvider.copyToClipboard('Fidelity Bank');
+                              },
+                              child: Image.asset(
+                                AppImages.copyLogo,
+                                width: 18.w,
+                                height: 18.h,
+                                color: AppColors.kPrimary1,
                               ),
-                              TextSpan(
-                                text: '"Crypto"',
-                                style: TextStyle(
-                                  fontSize: 10.spMin,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.kMidnight950,
-                                  fontFamily: soraFont,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'in your transfer description',
-                                style: TextStyle(
-                                  fontSize: 10.spMin,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.kMidnight950,
-                                  fontFamily: soraFont,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Gap(4.h),
-                        TextView(
-                          text: "2. Make sure you sent the exact amount",
-                          fontSize: 10.spMin,
-                          color: AppColors.kMidnight950,
-                        ),
-                        Gap(4.h),
-                        TextView(
-                          text: "3. recheck transaction details before confirming",
-                          fontSize: 10.spMin,
-                          color: AppColors.kMidnight950,
+                            )
+                          ],
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    Gap(20.h),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const TextView(
+                          text: "Account Number",
+                          color: AppColors.kGrey400,
+                        ),
+                        Row(
+                          children: [
+                            const TextView(
+                              text: '0550241576',
+                              color: AppColors.kGrey400,
+                            ),
+                            Gap(5.w),
+                            InkWell(
+                              onTap: () {
+                                buySectionProvider.copyToClipboard('0550241576');
+                              },
+                              child: Image.asset(
+                                AppImages.copyLogo,
+                                width: 18.w,
+                                height: 18.h,
+                                color: AppColors.kPrimary1,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Gap(20.h),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const TextView(
+                          text: "Name of Merchant",
+                          color: AppColors.kGrey400,
+                        ),
+                        Row(
+                          children: [
+                            const TextView(
+                              text: 'Pius Moses',
+                              color: AppColors.kGrey400,
+                            ),
+                            Gap(5.w),
+                            InkWell(
+                              onTap: () {
+                                buySectionProvider.copyToClipboard('Pius Moses');
+                              },
+                              child: Image.asset(
+                                AppImages.copyLogo,
+                                width: 18.w,
+                                height: 18.h,
+                                color: AppColors.kPrimary1,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Gap(20.h),
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 12.h,
+                        horizontal: 12.w,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.kSunFlower),
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: AppColors.kFloralWhite,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextView(
+                            text: "Note:",
+                            fontSize: 14.spMin,
+                            color: AppColors.kMidnight950,
+                          ),
+                          Gap(15.h),
+                          Text.rich(
+                            TextSpan(
+                              text: "1. ",
+                              style: TextStyle(
+                                fontSize: 10.spMin,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.kMidnight950,
+                                fontFamily: soraFont,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: "Do not reference ",
+                                  style: TextStyle(
+                                    fontSize: 10.spMin,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.kMidnight950,
+                                    fontFamily: soraFont,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: '"Crypto"',
+                                  style: TextStyle(
+                                    fontSize: 10.spMin,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.kMidnight950,
+                                    fontFamily: soraFont,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'in your transfer description',
+                                  style: TextStyle(
+                                    fontSize: 10.spMin,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.kMidnight950,
+                                    fontFamily: soraFont,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Gap(4.h),
+                          TextView(
+                            text: "2. Make sure you sent the exact amount",
+                            fontSize: 10.spMin,
+                            color: AppColors.kMidnight950,
+                          ),
+                          Gap(4.h),
+                          TextView(
+                            text: "3. recheck transaction details before confirming",
+                            fontSize: 10.spMin,
+                            color: AppColors.kMidnight950,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Gap(35.h),
               const BuyCoinScreenBottomActions()
@@ -416,7 +429,7 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
                 borderColor: AppColors.kPrimary1,
                 textColor: AppColors.kPrimary1,
                 onPressed: () {
-                  dashboardProvider.setPageIndexToHome();
+                  dashboardProvider.setPageIndexToHome(context);
                 },
               ),
               Gap(10.w),
@@ -451,7 +464,7 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
                                 horizontal: 15.w,
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Image.asset(
                                     AppImages.inProgressLogo,
@@ -465,9 +478,10 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
                                         fontSize: 16.spMin,
                                         fontWeight: FontWeight.w600,
                                       ),
-                                      Gap(15.h),
+                                      Gap(10.h),
                                       TextView(
                                         textAlign: TextAlign.center,
+                                        maxLines: 3,
                                         text: "Your order has been received. "
                                             "We will notify you when it's ready, usually within 45 seconds",
                                         fontSize: 12.spMin,
@@ -475,13 +489,16 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
                                       ),
                                     ],
                                   ),
-                                  DefaultButtonMain(
-                                    textColor: AppColors.kWhite,
-                                    color: AppColors.kPrimary1,
-                                    text: "Back to home",
-                                    onPressed: () {
-                                      dashboardProvider.setPageIndexToHome();
-                                    },
+                                  Align(
+                                    alignment: AlignmentDirectional.bottomEnd,
+                                    child: DefaultButtonMain(
+                                      textColor: AppColors.kWhite,
+                                      color: AppColors.kPrimary1,
+                                      text: "Back to home",
+                                      onPressed: () {
+                                        dashboardProvider.setPageIndexToHome(context);
+                                      },
+                                    ),
                                   )
                                 ],
                               ),
