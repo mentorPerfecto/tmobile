@@ -43,7 +43,7 @@ class DefaultButtonMain extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
           color: (buttonState == ButtonState.disabled)
-              ? AppColors.kGrey400
+              ? AppColors.kDarkBlue
               : color,
 
           /// This line of code is setting the background color of the button. It checks the value of the

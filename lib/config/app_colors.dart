@@ -16,9 +16,15 @@ class AppColors {
   static const kManatee = Color(0xff8E97AA);
   static const kGreenishTeal = Color(0xff5DBE7E);
   static const kScreaminGreen = Color(0xff7FF68C);
-  static const kGrey400 = Color(0xff1D2739);
+  static const kDarkBlue = Color(0xff1D2739);
   static const kHarvestGold = Color(0xffF7C164);
   static const kMidnightBlue = Color(0xff141D57);
+  static const kGrey300 = Color(0xffD0D5DD);
+  static const kSunFlower = Color(0xffF5B546);
+  static const kVeryLightYellow = Color(0xffFFFCF6);
+  static const kGrey400 = Color(0xff98A2B3);
+  static const kFloralWhite = Color(0xffFFF8EB);
+  static const kMidnight950 = Color(0xff060B29);
 //
   static const kWhite = Color(0xFFFFFFFF);
   static const kLightModebackground = Color(0xFFFFFFFF);
@@ -54,7 +60,6 @@ class AppColors {
   static const kBlue300 = Color(0xff3B72B4);
   static const kGrey50 = Color(0xffF9FAFB);
   static const kBackground = Color(0xffF4F7FB);
-  static const kGrey300 = Color(0xffD0D5DD);
   static const kPrimaryLight = Color(0xffE6ECF3);
   static const kLogOutText = Color(0xffF42727);
   static const kNeutralBlack = Color(0xff27292C);

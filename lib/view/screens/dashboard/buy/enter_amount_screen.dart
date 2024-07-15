@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/utils.dart';
+import 'package:tampay/view/screens/dashboard/buy/buy_coin_screen.dart';
 import 'package:tampay/view_model/dashboard/buy_view_model.dart';
 
 class EnterAmountScreen extends ConsumerStatefulWidget {
@@ -90,6 +92,10 @@ class _EnterAmountScreenState extends ConsumerState<EnterAmountScreen> {
                 color: AppColors.kPrimary1,
                 buttonState: buySectionProvider.enterAmountButtonState.buttonState,
                 text: buySectionProvider.enterAmountButtonState.text,
+                onPressed: () {
+                  buySectionProvider.storeCryptoAmountInDummyDataAndPushToBuyCoinScreen(
+                      context, widget.cryptoAcronym);
+                },
               ),
             ],
           ),
