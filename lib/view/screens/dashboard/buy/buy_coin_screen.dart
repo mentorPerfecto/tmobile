@@ -415,100 +415,94 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var dashboardProvider = ref.watch(dashboardViewModel);
-    return SizedBox(
-      height: 70.h,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+      child: Row(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              DefaultButtonMain(
-                padding: EdgeInsets.symmetric(horizontal: 26.w),
-                text: "Cancel trade",
-                borderColor: AppColors.kPrimary1,
-                textColor: AppColors.kPrimary1,
-                onPressed: () {
-                  dashboardProvider.setPageIndexToHome(context);
-                },
-              ),
-              Gap(10.w),
-              DefaultButtonMain(
-                padding: EdgeInsets.symmetric(horizontal: 26.w),
-                color: AppColors.kPrimary1,
-                text: "Transferred",
-                onPressed: () {
-                  showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      barrierColor: AppColors.kTransparent,
-                      context: context,
-                      builder: (context) {
-                        return BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                          child: Container(
-                            height: 360.h,
-                            decoration: BoxDecoration(
-                              color: AppColors.kPrimaryDark,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(
-                                  12.r,
-                                ),
-                                topRight: Radius.circular(
-                                  12.r,
-                                ),
-                              ),
+          DefaultButtonMain(
+            padding: EdgeInsets.symmetric(horizontal: 34.w),
+            text: "Cancel trade",
+            borderColor: AppColors.kPrimary1,
+            textColor: AppColors.kPrimary1,
+            onPressed: () {
+              dashboardProvider.setPageIndexToHome(context);
+            },
+          ),
+          Gap(10.w),
+          DefaultButtonMain(
+            padding: EdgeInsets.symmetric(horizontal: 34.w),
+            color: AppColors.kPrimary1,
+            text: "Transferred",
+            onPressed: () {
+              showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  barrierColor: AppColors.kTransparent,
+                  context: context,
+                  builder: (context) {
+                    return BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                      child: Container(
+                        height: 360.h,
+                        decoration: BoxDecoration(
+                          color: AppColors.kPrimaryDark,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                              12.r,
                             ),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 15.h,
-                                horizontal: 15.w,
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset(
-                                    AppImages.inProgressLogo,
-                                    width: 72.w,
-                                    height: 72.h,
-                                  ),
-                                  Column(
-                                    children: [
-                                      TextView(
-                                        text: "In progress",
-                                        fontSize: 16.spMin,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      Gap(10.h),
-                                      TextView(
-                                        textAlign: TextAlign.center,
-                                        maxLines: 3,
-                                        text: "Your order has been received. "
-                                            "We will notify you when it's ready, usually within 45 seconds",
-                                        fontSize: 12.spMin,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ],
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional.bottomEnd,
-                                    child: DefaultButtonMain(
-                                      textColor: AppColors.kWhite,
-                                      color: AppColors.kPrimary1,
-                                      text: "Back to home",
-                                      onPressed: () {
-                                        dashboardProvider.setPageIndexToHome(context);
-                                      },
-                                    ),
-                                  )
-                                ],
-                              ),
+                            topRight: Radius.circular(
+                              12.r,
                             ),
                           ),
-                        );
-                      });
-                },
-              ),
-            ],
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 15.h,
+                            horizontal: 15.w,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset(
+                                AppImages.inProgressLogo,
+                                width: 72.w,
+                                height: 72.h,
+                              ),
+                              Column(
+                                children: [
+                                  TextView(
+                                    text: "In progress",
+                                    fontSize: 16.spMin,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  Gap(10.h),
+                                  TextView(
+                                    textAlign: TextAlign.center,
+                                    maxLines: 3,
+                                    text: "Your order has been received. "
+                                        "We will notify you when it's ready, usually within 45 seconds",
+                                    fontSize: 12.spMin,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ],
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional.bottomEnd,
+                                child: DefaultButtonMain(
+                                  textColor: AppColors.kWhite,
+                                  color: AppColors.kPrimary1,
+                                  text: "Back to home",
+                                  onPressed: () {
+                                    dashboardProvider.setPageIndexToHome(context);
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  });
+            },
           ),
         ],
       ),
