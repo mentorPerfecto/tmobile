@@ -39,7 +39,7 @@ class AppImages {
   static const unverifiedBadgeLogo = '${_baseUrl}unverified_badge.png';
   static const verifiedBadgeLogo = '${_baseUrl}verified_badge.png';
   static const referActionLogo = '${_baseUrl}refer_action_logo.png';
-
+static const ethLogo = '${_baseUrl}ethereum.png';
  
  
 }

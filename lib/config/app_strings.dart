@@ -37,6 +37,16 @@ const pleaseEnterEmailAttachedToYouToResetMail =
     "Please enter the email attached to your account to\n"
     " reset your password";
 const createNewPassword = 'Create New Password';
+const ngn = "NGN";
+const btc = 'BTC';
+const dummyAmount = "0:00";
+const iWillPay = "I will pay";
+const iWillReceive = 'I will receive';
+const enterAmount = "Enter Amount";
+const pleaseEnterTheAmountOf = 'Please enter the amount of';
+const dollarSign = r'$';
+const bitcoin = 'Bitcoin';
+const youWantToBuy = 'You want to buy';
 // const welcomeTotampay = 'Welcome to tampay';
 const addAnotherFee = 'Add another fee';
 const selectIDType = 'Select Identification Type';
@@ -259,7 +269,7 @@ const enterPropertyName = 'Please enter property name';
 const enterNecessaryInfo = 'Please enter the necessary address information';
 const enterPropertyDescription = 'Please enter property description';
 const addImage = 'Please add the image(s) of your property';
-const enterAmount = 'Enter your amount';
+
 const enterPIN = 'Enter PIN';
 const inputYourPIN = 'Input your PIN to continue';
 const willingToPayText = 'Are you willing to rent this property for';
