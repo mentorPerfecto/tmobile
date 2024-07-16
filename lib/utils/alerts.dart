@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/utils.dart';
+
 //1
 Future<void> displayDeleteConfirmationMessageAlert(
   BuildContext context,
@@ -19,8 +23,10 @@ Future<void> displayDeleteConfirmationMessageAlert(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             height: 350.h,
@@ -72,7 +78,9 @@ Future<void> displayDeleteConfirmationMessageAlert(
                     DefaultButtonMain(
                       width: 200.w,
                       text: back,
-                      color: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+                      color: themeMode == ThemeMode.light
+                          ? AppColors.kWhite
+                          : theme.cardColor,
                       borderColor: theme.colorScheme.primary,
                       borderRadius: 38.r,
                       textColor: theme.colorScheme.primary,
@@ -113,8 +121,10 @@ Future<void> displayFreezingListingConfirmationMessage(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             // height: deviceH / 3,
@@ -187,7 +197,7 @@ Future<void> displayFreezingListingConfirmationMessage(
                             vertical: 12.h,
                             horizontal: 12.w,
                           ),
-                          onPressed: (){
+                          onPressed: () {
                             navigateBack(context);
                             onTap!();
                           },
@@ -220,8 +230,10 @@ Future<void> displayDeleteUserProfileConfirmationMessageAlert(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.dark ? theme.cardColor : AppColors.kWhite,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.dark ? theme.cardColor : AppColors.kWhite,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             height: (deviceH / 1.65).h,
@@ -312,7 +324,9 @@ Future<void> displayDeleteUserProfileConfirmationMessageAlert(
                     DefaultButtonMain(
                       width: 200.w,
                       text: back,
-                      color: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+                      color: themeMode == ThemeMode.light
+                          ? AppColors.kWhite
+                          : theme.cardColor,
                       borderColor: theme.colorScheme.primary,
                       borderRadius: 38.r,
                       textColor: theme.colorScheme.primary,
@@ -354,7 +368,8 @@ Future<void> displayValidatePasswordAlert(
     context: context,
     builder: (ctx) {
       return AlertDialog(
-        backgroundColor: themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+        backgroundColor:
+            themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         contentPadding: EdgeInsets.zero,
         content: SizedBox(
@@ -376,7 +391,8 @@ Future<void> displayValidatePasswordAlert(
                   fieldLabel: '',
                   hint: password,
                   password: true,
-                  validator: (value) => Validators().validateEmptyTextField(value),
+                  validator: (value) =>
+                      Validators().validateEmptyTextField(value),
                   controller: passwordController,
                   obscureInput: obscureInput,
                   showSuffixIcon: false,
@@ -400,7 +416,9 @@ Future<void> displayValidatePasswordAlert(
                 DefaultButtonMain(
                   width: 200.w,
                   text: cancel,
-                  color: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+                  color: themeMode == ThemeMode.light
+                      ? AppColors.kWhite
+                      : theme.cardColor,
                   borderColor: theme.colorScheme.primary,
                   borderRadius: 38.r,
                   textColor: theme.colorScheme.primary,
@@ -435,8 +453,10 @@ Future<void> displayRentConfirmationMessageAlert(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             // height: 350.h,
@@ -459,14 +479,18 @@ Future<void> displayRentConfirmationMessageAlert(
                       text: TextSpan(
                         text: willingToPayText,
                         style: TextStyle(
-                            color: themeMode == ThemeMode.light ? Colors.black : AppColors.kWhite,
+                            color: themeMode == ThemeMode.light
+                                ? Colors.black
+                                : AppColors.kWhite,
                             fontSize: 16.spMin,
                             fontFamily: soraFont,
                             fontWeight: FontWeight.w400),
                         children: <TextSpan>[
                           TextSpan(
                             text: message,
-                            style: TextStyle(fontSize: 16.spMin, fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                                fontSize: 16.spMin,
+                                fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -506,7 +530,9 @@ Future<void> displayRentConfirmationMessageAlert(
                     DefaultButtonMain(
                       width: 200.w,
                       text: back,
-                      color: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+                      color: themeMode == ThemeMode.light
+                          ? AppColors.kWhite
+                          : theme.cardColor,
                       borderColor: theme.colorScheme.primary,
                       borderRadius: 38.r,
                       textColor: theme.colorScheme.primary,
@@ -544,8 +570,10 @@ Future<void> displayUnverifiedPropertyWarningAlert(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             // height: deviceH / 3,
@@ -585,8 +613,9 @@ Future<void> displayUnverifiedPropertyWarningAlert(
                           ? AppColors.kPrimary1
                           : AppColors.kPrimaryDark,
                       width: 360.w,
-                      textColor:
-                          themeMode == ThemeMode.light ? AppColors.kWhite : AppColors.kTextBlack,
+                      textColor: themeMode == ThemeMode.light
+                          ? AppColors.kWhite
+                          : AppColors.kTextBlack,
                       text: continueText,
                       borderRadius: 40.r,
                       height: 48.h,
@@ -635,8 +664,10 @@ Future<dynamic> displayExitDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        backgroundColor: themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        backgroundColor:
+            themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
         title: Center(
           child: TextView(
             text: exitApp,
@@ -705,8 +736,10 @@ Future<dynamic> addPhotosFromCameraOrGalleryDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        backgroundColor: themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        backgroundColor:
+            themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
         // title: Center(
         //   child: TextView(
         //     text: 'Exit App',
@@ -841,8 +874,10 @@ Future<dynamic> displayLogoutDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        backgroundColor: themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        backgroundColor:
+            themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
         title: Center(
           child: TextView(
             text: logOut,
@@ -863,12 +898,15 @@ Future<dynamic> displayLogoutDialog(
             children: [
               Expanded(
                 child: DefaultButtonMain(
-                  color: themeMode == ThemeMode.light ? AppColors.kWhite200 : AppColors.kTextWhite,
+                  color: themeMode == ThemeMode.light
+                      ? AppColors.kWhite200
+                      : AppColors.kTextWhite,
                   width: 120.w,
                   textColor: AppColors.kTextBlack,
                   text: cancel,
                   borderRadius: 38.r,
-                  borderColor: themeMode == ThemeMode.dark ? AppColors.kTextBlack : null,
+                  borderColor:
+                      themeMode == ThemeMode.dark ? AppColors.kTextBlack : null,
                   height: 48.h,
                   onPressed: () {
                     navigateBack(context);
@@ -913,8 +951,10 @@ Future<void> displayRestrictionMessageAlert(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             // height: deviceH / 3,
@@ -945,7 +985,9 @@ Future<void> displayRestrictionMessageAlert(
                     DefaultButtonMain(
                       width: 200.w,
                       text: back,
-                      color: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+                      color: themeMode == ThemeMode.light
+                          ? AppColors.kWhite
+                          : theme.cardColor,
                       borderColor: theme.colorScheme.primary,
                       borderRadius: 38.r,
                       textColor: theme.colorScheme.primary,
@@ -977,8 +1019,10 @@ Future<void> displayTenantValidationAlert(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             height: 300.h,
@@ -1071,8 +1115,10 @@ Future<void> displaySwitchConfirmationMessageAlert(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             // height: 350.h,
@@ -1097,7 +1143,9 @@ Future<void> displaySwitchConfirmationMessageAlert(
                       text: TextSpan(
                         text: message,
                         style: TextStyle(
-                            color: themeMode == ThemeMode.light ? Colors.black : AppColors.kWhite,
+                            color: themeMode == ThemeMode.light
+                                ? Colors.black
+                                : AppColors.kWhite,
                             fontSize: 16.spMin,
                             fontFamily: soraFont,
                             fontWeight: FontWeight.w400),
@@ -1138,7 +1186,9 @@ Future<void> displaySwitchConfirmationMessageAlert(
                     DefaultButtonMain(
                       width: 200.w,
                       text: back,
-                      color: themeMode == ThemeMode.light ? AppColors.kWhite : theme.cardColor,
+                      color: themeMode == ThemeMode.light
+                          ? AppColors.kWhite
+                          : theme.cardColor,
                       borderColor: theme.colorScheme.primary,
                       borderRadius: 38.r,
                       textColor: theme.colorScheme.primary,
@@ -1163,7 +1213,6 @@ Future<void> displaySwitchConfirmationMessageAlert(
       });
 }
 
-
 Future<void> displayPhoneNumberNullAlert(
   BuildContext context,
   String title, {
@@ -1180,8 +1229,10 @@ Future<void> displayPhoneNumberNullAlert(
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          backgroundColor: themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          backgroundColor:
+              themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           contentPadding: EdgeInsets.zero,
           content: SizedBox(
             // height: 350.h,
@@ -1206,7 +1257,9 @@ Future<void> displayPhoneNumberNullAlert(
                       text: TextSpan(
                         text: message,
                         style: TextStyle(
-                            color: themeMode == ThemeMode.light ? Colors.black : AppColors.kWhite,
+                            color: themeMode == ThemeMode.light
+                                ? Colors.black
+                                : AppColors.kWhite,
                             fontSize: 16.spMin,
                             fontFamily: soraFont,
                             fontWeight: FontWeight.w400),
@@ -1262,3 +1315,322 @@ Future<void> displayPhoneNumberNullAlert(
         );
       });
 }
+
+addBankBottomModalSheetWidget(BuildContext context, {Widget? widget}) {
+  return showModalBottomSheet(
+    // shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.only(
+    //       topRight: Radius.circular(21.r),
+    //       topLeft: Radius.circular(21.r),
+    //     )),
+    backgroundColor: Colors.transparent,
+    barrierColor: AppColors.kTransparent,
+    context: context,
+    isScrollControlled: false,
+    builder: (context) {
+      return AddBankBottomModalSheet();
+    },
+  );
+}
+sellCoinBottomModalSheetWidget(BuildContext context, {Widget? widget}) {
+  return showModalBottomSheet(
+    // shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.only(
+    //       topRight: Radius.circular(21.r),
+    //       topLeft: Radius.circular(21.r),
+    //     )),
+    backgroundColor: Colors.transparent,
+    barrierColor: AppColors.kTransparent,
+    context: context,
+    isScrollControlled: true,
+    builder: (context) {
+      return SellCoinBottomModalSheetContent();
+    },
+  );
+}
+
+class AddBankBottomModalSheet extends ConsumerStatefulWidget {
+  const AddBankBottomModalSheet({super.key});
+
+  @override
+  ConsumerState<AddBankBottomModalSheet> createState() =>
+      _AddBankBottomModalSheetState();
+}
+
+class _AddBankBottomModalSheetState
+    extends ConsumerState<AddBankBottomModalSheet> {
+  @override
+  Widget build(BuildContext context) {
+    return BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+      child: Container(
+        // height: 360.h,
+        decoration: BoxDecoration(
+          color: AppColors.kPrimaryDark,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(
+              12.r,
+            ),
+            topRight: Radius.circular(
+              12.r,
+            ),
+          ),
+        ),
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              height: 20.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 18.w,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: (){
+                      navigateBack(context);
+                    },
+                    child: const Icon(
+                      Icons.keyboard_arrow_left,
+                      color: AppColors.kNavBlue,
+                    ),
+                  ),
+                  TextView(
+                    text: chooseBankText,
+                    fontSize: 16.spMin,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      navigateBack(context);
+                    },
+                    child: Icon(
+                      Icons.cancel_outlined,
+                      color: AppColors.kWhite,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 38.h,
+            ),
+
+            bankLists(),
+            SizedBox(
+              height: 24.h,
+            ),
+
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 18.w),
+              child: addButton(),
+            )
+
+            //
+            // DefaultButtonMain(
+            //   textColor: AppColors.kWhite,
+            //   color: AppColors.kPrimary1,
+            //   text: "Back to home",
+            //   onPressed: () {
+            //     // dashboardProvider.setPageIndexToHome(context);
+            //   },
+            // )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget bankWidget({
+    required String accName,
+    required String accNo,
+    required String bankName,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextView(
+          text: accName,
+          fontSize: 12.spMin,
+        ),
+        SizedBox(
+          height: 8.h,
+        ),
+        TextView(
+          text: bankName,
+          fontSize: 12.spMin,
+          color: AppColors.kCardText,
+        ),
+        SizedBox(
+          height: 8.h,
+        ),
+        TextView(
+          text: accNo,
+          fontSize: 12.spMin,
+          color: AppColors.kCardText,
+        ),
+      ],
+    );
+  }
+
+  bankLists() {
+    return ListView.builder(
+      itemCount: 2,
+      shrinkWrap: true,
+      // physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        // Check if it's the last item
+        bool isLastItem = index == 1;
+
+        return InkWell(
+          onTap: (){
+            navigateBack(context);
+            sellCoinBottomModalSheetWidget(context);
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                height: 12.h,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 18.w,
+                ),
+                child: bankWidget(
+                    accName: 'Daniel Mason Ovie',
+                    accNo: '8107143027',
+                    bankName: 'Opay'),
+              ),
+              TampayDivider(),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  addButton() {
+    return GestureDetector(
+      onTap: (){
+        print('Tick');
+      },
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric( vertical: 35.h),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(
+                width: 0.5.r, color: AppColors.kCardText.withOpacity(0.3))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.add_circle_outline,
+              color: AppColors.kCardText,
+              size: 24.r,
+            ),
+            SizedBox(width: 8.w,),
+            TextView(
+              text: addAnotherBankText,
+              fontSize: 12.spMin,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class SellCoinBottomModalSheetContent extends ConsumerStatefulWidget {
+  const SellCoinBottomModalSheetContent({super.key});
+
+  @override
+  ConsumerState<SellCoinBottomModalSheetContent> createState() => _SellCoinBottomModalSheetContentState();
+}
+
+class _SellCoinBottomModalSheetContentState extends ConsumerState<SellCoinBottomModalSheetContent> {
+  @override
+  Widget build(BuildContext context) {
+    return BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+      child: Container(
+        height: 729.h,
+        decoration: BoxDecoration(
+          color: AppColors.kPrimaryDark,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(
+              12.r,
+            ),
+            topRight: Radius.circular(
+              12.r,
+            ),
+          ),
+        ),
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              height: 20.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 18.w,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          navigateBack(context);
+                        },
+                        child: const Icon(
+                          Icons.keyboard_arrow_left,
+                          color: AppColors.kNavBlue,
+                        ),
+                      ),
+                      TextView(
+                        text: sellBitcoin,
+                        fontSize: 16.spMin,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      GestureDetector(
+                        onTap: (){
+                          navigateBack(context);
+                        },
+                        child: Icon(
+                          Icons.cancel_outlined,
+                          color: AppColors.kWhite,
+                        ),
+                      ),
+                    ],
+                  ),
+                  ImageView.asset(AppImages.barCode, width: 236.w,),
+                  TextView(text: 'Scan to receive Bitcoin', color: AppColors.kUnselectedBottomItemColor,)
+                ],
+              ),
+            ),
+
+            //
+            // DefaultButtonMain(
+            //   textColor: AppColors.kWhite,
+            //   color: AppColors.kPrimary1,
+            //   text: "Back to home",
+            //   onPressed: () {
+            //     // dashboardProvider.setPageIndexToHome(context);
+            //   },
+            // )
+          ],
+        ),
+      ),
+    );
+  }
+}
+

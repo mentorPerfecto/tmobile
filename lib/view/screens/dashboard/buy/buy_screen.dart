@@ -113,55 +113,62 @@ class CryptoCoinView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 25.h,
-              horizontal: 15.w,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 112.w,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 32.h,
-                        width: 32.w,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage(cryptoSymbol),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Column(
+          GestureDetector(
+            onTap: onPressed,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 25.h,
+                horizontal: 15.w,
+              ),
+              child: GestureDetector(
+                onTap: onPressed,
+
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 112.w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TextView(
-                            text: cryptoName,
-                            fontSize: 14.spMin,
+                          Container(
+                            height: 32.h,
+                            width: 32.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(cryptoSymbol),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                          Gap(3.h),
-                          TextView(
-                            text: cryptoAcronym,
-                            color: AppColors.kCardText,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextView(
+                                text: cryptoName,
+                                fontSize: 14.spMin,
+                              ),
+                              Gap(3.h),
+                              TextView(
+                                text: cryptoAcronym,
+                                color: AppColors.kCardText,
+                              )
+                            ],
                           )
                         ],
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                    TextView(
+                      text:
+                          "₦${UtilFunctions.formatAmount(aCryptoCoin.rate?.toDouble() ?? 0.0)}/$dollarSign",
+                      fontSize: 14.spMin,
+                    )
+                  ],
                 ),
-                TextView(
-                  text:
-                      "₦${UtilFunctions.formatAmount(aCryptoCoin.rate?.toDouble() ?? 0.0)}/$dollarSign",
-                  fontSize: 14.spMin,
-                )
-              ],
+              ),
             ),
           ),
           const TampayDivider(),

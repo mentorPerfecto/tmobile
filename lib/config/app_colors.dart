@@ -6,6 +6,7 @@ class AppColors {
   static const kPrimaryDark = Color(0xff060B29);
   static const kDesaturatedDarkBlue = Color(0xff49527C);
   static const kNavyBlue = Color(0xff020513);
+  static const kNavBlue = Color(0xff5995FF);
 
   static const kUnselectedBottomItemColor = Color(0xff667185);
   static const kCardAccount = Color(0xff161B37);

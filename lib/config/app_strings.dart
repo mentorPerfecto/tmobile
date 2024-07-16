@@ -337,6 +337,9 @@ const enterCodeGottenFromLandlordToAddProperty =
 const submitIdentificationDocument = ' 2. Next, submit identification documents';
 const inviteYourFriendsText = 'Invite your friends';
 const inviteYourFriendsInfo = 'Earn 25% commission when someone you refer makes a trade';
+const chooseBankText = 'Choose Bank';
+const sellBitcoin = 'Sell Bitcoin';
+const addAnotherBankText = 'add another bank';
 
 
 // const soraFont = 'Sora';

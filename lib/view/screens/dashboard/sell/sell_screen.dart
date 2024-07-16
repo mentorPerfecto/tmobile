@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tampay/config/app_strings.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/utils.dart';
 import 'package:tampay/utils/enums.dart';
 import 'package:tampay/view/components/coin_list_view.dart';
 import 'package:tampay/view/components/profile_image.dart';
@@ -26,30 +27,35 @@ class _SellSectionScreenState extends ConsumerState<SellSectionScreen> {
           text: selectCoin,
           textSize: 20.spMin,
           isVisible: false),
-
-      body:  SafeArea(child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 18.0.w),
-        child: Column(children: [
-          SizedBox(height: 20.h,),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18.0.w),
+          child: Column(
             children: [
-            TextView(text: assetsText),
-            TextView(text: ratesText),
-
-
-          ],),
-          SizedBox(height: 14.h,),
-
-          Expanded(child: listItems(),)
-
-
-        ],),
-      ),),
+              SizedBox(
+                height: 20.h,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextView(text: assetsText),
+                  TextView(text: ratesText),
+                ],
+              ),
+              SizedBox(
+                height: 14.h,
+              ),
+              Expanded(
+                child: listItems(),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 
-  listItems(){
+  listItems() {
     return ListView.builder(
       itemCount: 10,
       shrinkWrap: true,
@@ -60,15 +66,20 @@ class _SellSectionScreenState extends ConsumerState<SellSectionScreen> {
 
         return Column(
           children: <Widget>[
-            Padding(
-              padding:  EdgeInsets.symmetric(vertical: 12.h, ),
-              child: CoinListView(imageUrl: AppImages.btcLogo, coinPrice: 'NGN2,806/\$', coinName: 'Bitcoin', coinTicker: 'BTC',),
+            CoinListView(
+              imageUrl: AppImages.btcLogo,
+              coinPrice: 'NGN2,806/\$',
+              coinName: 'Bitcoin',
+              coinTicker: 'BTC',
+              onTap: () {
+                logger.wtf('Hello');
+                addBankBottomModalSheetWidget(context);
+              },
             ),
             if (!isLastItem) TampayDivider(),
           ],
         );
       },
     );
-
   }
 }

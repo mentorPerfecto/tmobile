@@ -141,7 +141,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 imageUrl: AppImages.btcLogo,
                 coinPrice: 'NGN2,806/\$',
                 coinName: 'Bitcoin',
-                coinTicker: 'BTC',
+                coinTicker: 'BTC', onTap: () {  },
               ),
             ),
             if (!isLastItem) TampayDivider(),
