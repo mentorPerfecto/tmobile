@@ -29,6 +29,7 @@ const enterPassword = 'Enter password';
 const forgotPassword = 'Forgot Password?';
 const login = 'Login';
 const continueText = 'Continue';
+const saveBankText = 'Save Bank';
 const youreANewUser = 'You a new user? ';
 const ensureToSend = 'Please ensure to send only ';
 const toThisAddress = ' to this address or you may lose your funds.';
@@ -351,6 +352,10 @@ const faqText = 'FAQs';
 const privacyPolicyText = 'Privacy policy';
 const helpCenterText = 'Help center';
 const logoutText = 'Logout';
+const addNewBankText = 'Add New Bank';
+const pleaseEnsureThatDetailsMatch = 'Please ensure that your bank account name matches your BVN name';
+const selectBankText = 'Select bank';
+const enterTenDigitsAccNumberText = 'Enter 10 digit account number';
 
 
 // const soraFont = 'Sora';

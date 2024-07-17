@@ -5,8 +5,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
+import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/components/invite_friend_card.dart';
+import 'package:tampay/view/screens/dashboard/profile/bank_details/add_bank_screen.dart';
 import 'package:tampay/view_model/profile/profile_view_model.dart';
 import 'package:tampay/view_model/theme_view_model.dart';
 
@@ -96,7 +98,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               title: bankDetails,
               iconPath: AppImages.bankDetailsLogo,
               onTap: () {
-                // navigatePush(context, const InviteFriendScreen());
+                navigatePush(context, const AddBankScreen());
               },
             ),
 

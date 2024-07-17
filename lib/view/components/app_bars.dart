@@ -30,7 +30,7 @@ class AppBars {
             child: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
-                size: 24.spMin,
+                size: 18.r,
                 color: arrowBackColor,
               ),
               splashRadius: 20,

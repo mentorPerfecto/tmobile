@@ -1908,3 +1908,100 @@ class _SellCoinBottomModalSheetContentState
 
 
 }
+
+
+
+bankAddedSuccessfulBottomModalSheetWidget(BuildContext context,) {
+  return showModalBottomSheet(
+    // shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.only(
+    //       topRight: Radius.circular(21.r),
+    //       topLeft: Radius.circular(21.r),
+    //     )),
+    backgroundColor: Colors.transparent,
+    barrierColor: AppColors.kTransparent,
+    context: context,
+    isScrollControlled: true,
+    builder: (context) {
+      return BankAddedSuccessfulBottomModalSheetContent();
+    },
+  );
+}
+
+class BankAddedSuccessfulBottomModalSheetContent extends ConsumerStatefulWidget {
+  const BankAddedSuccessfulBottomModalSheetContent({super.key});
+
+  @override
+  ConsumerState<BankAddedSuccessfulBottomModalSheetContent> createState() => _BankAddedSuccessfulBottomModalSheetContentState();
+}
+
+class _BankAddedSuccessfulBottomModalSheetContentState extends ConsumerState<BankAddedSuccessfulBottomModalSheetContent> {
+  @override
+  Widget build(BuildContext context) {
+    return BackdropFilter(
+
+      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20,),
+      child: Container(
+        height: 330.h,
+        decoration: BoxDecoration(
+          color: AppColors.kPrimaryDark,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(
+              12.r,
+            ),
+            topRight: Radius.circular(
+              12.r,
+            ),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 15.h,
+            horizontal: 15.w,
+          ),
+          child: Column(
+            children: [
+              Image.asset(
+                AppImages.successLogo,
+                width: 72.w,
+                height: 72.h,
+              ),
+              SizedBox(height: 24.h,),
+              Column(
+                children: [
+                  TextView(
+                    text: "Bank Added",
+                    fontSize: 16.spMin,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  Gap(10.h),
+                  TextView(
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                    text: "You have successfully added a new bank account details",
+                    fontSize: 12.spMin,
+
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
+              ),
+              SizedBox(height: 62.h,),
+
+              Align(
+                alignment: AlignmentDirectional.bottomEnd,
+                child: DefaultButtonMain(
+                  textColor: AppColors.kWhite,
+                  color: AppColors.kPrimary1,
+                  text: "Done",
+                  // onPressed: onTap
+                  // ,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
