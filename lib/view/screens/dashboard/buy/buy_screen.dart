@@ -29,6 +29,7 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     var buySectionProvider = ref.watch(buyViewModel);
+    var dashboardProvider = ref.watch(dashboardViewModel);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
@@ -36,6 +37,9 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
         backgroundColor: theme.scaffoldBackgroundColor,
         arrowBackColor: theme.primaryColor,
         text: "Select coin",
+        callback: (){
+          dashboardProvider.setPageIndexToHome(context);
+        }
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -113,7 +117,9 @@ class CryptoCoinView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GestureDetector(
+          InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: onPressed,
             child: Padding(
               padding: EdgeInsets.symmetric(

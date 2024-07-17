@@ -8,6 +8,7 @@ import 'package:tampay/src/utils.dart';
 import 'package:tampay/utils/enums.dart';
 import 'package:tampay/view/components/coin_list_view.dart';
 import 'package:tampay/view/components/profile_image.dart';
+import 'package:tampay/view_model/dashboard/dashboard_view_model.dart';
 
 class SellSectionScreen extends ConsumerStatefulWidget {
   const SellSectionScreen({super.key});
@@ -19,6 +20,8 @@ class SellSectionScreen extends ConsumerStatefulWidget {
 class _SellSectionScreenState extends ConsumerState<SellSectionScreen> {
   @override
   Widget build(BuildContext context) {
+    var dashboardProvider = ref.watch(dashboardViewModel);
+
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBars.mainAppBar(context,
@@ -26,7 +29,10 @@ class _SellSectionScreenState extends ConsumerState<SellSectionScreen> {
           arrowBackColor: Colors.white,
           text: selectCoin,
           textSize: 20.spMin,
-          isVisible: false),
+          callback: (){
+            dashboardProvider.setPageIndexToHome(context);
+          }
+         ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.0.w),
