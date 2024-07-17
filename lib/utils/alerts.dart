@@ -1,10 +1,13 @@
 import 'dart:ui';
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
+import 'package:tampay/view_model/dashboard/buy_view_model.dart';
 
 //1
 Future<void> displayDeleteConfirmationMessageAlert(
@@ -1316,6 +1319,82 @@ Future<void> displayPhoneNumberNullAlert(
       });
 }
 
+inProgressBottomModalSheetWidget(BuildContext context, {
+  required VoidCallback onTap
+}){
+  return
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      barrierColor: AppColors.kTransparent,
+      // isDismissible: false,
+      context: context,
+      builder: (context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+          child: Container(
+            height: 360.h,
+            decoration: BoxDecoration(
+              color: AppColors.kPrimaryDark,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(
+                  12.r,
+                ),
+                topRight: Radius.circular(
+                  12.r,
+                ),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 15.h,
+                horizontal: 15.w,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset(
+                    AppImages.inProgressLogo,
+                    width: 72.w,
+                    height: 72.h,
+                  ),
+                  Column(
+                    children: [
+                      TextView(
+                        text: "In progress",
+                        fontSize: 16.spMin,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      Gap(10.h),
+                      TextView(
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        text: "Your order has been received. "
+                            "We will notify you when it's ready, usually within 45 seconds",
+                        fontSize: 12.spMin,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional.bottomEnd,
+                    child: DefaultButtonMain(
+                      textColor: AppColors.kWhite,
+                      color: AppColors.kPrimary1,
+                      text: "Back to home",
+                      onPressed: onTap
+      ,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+      });
+}
+
+
+
 addBankBottomModalSheetWidget(BuildContext context, {Widget? widget}) {
   return showModalBottomSheet(
     // shape: RoundedRectangleBorder(
@@ -1332,6 +1411,7 @@ addBankBottomModalSheetWidget(BuildContext context, {Widget? widget}) {
     },
   );
 }
+
 sellCoinBottomModalSheetWidget(BuildContext context, {Widget? widget}) {
   return showModalBottomSheet(
     // shape: RoundedRectangleBorder(
@@ -1390,7 +1470,7 @@ class _AddBankBottomModalSheetState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       navigateBack(context);
                     },
                     child: const Icon(
@@ -1404,7 +1484,7 @@ class _AddBankBottomModalSheetState
                     fontWeight: FontWeight.w600,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       navigateBack(context);
                     },
                     child: Icon(
@@ -1486,7 +1566,7 @@ class _AddBankBottomModalSheetState
         bool isLastItem = index == 1;
 
         return InkWell(
-          onTap: (){
+          onTap: () {
             navigateBack(context);
             sellCoinBottomModalSheetWidget(context);
           },
@@ -1515,12 +1595,12 @@ class _AddBankBottomModalSheetState
 
   addButton() {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         print('Tick');
       },
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric( vertical: 35.h),
+        padding: EdgeInsets.symmetric(vertical: 35.h),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
             border: Border.all(
@@ -1533,7 +1613,9 @@ class _AddBankBottomModalSheetState
               color: AppColors.kCardText,
               size: 24.r,
             ),
-            SizedBox(width: 8.w,),
+            SizedBox(
+              width: 8.w,
+            ),
             TextView(
               text: addAnotherBankText,
               fontSize: 12.spMin,
@@ -1546,17 +1628,21 @@ class _AddBankBottomModalSheetState
 }
 
 
-
 class SellCoinBottomModalSheetContent extends ConsumerStatefulWidget {
   const SellCoinBottomModalSheetContent({super.key});
 
   @override
-  ConsumerState<SellCoinBottomModalSheetContent> createState() => _SellCoinBottomModalSheetContentState();
+  ConsumerState<SellCoinBottomModalSheetContent> createState() =>
+      _SellCoinBottomModalSheetContentState();
 }
 
-class _SellCoinBottomModalSheetContentState extends ConsumerState<SellCoinBottomModalSheetContent> {
+class _SellCoinBottomModalSheetContentState
+    extends ConsumerState<SellCoinBottomModalSheetContent> {
   @override
   Widget build(BuildContext context) {
+    var buySectionProvider = ref.watch(buyViewModel);
+    var dashboardProvider = ref.watch(dashboardViewModel);
+
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
       child: Container(
@@ -1588,7 +1674,7 @@ class _SellCoinBottomModalSheetContentState extends ConsumerState<SellCoinBottom
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           navigateBack(context);
                         },
                         child: const Icon(
@@ -1602,7 +1688,7 @@ class _SellCoinBottomModalSheetContentState extends ConsumerState<SellCoinBottom
                         fontWeight: FontWeight.w600,
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           navigateBack(context);
                         },
                         child: Icon(
@@ -1612,8 +1698,72 @@ class _SellCoinBottomModalSheetContentState extends ConsumerState<SellCoinBottom
                       ),
                     ],
                   ),
-                  ImageView.asset(AppImages.barCode, width: 236.w,),
-                  TextView(text: 'Scan to receive Bitcoin', color: AppColors.kUnselectedBottomItemColor,)
+                  SizedBox(
+                    height: 32.h,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 18.w),
+                    child: warningPrompt(),
+                  ),
+                  SizedBox(
+                    height: 48.h,
+                  ),
+                  ImageView.asset(
+                    AppImages.barCode,
+                    width: 236.w,
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  TextView(
+                    text: scanToReceive,
+                    color: AppColors.kUnselectedBottomItemColor,
+                    fontSize: 12.spMin,
+                  ),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+                  walletAddressCard(),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      defaultButton(
+                          width: 150.w,
+                          text: copy,
+                          imagePath: AppImages.copyLogo,
+                          color: AppColors.kDarkDividerColor,
+                          borderRadius: 8.r,
+                        onPressed: (){
+                          buySectionProvider.copyToClipboard('bc1q04tvdada..............wjdgfee7g');
+
+                        }
+
+                      ),
+                      defaultButton(
+                          width: 150.w,
+                          text: share,
+                          imagePath: AppImages.shareIcon,
+                          borderColor: AppColors.kCardText,
+                          textColor: AppColors.kCardText)
+                    ],
+                  ),
+                  SizedBox(
+                    height: 72.h,
+                  ),
+                  DefaultButtonMain(
+                    color: AppColors.kPrimary1,
+                    text: iHaveDeposited,
+                    onPressed: () {
+                      // navigateBack(context);
+                      inProgressBottomModalSheetWidget(context, onTap: (){
+                        // navigateBack(context);
+                        dashboardProvider.setPageIndexToHome(context);
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
@@ -1632,5 +1782,129 @@ class _SellCoinBottomModalSheetContentState extends ConsumerState<SellCoinBottom
       ),
     );
   }
-}
 
+  warningPrompt() {
+    return Center(
+      child: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          text: ensureToSend,
+          style: TextStyle(
+            // color: theme.colorScheme.primary,
+            color: AppColors.kWhite,
+            fontSize: 12.spMin,
+            fontFamily: soraFont,
+            fontWeight: FontWeight.w400,
+          ),
+          children: <TextSpan>[
+            TextSpan(
+              text: 'Bitcoin (BTC)',
+              style: TextStyle(
+                color: AppColors.kWhite,
+                fontSize: 12.spMin,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: toThisAddress,
+              style: TextStyle(
+                color: AppColors.kWhite,
+                fontSize: 12.spMin,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  walletAddressCard() {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(vertical: 14.h),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(
+              width: 0.5.r, color: AppColors.kCardText.withOpacity(0.3))),
+      child: Center(
+        child: TextView(
+          text: 'bc1q04tvdada..............wjdgfee7g',
+          fontSize: 14.spMin,
+        ),
+      ),
+    );
+  }
+
+  Widget defaultButton({
+    VoidCallback? onPressed,
+    String? text,
+    Color? color,
+    Color? textColor,
+    double? borderRadius,
+    double? width,
+    double? height,
+    EdgeInsetsGeometry? padding,
+    double? fontSize,
+    FontWeight? fontWeight,
+    Color? borderColor,
+    String? fontFamily,
+    String? imagePath,
+  }) {
+    return Container(
+      height: height ?? 50.0.h,
+      width: width,
+      padding: padding,
+      decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(borderRadius ?? 8.0.r),
+          border: Border.all(color: borderColor ?? Colors.transparent)),
+      child: ButtonTheme(
+        child: MaterialButton(
+          padding: EdgeInsets.zero,
+          height: height ?? 50.0.h,
+
+          onPressed: onPressed,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+                borderRadius ?? 8.0.r), // Adjust the radius as needed
+          ),
+          // disabledColor:(buttonState == ButtonState.disabled)?Colors.grey:null,
+          child: Center(
+            /// This code is setting the child of the `TextButton` widget. It checks the value of the
+            /// `buttonState` parameter and if it is equal to `ButtonState.loading`, it sets the child to
+            /// a `SizedBox` widget with a `CircularProgressIndicator` inside it. This is used to indicate
+            /// that the button is in a loading state and the user should wait for the action to complete.
+            /// If `buttonState` is not equal to `ButtonState.loading`, it sets the child to a `Text`
+            /// widget with the `text` parameter passed in when the function is called. The `textColor`,
+            /// `fontSize`, and `fontWeight` parameters are also used to style the text.
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ImageView.asset(
+                  imagePath,
+                  height: 20.h,
+                  width: 20.w,
+                ),
+                SizedBox(
+                  width: 8.w,
+                ),
+                Text(
+                  text.toString(),
+                  style: TextStyle(
+                    color: textColor ?? Colors.white,
+                    fontSize: fontSize ?? 16.0.spMin,
+                    fontWeight: fontWeight ?? FontWeight.w500,
+                    fontFamily: fontFamily ?? soraFont,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
+}

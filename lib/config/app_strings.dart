@@ -30,6 +30,8 @@ const forgotPassword = 'Forgot Password?';
 const login = 'Login';
 const continueText = 'Continue';
 const youreANewUser = 'You a new user? ';
+const ensureToSend = 'Please ensure to send only ';
+const toThisAddress = ' to this address or you may lose your funds.';
 const welcomeBack = 'Welcome back';
 const resetPass = 'Reset Password';
 const confirmPassword = 'Confirm Password';
@@ -340,6 +342,8 @@ const inviteYourFriendsInfo = 'Earn 25% commission when someone you refer makes 
 const chooseBankText = 'Choose Bank';
 const sellBitcoin = 'Sell Bitcoin';
 const addAnotherBankText = 'add another bank';
+const scanToReceive = 'Scan to receive Bitcoin';
+const iHaveDeposited = 'I’ve deposited';
 
 
 // const soraFont = 'Sora';
