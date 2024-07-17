@@ -42,6 +42,7 @@ class AppImages {
 static const ethLogo = '${_baseUrl}ethereum.png';
 static const barCode = '${_baseUrl}bar_code.png';
 static const shareIcon = '${_baseUrl}share_icon.png';
+static const verifyAccountIcon = '${_baseUrl}verify_account_icon.png';
 
  
  

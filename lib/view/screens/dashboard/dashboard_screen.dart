@@ -10,7 +10,7 @@ import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/dashboard/buy/buy_screen.dart';
-import 'package:tampay/view/screens/dashboard/profile/profileScreen.dart';
+import 'package:tampay/view/screens/dashboard/profile/profile_screen.dart';
 import 'package:tampay/view/screens/dashboard/sell/sell_screen.dart';
 
 class DashBoardScreen extends ConsumerStatefulWidget {

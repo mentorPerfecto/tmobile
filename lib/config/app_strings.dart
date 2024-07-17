@@ -344,6 +344,13 @@ const sellBitcoin = 'Sell Bitcoin';
 const addAnotherBankText = 'add another bank';
 const scanToReceive = 'Scan to receive Bitcoin';
 const iHaveDeposited = 'I’ve deposited';
+const verifyAccount = 'Verify account';
+const bankDetails = 'Bank details';
+const securityText = 'Security';
+const faqText = 'FAQs';
+const privacyPolicyText = 'Privacy policy';
+const helpCenterText = 'Help center';
+const logoutText = 'Logout';
 
 
 // const soraFont = 'Sora';
