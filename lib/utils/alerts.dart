@@ -7,6 +7,7 @@ import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
+import 'package:tampay/view/screens/dashboard/profile/bank_details/add_bank_screen.dart';
 import 'package:tampay/view_model/dashboard/buy_view_model.dart';
 
 //1
@@ -1319,11 +1320,9 @@ Future<void> displayPhoneNumberNullAlert(
       });
 }
 
-inProgressBottomModalSheetWidget(BuildContext context, {
-  required VoidCallback onTap
-}){
-  return
-    showModalBottomSheet(
+inProgressBottomModalSheetWidget(BuildContext context,
+    {required VoidCallback onTap}) {
+  return showModalBottomSheet(
       backgroundColor: Colors.transparent,
       barrierColor: AppColors.kTransparent,
       // isDismissible: false,
@@ -1381,8 +1380,7 @@ inProgressBottomModalSheetWidget(BuildContext context, {
                       textColor: AppColors.kWhite,
                       color: AppColors.kPrimary1,
                       text: "Back to home",
-                      onPressed: onTap
-      ,
+                      onPressed: onTap,
                     ),
                   )
                 ],
@@ -1392,8 +1390,6 @@ inProgressBottomModalSheetWidget(BuildContext context, {
         );
       });
 }
-
-
 
 addBankBottomModalSheetWidget(BuildContext context, {Widget? widget}) {
   return showModalBottomSheet(
@@ -1596,7 +1592,7 @@ class _AddBankBottomModalSheetState
   addButton() {
     return GestureDetector(
       onTap: () {
-        print('Tick');
+        navigatePush(context, const AddBankScreen());
       },
       child: Container(
         width: double.infinity,
@@ -1626,7 +1622,6 @@ class _AddBankBottomModalSheetState
     );
   }
 }
-
 
 class SellCoinBottomModalSheetContent extends ConsumerStatefulWidget {
   const SellCoinBottomModalSheetContent({super.key});
@@ -1736,12 +1731,10 @@ class _SellCoinBottomModalSheetContentState
                           imagePath: AppImages.copyLogo,
                           color: AppColors.kDarkDividerColor,
                           borderRadius: 8.r,
-                        onPressed: (){
-                          buySectionProvider.copyToClipboard('bc1q04tvdada..............wjdgfee7g');
-
-                        }
-
-                      ),
+                          onPressed: () {
+                            buySectionProvider.copyToClipboard(
+                                'bc1q04tvdada..............wjdgfee7g');
+                          }),
                       defaultButton(
                           width: 150.w,
                           text: share,
@@ -1758,7 +1751,7 @@ class _SellCoinBottomModalSheetContentState
                     text: iHaveDeposited,
                     onPressed: () {
                       // navigateBack(context);
-                      inProgressBottomModalSheetWidget(context, onTap: (){
+                      inProgressBottomModalSheetWidget(context, onTap: () {
                         // navigateBack(context);
                         dashboardProvider.setPageIndexToHome(context);
                       });
@@ -1905,13 +1898,11 @@ class _SellCoinBottomModalSheetContentState
       ),
     );
   }
-
-
 }
 
-
-
-bankAddedSuccessfulBottomModalSheetWidget(BuildContext context,) {
+bankAddedSuccessfulBottomModalSheetWidget(
+  BuildContext context,
+) {
   return showModalBottomSheet(
     // shape: RoundedRectangleBorder(
     //     borderRadius: BorderRadius.only(
@@ -1928,19 +1919,24 @@ bankAddedSuccessfulBottomModalSheetWidget(BuildContext context,) {
   );
 }
 
-class BankAddedSuccessfulBottomModalSheetContent extends ConsumerStatefulWidget {
+class BankAddedSuccessfulBottomModalSheetContent
+    extends ConsumerStatefulWidget {
   const BankAddedSuccessfulBottomModalSheetContent({super.key});
 
   @override
-  ConsumerState<BankAddedSuccessfulBottomModalSheetContent> createState() => _BankAddedSuccessfulBottomModalSheetContentState();
+  ConsumerState<BankAddedSuccessfulBottomModalSheetContent> createState() =>
+      _BankAddedSuccessfulBottomModalSheetContentState();
 }
 
-class _BankAddedSuccessfulBottomModalSheetContentState extends ConsumerState<BankAddedSuccessfulBottomModalSheetContent> {
+class _BankAddedSuccessfulBottomModalSheetContentState
+    extends ConsumerState<BankAddedSuccessfulBottomModalSheetContent> {
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
-
-      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20,),
+      filter: ImageFilter.blur(
+        sigmaX: 20,
+        sigmaY: 20,
+      ),
       child: Container(
         height: 330.h,
         decoration: BoxDecoration(
@@ -1966,7 +1962,9 @@ class _BankAddedSuccessfulBottomModalSheetContentState extends ConsumerState<Ban
                 width: 72.w,
                 height: 72.h,
               ),
-              SizedBox(height: 24.h,),
+              SizedBox(
+                height: 24.h,
+              ),
               Column(
                 children: [
                   TextView(
@@ -1978,15 +1976,16 @@ class _BankAddedSuccessfulBottomModalSheetContentState extends ConsumerState<Ban
                   TextView(
                     textAlign: TextAlign.center,
                     maxLines: 3,
-                    text: "You have successfully added a new bank account details",
+                    text:
+                        "You have successfully added a new bank account details",
                     fontSize: 12.spMin,
-
                     fontWeight: FontWeight.w400,
                   ),
                 ],
               ),
-              SizedBox(height: 62.h,),
-
+              SizedBox(
+                height: 62.h,
+              ),
               Align(
                 alignment: AlignmentDirectional.bottomEnd,
                 child: DefaultButtonMain(
@@ -2004,4 +2003,3 @@ class _BankAddedSuccessfulBottomModalSheetContentState extends ConsumerState<Ban
     );
   }
 }
-
