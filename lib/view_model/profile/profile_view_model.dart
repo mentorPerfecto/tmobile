@@ -25,8 +25,7 @@ class ProfileViewModel extends ChangeNotifier {
   List<File?> driversLicenseFrontAndBckImage = [];
   List<File?> imageFrontAndBckImage = [];
   List<LandlordBankData> _landLordWithdrawalBanks = [];
-  List<LandlordBankData> get landLordWithdrawalBanks =>
-      _landLordWithdrawalBanks;
+  List<LandlordBankData> get landLordWithdrawalBanks => _landLordWithdrawalBanks;
   bool _isFetchingBanks = false;
 
   CustomButtonState _buttonSaveBankDetailsState = CustomButtonState(
@@ -34,8 +33,7 @@ class ProfileViewModel extends ChangeNotifier {
     text: createAccount,
   );
 
-  CustomButtonState get buttonSaveBankDetailsState =>
-      _buttonSaveBankDetailsState;
+  CustomButtonState get buttonSaveBankDetailsState => _buttonSaveBankDetailsState;
 
   bool get isFetchingBanks => _isFetchingBanks;
   List<String> genderType = ['Male', "Female"];
@@ -53,21 +51,17 @@ class ProfileViewModel extends ChangeNotifier {
   );
 
   TextEditingController _documentNumberController = TextEditingController();
-  TextEditingController get nextOfKinFirstNameController =>
-      _nextOfKinFirstNameController;
+  TextEditingController get nextOfKinFirstNameController => _nextOfKinFirstNameController;
   final TextEditingController _nextOfKinFirstNameController = TextEditingController();
   final TextEditingController _nextOfKinLastNameController = TextEditingController();
   final TextEditingController _nextOfKinPhoneNoController = TextEditingController();
   final TextEditingController _nextOfKinEmailController = TextEditingController();
   final TextEditingController _nextOfKinRelationController = TextEditingController();
-  final TextEditingController _driverLicenseController =
-      TextEditingController();
+  final TextEditingController _driverLicenseController = TextEditingController();
   final TextEditingController _ninLicenseController = TextEditingController();
   TextEditingController _accountNumberController = TextEditingController();
-  final TextEditingController _validatePasswordControllers =
-      TextEditingController();
-  TextEditingController get validatePasswordControllers =>
-      _validatePasswordControllers;
+  final TextEditingController _validatePasswordControllers = TextEditingController();
+  TextEditingController get validatePasswordControllers => _validatePasswordControllers;
   final TextEditingController _firstNameController =
       TextEditingController(text: DummyData.firstName ?? '');
   final TextEditingController _lastNameController =
@@ -107,7 +101,6 @@ class ProfileViewModel extends ChangeNotifier {
 
   File? intlPassportImageFront;
   File? intlPassportImageBack;
-
 
   File? proofOfOwnership;
 
@@ -318,9 +311,8 @@ class ProfileViewModel extends ChangeNotifier {
           final decodedResponse = jsonDecode(value.toString());
           if (decodedResponse['status'].toString() == 'true') {
             var resBody = decodedResponse as Map<String, dynamic>;
-            _listOfBanks = (resBody["data"]["data"])
-                .map<BanksData>((e) => BanksData.fromJson(e))
-                .toList();
+            _listOfBanks =
+                (resBody["data"]["data"]).map<BanksData>((e) => BanksData.fromJson(e)).toList();
           }
 
           _isFetchingBanks = false;
@@ -407,9 +399,8 @@ class ProfileViewModel extends ChangeNotifier {
           final decodedResponse = jsonDecode(value.toString());
 
           if (decodedResponse['status'].toString() == 'true') {
-            _landLordWithdrawalBanks = (decodedResponse['data'] as List)
-                .map((e) => LandlordBankData.fromJson(e))
-                .toList();
+            _landLordWithdrawalBanks =
+                (decodedResponse['data'] as List).map((e) => LandlordBankData.fromJson(e)).toList();
 
             _isFetchingLandlordBanks = false;
 
@@ -446,8 +437,7 @@ class ProfileViewModel extends ChangeNotifier {
           .then((value) async {
         if (value != null) {
           if (value['data']['status'].toString() == 'true') {
-            validatedUserResponse =
-                BankAccountValidatedResponse.fromJson(value['data']['data']);
+            validatedUserResponse = BankAccountValidatedResponse.fromJson(value['data']['data']);
             _accountName = validatedUserResponse!.accountName!;
             _buttonSaveBankDetailsState = CustomButtonState(
               buttonState: ButtonState.idle,
@@ -526,21 +516,21 @@ class ProfileViewModel extends ChangeNotifier {
       notifyListeners();
       await profileService
           .submitExtendValidation(
-            listingId: listingId,
+        listingId: listingId,
         attachments: proofOfOwnership,
-
       )
           .then((value) async {
         if (value != null) {
           final decodedResponse = jsonDecode(value.toString());
           logger.t(decodedResponse['status'] == true);
           if (decodedResponse['status'] == true) {
-
             await navigateReplace(
                 context,
                 SuccessScreen(
-                    infoText:decodedResponse['message'].toString(),
-                    newPage: const DashBoardScreen(setIndex: 2,),
+                    infoText: decodedResponse['message'].toString(),
+                    newPage: const DashBoardScreen(
+                      setIndex: 2,
+                    ),
                     navigateButtonText: continueText));
 
             clearKYCData();
@@ -583,7 +573,6 @@ class ProfileViewModel extends ChangeNotifier {
     }
   }
 
-
   Future<void> submitKYC(BuildContext context, listingId, token) async {
     _isSubmittingKYC = true;
     try {
@@ -598,26 +587,26 @@ class ProfileViewModel extends ChangeNotifier {
               documentType: _documentType.toString(),
               attachments: imageFrontAndBckImage,
               documentNumber: _documentNumberController.text.toString(),
-              listingId: listingId, token:  token,
-
-              nextOfKinFirstName:  _nextOfKinFirstNameController.text.toString(),
+              listingId: listingId,
+              token: token,
+              nextOfKinFirstName: _nextOfKinFirstNameController.text.toString(),
               nextOfKinLastName: _nextOfKinLastNameController.text.toString(),
-              nextOfKinPhoneNumber:  _nextOfKinPhoneNoController.text.toString(),
+              nextOfKinPhoneNumber: _nextOfKinPhoneNoController.text.toString(),
               nextOfKinEmail: _nextOfKinEmailController.text.toString(),
-              nextOfKinRelationship: _nextOfKinRelationController.text.toString()
-         )
+              nextOfKinRelationship: _nextOfKinRelationController.text.toString())
           .then((value) async {
         if (value != null) {
           final decodedResponse = jsonDecode(value.toString());
           logger.t(decodedResponse['status'] == true);
           if (decodedResponse['status'] == true) {
-
             if (decodedResponse['status'] == true) {
               await navigateReplace(
                   context,
                   SuccessScreen(
                       infoText: decodedResponse['message'].toString(),
-                      newPage: const DashBoardScreen(setIndex: 4,),
+                      newPage: const DashBoardScreen(
+                        setIndex: 4,
+                      ),
                       navigateButtonText: continueText));
 
               clearKYCData();
@@ -687,8 +676,7 @@ class ProfileViewModel extends ChangeNotifier {
   ///Method for Picking Multiple Image
   pickImageAsList() async {
     final picker = ImagePicker();
-    final pickedFile =
-        await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
     notifyListeners();
     if (pickedFile != null) {
       // _image = File(pickedFile.path);
@@ -701,8 +689,7 @@ class ProfileViewModel extends ChangeNotifier {
   /// Method to pick Single Image from gallery
   Future<File?> pickSingleImageOne() async {
     final picker = ImagePicker();
-    final pickedFile =
-        await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
     notifyListeners();
 
     if (pickedFile != null) {
@@ -713,7 +700,7 @@ class ProfileViewModel extends ChangeNotifier {
       //final kb = bytes / 1024;
       // logger.t("${kb}KB");
       // logger.i("${kb}KB");
-     // log(imageFile.toString());
+      // log(imageFile.toString());
 
       return imageFile; // Return the picked file
     }
@@ -774,7 +761,6 @@ class ProfileViewModel extends ChangeNotifier {
     }
     return null;
   }
-
 
   Future<File?> updateProofOfOwnershipImage() async {
     final pickedImage = await pickSingleImageOne();
@@ -874,9 +860,9 @@ class ProfileViewModel extends ChangeNotifier {
             DummyData.firstName = _profileData?.firstName.toString();
             DummyData.phoneNumber = _profileData?.phoneNumber ?? "";
             notifyListeners();
-           // log(DummyData.phoneNumber.toString());
+            // log(DummyData.phoneNumber.toString());
             // _gender =  _profileData!.gender.toString();
-          }else{
+          } else {
             navigateReplace(context, const DashBoardScreen());
           }
         }
@@ -921,21 +907,22 @@ class ProfileViewModel extends ChangeNotifier {
   String getInitials(String name) {
     List<String> nameParts = name.split(' ');
     String initials = '';
-    for (var part in nameParts) {
+    for (String part in nameParts) {
       initials += part[0];
     }
     return initials.toUpperCase();
   }
 
-  TextEditingController get nextOfKinLastNameController =>
-      _nextOfKinLastNameController;
+  // String getInitialsBasedOnName({required String firstName, required String lastName}) {
+  //   String initials = '';
+  //   return initials += firstName[0] + lastName[0];
+  // }
 
-  TextEditingController get nextOfKinPhoneNoController =>
-      _nextOfKinPhoneNoController;
+  TextEditingController get nextOfKinLastNameController => _nextOfKinLastNameController;
 
-  TextEditingController get nextOfKinEmailController =>
-      _nextOfKinEmailController;
+  TextEditingController get nextOfKinPhoneNoController => _nextOfKinPhoneNoController;
 
-  TextEditingController get nextOfKinRelationController =>
-      _nextOfKinRelationController;
+  TextEditingController get nextOfKinEmailController => _nextOfKinEmailController;
+
+  TextEditingController get nextOfKinRelationController => _nextOfKinRelationController;
 }

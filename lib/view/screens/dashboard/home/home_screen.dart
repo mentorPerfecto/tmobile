@@ -4,8 +4,7 @@ import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/utils/enums.dart';
-import 'package:tampay/view/components/coin_list_view.dart';
-import 'package:tampay/view/components/invite_friend_card.dart';
+
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

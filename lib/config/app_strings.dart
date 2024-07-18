@@ -52,9 +52,49 @@ const bitcoin = 'Bitcoin';
 const youWantToBuy = 'You want to buy';
 const addBank = 'Add Bank';
 const verify = 'Verify';
-const accountNumberText = 'Enter 10 digit account number';
 const bankNameText = 'Select bank';
+const numberFormat = "+234";
+const pleaseEnsureThatDetailsMatch =
+    'Please ensure that your bank account name matches your BVN name';
+const selectBankText = 'Select bank';
+const enterTenDigitsAccNumberText = 'Enter 10 digit account number';
+const bankName = "Bank name";
+const accountNumber = 'Account Number';
+const skip = 'Skip';
+const dummyName = "Daniel Mason Ovie";
+const verifyBVN = "Verify BVN";
+const verificationMode = "Verification Mode";
+const bankVerificationNumber = "Bank verification number";
+const bvnNumber = "BVN Number";
+const enterBVN = "Enter BVN";
+const dialUSSDToSeeYourBVN = "dial *565*0# to see your BVN";
+const youHaveSuccessfullyChangedPWordLoginToAccount =
+    "You have successfully changed your password.\n"
+    "You can login back into your account";
+const successful = "Successful";
+const backToLogin = "Back to login";
+const selectCoin = 'Select coin';
+const assetsText = 'Assets';
+const currentRates = 'Current Rates';
+const ratesText = 'Rates';
+const notAvailable = "Not Available";
+const buyCoin = "Buy coin";
+const timeLeftToTransfer = "Time left to transfer";
+const statusText = 'Status';
+const pendingPayment = "Pending payment";
+const reference = "Reference";
+const paymentDetails = "Payment details";
+const nameOfMerchant = "Name of Merchant";
+const makeSureYouSentExactAmount = "Make sure you sent the exact amount";
+const recheckTransactionDetailsBeforeConfirming = "recheck transaction details before confirming";
+const cancelTrade = "Cancel trade";
+const transferred = "Transferred";
+const inProgress = "In progress";
+const yourOrderIsReceivedWillBeNotifiedWithin45Secs = "Your order has been received. "
+    "We will notify you when it's ready, usually within 45 seconds";
+const backToHome = "Back to home";
 // const welcomeTotampay = 'Welcome to tampay';
+//////////////////////////////////////////
 const addAnotherFee = 'Add another fee';
 const selectIDType = 'Select Identification Type';
 const addFeeText = 'Add Fee';
@@ -323,7 +363,7 @@ const tenantValidationOnMyPropertyWithtampayCode =
 const howToUse = 'How to use';
 const tokenUsed = "Tokens Used";
 const tokenRemaining = "Tokens Remaining";
-const statusText = 'Status';
+
 const reasonText = "Reason";
 const store = 'Store';
 const insuranceSrvce = 'Insurance Service';
@@ -335,10 +375,7 @@ const comingSoon = 'Coming Soon';
 const enquire = 'Enquire';
 const youMustHaveAVerifiedListing = 'You must have at least one landlord listing';
 const instructions = 'Instructions';
-const selectCoin = 'Select coin';
-const assetsText = 'Assets';
-const currentRates = 'Current Rates';
-const ratesText = 'Rates';
+
 const enterCodeGottenFromLandlordToAddProperty =
     ' 1. Enter code gotten from landlord to add property';
 const submitIdentificationDocument = ' 2. Next, submit identification documents';
@@ -357,10 +394,7 @@ const privacyPolicyText = 'Privacy policy';
 const helpCenterText = 'Help center';
 const logoutText = 'Logout';
 const addNewBankText = 'Add New Bank';
-const pleaseEnsureThatDetailsMatch =
-    'Please ensure that your bank account name matches your BVN name';
-const selectBankText = 'Select bank';
-const enterTenDigitsAccNumberText = 'Enter 10 digit account number';
+
 
 
 // const soraFont = 'Sora';

@@ -1,15 +1,11 @@
 // import 'dart:convert';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:tampay/model/response/user_banks_response.dart';
-
 // import 'package:tampay/model/response/local_response/user_banks_response.dart';
-
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:flutter/material.dart';
-
+import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
 
@@ -68,14 +64,14 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextView(
-                      text: 'Please ensure that your bank account name matches your BVN name',
+                      text: pleaseEnsureThatDetailsMatch,
                       fontSize: 14.spMin,
                       fontFamily: soraFont,
                       maxLines: 3,
                       textAlign: TextAlign.center,
                     ),
                     Gap(20.h),
-                    const TextView(text: "Bank name"),
+                    const TextView(text: bankName),
                     const Gap(10),
                     Container(
                       height: 50.h,
@@ -137,9 +133,9 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                       textColor: themeMode == ThemeMode.light
                           ? AppColors.kBlack4
                           : AppColors.kTextGray,
-                      fieldLabel: 'Account Number',
+                      fieldLabel: accountNumber,
                       // maxlength: 10,
-                      hint: accountNumberText,
+                      hint: enterTenDigitsAccNumberText,
                       keyboardType: TextInputType.number,
                       onChanged: (accountNumber) {
                         userProfileProvider.updateSaveBankButtonState();
@@ -179,7 +175,11 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                               ),
                           ],
                         )
-                        :     TextView(text: "Daniel Mason Ovie", color: AppColors.kDisabledButton, fontSize: 13.spMin,),
+                        : TextView(
+                            text: dummyName,
+                            color: AppColors.kDisabledButton,
+                            fontSize: 13.spMin,
+                          ),
                   ],
                 ),
               ),
@@ -201,7 +201,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                   DefaultButtonMain(
                     textColor: AppColors.kPrimary1,
                     color: AppColors.kTransparent,
-                    text: "Skip",
+                    text: skip,
                     onPressed: () {
                       navigateBack(context);
                       navigateBack(context);

@@ -45,9 +45,6 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
     super.initState();
   }
 
-
-
-
   // int profileProvider.currentIndex = 0;
   List<Widget> dashboardPages = [
     const HomeScreen(),

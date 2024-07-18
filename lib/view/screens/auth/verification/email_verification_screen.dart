@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -9,9 +8,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/auth/auth_success_screen.dart';
-import 'package:tampay/view/screens/auth/signin_forgot_password/create_new_password_screen.dart';
-import 'package:tampay/view/screens/auth/signup/verify_bvn_screen.dart';
+
 
 class EmailVerificationScreen extends ConsumerStatefulWidget {
   final String email;

@@ -1,15 +1,11 @@
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
-import 'package:tampay/src/screens.dart';
-import 'package:tampay/view_model/dashboard/buy_view_model.dart';
-
 import '../../../../src/utils.dart';
 
 class BuyCoinScreen extends ConsumerStatefulWidget {
@@ -75,7 +71,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
         context,
         backgroundColor: theme.scaffoldBackgroundColor,
         arrowBackColor: theme.primaryColor,
-        text: "Buy coin",
+        text: buyCoin,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -103,7 +99,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const TextView(
-                        text: "Time left to transfer",
+                        text: timeLeftToTransfer,
                         color: AppColors.kGrey300,
                       ),
                       SizedBox(
@@ -161,7 +157,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const TextView(
-                            text: "Status",
+                            text: statusText,
                             color: AppColors.kGrey300,
                           ),
                           Container(
@@ -174,7 +170,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                               color: AppColors.kVeryLightYellow,
                             ),
                             child: TextView(
-                              text: "Pending payment",
+                              text: pendingPayment,
                               fontSize: 10.spMin,
                               color: AppColors.kSunFlower,
                             ),
@@ -187,7 +183,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const TextView(
-                            text: "Reference",
+                            text: reference,
                             color: AppColors.kGrey400,
                           ),
                           Row(
@@ -223,7 +219,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextView(
-                      text: "Payment details",
+                      text: paymentDetails,
                       fontSize: 14.spMin,
                     ),
                     Gap(20.h),
@@ -232,7 +228,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const TextView(
-                          text: "Bank Name",
+                          text: bankName,
                           color: AppColors.kGrey400,
                         ),
                         Row(
@@ -263,7 +259,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const TextView(
-                          text: "Account Number",
+                          text: accountNumber,
                           color: AppColors.kGrey400,
                         ),
                         Row(
@@ -294,7 +290,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const TextView(
-                          text: "Name of Merchant",
+                          text: nameOfMerchant,
                           color: AppColors.kGrey400,
                         ),
                         Row(
@@ -382,13 +378,13 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                           ),
                           Gap(4.h),
                           TextView(
-                            text: "2. Make sure you sent the exact amount",
+                            text: "2. $makeSureYouSentExactAmount",
                             fontSize: 10.spMin,
                             color: AppColors.kMidnight950,
                           ),
                           Gap(4.h),
                           TextView(
-                            text: "3. recheck transaction details before confirming",
+                            text: "3. $recheckTransactionDetailsBeforeConfirming",
                             fontSize: 10.spMin,
                             color: AppColors.kMidnight950,
                           ),
@@ -421,7 +417,7 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
         children: [
           DefaultButtonMain(
             padding: EdgeInsets.symmetric(horizontal: 34.w),
-            text: "Cancel trade",
+            text: cancelTrade,
             borderColor: AppColors.kPrimary1,
             textColor: AppColors.kPrimary1,
             onPressed: () {
@@ -432,7 +428,7 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
           DefaultButtonMain(
             padding: EdgeInsets.symmetric(horizontal: 34.w),
             color: AppColors.kPrimary1,
-            text: "Transferred",
+            text: transferred,
             onPressed: () {
               showModalBottomSheet(
                   backgroundColor: Colors.transparent,
@@ -441,70 +437,83 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
                   builder: (context) {
                     return BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                      child: Container(
-                        height: 360.h,
-                        decoration: BoxDecoration(
-                          color: AppColors.kPrimaryDark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(
-                              12.r,
-                            ),
-                            topRight: Radius.circular(
-                              12.r,
-                            ),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 15.h,
-                            horizontal: 15.w,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(
-                                AppImages.inProgressLogo,
-                                width: 72.w,
-                                height: 72.h,
-                              ),
-                              Column(
-                                children: [
-                                  TextView(
-                                    text: "In progress",
-                                    fontSize: 16.spMin,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  Gap(10.h),
-                                  TextView(
-                                    textAlign: TextAlign.center,
-                                    maxLines: 3,
-                                    text: "Your order has been received. "
-                                        "We will notify you when it's ready, usually within 45 seconds",
-                                    fontSize: 12.spMin,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ],
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional.bottomEnd,
-                                child: DefaultButtonMain(
-                                  textColor: AppColors.kWhite,
-                                  color: AppColors.kPrimary1,
-                                  text: "Back to home",
-                                  onPressed: () {
-                                    dashboardProvider.setPageIndexToHome(context);
-                                  },
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+                      child: BuyCoinProgressPopUp(dashboardProvider: dashboardProvider),
                     );
                   });
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BuyCoinProgressPopUp extends StatelessWidget {
+  const BuyCoinProgressPopUp({
+    super.key,
+    required this.dashboardProvider,
+  });
+
+  final DashboardViewModel dashboardProvider;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 360.h,
+      decoration: BoxDecoration(
+        color: AppColors.kPrimaryDark,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(
+            12.r,
+          ),
+          topRight: Radius.circular(
+            12.r,
+          ),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: 15.h,
+          horizontal: 15.w,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset(
+              AppImages.inProgressLogo,
+              width: 72.w,
+              height: 72.h,
+            ),
+            Column(
+              children: [
+                TextView(
+                  text: inProgress,
+                  fontSize: 16.spMin,
+                  fontWeight: FontWeight.w600,
+                ),
+                Gap(10.h),
+                TextView(
+                  textAlign: TextAlign.center,
+                  maxLines: 3,
+                  text: yourOrderIsReceivedWillBeNotifiedWithin45Secs,
+                  fontSize: 12.spMin,
+                  fontWeight: FontWeight.w400,
+                ),
+              ],
+            ),
+            Align(
+              alignment: AlignmentDirectional.bottomEnd,
+              child: DefaultButtonMain(
+                textColor: AppColors.kWhite,
+                color: AppColors.kPrimary1,
+                text: backToHome,
+                onPressed: () {
+                  dashboardProvider.setPageIndexToHome(context);
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tampay/model/local/button_state.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-
 import '../../../../src/components.dart';
 
 class VerifyBVNScreen extends ConsumerStatefulWidget {
@@ -25,7 +23,7 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
       appBar: AppBars.mainAppBar(context,
           backgroundColor: theme.scaffoldBackgroundColor,
           arrowBackColor: theme.colorScheme.primary,
-          text: "Verify BVN"),
+          text: verifyBVN),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -39,19 +37,19 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomTextField(
-                    fieldLabel: "Verification Mode",
-                    hint: "Bank verification number",
+                    fieldLabel: verificationMode,
+                    hint: bankVerificationNumber,
                     readOnly: true,
                   ),
                   Gap(15.h),
                   CustomTextField(
-                    fieldLabel: "BVN Number",
-                    hint: "Enter BVN",
+                    fieldLabel: bvnNumber,
+                    hint: enterBVN,
                     controller: registerationProvider.bvnNumberController,
                     onChanged: (bvn) => registerationProvider.updateVerifyBVNButtonState(),
                   ),
                   TextView(
-                    text: "dial *565*0# to see your BVN",
+                    text: dialUSSDToSeeYourBVN,
                     color: AppColors.kGrey100,
                     fontSize: 13.spMin,
                   ),
@@ -72,7 +70,7 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
                   DefaultButtonMain(
                     textColor: AppColors.kPrimary1,
                     color: AppColors.kTransparent,
-                    text: "Skip",
+                    text: skip,
                     onPressed: () {
                       navigateBack(context);
                     },

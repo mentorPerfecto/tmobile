@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tampay/model/response/local_response/tpay_coin_response/crypto_coin_response.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/utils/util_functions.dart';
-import 'package:tampay/view/screens/dashboard/buy/enter_amount_screen.dart';
-import 'package:tampay/view_model/dashboard/buy_view_model.dart';
-
 import '../../../../src/components.dart';
 
 class BuySectionScreen extends ConsumerStatefulWidget {
@@ -35,7 +32,7 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
         context,
         backgroundColor: theme.scaffoldBackgroundColor,
         arrowBackColor: theme.primaryColor,
-        text: "Select coin",
+          text: selectCoin,
         callback: (){
           dashboardProvider.setPageIndexToHome(context);
         }
@@ -57,8 +54,8 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextView(text: "Assets"),
-                      TextView(text: 'Rates'),
+                      TextView(text: assetsText),
+                      TextView(text: ratesText),
                     ],
                   ),
                 ),
@@ -70,9 +67,9 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
                     itemCount: buySectionProvider.cryptoList.length,
                     itemBuilder: (context, index) {
                       CryptoCoinResponse aCryptoCoin = buySectionProvider.cryptoList[index];
-                      String cryptoName = aCryptoCoin.id?.name ?? "Not Available";
-                      String cryptoAcronym = aCryptoCoin.id?.acronym ?? "Not Available";
-                      String cryptoSymbol = aCryptoCoin.symbol ?? "Not Available";
+                      String cryptoName = aCryptoCoin.id?.name ?? notAvailable;
+                      String cryptoAcronym = aCryptoCoin.id?.acronym ?? notAvailable;
+                      String cryptoSymbol = aCryptoCoin.symbol ?? notAvailable;
 
                       return CryptoCoinView(
                         cryptoSymbol: cryptoSymbol,

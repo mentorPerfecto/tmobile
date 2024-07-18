@@ -61,7 +61,8 @@ class _FillBankDetailsScreenState extends ConsumerState<FillBankDetailsScreen> {
                     height: 20.h,
                   ),
                   const CustomTextField(
-                    fieldLabel: accountNumberText,
+                    // fieldLabel: accountNumberText,
+                    fieldLabel: '',
                     hint: enterTenDigitsAccNumberText,
                     keyboardType: TextInputType.number,
                   ),

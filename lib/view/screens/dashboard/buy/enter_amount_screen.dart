@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
-import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/dashboard/buy/buy_coin_screen.dart';
-import 'package:tampay/view_model/dashboard/buy_view_model.dart';
+import 'package:tampay/src/providers.dart';
 
 class EnterAmountScreen extends ConsumerStatefulWidget {
   EnterAmountScreen({

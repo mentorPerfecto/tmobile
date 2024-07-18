@@ -108,7 +108,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                         prefixIcon: Padding(
                           padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 8),
                           child: TextView(
-                            text: "+234",
+                            text: numberFormat,
                             color: Colors.white,
                             fontSize: 13.spMin,
                           ),

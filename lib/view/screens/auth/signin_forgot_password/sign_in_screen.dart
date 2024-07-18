@@ -138,7 +138,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                      }
                    },
                  ),
-                 Gap(15),
+                  const Gap(15),
                  youANewUser(theme, themeMode),
                ],
              )
