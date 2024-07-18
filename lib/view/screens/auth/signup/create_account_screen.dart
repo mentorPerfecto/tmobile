@@ -61,92 +61,95 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
           arrowBackColor: theme.colorScheme.primary,
           text: createAccount),
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 15.h,
-            horizontal: 20.w,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Form(
-                key: provider.registrationFormKey,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomTextField(
-                      fieldLabel: emailText,
-                      hint: hintEmail,
-                      controller: provider.registerEmailController,
-                      validator: (value) => Validators().validateEmail(value),
-                      //onChanged: (value)=> provider.updateButtonState(),
-                      onChanged: (p0) {
-                        provider.updateRegisterButtonState();
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomTextField(
-                      fieldLabel: userName,
-                      hint: hintUserName,
-                      controller: provider.userNameController,
-                      validator: (value) => Validators().validateEmptyTextField(value),
-                      onChanged: (p0) {
-                        provider.updateRegisterButtonState();
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomTextField(
-                      fieldLabel: phoneNumberText,
-                      hint: hintPhoneNumber,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 8),
-                        child: TextView( text: "+234", color: Colors.white, fontSize: 13.spMin,),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 15.h,
+              horizontal: 20.w,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Form(
+                  key: provider.registrationFormKey,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 10.h,
                       ),
-                      controller: provider.phoneNumberController,
-                      validator: (value) => Validators().validatePhoneNumber(value),
-                      onChanged: (p0) {
-                        provider.updateRegisterButtonState();
+                      CustomTextField(
+                        fieldLabel: emailText,
+                        hint: hintEmail,
+                        controller: provider.registerEmailController,
+                        validator: (value) => Validators().validateEmail(value),
+                        //onChanged: (value)=> provider.updateButtonState(),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CustomTextField(
+                        fieldLabel: userName,
+                        hint: hintUserName,
+                        controller: provider.userNameController,
+                        validator: (value) => Validators().validateEmptyTextField(value),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CustomTextField(
+                        fieldLabel: phoneNumberText,
+                        hint: hintPhoneNumber,
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 8),
+                          child: TextView(
+                            text: "+234",
+                            color: Colors.white,
+                            fontSize: 13.spMin,
+                          ),
+                        ),
+                        controller: provider.phoneNumberController,
+                        validator: (value) => Validators().validatePhoneNumber(value),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CustomTextField(
+                        borderWidth: 1.w,
+                        fieldLabel: enterReferralCode,
+                        hint: referralCode,
+                        controller: provider.refCodeController,
+                      ),
+                    ],
+                  ),
+                ),
+                Gap(200.h),
+                Column(
+                  children: [
+                    DefaultButtonMain(
+                      text: continueText,
+                      color: AppColors.kPrimary1,
+                      buttonState: provider.buttonRegisterState.buttonState,
+                      onPressed: () {
+                        provider.userRegistration(context);
                       },
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
-                    CustomTextField(
-                      borderWidth: 1.w,
-                      fieldLabel: enterReferralCode,
-                      hint: referralCode,
-                      controller: provider.refCodeController,
-                    ),
+                    alreadyHaveAnAccount(theme)
                   ],
-                ),
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              Column(
-                children: [
-                  DefaultButtonMain(
-                    text: continueText,
-                    color: AppColors.kPrimary1,
-                    buttonState: provider.buttonRegisterState.buttonState,
-                    onPressed: () {
-                      provider.userRegistration(context);
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  alreadyHaveAnAccount(theme)
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

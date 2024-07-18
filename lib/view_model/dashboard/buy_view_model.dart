@@ -17,6 +17,10 @@ import 'package:tampay/view/screens/dashboard/buy/buy_coin_screen.dart';
 final buyViewModel = ChangeNotifierProvider((ref) => BuyViewModel());
 
 class BuyViewModel extends ChangeNotifier {
+  bool _isGettingCoins = false;
+  bool _isGettingCoinsFailed = false;
+  bool get isGettingCoins => _isGettingCoins;
+  bool get isGettingCoinsFailed => _isGettingCoinsFailed;
   List<CryptoCoinResponse> _cryptoList = [];
   FocusNode paymentNode = FocusNode();
   FocusNode receipientNode = FocusNode();

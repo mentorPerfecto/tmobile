@@ -31,7 +31,6 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
     var buySectionProvider = ref.watch(buyViewModel);
     var dashboardProvider = ref.watch(dashboardViewModel);
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
         backgroundColor: theme.scaffoldBackgroundColor,
@@ -41,57 +40,61 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
           dashboardProvider.setPageIndexToHome(context);
         }
       ),
-      body: SafeArea(
-          child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                left: 15.0.w,
-                right: 15.0.w,
-                top: 25.h,
-              ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextView(text: "Assets"),
-                  TextView(text: 'Rates'),
-                ],
-              ),
-            ),
-            Gap(10.h),
-            const TampayDivider(),
-            ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: buySectionProvider.cryptoList.length,
-                itemBuilder: (context, index) {
-                  CryptoCoinResponse aCryptoCoin = buySectionProvider.cryptoList[index];
-                  String cryptoName = aCryptoCoin.id?.name ?? "Not Available";
-                  String cryptoAcronym = aCryptoCoin.id?.acronym ?? "Not Available";
-                  String cryptoSymbol = aCryptoCoin.symbol ?? "Not Available";
+      body: XResponsiveWrap.mobile(
+        onRefresh: () => buySectionProvider.getCryptoCoins(),
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 15.0.w,
+                    right: 15.0.w,
+                    top: 25.h,
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextView(text: "Assets"),
+                      TextView(text: 'Rates'),
+                    ],
+                  ),
+                ),
+                Gap(10.h),
+                const TampayDivider(),
+                ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: buySectionProvider.cryptoList.length,
+                    itemBuilder: (context, index) {
+                      CryptoCoinResponse aCryptoCoin = buySectionProvider.cryptoList[index];
+                      String cryptoName = aCryptoCoin.id?.name ?? "Not Available";
+                      String cryptoAcronym = aCryptoCoin.id?.acronym ?? "Not Available";
+                      String cryptoSymbol = aCryptoCoin.symbol ?? "Not Available";
 
-                  return CryptoCoinView(
-                    cryptoSymbol: cryptoSymbol,
-                    cryptoName: cryptoName,
-                    cryptoAcronym: cryptoAcronym,
-                    aCryptoCoin: aCryptoCoin,
-                    onPressed: () {
-                      navigatePush(
-                          context,
-                          EnterAmountScreen(
-                            cryptoName: cryptoName,
-                            cryptoAcronym: cryptoAcronym,
-                            ratePerCrypto: aCryptoCoin.rate ?? 1505,
-                          ));
-                    },
-                  );
-                })
-          ],
-        ),
-      )),
+                      return CryptoCoinView(
+                        cryptoSymbol: cryptoSymbol,
+                        cryptoName: cryptoName,
+                        cryptoAcronym: cryptoAcronym,
+                        aCryptoCoin: aCryptoCoin,
+                        onPressed: () {
+                          navigatePush(
+                              context,
+                              EnterAmountScreen(
+                                cryptoName: cryptoName,
+                                cryptoAcronym: cryptoAcronym,
+                                ratePerCrypto: aCryptoCoin.rate ?? 1505,
+                              ));
+                        },
+                      );
+                    })
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
