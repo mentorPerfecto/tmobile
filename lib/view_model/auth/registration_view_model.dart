@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/config/app_strings.dart';
@@ -7,14 +8,14 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/auth/signup/create_password_screen.dart';
 
-final registrationViewModel =
-    ChangeNotifierProvider((ref) => RegistrationViewModel());
+final registrationViewModel = ChangeNotifierProvider((ref) => RegistrationViewModel());
 
 class RegistrationViewModel extends ChangeNotifier {
   final authService = AuthBackend();
   final registrationFormKey = GlobalKey<FormState>();
   final registerationCreatePasswordFormKey = GlobalKey<FormState>();
 
+  final TextEditingController _bvnNumberController = TextEditingController();
   final TextEditingController _registerEmailController = TextEditingController();
   final TextEditingController _registerPwdController = TextEditingController();
   final TextEditingController _registerConfirmPwdController = TextEditingController();
@@ -34,21 +35,26 @@ class RegistrationViewModel extends ChangeNotifier {
     text: createAccount,
   );
 
+  CustomButtonState _verifyBVNButtonState = CustomButtonState(
+    buttonState: ButtonState.disabled,
+    text: verify,
+  );
+
   bool _obscurePasswordText = true;
   bool _obscureConfirmPwdText = true;
 
-
+  TextEditingController get bvnNumberController => _bvnNumberController;
   TextEditingController get registerEmailController => _registerEmailController;
   TextEditingController get registerPwdController => _registerPwdController;
   TextEditingController get userNameController => _userNameController;
   TextEditingController get phoneNumberController => _phoneNumberController;
-  TextEditingController get registerConfirmPwdController =>
-      _registerConfirmPwdController;
+  TextEditingController get registerConfirmPwdController => _registerConfirmPwdController;
   // TextEditingController get firstNameController => _firstNameController;
   // TextEditingController get lastNameController => _lastNameController;
   TextEditingController get refCodeController => _refCodeController;
   CustomButtonState get buttonRegisterState => _buttonRegisterState;
   CustomButtonState get buttonRegisterStateCreatePassword => _buttonRegisterStateCreatePassword;
+  CustomButtonState get verifyBVNButtonState => _verifyBVNButtonState;
   bool get obscurePasswordText => _obscurePasswordText;
 
   bool get obscureConfirmPwdText => _obscureConfirmPwdText;
@@ -65,16 +71,36 @@ class RegistrationViewModel extends ChangeNotifier {
 
   void updateRegisterButtonState() {
     if (
-    // _firstNameController.text.isNotEmpty &
-    //     _lastNameController.text.isNotEmpty &
+        // _firstNameController.text.isNotEmpty &
+        //     _lastNameController.text.isNotEmpty &
         _registerEmailController.text.isNotEmpty &
-        _userNameController.text.isNotEmpty &
-        _phoneNumberController.text.isNotEmpty) {
+            _userNameController.text.isNotEmpty &
+            _phoneNumberController.text.isNotEmpty) {
       _buttonRegisterState = CustomButtonState(
         buttonState: ButtonState.idle,
         text: continueText,
       );
-    } 
+    } else {
+      _buttonRegisterState = CustomButtonState(
+        buttonState: ButtonState.disabled,
+        text: continueText,
+      );
+    }
+    notifyListeners();
+  }
+
+  void updateVerifyBVNButtonState() {
+    if (_bvnNumberController.text.isNotEmpty) {
+      _verifyBVNButtonState = CustomButtonState(
+        buttonState: ButtonState.idle,
+        text: verify,
+      );
+    } else {
+      _verifyBVNButtonState = CustomButtonState(
+        buttonState: ButtonState.disabled,
+        text: verify,
+      );
+    }
     notifyListeners();
   }
 
@@ -84,7 +110,12 @@ class RegistrationViewModel extends ChangeNotifier {
         buttonState: ButtonState.idle,
         text: createAccount,
       );
-    } 
+    } else {
+      _buttonRegisterStateCreatePassword = CustomButtonState(
+        buttonState: ButtonState.disabled,
+        text: createAccount,
+      );
+    }
     notifyListeners();
   }
 

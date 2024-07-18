@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tampay/model/local/button_state.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 
@@ -17,6 +19,7 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    var registerationProvider = ref.watch(registrationViewModel);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(context,
@@ -41,7 +44,12 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
                     readOnly: true,
                   ),
                   Gap(15.h),
-                  const CustomTextField(fieldLabel: "BVN"),
+                  CustomTextField(
+                    fieldLabel: "BVN Number",
+                    hint: "Enter BVN",
+                    controller: registerationProvider.bvnNumberController,
+                    onChanged: (bvn) => registerationProvider.updateVerifyBVNButtonState(),
+                  ),
                   TextView(
                     text: "dial *565*0# to see your BVN",
                     color: AppColors.kGrey100,
@@ -54,7 +62,8 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
                   DefaultButtonMain(
                     textColor: AppColors.kWhite,
                     color: AppColors.kPrimary1,
-                    text: "Verify",
+                    text: registerationProvider.verifyBVNButtonState.text,
+                    buttonState: registerationProvider.verifyBVNButtonState.buttonState,
                     onPressed: () {
                       navigatePush(context, const AddBankDetailsScreen());
                     },

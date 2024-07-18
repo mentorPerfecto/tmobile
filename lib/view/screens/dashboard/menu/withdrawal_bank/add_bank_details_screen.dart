@@ -96,12 +96,10 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton<String>(
                           isExpanded: true,
-                          hint: Text(
+                          hint: const Text(
                             bankNameText,
                             style: TextStyle(
-                              color: themeMode == ThemeMode.light
-                                  ? AppColors.kBlack4
-                                  : AppColors.kTextGray,
+                              color: AppColors.kWhite,
                             ),
                           ),
                           value: userProfileProvider.bankName,

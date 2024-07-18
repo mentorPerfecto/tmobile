@@ -51,6 +51,9 @@ const dollarSign = r'$';
 const bitcoin = 'Bitcoin';
 const youWantToBuy = 'You want to buy';
 const addBank = 'Add Bank';
+const verify = 'Verify';
+const accountNumberText = 'Enter 10 digit account number';
+const bankNameText = 'Select bank';
 // const welcomeTotampay = 'Welcome to tampay';
 const addAnotherFee = 'Add another fee';
 const selectIDType = 'Select Identification Type';
@@ -74,7 +77,7 @@ const withdrawText = 'Withdraw';
 const about = 'About';
 const logOut = 'Logout';
 const credit = "credit";
-const bankNameText = 'Bank Name';
+
 const accountNameNotFound = "no account name found";
 const personalInformation = 'Personal Information';
 const phoneNumberText = 'Phone number';
@@ -118,7 +121,7 @@ const setYourPrice = 'Set Your Price';
 const enterPriceForProperty = 'Enter price to be paid for your property';
 const enterFeesForProperty = 'Enter fees to be paid for your property';
 const addPhotos = "Add Photos";
-const accountNumberText = 'Account Number';
+
 const accountNameText = 'Account Name';
 const referralCode = 'Referral Code (optional)';
 const accountDetails = 'Please enter your details to create an account';
@@ -354,7 +357,8 @@ const privacyPolicyText = 'Privacy policy';
 const helpCenterText = 'Help center';
 const logoutText = 'Logout';
 const addNewBankText = 'Add New Bank';
-const pleaseEnsureThatDetailsMatch = 'Please ensure that your bank account name matches your BVN name';
+const pleaseEnsureThatDetailsMatch =
+    'Please ensure that your bank account name matches your BVN name';
 const selectBankText = 'Select bank';
 const enterTenDigitsAccNumberText = 'Enter 10 digit account number';
 
