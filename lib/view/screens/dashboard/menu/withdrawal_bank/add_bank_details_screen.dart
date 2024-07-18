@@ -48,7 +48,8 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
         context,
         backgroundColor: theme.scaffoldBackgroundColor,
         arrowBackColor: theme.colorScheme.primary,
-        text: addBankDetails, isVisible: false
+          text: addBank,
+          isVisible: false
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(

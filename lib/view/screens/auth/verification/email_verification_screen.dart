@@ -11,6 +11,7 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/auth/auth_success_screen.dart';
 import 'package:tampay/view/screens/auth/signin_forgot_password/create_new_password_screen.dart';
+import 'package:tampay/view/screens/auth/signup/verify_bvn_screen.dart';
 
 class EmailVerificationScreen extends ConsumerStatefulWidget {
   final String email;
@@ -199,7 +200,9 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                         widget.isSignIn ? AuthSuccessScreen(
                                 infoText: widget.isSignIn ? welcomeBack : successfulAccountCreation,
                           newPage: const DashBoardScreen(),
-                        ) : const DashBoardScreen(isSignUp:  true,),);
+                                )
+                              : VerifyBVNScreen(),
+                    );
                   }
                 },
               ),
