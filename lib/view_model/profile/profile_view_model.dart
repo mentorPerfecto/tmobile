@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:rebirth/rebirth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tampay/src/components.dart';
@@ -19,19 +20,39 @@ import 'package:tampay/src/utils.dart';
 final profileViewModel = ChangeNotifierProvider((ref) => ProfileViewModel());
 
 class ProfileViewModel extends ChangeNotifier {
-  TextEditingController _verifyDOBController = TextEditingController();
+  final TextEditingController _verifyDOBController = TextEditingController();
   CustomButtonState _verifyDOBButtonState =
       CustomButtonState(buttonState: ButtonState.disabled, text: continueText);
-  TextEditingController _bvnNumberController = TextEditingController();
+  final TextEditingController _bvnNumberController = TextEditingController();
   CustomButtonState _verifyBVNButtonState =
       CustomButtonState(buttonState: ButtonState.disabled, text: verify);
   TextEditingController get bvnNumberController => _bvnNumberController;
+  TextEditingController get verifyDOBController => _verifyDOBController;
+  CustomButtonState get verifyDOBButtonState => _verifyDOBButtonState;
   CustomButtonState get verifyBVNButtonState => _verifyBVNButtonState;
+  
+  void updateSelectedDate(DateTime? picked) {
+    DummyData.userDateOfBirth = picked;
+    if (DummyData.userDateOfBirth != null) {
+      _verifyDOBController.text = DateFormat('dd/MM/yyyy').format(DummyData.userDateOfBirth!);
+    }
+    notifyListeners();
+    //TODO: Store the DummyDate.userDateOfBirth locally using shared preferences.
+  }
   void updateVerifyBVNButtonState() {
     if (_bvnNumberController.text.isNotEmpty) {
       _verifyBVNButtonState = CustomButtonState(buttonState: ButtonState.idle, text: verify);
     } else {
       _verifyBVNButtonState = CustomButtonState(buttonState: ButtonState.disabled, text: verify);
+    }
+    notifyListeners();
+  }
+  void updateVerifyDOBButtonState() {
+    if (_verifyDOBController.text.isNotEmpty) {
+      _verifyDOBButtonState = CustomButtonState(buttonState: ButtonState.idle, text: continueText);
+    } else {
+      _verifyDOBButtonState =
+          CustomButtonState(buttonState: ButtonState.disabled, text: continueText);
     }
     notifyListeners();
   }

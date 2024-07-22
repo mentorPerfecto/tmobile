@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
@@ -10,7 +11,7 @@ import 'package:tampay/src/utils.dart';
 
 class DateOfBirthVerificationScreen extends ConsumerWidget {
   DateOfBirthVerificationScreen({Key? key}) : super(key: key);
-  final _dobFormKey = GlobalKey<FormState>();
+  
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,14 +37,19 @@ class DateOfBirthVerificationScreen extends ConsumerWidget {
                 CustomTextField(
                   fieldLabel: dateOfBirth,
                   hint: dateOfBirthFormat,
-                  // controller: provider.userNameController,
-                  // validator: (value) => Validators().validateEmptyTextField(value),
-                  // onChanged: (p0) {
-                  //   provider.updateRegisterButtonState();
-                  // },
+                  controller: profileProvider.verifyDOBController,
+                  onTap: () async {
+                    FocusScope.of(context)
+                        .requestFocus(FocusNode()); // To prevent keyboard from appearing
+                    await _selectDate(context, profileProvider);
+                  },
+                  onChanged: (dob) => profileProvider.updateVerifyDOBButtonState(),
+
                 ),
                 DefaultButtonMain(
                   color: AppColors.kPrimary1,
+                  buttonState: profileProvider.verifyDOBButtonState.buttonState,
+                  text: profileProvider.verifyDOBButtonState.text,
                   onPressed: () {
                     navigatePush(context, BVNVerificationScreen());
                   },
@@ -52,5 +58,16 @@ class DateOfBirthVerificationScreen extends ConsumerWidget {
             ),
           ),
         ));
+        
   }
+  Future<void> _selectDate(BuildContext context, ProfileViewModel profileProvider) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DummyData.userDateOfBirth ?? DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+    profileProvider.updateSelectedDate(picked);
+  }
+ 
 }

@@ -10,6 +10,7 @@ class DummyData {
   static bool isDarkTheme = false;
   static String? accessToken = "";
   static String? coinValue = '';
+  static DateTime? userDateOfBirth;
   // static bool isLoggedIn = false;
   static String? city;
   static String state = "";
