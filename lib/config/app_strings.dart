@@ -93,6 +93,16 @@ const inProgress = "In progress";
 const yourOrderIsReceivedWillBeNotifiedWithin45Secs = "Your order has been received. "
     "We will notify you when it's ready, usually within 45 seconds";
 const backToHome = "Back to home";
+const verifyAccount = 'Verify account';
+const verifyAccountTextInCaps = "Verify Account";
+const unVerified = 'Unverified';
+const verified = 'Verified';
+const level2 = "Level 2";
+const level1 = "Level 1";
+const emailText = 'Email';
+const phoneNumberText = 'Phone number';
+const dateOfBirth = "Date of Birth";
+const bvnNumberText = "Bank Verification Number (BVN)";
 // const welcomeTotampay = 'Welcome to tampay';
 //////////////////////////////////////////
 const addAnotherFee = 'Add another fee';
@@ -120,7 +130,7 @@ const credit = "credit";
 
 const accountNameNotFound = "no account name found";
 const personalInformation = 'Personal Information';
-const phoneNumberText = 'Phone number';
+
 const tampayTenantIdHeading = 'Unique tampay Tenant\'s ID';
 const uniqueIDText = 'Unique ID: ';
 const updateChanges = "Update Changes";
@@ -134,10 +144,9 @@ final enterEmailCodeForEmailVerification =
     'Enter code sent to $userEmail to verify your email address';
 final enterEmailCodeStart = 'Enter code sent to $userEmail to reset password';
 
-const verified = 'Verified';
 const verifiedListing = 'Verified Listing';
 const exVerified = 'Extended Verification';
-const unVerified = 'Unverified';
+
 const unVerifiedListing = 'Unverified Listing';
 const available = 'Available';
 const unAvailable = 'Unavailable';
@@ -208,7 +217,6 @@ const balance = 'Balance';
 const totalPayout = 'total payout (USD)';
 const firstNameText = 'First Name';
 const lastNameText = 'Last Name';
-const emailText = 'Email';
 
 const oldPassword = 'Old Password';
 const enterPwd = 'Enter your password';
@@ -386,7 +394,7 @@ const sellBitcoin = 'Sell Bitcoin';
 const addAnotherBankText = 'add another bank';
 const scanToReceive = 'Scan to receive Bitcoin';
 const iHaveDeposited = 'I’ve deposited';
-const verifyAccount = 'Verify account';
+
 const bankDetails = 'Bank details';
 const securityText = 'Security';
 const faqText = 'FAQs';

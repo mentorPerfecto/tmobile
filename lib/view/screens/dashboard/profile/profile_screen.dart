@@ -5,12 +5,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
+import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/components/invite_friend_card.dart';
-import 'package:tampay/view/screens/dashboard/profile/bank_details/add_bank_screen.dart';
-import 'package:tampay/view_model/profile/profile_view_model.dart';
-import 'package:tampay/view_model/theme_view_model.dart';
+
+
+
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
@@ -91,7 +91,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               title: verifyAccount,
               iconPath: AppImages.verifyAccountIcon,
               onTap: () {
-                // navigatePush(context, const InviteFriendScreen());
+                navigatePush(context, const VerifyAccountLevelScreen());
               },
             ),
             singleProfileOptions(
@@ -255,18 +255,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             ),
             Row(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
-                  decoration: BoxDecoration(
-                      color: const Color(0xFFCCFCD1),
-                      borderRadius: BorderRadius.circular(4.r)),
-                  child: Center(
-                    child: TextView(
-                      text: 'Level 2',
-                      fontSize: 10.spMin,
-                      color: const Color(0xFF009A47),
-                    ),
-                  ),
+                const VerificationTextButton(
+                  isProfileScreen: true,
                 ),
                 SizedBox(width: 25.w,),
                 Icon(
@@ -288,6 +278,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     );
   }
 }
+
 
 class UserAccountDetails extends ConsumerWidget {
   const UserAccountDetails(

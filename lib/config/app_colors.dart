@@ -26,6 +26,7 @@ class AppColors {
   static const kGrey400 = Color(0xff98A2B3);
   static const kFloralWhite = Color(0xffFFF8EB);
   static const kMidnight950 = Color(0xff060B29);
+  static const kGrey700 = Color(0xff344054);
 //
   static const kWhite = Color(0xFFFFFFFF);
   static const kLightModebackground = Color(0xFFFFFFFF);
