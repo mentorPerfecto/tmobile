@@ -50,10 +50,7 @@ class ProfileViewModel extends ChangeNotifier {
   void updateVerifyDOBButtonState() {
     if (_verifyDOBController.text.isNotEmpty) {
       _verifyDOBButtonState = CustomButtonState(buttonState: ButtonState.idle, text: continueText);
-    } else {
-      _verifyDOBButtonState =
-          CustomButtonState(buttonState: ButtonState.disabled, text: continueText);
-    }
+    } 
     notifyListeners();
   }
 

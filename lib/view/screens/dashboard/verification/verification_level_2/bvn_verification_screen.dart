@@ -46,6 +46,7 @@ class BVNVerificationScreen extends ConsumerWidget {
                   Form(
                     key: _bvnFormKey,
                     child: CustomTextField(
+                      keyboardType: TextInputType.number,
                       fieldLabel: bvnNumber,
                       hint: enterBVN,
                       controller: profileProvider.bvnNumberController,
@@ -79,7 +80,7 @@ class BVNVerificationScreen extends ConsumerWidget {
                             child: TPayDefaultProgressStatusPopUp(
                               progressStatusLogo: AppImages.inProgressLogo,
                               progressStatusTextTitle: inProgress,
-                              progressStatusTextBody: yourOrderIsReceivedWillBeNotifiedWithin45Secs,
+                              progressStatusTextBody: yourAccountVerificationIsUnderReview,
                               action: DefaultButtonMain(
                                 textColor: AppColors.kWhite,
                                 color: AppColors.kPrimary1,

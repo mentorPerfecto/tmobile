@@ -32,7 +32,7 @@ class DateOfBirthVerificationScreen extends ConsumerWidget {
               vertical: 15.h,
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomTextField(
                   fieldLabel: dateOfBirth,
@@ -42,8 +42,9 @@ class DateOfBirthVerificationScreen extends ConsumerWidget {
                     FocusScope.of(context)
                         .requestFocus(FocusNode()); // To prevent keyboard from appearing
                     await _selectDate(context, profileProvider);
+                    profileProvider.updateVerifyDOBButtonState();
                   },
-                  onChanged: (dob) => profileProvider.updateVerifyDOBButtonState(),
+                  
 
                 ),
                 DefaultButtonMain(
