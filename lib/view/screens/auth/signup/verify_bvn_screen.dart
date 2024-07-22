@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
@@ -18,6 +19,7 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     var registerationProvider = ref.watch(registrationViewModel);
+    var userProfileProvider = ref.watch(profileViewModel);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(context,
@@ -48,9 +50,33 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
                     controller: registerationProvider.bvnNumberController,
                     onChanged: (bvn) => registerationProvider.updateVerifyBVNButtonState(),
                   ),
-                  TextView(
-                    text: dialUSSDToSeeYourBVN,
-                    color: AppColors.kGrey100,
+                  userProfileProvider.isLoadingVerifiedBanks
+                      ? Column(
+                    children: [
+                      Gap(10.h),
+                      Container(
+                        // color: Colors.red,
+                        // height: 50.h,
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          height: 70,
+                          width: 70,
+                          child: LoadingIndicator(
+                            indicatorType: Indicator.ballGridPulse,
+                            colors: const [
+                              AppColors.kPrimary2,
+                            ],
+                            strokeWidth: 2,
+                            backgroundColor: theme.scaffoldBackgroundColor,
+                            pathBackgroundColor: theme.colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                      : TextView(
+                    text: dummyName,
+                    color: AppColors.kDisabledButton,
                     fontSize: 13.spMin,
                   ),
                 ],
@@ -72,7 +98,7 @@ class _VerifyBVNScreenState extends ConsumerState<VerifyBVNScreen> {
                     color: AppColors.kTransparent,
                     text: skip,
                     onPressed: () {
-                      navigateBack(context);
+                      navigateReplace(context, DashBoardScreen());
                     },
                   ),
                 ],

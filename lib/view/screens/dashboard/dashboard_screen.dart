@@ -15,9 +15,8 @@ import 'package:tampay/view/screens/dashboard/sell/sell_screen.dart';
 
 class DashBoardScreen extends ConsumerStatefulWidget {
   final int? setIndex;
-  final bool isSignUp;
 
-  const DashBoardScreen({super.key, this.setIndex,  this.isSignUp = false});
+  const DashBoardScreen({super.key, this.setIndex, });
 
   @override
   ConsumerState<DashBoardScreen> createState() => _DashBoardScreenState();

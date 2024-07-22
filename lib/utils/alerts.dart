@@ -1403,7 +1403,7 @@ addBankBottomModalSheetWidget(BuildContext context, {Widget? widget}) {
     context: context,
     isScrollControlled: false,
     builder: (context) {
-      return AddBankBottomModalSheet();
+      return const AddBankBottomModalSheet();
     },
   );
 }
@@ -1420,7 +1420,7 @@ sellCoinBottomModalSheetWidget(BuildContext context, {Widget? widget}) {
     context: context,
     isScrollControlled: true,
     builder: (context) {
-      return SellCoinBottomModalSheetContent();
+      return const SellCoinBottomModalSheetContent();
     },
   );
 }
@@ -1483,7 +1483,7 @@ class _AddBankBottomModalSheetState
                     onTap: () {
                       navigateBack(context);
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.cancel_outlined,
                       color: AppColors.kWhite,
                     ),
@@ -1581,7 +1581,7 @@ class _AddBankBottomModalSheetState
                     accNo: '8107143027',
                     bankName: 'Opay'),
               ),
-              TampayDivider(),
+              const TampayDivider(),
             ],
           ),
         );
@@ -1656,9 +1656,9 @@ class _SellCoinBottomModalSheetContentState
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              height: 20.h,
-            ),
+            // SizedBox(
+            //   height: 20.h,
+            // ),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 18.w,
@@ -1686,7 +1686,7 @@ class _SellCoinBottomModalSheetContentState
                         onTap: () {
                           navigateBack(context);
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.cancel_outlined,
                           color: AppColors.kWhite,
                         ),
@@ -1914,7 +1914,7 @@ bankAddedSuccessfulBottomModalSheetWidget(
     context: context,
     isScrollControlled: true,
     builder: (context) {
-      return BankAddedSuccessfulBottomModalSheetContent();
+      return const BankAddedSuccessfulBottomModalSheetContent();
     },
   );
 }
@@ -1986,7 +1986,7 @@ class _BankAddedSuccessfulBottomModalSheetContentState
               SizedBox(
                 height: 62.h,
               ),
-              Align(
+              const Align(
                 alignment: AlignmentDirectional.bottomEnd,
                 child: DefaultButtonMain(
                   textColor: AppColors.kWhite,

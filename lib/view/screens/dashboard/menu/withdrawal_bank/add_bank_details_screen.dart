@@ -7,6 +7,7 @@ import 'package:tampay/src/config.dart';
 import 'package:flutter/material.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 
 class AddBankDetailsScreen extends ConsumerStatefulWidget {
@@ -203,8 +204,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                     color: AppColors.kTransparent,
                     text: skip,
                     onPressed: () {
-                      navigateBack(context);
-                      navigateBack(context);
+                      navigateReplace(context, DashBoardScreen());
                     },
                   ),
                 ],
