@@ -103,6 +103,8 @@ const emailText = 'Email';
 const phoneNumberText = 'Phone number';
 const dateOfBirth = "Date of Birth";
 const bvnNumberText = "Bank Verification Number (BVN)";
+const dateOfBirthFormat = "DD/MM/YY";
+const verificationDocument = "Verification Document";
 // const welcomeTotampay = 'Welcome to tampay';
 //////////////////////////////////////////
 const addAnotherFee = 'Add another fee';

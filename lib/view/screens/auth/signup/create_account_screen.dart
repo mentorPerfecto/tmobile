@@ -48,7 +48,6 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     var provider = ref.watch(registrationViewModel);

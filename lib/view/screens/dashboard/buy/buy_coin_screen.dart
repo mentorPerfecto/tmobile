@@ -6,6 +6,7 @@ import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/view/components/tpay_default_pop_up.dart';
 import '../../../../src/utils.dart';
 
 class BuyCoinScreen extends ConsumerStatefulWidget {
@@ -437,7 +438,19 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
                   builder: (context) {
                     return BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                      child: BuyCoinProgressPopUp(dashboardProvider: dashboardProvider),
+                      child: TPayDefaultProgressStatusPopUp(
+                        progressStatusLogo: AppImages.inProgressLogo,
+                        progressStatusTextTitle: inProgress,
+                        progressStatusTextBody: yourOrderIsReceivedWillBeNotifiedWithin45Secs,
+                        action: DefaultButtonMain(
+                          textColor: AppColors.kWhite,
+                          color: AppColors.kPrimary1,
+                          text: backToHome,
+                          onPressed: () {
+                            dashboardProvider.setPageIndexToHome(context);
+                          },
+                        ),
+                      ),
                     );
                   });
             },
@@ -448,76 +461,7 @@ class BuyCoinScreenBottomActions extends ConsumerWidget {
   }
 }
 
-class BuyCoinProgressPopUp extends StatelessWidget {
-  const BuyCoinProgressPopUp({
-    super.key,
-    required this.dashboardProvider,
-  });
 
-  final DashboardViewModel dashboardProvider;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 360.h,
-      decoration: BoxDecoration(
-        color: AppColors.kPrimaryDark,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(
-            12.r,
-          ),
-          topRight: Radius.circular(
-            12.r,
-          ),
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 15.h,
-          horizontal: 15.w,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset(
-              AppImages.inProgressLogo,
-              width: 72.w,
-              height: 72.h,
-            ),
-            Column(
-              children: [
-                TextView(
-                  text: inProgress,
-                  fontSize: 16.spMin,
-                  fontWeight: FontWeight.w600,
-                ),
-                Gap(10.h),
-                TextView(
-                  textAlign: TextAlign.center,
-                  maxLines: 3,
-                  text: yourOrderIsReceivedWillBeNotifiedWithin45Secs,
-                  fontSize: 12.spMin,
-                  fontWeight: FontWeight.w400,
-                ),
-              ],
-            ),
-            Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child: DefaultButtonMain(
-                textColor: AppColors.kWhite,
-                color: AppColors.kPrimary1,
-                text: backToHome,
-                onPressed: () {
-                  dashboardProvider.setPageIndexToHome(context);
-                },
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class BuyCoinScreenItems extends StatelessWidget {
   const BuyCoinScreenItems({

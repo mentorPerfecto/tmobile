@@ -19,6 +19,24 @@ import 'package:tampay/src/utils.dart';
 final profileViewModel = ChangeNotifierProvider((ref) => ProfileViewModel());
 
 class ProfileViewModel extends ChangeNotifier {
+  TextEditingController _verifyDOBController = TextEditingController();
+  CustomButtonState _verifyDOBButtonState =
+      CustomButtonState(buttonState: ButtonState.disabled, text: continueText);
+  TextEditingController _bvnNumberController = TextEditingController();
+  CustomButtonState _verifyBVNButtonState =
+      CustomButtonState(buttonState: ButtonState.disabled, text: verify);
+  TextEditingController get bvnNumberController => _bvnNumberController;
+  CustomButtonState get verifyBVNButtonState => _verifyBVNButtonState;
+  void updateVerifyBVNButtonState() {
+    if (_bvnNumberController.text.isNotEmpty) {
+      _verifyBVNButtonState = CustomButtonState(buttonState: ButtonState.idle, text: verify);
+    } else {
+      _verifyBVNButtonState = CustomButtonState(buttonState: ButtonState.disabled, text: verify);
+    }
+    notifyListeners();
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   final profileService = ProfileBackend();
   final banksService = BankBackend();
 
@@ -904,19 +922,19 @@ class ProfileViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  String getInitials(String name) {
-    List<String> nameParts = name.split(' ');
-    String initials = '';
-    for (String part in nameParts) {
-      initials += part[0];
-    }
-    return initials.toUpperCase();
-  }
-
-  // String getInitialsBasedOnName({required String firstName, required String lastName}) {
+  // String getInitials(String name) {
+  //   List<String> nameParts = name.split(' ');
   //   String initials = '';
-  //   return initials += firstName[0] + lastName[0];
+  //   for (String part in nameParts) {
+  //     initials += part[0];
+  //   }
+  //   return initials.toUpperCase();
   // }
+
+  String getInitials({required String firstName, required String lastName}) {
+    String initials = '';
+    return initials += firstName[0] + lastName[0].toUpperCase();
+  }
 
   TextEditingController get nextOfKinLastNameController => _nextOfKinLastNameController;
 

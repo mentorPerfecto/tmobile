@@ -23,3 +23,4 @@ export 'package:tampay/view/components/coin_list_view.dart';
 export 'package:tampay/view/components/invite_friend_card.dart';
 export 'package:tampay/view/components/verification_text_button.dart';
 export 'package:tampay/view/components/bullet_list.dart';
+export 'package:tampay/view/components/tpay_default_pop_up.dart';

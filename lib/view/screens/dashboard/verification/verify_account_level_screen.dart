@@ -33,7 +33,7 @@ class VerifyAccountLevelScreen extends ConsumerWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    navigatePush(context, const DateOfBirthVerificationScreen());
+                    navigatePush(context, DateOfBirthVerificationScreen());
                   },
                   child: VerificationLevel(
                     level2VerificationDetails: _level2VerificationDetails,

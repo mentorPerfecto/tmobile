@@ -93,7 +93,8 @@ class ProfileImage extends ConsumerWidget {
                       child: Center(
                           child: TextView(
                         text: profileProvider.getInitials(
-                            '${DummyData.firstName} ${DummyData.lastName}'),
+                            firstName: DummyData.firstName ?? "",
+                            lastName: DummyData.lastName ?? ""),
                         color: Colors.white,
                         fontSize: fontSize,
                       )),

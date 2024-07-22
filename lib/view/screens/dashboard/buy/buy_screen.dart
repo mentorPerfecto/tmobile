@@ -15,13 +15,12 @@ class BuySectionScreen extends ConsumerStatefulWidget {
 }
 
 class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
+  
   @override
-  void didChangeDependencies() {
-    ref.watch(buyViewModel).getCryptoCoins();
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
+    ref.read(buyViewModel).getCryptoCoins();
   }
-
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
