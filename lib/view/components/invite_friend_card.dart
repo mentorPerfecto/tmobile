@@ -6,8 +6,13 @@ import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 
 class InviteFriendCard extends ConsumerStatefulWidget {
-  const InviteFriendCard({super.key});
-
+  const InviteFriendCard({
+    super.key,
+    this.title,
+    this.subText,
+  });
+  final String? title;
+  final String? subText;
   @override
   ConsumerState<InviteFriendCard> createState() => _InviteFriendCardState();
 }
@@ -19,14 +24,13 @@ class _InviteFriendCardState extends ConsumerState<InviteFriendCard> {
       onTap: () {},
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 13.h),
-        decoration: BoxDecoration(
-            color: AppColors.kPurple,
-            borderRadius: BorderRadius.circular(12.r)),
+        decoration:
+            BoxDecoration(color: AppColors.kPurple, borderRadius: BorderRadius.circular(12.r)),
         child: Row(
           children: [
             ImageView.asset(
               AppImages.inviteYourFriendsLogo,
-              width: 28.5.w,
+              width: 38.w,
             ),
             SizedBox(
               width: 8.w,
@@ -35,15 +39,15 @@ class _InviteFriendCardState extends ConsumerState<InviteFriendCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextView(
-                    text: inviteYourFriendsText,
+                  TextView(
+                    text: widget.title ?? inviteYourFriendsText,
                     fontWeight: FontWeight.w600,
                   ),
                   SizedBox(
                     height: 3.w,
                   ),
                   TextView(
-                    text: inviteYourFriendsInfo,
+                    text: widget.subText ?? inviteYourFriendsInfo,
                     fontWeight: FontWeight.w400,
                     fontSize: 10.spMin,
                     maxLines: 3,

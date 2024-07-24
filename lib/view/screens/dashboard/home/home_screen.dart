@@ -8,6 +8,7 @@ import 'package:tampay/src/utils.dart';
 import 'package:tampay/utils/enums.dart';
 
 
+
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -44,9 +45,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
         actions: [
-          ImageView.asset(
-            AppImages.referActionLogo,
-            width: 20.w,
+          GestureDetector(
+            onTap: () => navigatePush(context, ReferAndEarnScreen()),
+            child: ImageView.asset(
+              AppImages.referActionLogo,
+              width: 20.w,
+            ),
           ),
           SizedBox(
             width: 12.w,
