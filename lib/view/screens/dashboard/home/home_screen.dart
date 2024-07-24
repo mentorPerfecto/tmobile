@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/src/screens.dart';
+import 'package:tampay/src/utils.dart';
 import 'package:tampay/utils/enums.dart';
 
 
@@ -29,8 +31,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.didChangeDependencies();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     double screenWidth = 360.w;
@@ -42,14 +42,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-
         surfaceTintColor: Colors.transparent,
         actions: [
-          ImageView.asset(AppImages.referActionLogo, width: 20.w,),
-          SizedBox(width: 12.w,),
+          ImageView.asset(
+            AppImages.referActionLogo,
+            width: 20.w,
+          ),
+          SizedBox(
+            width: 12.w,
+          ),
           Padding(
-            padding:  EdgeInsets.only(right: 18.w),
-            child: ImageView.asset(AppImages.notificationLogo, width: 20.w,),
+            padding: EdgeInsets.only(right: 18.w),
+            child: GestureDetector(
+                onTap: () {
+                  navigatePush(context, NotificationScreen());
+                },
+                child: ImageView.asset(
+                  AppImages.notificationLogo,
+                  width: 20.w,
+                )),
           ),
         ],
         backgroundColor: theme.scaffoldBackgroundColor,
@@ -89,8 +100,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               children: [
                 Gap(10.h),
                 AccountBalanceContainer(
-                  role: int.parse(
-                      profileProvider.profileData?.role.toString() ?? '1'),
+                  role: int.parse(profileProvider.profileData?.role.toString() ?? '1'),
                   actionText:
                       //  int.parse(profileProvider.profileData!.role.toString()) == 2 ?
                       fundAccount,
@@ -142,7 +152,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 imageUrl: AppImages.btcLogo,
                 coinPrice: 'NGN2,806/\$',
                 coinName: 'Bitcoin',
-                coinTicker: 'BTC', onTap: () {  },
+                coinTicker: 'BTC',
+                onTap: () {},
               ),
             ),
             if (!isLastItem) TampayDivider(),

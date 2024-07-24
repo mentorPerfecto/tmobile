@@ -107,6 +107,8 @@ const dateOfBirthFormat = "DD/MM/YY";
 const verificationDocument = "Verification Document";
 const yourAccountVerificationIsUnderReview =
     'Your account verification is under review. You will receive a confirmation email within few seconds';
+
+const notification = "Notification";
 // const welcomeTotampay = 'Welcome to tampay';
 //////////////////////////////////////////
 const addAnotherFee = 'Add another fee';

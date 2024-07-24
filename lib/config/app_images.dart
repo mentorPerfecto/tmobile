@@ -20,6 +20,7 @@ class AppImages {
   static const logOutLogo = '${_baseUrl}log_out.png';
   static const receiveMoneyLogo = '${_baseUrl}money_recieve_white.png';
   static const sendMoneyLogo = '${_baseUrl}money_send.png';
+  static const sendMoneyLogoWhite = '${_baseUrl}money-send-white.png';
   static const onboardingCryptoSwapLogo = '${_baseUrl}onboarding_crypto_swap_image.png';
   static const onboardingFasterTransactionLogo =
       '${_baseUrl}onboarding_faster_transaction_image.png';

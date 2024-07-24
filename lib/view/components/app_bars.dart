@@ -13,13 +13,13 @@ class AppBars {
     void Function()? callback,
     bool isVisible = true,
     bool bottomVisible = false,
-    required Color? backgroundColor,
+    Color? backgroundColor,
     required Color? arrowBackColor,
     Color? titleColor,
     bool? iWantToEditAProperty,
   }) {
     return AppBar(
-      backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor ?? AppColors.kPrimaryDark,
       surfaceTintColor: Colors.transparent,
       leading: Visibility(
         visible: isVisible,
