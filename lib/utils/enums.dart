@@ -31,3 +31,4 @@ enum VerificationStatus {
   verified,
   unverified,
 }
+

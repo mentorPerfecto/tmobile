@@ -29,50 +29,54 @@ class AccountBalanceContainer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var themeMode = ref.watch(themeViewModel).themeMode;
     var theme = Theme.of(context);
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 20.w,
-        vertical: 20.h,
-      ),
-      // height: 110.h,
-      width: screenWidth.w,
-      decoration: BoxDecoration(
-        color: AppColors.kCardAccount,
-        borderRadius: BorderRadius.circular(
-          12.r,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 20.w,
+          vertical: 20.h,
         ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextView(
-            text: totalPayout.toUpperCase(),
-            fontFamily: soraFont,
-            fontSize: 10.spMin,
-            fontWeight: FontWeight.w400,
-            color: AppColors.kCardText,
-                
+        // height: 110.h,
+        width: screenWidth.w,
+        decoration: BoxDecoration(
+          color: AppColors.kCardAccount,
+          borderRadius: BorderRadius.circular(
+            12.r,
           ),
-          SizedBox(height: 12.h,),
-          TextView(
-            text:
-                UtilFunctions.formatAmount(double.parse(usersAccountBalance.toString())),
-            // text: ,
-            fontSize: 21.spMin,
-            fontWeight: FontWeight.w600,
-            fontFamily: soraFont,
-            color: AppColors.kWhite,
-          ),
-          TextView(
-            text:
-                "~ ${UtilFunctions.currency(context)} ${UtilFunctions.formatAmount(double.parse(usersAccountBalance.toString()))}",
-            // text: ,
-            fontSize: 10.spMin,
-            fontFamily: soraFont,
-            color: AppColors.kUnselectedBottomItemColor,
-          ),
-          SizedBox(height: 20.h,),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextView(
+              text: totalPayout.toUpperCase(),
+              fontFamily: soraFont,
+              fontSize: 10.spMin,
+              fontWeight: FontWeight.w400,
+              color: AppColors.kCardText,
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            TextView(
+              text: UtilFunctions.formatAmount(double.parse(usersAccountBalance.toString())),
+              // text: ,
+              fontSize: 21.spMin,
+              fontWeight: FontWeight.w600,
+              fontFamily: soraFont,
+              color: AppColors.kWhite,
+            ),
+            TextView(
+              text:
+                  "~ ${UtilFunctions.currency(context)} ${UtilFunctions.formatAmount(double.parse(usersAccountBalance.toString()))}",
+              // text: ,
+              fontSize: 10.spMin,
+              fontFamily: soraFont,
+              color: AppColors.kUnselectedBottomItemColor,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -104,7 +108,8 @@ class AccountBalanceContainer extends ConsumerWidget {
                 ),
               ],
             ),
-        ],
+          ],
+        ),
       ),
     );
   }

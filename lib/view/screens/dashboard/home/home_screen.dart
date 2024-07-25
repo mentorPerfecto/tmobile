@@ -8,7 +8,6 @@ import 'package:tampay/src/utils.dart';
 import 'package:tampay/utils/enums.dart';
 
 
-
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -109,7 +108,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       //  int.parse(profileProvider.profileData!.role.toString()) == 2 ?
                       fundAccount,
                   // : withdrawText,
-                  onTap: () {},
+                  onTap: () {
+                    navigatePush(context, TransactionScreen());
+                  },
                   screenWidth: screenWidth,
                   accountBalanceButtonWidth: screenWidth,
                   usersAccountBalance: "0",

@@ -25,3 +25,4 @@ export 'package:tampay/view/screens/dashboard/verification/verification_level_2/
 export 'package:tampay/view/screens/dashboard/verification/verification_level_2/bvn_verification_screen.dart';
 export 'package:tampay/view/screens/dashboard/notification_screen.dart';
 export 'package:tampay/view/screens/dashboard/refer_and_earn_screen.dart';
+export 'package:tampay/view/screens/dashboard/transaction_history/transaction_screen.dart';
