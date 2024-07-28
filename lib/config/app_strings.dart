@@ -109,6 +109,10 @@ const yourAccountVerificationIsUnderReview =
     'Your account verification is under review. You will receive a confirmation email within few seconds';
 
 const notification = "Notification";
+const eth = "Ethereum";
+const usdt = 'USDT';
+const sol = 'Solana';
+const startTrading = "Start Trading";
 // const welcomeTotampay = 'Welcome to tampay';
 //////////////////////////////////////////
 const addAnotherFee = 'Add another fee';

@@ -5,7 +5,7 @@ class AppImages {
   static const downloadIcon = '${_baseUrl}download_icon.png';
   static const dropDownIcon = '${_baseUrl}drop_down.png';
   static const bankDetailsLogo = '${_baseUrl}bank_details_logo.png';
-  static const btcLogo = '${_baseUrl}btc.png';
+ 
   static const cancelCircleLogo = '${_baseUrl}cancel_circle.png';
   static const completeUserProfileLogo = '${_baseUrl}complete_user_profile_logo.png';
   static const refreshLogo = '${_baseUrl}dashboard_buy_will_receive_will_pay_logo.png';
@@ -26,7 +26,7 @@ class AppImages {
       '${_baseUrl}onboarding_faster_transaction_image.png';
   static const onboardingUltimateCashBackgroundImage =
       '${_baseUrl}onboarding_ultimate_cash_background_image.png';
-  static const tPayLogo = '${_baseUrl}onboarding_ultimate_cash_image.png';
+  // static const tPayLogo = '${_baseUrl}onboarding_ultimate_cash_image.png';
   static const piggyBankLogo = '${_baseUrl}piggy_bank.png';
   static const placeholderNotificationLogo = '${_baseUrl}placeholder_logo_notifications.png';
   static const plusCircleLogo = '${_baseUrl}plus_sign_circle.png';
@@ -40,11 +40,16 @@ class AppImages {
   static const unverifiedBadgeLogo = '${_baseUrl}unverified_badge.png';
   static const verifiedBadgeLogo = '${_baseUrl}verified_badge.png';
   static const referActionLogo = '${_baseUrl}refer_action_logo.png';
-static const ethLogo = '${_baseUrl}ethereum.png';
+
 static const barCode = '${_baseUrl}bar_code.png';
 static const shareIcon = '${_baseUrl}share_icon.png';
 static const verifyAccountIcon = '${_baseUrl}verify_account_icon.png';
 static const filterButtonIcon = '${_baseUrl}filter-button.png';
- 
+////////////////////////////////////////////////
+  static const tpayLogo = '${_baseUrl}tpay_logo_mobile.png';
+  static const solanaLogo = '${_baseUrl}solana_mobile.png';
+  static const usdtLogo = '${_baseUrl}usdt_mobile.png';
+  static const btcLogo = '${_baseUrl}btc_mobile.png';
+  static const ethLogo = '${_baseUrl}ethereum_mobile.png';
  
 }

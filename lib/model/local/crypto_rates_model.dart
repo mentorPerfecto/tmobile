@@ -1,12 +1,12 @@
-class OnBoardingItemModel {
-  String title;
-  String subTitle;
-  String image;
+class CryptoRatesModel {
+  String cryptoImage;
+  String crypto;
+  int rate;
 
-  OnBoardingItemModel({
-    required this.title,
-    required this.subTitle,
-    required this.image,
+  CryptoRatesModel({
+    required this.crypto,
+    required this.cryptoImage,
+    required this.rate,
   });
 }
 

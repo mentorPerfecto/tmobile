@@ -14,27 +14,29 @@ class SplashScreen extends ConsumerStatefulWidget {
 class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void didChangeDependencies() {
-    ref.watch(onboardingViewModel).checkUser(context);
     super.didChangeDependencies();
   }
 
   @override
   void initState() {
+    ref.read(onboardingViewModel).initData(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     ref.watch(themeViewModel);
-    var theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: theme.primaryColor,
-      body: Center(
-          // child: Image.asset(
-          //   AppImages.logo,
-          //   width: 266.w,
-          //   height: 258.h,
-          // ),
+      body: Container(
+        decoration: const BoxDecoration(gradient: AppColors.kBlueSunsetGradient),
+        child: Center(
+          child: Image.asset(
+            AppImages.tpayLogo,
+            width: 91.w,
+            height: 91.h,
+            // ),
+          ),
+        ),
       ),
     );
   }

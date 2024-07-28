@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   //tpaymobile
+  static const kBlueSunsetGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xff3A66FF),
+      Color(0xffFFCB27),
+    ],
+  );
+  static const kCharcoalBlack = Color(0xff141414);
   static const kPrimary1 = Color(0xff3A66FE);
+  //////////////////////////
+ 
   static const kPrimaryDark = Color(0xff060B29);
   static const kDesaturatedDarkBlue = Color(0xff49527C);
   static const kNavyBlue = Color(0xff020513);

@@ -196,7 +196,7 @@ class SystemNotificationTabView extends StatelessWidget {
               Stack(
                 children: [
                   Image.asset(
-                    AppImages.tPayLogo,
+                    AppImages.tpayLogo,
                     width: 22.w,
                     height: 22.h,
                     color: AppColors.kPrimary1,
