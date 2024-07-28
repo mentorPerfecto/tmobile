@@ -125,7 +125,7 @@ class AppTheme {
     ),
     textTheme: TextTheme(
       titleLarge: TextStyle(
-        fontSize: 22.spMin,
+        fontSize: 20.spMin,
         fontWeight: FontWeight.w600,
         fontFamily: soraFont,
         color: AppColors.kTextWhite,

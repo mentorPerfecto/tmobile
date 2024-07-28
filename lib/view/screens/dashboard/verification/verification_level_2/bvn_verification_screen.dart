@@ -48,7 +48,7 @@ class BVNVerificationScreen extends ConsumerWidget {
                     child: CustomTextField(
                       keyboardType: TextInputType.number,
                       fieldLabel: bvnNumber,
-                      hint: enterBVN,
+                      hint: enterNumber,
                       controller: profileProvider.bvnNumberController,
                       onChanged: (bvn) => profileProvider.updateVerifyBVNButtonState(),
                       validator: (bvn) => Validators().validateBvn(bvn),

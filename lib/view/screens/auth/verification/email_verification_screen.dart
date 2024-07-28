@@ -76,6 +76,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
     var theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
+      appBar: AppBars.mainAppBar(context, arrowBackColor: theme.colorScheme.primary),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -133,11 +134,11 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                           appContext: context,
                           length: 6,
                           //controller: authProvider.pinCodeController,
-                          hintCharacter: '-',
-                          hintStyle: TextStyle(
-                            color: theme.colorScheme.primary,
-                            fontFamily: soraFont,
-                          ),
+                          // hintCharacter: '-',
+                          // hintStyle: TextStyle(
+                          //   color: theme.colorScheme.primary,
+                          //   fontFamily: soraFont,
+                          // ),
                           onChanged: (value) => authProvider.updateVerifyButtonState(value),
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           keyboardType: TextInputType.number,
@@ -145,20 +146,20 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                           pinTheme: PinTheme(
                               inactiveBorderWidth: 1.r,
                               activeBorderWidth: 1.r,
-
+                              inactiveFillColor: AppColors.kOnyxBlack,
                               shape: PinCodeFieldShape.box,
                               borderRadius: BorderRadius.circular(10.r),
                               fieldHeight: 48.h,
                               fieldWidth: 48.w,
-                              inactiveColor: AppColors.kWhite200,
+                              inactiveColor: AppColors.kStormyGrey,
                               // inactiveFillColor: AppColors.kWhite,
-                              selectedFillColor: AppColors.kAshBlue,
+                              selectedFillColor: AppColors.kOnyxBlack,
                               activeColor: AppColors
-                                  .kPrimary1, // The color of the border of the active PIN code cell (digit being currently entered).
+                                  .kCoolGray, // The color of the border of the active PIN code cell (digit being currently entered).
                               activeFillColor: AppColors
-                                  .kAshBlue, // The color to fill the background of the active PIN code cell.
+                                  .kOnyxBlack, // The color to fill the background of the active PIN code cell.
                               selectedColor: AppColors
-                                  .kPrimary1 // The color of the border of the selected PIN code cell.,
+                                  .kCoolGray // The color of the border of the selected PIN code cell.,
 
                               ),
                         ),
@@ -198,7 +199,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                                 infoText: widget.isSignIn ? welcomeBack : successfulAccountCreation,
                           newPage: const DashBoardScreen(),
                                 )
-                              : VerifyBVNScreen(),
+                              : const CreatePasswordScreen(),
                     );
                   }
                 },

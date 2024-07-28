@@ -21,58 +21,61 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
     var theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBars.mainAppBar(context,
-          backgroundColor: theme.scaffoldBackgroundColor,
-          arrowBackColor: theme.colorScheme.primary,
-          text: createPassword),
+      appBar: AppBars.mainAppBar(context, arrowBackColor: theme.colorScheme.primary),
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 15.h,
-            horizontal: 20.w,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Form(
-                key: provider.registerationCreatePasswordFormKey,
-                child: PasswordValidatedFields(
-                  textEditingController: provider.registerPwdController,
-                  obscureInput: provider.obscurePasswordText,
-                  confirmPasswordWidget: CustomTextField(
-                    fieldLabel: confirmPassword,
-                    controller: provider.registerConfirmPwdController,
-                    password: true,
-                    validator: (value) => Validators().validateConfirmPassword(
-                      provider.registerPwdController.text,
-                      provider.registerConfirmPwdController.text,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 15.h,
+              horizontal: 20.w,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+             
+              children: [
+                            
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextView(
+                      text: createPassword,
+                      fontSize: 20.spMin,
+                      fontWeight: FontWeight.w600,
                     ),
-                    obscureInput: provider.obscureConfirmPwdText,
-                    onObscureText: provider.toggleConfirmPwdVisibility,
-                    onChanged: (p0) => provider.updateRegisterButtonCreatePasswordState(),
-                  ),
-                  onObscureText: provider.togglePwdVisibility,
+                    Gap(20.h),
+                    Form(
+                      key: provider.registerationCreatePasswordFormKey,
+                      child: PasswordValidatedFields(
+                        textEditingController: provider.registerPwdController,
+                        obscureInput: provider.obscurePasswordText,
+                        confirmPasswordWidget: CustomTextField(
+                          fieldLabel: confirmPassword,
+                          controller: provider.registerConfirmPwdController,
+                          password: true,
+                          validator: (value) => Validators().validateConfirmPassword(
+                            provider.registerPwdController.text,
+                            provider.registerConfirmPwdController.text,
+                          ),
+                          obscureInput: provider.obscureConfirmPwdText,
+                          onObscureText: provider.toggleConfirmPwdVisibility,
+                          onChanged: (p0) => provider.updateRegisterButtonCreatePasswordState(),
+                        ),
+                        onObscureText: provider.togglePwdVisibility,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              // Gap(300.h),
-              DefaultButtonMain(
-                text: createAccount,
-                borderRadius: 8.r,
-                color: AppColors.kPrimary1,
-                buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
-                onPressed: () {
-                  navigatePush(
-                      context,
-                      const EmailVerificationScreen(
-                        isSignIn: false,
-                        isForgotPassword: false,
-                        email: hintEmail,
-                        actionText: createAccount,
-                      ));
-                },
-              ),
-            ],
+                Gap(260.h),
+                DefaultButtonMain(
+                    text: createAccount,
+                    borderRadius: 8.r,
+                    color: AppColors.kPrimary1,
+                    buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
+                    onPressed: () {
+                      navigatePush(context, VerifyBVNScreen());
+                    }),
+              ],
+            ),
           ),
         ),
       ),

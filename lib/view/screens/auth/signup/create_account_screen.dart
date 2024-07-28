@@ -58,7 +58,8 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
       appBar: AppBars.mainAppBar(context,
           backgroundColor: theme.scaffoldBackgroundColor,
           arrowBackColor: theme.colorScheme.primary,
-          text: createAccount),
+      ),
+   
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -68,14 +69,17 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+          
               children: [
+                TextView(
+                  text: createAccount,
+                  textStyle: theme.textTheme.titleLarge,
+                ),
+                Gap(20.h),
                 Form(
                   key: provider.registrationFormKey,
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 10.h,
-                      ),
                       CustomTextField(
                         fieldLabel: emailText,
                         hint: hintEmail,
@@ -102,26 +106,6 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                         height: 10.h,
                       ),
                       CustomTextField(
-                        fieldLabel: phoneNumberText,
-                        hint: hintPhoneNumber,
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 8),
-                          child: TextView(
-                            text: numberFormat,
-                            color: Colors.white,
-                            fontSize: 13.spMin,
-                          ),
-                        ),
-                        controller: provider.phoneNumberController,
-                        validator: (value) => Validators().validatePhoneNumber(value),
-                        onChanged: (p0) {
-                          provider.updateRegisterButtonState();
-                        },
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      CustomTextField(
                         borderWidth: 1.w,
                         fieldLabel: enterReferralCode,
                         hint: referralCode,
@@ -130,7 +114,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                     ],
                   ),
                 ),
-                Gap(200.h),
+                Gap(280.h),
                 Column(
                   children: [
                     DefaultButtonMain(

@@ -6,6 +6,8 @@ class AppColors {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
+      Color(0xff1EC9FF),
+      Color(0xff1CB2A0),
       Color(0xff3A66FF),
       Color(0xffFFCB27),
     ],
@@ -17,6 +19,7 @@ class AppColors {
   static const kCoolGray = Color(0xffA0A0A0);
   static const kGraphiteGray = Color(0xff555962);
   static const kGrey500 = Color(0xff667185);
+  static const kStormyGrey = Color(0xff3A3B3D);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);
@@ -43,7 +46,7 @@ class AppColors {
   static const kFloralWhite = Color(0xffFFF8EB);
   static const kMidnight950 = Color(0xff060B29);
   static const kGrey700 = Color(0xff344054);
- 
+
   static const kError300 = Color(0xffDD524D);
   static const kSlateGrey = Color(0xff6A6F76);
 //

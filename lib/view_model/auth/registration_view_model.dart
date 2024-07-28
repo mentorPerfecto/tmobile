@@ -6,7 +6,6 @@ import 'package:tampay/src/models.dart';
 import 'package:tampay/src/repository.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/auth/signup/create_password_screen.dart';
 
 final registrationViewModel = ChangeNotifierProvider((ref) => RegistrationViewModel());
 
@@ -14,7 +13,7 @@ class RegistrationViewModel extends ChangeNotifier {
   final authService = AuthBackend();
   final registrationFormKey = GlobalKey<FormState>();
   final registerationCreatePasswordFormKey = GlobalKey<FormState>();
-
+  String _bvnDetails = dialUSSDToSeeYourBVN;
   final TextEditingController _bvnNumberController = TextEditingController();
   final TextEditingController _registerEmailController = TextEditingController();
   final TextEditingController _registerPwdController = TextEditingController();
@@ -24,7 +23,7 @@ class RegistrationViewModel extends ChangeNotifier {
   final TextEditingController _refCodeController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
-
+  String get bvnDetails => _bvnDetails;
   CustomButtonState _buttonRegisterState = CustomButtonState(
     buttonState: ButtonState.disabled,
     text: continueText,
@@ -74,8 +73,7 @@ class RegistrationViewModel extends ChangeNotifier {
         // _firstNameController.text.isNotEmpty &
         //     _lastNameController.text.isNotEmpty &
         _registerEmailController.text.isNotEmpty &
-            _userNameController.text.isNotEmpty &
-            _phoneNumberController.text.isNotEmpty) {
+            _userNameController.text.isNotEmpty) {
       _buttonRegisterState = CustomButtonState(
         buttonState: ButtonState.idle,
         text: continueText,
@@ -90,7 +88,7 @@ class RegistrationViewModel extends ChangeNotifier {
   }
 
   void updateVerifyBVNButtonState() {
-    if (_bvnNumberController.text.isNotEmpty) {
+    if (_bvnNumberController.text.length == 11) {
       _verifyBVNButtonState = CustomButtonState(
         buttonState: ButtonState.idle,
         text: verify,
@@ -123,7 +121,14 @@ class RegistrationViewModel extends ChangeNotifier {
     if (registrationFormKey.currentState!.validate()) {
       registrationFormKey.currentState!.save();
 
-      navigatePush(context, const CreatePasswordScreen());
+      navigatePush(
+          context,
+          const EmailVerificationScreen(
+            isSignIn: false,
+            isForgotPassword: false,
+            email: hintEmail,
+            actionText: verify,
+          ));
       // try {
       //   _buttonRegisterState = CustomButtonState(
       //     buttonState: ButtonState.loading,

@@ -29,12 +29,12 @@ class PasswordValidatedFields extends ConsumerStatefulWidget {
     this.cursorColor,
     this.onObscureText,
     this.obscureInput = false,
-    this.borderRadius = 4,
+    this.borderRadius = 12,
     this.borderWidth = 1.0,
     this.isFilled = true,
     // const Color(0xffF9F9F9),
     this.borderColor,
-    this.fillColor = AppColors.kNavyBlue,
+    this.fillColor = AppColors.kOnyxBlack,
     this.readOnly = false,
 
     /// Password requirements initialization
@@ -141,11 +141,12 @@ class PasswordValidatedFieldsState
               ),
               decoration: InputDecoration(
                 hintStyle: theme.textTheme.bodyMedium!.copyWith(
-                  color: widget.readOnly ? AppColors.kBlack4 : AppColors.kDesaturatedDarkBlue,
+                  color: widget.readOnly ? AppColors.kGrey500 : AppColors.kGraphiteGray,
                   fontFamily: soraFont,
                   fontSize: 15.spMin,
                   fontWeight: FontWeight.w400,
                 ),
+                hintText: enterPassword,
                 // labelStyle: theme.textTheme.bodyLarge!.copyWith(
                 //   color: AppColors.kGrey,
                 //   fontFamily: 'HergonGrotesk',
@@ -159,7 +160,7 @@ class PasswordValidatedFieldsState
                   ),
                 ),
                 filled: true,
-                fillColor: widget.readOnly ? theme.cardColor : widget.fillColor,
+                fillColor: widget.fillColor,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 border: widget.readOnly ? InputBorder.none : null,
                 // fillColor: widget.fillColor ?? theme.cardColor,
@@ -171,7 +172,7 @@ class PasswordValidatedFieldsState
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide:
-                      BorderSide(color: AppColors.kPrimary1, width: widget.borderWidth!.spMin),
+                      BorderSide(color: AppColors.kCoolGray, width: widget.borderWidth!.spMin),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
@@ -202,7 +203,7 @@ class PasswordValidatedFieldsState
         SizedBox(height: 15.h),
 
         widget.confirmPasswordWidget!,
-        const SizedBox(height: 25),
+        const SizedBox(height: 10),
 
         /// [default requirements]
         /// `1 Upper case` requirement

@@ -52,6 +52,7 @@ const bitcoin = 'Bitcoin';
 const youWantToBuy = 'You want to buy';
 const addBank = 'Add Bank';
 const verify = 'Verify';
+const add = "Add";
 const bankNameText = 'Select bank';
 const numberFormat = "+234";
 const pleaseEnsureThatDetailsMatch =
@@ -66,7 +67,7 @@ const verifyBVN = "Verify BVN";
 const verificationMode = "Verification Mode";
 const bankVerificationNumber = "Bank verification number";
 const bvnNumber = "BVN Number";
-const enterBVN = "Enter BVN";
+const enterNumber = "Enter number";
 const dialUSSDToSeeYourBVN = "dial *565*0# to see your BVN";
 const youHaveSuccessfullyChangedPWordLoginToAccount =
     "You have successfully changed your password.\n"

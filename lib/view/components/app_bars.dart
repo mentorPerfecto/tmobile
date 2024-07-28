@@ -19,7 +19,7 @@ class AppBars {
     bool? iWantToEditAProperty,
   }) {
     return AppBar(
-      backgroundColor: backgroundColor ?? AppColors.kPrimaryDark,
+      backgroundColor: backgroundColor ?? AppColors.kCharcoalBlack,
       surfaceTintColor: Colors.transparent,
       leading: Visibility(
         visible: isVisible,
@@ -27,19 +27,24 @@ class AppBars {
             onTap: () {
               navigateBack(context);
             },
-            child: IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios,
-                size: 18.r,
-                color: arrowBackColor,
-              ),
-              splashRadius: 20,
-              onPressed: () {
-                if (callback != null) {
-                  callback();
-                }
-                navigateBack(context);
-              },
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    size: 18.r,
+                    color: arrowBackColor,
+                  ),
+                  splashRadius: 20,
+                  onPressed: () {
+                    if (callback != null) {
+                      callback();
+                    }
+                    navigateBack(context);
+                  },
+                ),
+                const TextView(text: back)
+              ],
             )),
       ),
       title: text != null

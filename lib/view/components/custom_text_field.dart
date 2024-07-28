@@ -35,7 +35,7 @@ class CustomTextField extends ConsumerStatefulWidget {
     this.textColor,
     this.maxLines,
     this.isFilled = true,
-    this.fillColor = AppColors.kNavyBlue,
+    this.fillColor = AppColors.kOnyxBlack,
     // const Color(0xffF9F9F9),
     this.borderColor,
     this.validator,
