@@ -14,6 +14,9 @@ class AppColors {
   static const kPrimary1 = Color(0xff3A66FE);
   static const kOnyxBlack = Color(0xff1F1F1F);
   static const kSteelBlue = Color(0xff3D434C);
+  static const kCoolGray = Color(0xffA0A0A0);
+  static const kGraphiteGray = Color(0xff555962);
+  static const kGrey500 = Color(0xff667185);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);
@@ -40,7 +43,7 @@ class AppColors {
   static const kFloralWhite = Color(0xffFFF8EB);
   static const kMidnight950 = Color(0xff060B29);
   static const kGrey700 = Color(0xff344054);
-  static const kGrey500 = Color(0xff667185);
+ 
   static const kError300 = Color(0xffDD524D);
   static const kSlateGrey = Color(0xff6A6F76);
 //
@@ -104,7 +107,7 @@ class AppColors {
   static const kBlue50 = Color(0xff526484);
   static const kGreenLoader = Color(0xff88C941);
   static const kAsh = Color(0xffE8F0F4);
-  static const kCoolGray = Color(0xff111827);
+  // static const kCoolGray = Color(0xff111827);
   static const kWhite400 = Color(0xffF7F7F7);
 
   ///Dark Theme

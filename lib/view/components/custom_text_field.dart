@@ -160,12 +160,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 hintText: widget.hint,
                 hintStyle: theme.textTheme.bodyMedium!.copyWith(
                   color: widget.readOnly
-                      ? themeMode == ThemeMode.light
-                          ? AppColors.kBlack4
-                          : AppColors.kDesaturatedDarkBlue
-
-                      ///Check if this is the best color for the darkmode
-                      : theme.hintColor,
+                    ? AppColors.kGrey500 : AppColors.kGraphiteGray,
                   fontFamily: 'soraFont',
                   fontSize: 14.spMin,
                   fontWeight: FontWeight.w400,
@@ -207,7 +202,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 filled: widget.isFilled,
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                fillColor: widget.readOnly ? AppColors.kNavyBlue  : widget.fillColor,
+                fillColor: widget.fillColor,
                 enabledBorder: widget.isFilled
                     ? OutlineInputBorder(
                         borderRadius:
@@ -217,7 +212,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 focusedBorder:   OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide: BorderSide(
-                      color: widget.readOnly? AppColors.kNavyBlue : theme.primaryColor,
+                      color: widget.readOnly ? AppColors.kOnyxBlack : AppColors.kCoolGray,
                       width: widget.borderWidth!.spMin),
                 ),
                 errorBorder: OutlineInputBorder(
