@@ -113,6 +113,8 @@ const eth = "Ethereum";
 const usdt = 'USDT';
 const sol = 'Solana';
 const startTrading = "Start Trading";
+const buyRates = "Buy Rates";
+const tpayOnboardingDisplayText = "Ultimate Cash in, \nCash out App";
 // const welcomeTotampay = 'Welcome to tampay';
 //////////////////////////////////////////
 const addAnotherFee = 'Add another fee';

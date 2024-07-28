@@ -25,11 +25,11 @@ class AuthSuccessScreen extends ConsumerWidget {
               ),
               Column(
                 children: [
-                  Image.asset(
-                    AppImages.onboardingUltimateCashBackgroundImage,
-                    width: 200.w,
-                    height: 200.h,
-                  ),
+                  // Image.asset(
+                  //   AppImages.onboardingUltimateCashBackgroundImage,
+                  //   width: 200.w,
+                  //   height: 200.h,
+                  // ),
                   TextView(
                     textAlign: TextAlign.center,
                     maxLines: 3,

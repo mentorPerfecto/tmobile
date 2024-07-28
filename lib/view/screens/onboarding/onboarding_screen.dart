@@ -32,22 +32,18 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               vertical: 20.h,
             ),
             child: Column(
-             mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Gap(50.h),
-                SizedBox(
-                  width: 300.w,
-                  height: 500.h,
-                  child:    OnBoardingDisplay(
-                    displayImage: Image.asset(
-                      AppImages.onboardingUltimateCashBackgroundImage,
-                      height: 200.h,
-                      width: 200.w,
-                    ),
-                    displayText: "Ultimate Cash in, \nCash out App",
+                OnBoardingDisplay(
+                  displayImage: Image.asset(
+                    AppImages.tpayOnboardingLogo,
+                    height: 200.h,
+                    width: 200.w,
                   ),
+                  displayText: tpayOnboardingDisplayText,
                 ),
-                OnBoardingBottomActions(),
+                const OnBoardingBottomActions(),
               ],
             ),
           ),
@@ -92,36 +88,27 @@ class OnBoardingBottomActions extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 70.h,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              DefaultButtonMain(
-                padding: EdgeInsets.symmetric(horizontal: 26.w),
-                text: login,
-                borderColor: AppColors.kPrimary1,
-                textColor: AppColors.kPrimary1,
-                onPressed: () {
-                  navigatePush(context, const SignInScreen());
-                },
-              ),
-              Gap(10.w),
-              DefaultButtonMain(
-                padding: EdgeInsets.symmetric(horizontal: 26.w),
-                color: AppColors.kPrimary1,
-                text: signUp,
-                onPressed: () {
-                  navigatePush(context, const CreateAccountScreen());
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        DefaultButtonMain(
+          padding: EdgeInsets.symmetric(horizontal: 26.w),
+          text: login,
+          borderColor: AppColors.kWhite,
+          onPressed: () {
+            navigatePush(context, const SignInScreen());
+          },
+        ),
+        Gap(10.w),
+        DefaultButtonMain(
+          padding: EdgeInsets.symmetric(horizontal: 26.w),
+          color: AppColors.kPrimary1,
+          text: signUp,
+          onPressed: () {
+            navigatePush(context, const CreateAccountScreen());
+          },
+        ),
+      ],
     );
   }
 }

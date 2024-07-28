@@ -21,11 +21,7 @@ class AppImages {
   static const receiveMoneyLogo = '${_baseUrl}money_recieve_white.png';
   static const sendMoneyLogo = '${_baseUrl}money_send.png';
   static const sendMoneyLogoWhite = '${_baseUrl}money-send-white.png';
-  static const onboardingCryptoSwapLogo = '${_baseUrl}onboarding_crypto_swap_image.png';
-  static const onboardingFasterTransactionLogo =
-      '${_baseUrl}onboarding_faster_transaction_image.png';
-  static const onboardingUltimateCashBackgroundImage =
-      '${_baseUrl}onboarding_ultimate_cash_background_image.png';
+ 
   // static const tPayLogo = '${_baseUrl}onboarding_ultimate_cash_image.png';
   static const piggyBankLogo = '${_baseUrl}piggy_bank.png';
   static const placeholderNotificationLogo = '${_baseUrl}placeholder_logo_notifications.png';
@@ -51,5 +47,6 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const usdtLogo = '${_baseUrl}usdt_mobile.png';
   static const btcLogo = '${_baseUrl}btc_mobile.png';
   static const ethLogo = '${_baseUrl}ethereum_mobile.png';
+  static const tpayOnboardingLogo = '${_baseUrl}tpay_onboarding_logo_mobile.png';
  
 }

@@ -155,7 +155,7 @@ class DefaultButtonIconMain extends StatelessWidget {
             : onPressed,
         shape: RoundedRectangleBorder(
             borderRadius:
-                BorderRadius.circular(borderRadius ?? 8.0.r), // Adjust the radius as needed
+                BorderRadius.circular(borderRadius ?? 18.0.r), // Adjust the radius as needed
             side: BorderSide(color: borderColor ?? Colors.transparent)),
         // disabledColor:(buttonState == ButtonState.disabled)?Colors.grey:null,
         child: Center(

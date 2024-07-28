@@ -97,7 +97,7 @@ class AppTheme {
     brightness: Brightness.dark,
     primaryColor: AppColors.kPrimary1,
     dividerColor: AppColors.kDarkDividerColor,
-    scaffoldBackgroundColor: AppColors.kDarkModebackground,
+    scaffoldBackgroundColor: AppColors.kCharcoalBlack,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     fontFamily: soraFont,
     colorScheme: const ColorScheme.dark(
