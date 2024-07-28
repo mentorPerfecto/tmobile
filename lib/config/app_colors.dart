@@ -13,6 +13,7 @@ class AppColors {
   static const kCharcoalBlack = Color(0xff141414);
   static const kPrimary1 = Color(0xff3A66FE);
   static const kOnyxBlack = Color(0xff1F1F1F);
+  static const kSteelBlue = Color(0xff3D434C);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);

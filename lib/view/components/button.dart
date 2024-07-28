@@ -38,12 +38,12 @@ class DefaultButtonMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? 50.0.h,
+      height: height ?? 56.0.h,
       width: width,
       padding: padding,
       decoration: BoxDecoration(
           color: (buttonState == ButtonState.disabled)
-              ? AppColors.kDarkBlue
+              ? AppColors.kSteelBlue
               : color,
 
           /// This line of code is setting the background color of the button. It checks the value of the
@@ -58,22 +58,19 @@ class DefaultButtonMain extends StatelessWidget {
           //     ? AppColors.disabledGradient
           //     : AppColors.gradientMain,
           // border: Border.all(color: borderColor ?? Colors.transparent),
-          borderRadius: BorderRadius.circular(borderRadius ?? 8.0.r),
+          borderRadius: BorderRadius.circular(borderRadius ?? 18.0.r),
           border: Border.all(color: borderColor ?? Colors.transparent)),
       child: ButtonTheme(
         child: MaterialButton(
-        
+          color: (buttonState == ButtonState.disabled) ? AppColors.kSteelBlue : color,
           padding: EdgeInsets.zero,
-          height: height ?? 50.0.h,
+          height: height ?? 56.0.h,
 
           onPressed: (buttonState == ButtonState.disabled ||
                   buttonState == ButtonState.loading)
               ? null
               : onPressed,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-                borderRadius ?? 8.0.r), // Adjust the radius as needed
-          ),
+      
           // disabledColor:(buttonState == ButtonState.disabled)?Colors.grey:null,
           child: Center(
             /// This code is setting the child of the `TextButton` widget. It checks the value of the
@@ -145,61 +142,80 @@ class DefaultButtonIconMain extends StatelessWidget {
   final Color? imageColor;
   @override
   Widget build(BuildContext context) {
-    return ButtonTheme(
-      child: MaterialButton(
-        height: height ?? 56.0.h,
-        minWidth: width,
-        color: (buttonState == ButtonState.disabled) ? AppColors.kNeutralTextGrey : color,
-        onPressed: (buttonState == ButtonState.disabled || buttonState == ButtonState.loading)
-            ? null
-            : onPressed,
-        shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(borderRadius ?? 18.0.r), // Adjust the radius as needed
-            side: BorderSide(color: borderColor ?? Colors.transparent)),
-        // disabledColor:(buttonState == ButtonState.disabled)?Colors.grey:null,
-        child: Center(
-          /// This code is setting the child of the `TextButton` widget. It checks the value of the
-          /// `buttonState` parameter and if it is equal to `ButtonState.loading`, it sets the child to
-          /// a `SizedBox` widget with a `CircularProgressIndicator` inside it. This is used to indicate
-          /// that the button is in a loading state and the user should wait for the action to complete.
-          /// If `buttonState` is not equal to `ButtonState.loading`, it sets the child to a `Text`
-          /// widget with the `text` parameter passed in when the function is called. The `textColor`,
-          /// `fontSize`, and `fontWeight` parameters are also used to style the text.
-          child: (buttonState == ButtonState.loading)
-              ? SizedBox.square(
-                  dimension: 35.r,
-                  child: const Padding(
-                    padding: EdgeInsets.all(4.0),
-                    child: CircularProgressIndicator(
-                      color: AppColors.kWhite,
-                    ),
-                  ),
-                )
-              : Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ImageView.asset(
-                      imageIcon,
-                      width: 20.w,
-                      height: 20.h,
-                      color: imageColor,
-                    ),
-                    SizedBox(
-                      width: 8.w,
-                    ),
-                    Text(
-                      text.toString(),
-                      style: TextStyle(
-                        color: textColor ?? Colors.white,
-                        fontSize: fontSize ?? 14.0.spMin,
-                        fontWeight: fontWeight ?? FontWeight.w600,
-                        fontFamily: fontFamily ?? soraFont,
+    return Container(
+      height: height ?? 56.0.h,
+      width: width,
+      padding: padding,
+      decoration: BoxDecoration(
+          color: (buttonState == ButtonState.disabled) ? AppColors.kNeutralTextGrey : color,
+
+          /// This line of code is setting the background color of the button. It checks the value of the
+          /// `buttonState` parameter and if it is equal to `ButtonState.disabled`, it sets the color to
+          /// `AppColors.kDarkGrey`. Otherwise, it sets the color to the value of the `color` parameter,
+          /// which is passed in when the function is called. If `color` is null, it sets the color to a
+          /// default value of `const Color(0xFF09132D)`.
+          // color: (buttonState == ButtonState.disabled)
+          //     ? AppColors.kPrimary2
+          //     : color ?? const Color(0xFF09132D),
+          // gradient: (buttonState == ButtonState.disabled)
+          //     ? AppColors.disabledGradient
+          //     : AppColors.gradientMain,
+          // border: Border.all(color: borderColor ?? Colors.transparent),
+          borderRadius: BorderRadius.circular(borderRadius ?? 18.0.r),
+          border: Border.all(color: borderColor ?? Colors.transparent)),
+      child: ButtonTheme(
+        child: MaterialButton(
+          height: height ?? 56.0.h,
+          minWidth: width,
+          color: (buttonState == ButtonState.disabled) ? AppColors.kNeutralTextGrey : color,
+          onPressed: (buttonState == ButtonState.disabled || buttonState == ButtonState.loading)
+              ? null
+              : onPressed,
+
+          // disabledColor:(buttonState == ButtonState.disabled)?Colors.grey:null,
+          child: Center(
+            /// This code is setting the child of the `TextButton` widget. It checks the value of the
+            /// `buttonState` parameter and if it is equal to `ButtonState.loading`, it sets the child to
+            /// a `SizedBox` widget with a `CircularProgressIndicator` inside it. This is used to indicate
+            /// that the button is in a loading state and the user should wait for the action to complete.
+            /// If `buttonState` is not equal to `ButtonState.loading`, it sets the child to a `Text`
+            /// widget with the `text` parameter passed in when the function is called. The `textColor`,
+            /// `fontSize`, and `fontWeight` parameters are also used to style the text.
+            child: (buttonState == ButtonState.loading)
+                ? SizedBox.square(
+                    dimension: 35.r,
+                    child: const Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: CircularProgressIndicator(
+                        color: AppColors.kWhite,
                       ),
                     ),
-                  ],
-                ),
+                  )
+                : Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ImageView.asset(
+                        imageIcon,
+                        width: 20.w,
+                        height: 20.h,
+                        color: imageColor,
+                      ),
+                      SizedBox(
+                        width: 8.w,
+                      ),
+                      Text(
+                        text.toString(),
+                        style: TextStyle(
+                          color: textColor ?? Colors.white,
+                          fontSize: fontSize ?? 14.0.spMin,
+                          fontWeight: fontWeight ?? FontWeight.w600,
+                          fontFamily: fontFamily ?? soraFont,
+                        ),
+                      ),
+                    ],
+                  ),
+          ),
         ),
       ),
     );
