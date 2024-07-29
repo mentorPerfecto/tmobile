@@ -1,4 +1,6 @@
 // import 'dart:convert';
+import 'dart:ui';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 // import 'package:tampay/model/response/local_response/user_banks_response.dart';
@@ -14,8 +16,7 @@ class AddBankDetailsScreen extends ConsumerStatefulWidget {
   const AddBankDetailsScreen({super.key});
 
   @override
-  ConsumerState<AddBankDetailsScreen> createState() =>
-      _AddBankDetailsScreenState();
+  ConsumerState<AddBankDetailsScreen> createState() => _AddBankDetailsScreenState();
 }
 
 class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
@@ -38,6 +39,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
   Widget build(BuildContext context) {
     var userProfileProvider = ref.watch(profileViewModel);
     var themeMode = ref.watch(themeViewModel).themeMode;
+    var dashboardProvider = ref.watch(dashboardViewModel);
     var theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -72,7 +74,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                    TextView(
+                  TextView(
                     text: addBank,
                     textStyle: theme.textTheme.titleLarge,
                   ),
@@ -82,13 +84,11 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                     fontSize: 14.spMin,
                     fontFamily: soraFont,
                     maxLines: 3,
-                 
                   ),
                   Gap(20.h),
                   const TextView(text: bankName),
                   const Gap(10),
                   Container(
-                   
                     decoration: BoxDecoration(
                       color: AppColors.kOnyxBlack,
                       borderRadius: BorderRadius.circular(
@@ -103,7 +103,6 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                     ),
                     padding: EdgeInsets.symmetric(
                       horizontal: 12.w,
-                     
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
@@ -146,7 +145,6 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                   Gap(20.h),
                   CustomTextField(
                     controller: userProfileProvider.accountNumberController,
-                
                     fieldLabel: accountNumber,
                     maxlength: 10,
                     hint: enterTenDigitsAccNumberText,
@@ -196,9 +194,31 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                 text: add,
                 buttonState: userProfileProvider.buttonSaveBankDetailsState.buttonState,
                 onPressed: () {
-                  userProfileProvider.addUserAccountNumber(
-                    context,
-                  );
+                  showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      barrierColor: AppColors.kTransparent,
+                      context: context,
+                      builder: (context) {
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                          child: TPayDefaultProgressStatusPopUp(
+                            progressStatusLogo: AppImages.checkLogo,
+                            progressStatusTextTitle: "Bank Added",
+                            progressStatusTextBody:
+                                "You have successfully added a new bank account details",
+                            action: DefaultButtonMain(
+                              color: AppColors.kPrimary1,
+                              text: "Dashboard",
+                              onPressed: () {
+                                dashboardProvider.setPageIndexToHome(context);
+                              },
+                            ),
+                          ),
+                        );
+                      });
+                  // userProfileProvider.addUserAccountNumber(
+                  //   context,
+                  // );
                 },
               )
             ],

@@ -20,30 +20,29 @@ class TPayDefaultProgressStatusPopUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 360.h,
       decoration: BoxDecoration(
-        color: AppColors.kPrimaryDark,
+        color: AppColors.kCharcoalBlack,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(
-            12.r,
+            32.r,
           ),
           topRight: Radius.circular(
-            12.r,
+            32.r,
           ),
         ),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: 15.h,
-          horizontal: 15.w,
+          vertical: 20.h,
+          horizontal: 30.w,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image.asset(
               progressStatusLogo ?? "",
-              width: 72.w,
-              height: 72.h,
+              width: 42.w,
+              height: 42.h,
             ),
             Column(
               children: [

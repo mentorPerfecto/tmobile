@@ -116,6 +116,8 @@ const sol = 'Solana';
 const startTrading = "Start Trading";
 const buyRates = "Buy Rates";
 const tpayOnboardingDisplayText = "Ultimate Cash in, \nCash out App";
+const thisAreTheRateYouWillBuyASpecificAssetAt =
+    "This are the rates you will be buying a specific asset at";
 // const welcomeTotampay = 'Welcome to tampay';
 //////////////////////////////////////////
 const addAnotherFee = 'Add another fee';

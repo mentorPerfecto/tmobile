@@ -5,6 +5,10 @@ class AppColors {
   static const kBlueSunsetGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
+    stops: [
+      0.0, // Starting point
+      1.0, // Ending point
+    ],
     colors: [
       Color(0xff1EC9FF),
       Color(0xff1CB2A0),

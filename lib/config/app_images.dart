@@ -48,5 +48,5 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const btcLogo = '${_baseUrl}btc_mobile.png';
   static const ethLogo = '${_baseUrl}ethereum_mobile.png';
   static const tpayOnboardingLogo = '${_baseUrl}tpay_onboarding_logo_mobile.png';
- 
+  static const checkLogo = '${_baseUrl}check_logo_mobile.png';
 }

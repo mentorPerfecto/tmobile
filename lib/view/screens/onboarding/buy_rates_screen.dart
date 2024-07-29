@@ -57,6 +57,12 @@ class BuyRatesScreen extends ConsumerWidget {
                     fontSize: 20.spMin,
                     fontWeight: FontWeight.w600,
                   ),
+                  Gap(10.h),
+                  TextView(
+                    text: thisAreTheRateYouWillBuyASpecificAssetAt,
+                    fontSize: 14.spMin,
+                    color: AppColors.kGrey300,
+                  ),
                   Gap(20.h),
                   ...coins.map(
                     (cryptoCoins) => Container(
