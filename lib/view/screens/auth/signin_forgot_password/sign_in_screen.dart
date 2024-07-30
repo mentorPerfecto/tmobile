@@ -83,11 +83,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextView(
-                      text: login,
-                      textStyle: theme.textTheme.titleLarge,
-                    ),
-                    Gap(20.h),
+                  
                     CustomTextField(
                       fieldLabel: emailText,
                       hint: hintEmail,

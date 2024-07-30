@@ -65,7 +65,7 @@ class AppBars {
               preferredSize:  Size(0, 20.h), child: Align( alignment: Alignment.centerLeft,
           child: Row(
             children: [
-              Gap(15),
+                      const Gap(15),
               bottomText != null
                   ? TextView(
                 text: bottomText,

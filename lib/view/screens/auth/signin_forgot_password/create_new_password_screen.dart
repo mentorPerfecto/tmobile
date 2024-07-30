@@ -48,6 +48,7 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
                         textEditingController: provider.newPasswordController,
                         obscureInput: provider.obscureNewPass,
                         confirmPasswordWidget: CustomTextField(
+                          hint: enterPassword,
                           fieldLabel: confirmPassword,
                           controller: provider.confirmNewPasswordController,
                           password: true,

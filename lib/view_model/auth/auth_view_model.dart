@@ -177,7 +177,7 @@ class AuthViewModel extends ChangeNotifier {
       buttonState: ButtonState.disabled,
       text: login,
     );
-    notifyListeners();
+    
   }
 
   void updateButtonLoginState() {

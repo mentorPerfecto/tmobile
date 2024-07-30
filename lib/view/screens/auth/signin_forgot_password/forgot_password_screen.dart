@@ -33,21 +33,24 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 15.w,
-            vertical: 50.h,
+          padding: EdgeInsets.only(
+            left: 15.w,
+            right: 15.w,
+            bottom: 50.h,
+            top: 10.h,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const TextView(
-                    textAlign: TextAlign.left,
+                    // textAlign: TextAlign.left,
                     text: pleaseEnterEmailAttachedToYouToResetMail,
                   ),
-                  Gap(20.h),
+                  Gap(30.h),
                   Form(
                     key: forgotPassFormKey,
                     child: CustomTextField(
