@@ -64,8 +64,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
       appBar: AppBars.mainAppBar(
         context,
         backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.colorScheme.primary,
-        text: login,
+        arrowBackColor: theme.colorScheme.primary, bottomVisible: true,
+        bottomText: login
       ),
       body: SafeArea(
         child: Padding(

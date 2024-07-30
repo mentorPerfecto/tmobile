@@ -8,11 +8,11 @@ class AppBars {
     BuildContext context, {
     String? text,
     Widget? trailing,
-    Widget? bottom,
+    String? bottomText,
     double? textSize,
     void Function()? callback,
     bool isVisible = true,
-    bool bottomVisible = false,
+    bool bottomVisible = true,
     Color? backgroundColor,
     required Color? arrowBackColor,
     Color? titleColor,
@@ -21,29 +21,32 @@ class AppBars {
     return AppBar(
       backgroundColor: backgroundColor ?? AppColors.kCharcoalBlack,
       surfaceTintColor: Colors.transparent,
+      leadingWidth: 90.w, automaticallyImplyLeading: false,
       leading: Visibility(
         visible: isVisible,
         child: InkWell(
             onTap: () {
               navigateBack(context);
             },
-            child: Row(
+            child: Row( mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    size: 18.r,
-                    color: arrowBackColor,
-                  ),
-                  splashRadius: 20,
-                  onPressed: () {
+                Gap(15),
+                GestureDetector(
+                  onTap: () {
                     if (callback != null) {
                       callback();
                     }
                     navigateBack(context);
                   },
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 18.r,
+                    color: arrowBackColor,
+                  ),
                 ),
-                const TextView(text: back)
+                TextView(text: back, fontSize:  14.spMin,
+                  fontFamily: soraFont,
+                  fontWeight: FontWeight.w600,)
               ],
             )),
       ),
@@ -59,7 +62,20 @@ class AppBars {
       actions: [trailing ?? const SizedBox.shrink()],
       bottom: bottomVisible
           ? PreferredSize(
-              preferredSize: const Size(0, 0), child: bottom ?? Container())
+              preferredSize:  Size(0, 20.h), child: Align( alignment: Alignment.centerLeft,
+          child: Row(
+            children: [
+              Gap(15),
+              bottomText != null
+                  ? TextView(
+                text: bottomText,
+                fontSize: textSize == null ? 20.spMin : textSize.spMin,
+                fontFamily: soraFont,
+                fontWeight: FontWeight.w600,
+              )
+                  : const SizedBox.shrink(),
+            ],
+          )))
           : null,
     );
   }
