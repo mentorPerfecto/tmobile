@@ -14,7 +14,6 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 final authViewModel = ChangeNotifierProvider((ref) => AuthViewModel());
 
 class AuthViewModel extends ChangeNotifier {
@@ -36,7 +35,6 @@ class AuthViewModel extends ChangeNotifier {
   String _roleName = '';
 
   // int? selectedRole;
-
 
   bool _loginObscurePass = true;
   bool _obscureOldPass = true;
@@ -74,13 +72,11 @@ class AuthViewModel extends ChangeNotifier {
     text: login,
   );
 
- 
   CustomButtonState _buttonVerifyState = CustomButtonState(
     buttonState: ButtonState.disabled,
     text: continueText,
   );
 
- 
   CustomButtonState _buttonChangePwdState = CustomButtonState(
     buttonState: ButtonState.disabled,
     text: continueText,
@@ -99,13 +95,12 @@ class AuthViewModel extends ChangeNotifier {
 
   TextEditingController get forgotPwdEmailController => _forgotPwdEmailController;
 
- 
   bool get loginObscurePass => _loginObscurePass;
   bool get obscureOldPass => _obscureOldPass;
   bool get obscureNewPass => _obscureNewPass;
   bool get obscureConfirmPass => _obscureConfirmNewPass;
   CustomButtonState? get buttonLoginState => _buttonLoginState;
- 
+
   CustomButtonState? get buttonVerifyState => _buttonVerifyState;
   CustomButtonState? get buttonForgotPWdState => _buttonForgotPWdState;
   CustomButtonState? get buttonChangePwdState => _buttonChangePwdState;
@@ -129,8 +124,6 @@ class AuthViewModel extends ChangeNotifier {
     _loginObscurePass = !_loginObscurePass;
     notifyListeners();
   }
-
- 
 
   toggleResetConfirmPwdVisibility() {
     _obscureResetConfirmPass = !_obscureResetConfirmPass;
@@ -175,6 +168,15 @@ class AuthViewModel extends ChangeNotifier {
         text: login,
       );
     }
+    notifyListeners();
+  }
+
+  void clearPinCodeAndResetVerifyButtonState() {
+    _pinCode = "";
+    _buttonVerifyState = CustomButtonState(
+      buttonState: ButtonState.disabled,
+      text: login,
+    );
     notifyListeners();
   }
 

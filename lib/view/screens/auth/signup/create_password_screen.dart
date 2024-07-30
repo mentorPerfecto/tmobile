@@ -23,28 +23,28 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(context, arrowBackColor: theme.colorScheme.primary),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 15.h,
-              horizontal: 20.w,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-             
-              children: [
-                            
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextView(
-                      text: createPassword,
-                      fontSize: 20.spMin,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    Gap(20.h),
-                    SingleChildScrollView(
-                      child: Form(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 15.h,
+            horizontal: 20.w,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+                          
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextView(
+                        text: createPassword,
+                        fontSize: 20.spMin,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      Gap(20.h),
+                      Form(
                         key: provider.registerationCreatePasswordFormKey,
                         child: PasswordValidatedFields(
                           textEditingController: provider.registerPwdController,
@@ -65,19 +65,18 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                           onObscureText: provider.togglePwdVisibility,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                Gap(260.h),
-                DefaultButtonMain(
-                    text: createAccount,
-                    color: AppColors.kPrimary1,
-                    buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
-                    onPressed: () {
-                      navigatePush(context, VerifyAccountScreen());
-                    }),
-              ],
-            ),
+              ),
+              DefaultButtonMain(
+                  text: createAccount,
+                  color: AppColors.kPrimary1,
+                  buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
+                  onPressed: () {
+                    navigatePush(context, VerifyAccountScreen());
+                  }),
+            ],
           ),
         ),
       ),

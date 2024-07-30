@@ -65,7 +65,6 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
         context,
         backgroundColor: theme.scaffoldBackgroundColor,
         arrowBackColor: theme.colorScheme.primary,
-        text: login,
       ),
       body: SafeArea(
         child: Padding(
@@ -82,6 +81,11 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    TextView(
+                      text: login,
+                      textStyle: theme.textTheme.titleLarge,
+                    ),
+                    Gap(20.h),
                     CustomTextField(
                       fieldLabel: emailText,
                       hint: hintEmail,
@@ -120,7 +124,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
              Column(
                children: [
                  DefaultButtonMain(
-                   text: continueText,
+                    text: login,
                    color: AppColors.kPrimary1,
                    buttonState: provider.buttonLoginState!.buttonState,
                    onPressed: () {
@@ -132,7 +136,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                            isSignIn: true,
                            isForgotPassword: false,
                            email: hintEmail,
-                           actionText: login,
+                            actionText: verify,
                          ),
                        );
                      }

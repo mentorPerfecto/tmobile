@@ -9,7 +9,6 @@ import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 
-
 class EmailVerificationScreen extends ConsumerStatefulWidget {
   final String email;
   final String actionText;
@@ -38,6 +37,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
   @override
   void initState() {
     super.initState();
+    ref.read(authViewModel).clearPinCodeAndResetVerifyButtonState();
     startTimer();
   }
 
@@ -166,7 +166,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                       ],
                     ),
                   ),
-                  Gap(20.h),
+                  Gap(10.h),
                   secondsRemaining == 0
                       ? authProvider.isResendingOTP
                           ? const CircularProgressIndicator()
@@ -192,12 +192,14 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                   if (pinFormKey.currentState!.validate()) {
                     pinFormKey.currentState!.save();
                     navigatePush(
-                        context,
-                        widget.isForgotPassword
-                            ? CreateNewPasswordScreen() :
-                        widget.isSignIn ? AuthSuccessScreen(
-                                infoText: widget.isSignIn ? welcomeBack : successfulAccountCreation,
-                          newPage: const DashBoardScreen(),
+                      context,
+                      widget.isForgotPassword
+                          ? CreateNewPasswordScreen()
+                          : widget.isSignIn
+                              ? AuthSuccessScreen(
+                                  infoText:
+                                      widget.isSignIn ? welcomeBack : successfulAccountCreation,
+                                  newPage: const DashBoardScreen(),
                                 )
                               : const CreatePasswordScreen(),
                     );
