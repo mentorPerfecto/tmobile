@@ -155,11 +155,11 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                               // inactiveFillColor: AppColors.kWhite,
                               selectedFillColor: AppColors.kOnyxBlack,
                               activeColor: AppColors
-                                  .kCoolGray, // The color of the border of the active PIN code cell (digit being currently entered).
+                                  .kPrimary1, // The color of the border of the active PIN code cell (digit being currently entered).
                               activeFillColor: AppColors
                                   .kOnyxBlack, // The color to fill the background of the active PIN code cell.
                               selectedColor: AppColors
-                                  .kCoolGray // The color of the border of the selected PIN code cell.,
+                                  .kPrimary1 // The color of the border of the selected PIN code cell.,
 
                               ),
                         ),
@@ -180,7 +180,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                             )
                       : TextView(
                           text: "Resend Code in $secondsRemaining secs",
-                          color: AppColors.kDefaultProfileBackground,
+                          color: AppColors.kGrey400,
                         )
                 ],
               ),

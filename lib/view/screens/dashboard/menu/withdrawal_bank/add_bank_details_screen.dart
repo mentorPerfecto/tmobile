@@ -193,8 +193,8 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                 color: AppColors.kPrimary1,
                 text: add,
                 buttonState: userProfileProvider.buttonSaveBankDetailsState.buttonState,
-                onPressed: () {
-                  showModalBottomSheet(
+                onPressed: () async {
+                  await showModalBottomSheet(
                       backgroundColor: Colors.transparent,
                       barrierColor: AppColors.kTransparent,
                       context: context,

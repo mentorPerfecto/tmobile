@@ -132,6 +132,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
               ],
             ) : const SizedBox.shrink(),
             TextFormField(
+
               onChanged: widget.onChanged,
               maxLength: widget.maxlength,
               inputFormatters: widget.inputFormatter,
@@ -156,11 +157,15 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
               obscureText: widget.obscureInput,
               decoration: InputDecoration(
               //  label:
-                border: widget.readOnly ? InputBorder.none : null,
+                border: widget.readOnly
+                    ? InputBorder.none
+                    : OutlineInputBorder(
+                        borderSide: const BorderSide(color: AppColors.kGrey400),
+                        borderRadius: BorderRadius.circular(widget.borderRadius.r)),
                 hintText: widget.hint,
                 hintStyle: theme.textTheme.bodyMedium!.copyWith(
                   color: widget.readOnly
-                    ? AppColors.kGrey500 : AppColors.kGraphiteGray,
+                    ? AppColors.kSmokyBlue : AppColors.kGraphiteGray,
                   fontFamily: 'soraFont',
                   fontSize: 14.spMin,
                   fontWeight: FontWeight.w400,
@@ -203,16 +208,21 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 fillColor: widget.fillColor,
-                enabledBorder: widget.isFilled
+                enabledBorder: widget.readOnly
                     ? OutlineInputBorder(
                         borderRadius:
                             BorderRadius.circular(widget.borderRadius.r),
+
                       )
-                    : InputBorder.none,
+                    : OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(widget.borderRadius.r),
+                        borderSide: const BorderSide(color: AppColors.kGrey400),
+                      ),
+                  
                 focusedBorder:   OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide: BorderSide(
-                      color: widget.readOnly ? AppColors.kOnyxBlack : AppColors.kCoolGray,
+                      color: widget.readOnly ? AppColors.kOnyxBlack : AppColors.kPrimary1,
                       width: widget.borderWidth!.spMin),
                 ),
                 errorBorder: OutlineInputBorder(
@@ -250,7 +260,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                     style: theme.textTheme.labelLarge!.copyWith(
                       color: theme.colorScheme.tertiary,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Campton',
+                      fontFamily: soraFont,
                       fontSize: 12.spMin,
                     ),
                   ),

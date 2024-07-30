@@ -118,6 +118,8 @@ const buyRates = "Buy Rates";
 const tpayOnboardingDisplayText = "Ultimate Cash in, \nCash out App";
 const thisAreTheRateYouWillBuyASpecificAssetAt =
     "This are the rates you will be buying a specific asset at";
+const surname = "Surname";
+const enterSurname = "Enter surname";
 // const welcomeTotampay = 'Welcome to tampay';
 //////////////////////////////////////////
 const addAnotherFee = 'Add another fee';

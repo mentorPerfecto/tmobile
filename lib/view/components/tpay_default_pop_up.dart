@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 
-class TPayDefaultProgressStatusPopUp extends StatelessWidget {
+class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
   const TPayDefaultProgressStatusPopUp({
     super.key,
     this.action,
@@ -18,7 +19,7 @@ class TPayDefaultProgressStatusPopUp extends StatelessWidget {
   final Widget? action;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.kCharcoalBlack,
@@ -62,6 +63,76 @@ class TPayDefaultProgressStatusPopUp extends StatelessWidget {
               ],
             ),
             Align(alignment: AlignmentDirectional.bottomEnd, child: action)
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TPayDefaultPopUp extends ConsumerWidget {
+  const TPayDefaultPopUp({
+    super.key,
+    this.action,
+  });
+
+  final Widget? action;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ThemeData theme = Theme.of(context);
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.kCharcoalBlack,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(
+            24.r,
+          ),
+          topRight: Radius.circular(
+            24.r,
+          ),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: 15.h,
+          horizontal: 15.w,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextView(
+              text: "Confirm Details",
+              textStyle: theme.textTheme.titleLarge!.copyWith(fontSize: 16.spMin),
+            ),
+            Column(
+              children: [
+                const CustomTextField(
+                  fieldLabel: "Full Name",
+                  readOnly: true,
+                  hint: dummyName,
+                ),
+                Gap(10.h),
+                const CustomTextField(
+                  fieldLabel: "Date of Birth",
+                  readOnly: true,
+                  hint: "",
+                ),
+                Gap(10.h),
+                CustomTextField(
+                  fieldLabel: "Phone Number",
+                  readOnly: true,
+                  hint: "",
+                  showSuffixIcon: true,
+                  trailing: Image.asset(
+                    AppImages.editTextLogo,
+                    width: 14.w,
+                    height: 14.h,
+                  ),
+                ),
+              ],
+            ),
+            action ?? const SizedBox.shrink()
           ],
         ),
       ),

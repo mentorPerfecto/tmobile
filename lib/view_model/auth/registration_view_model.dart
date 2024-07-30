@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/config/app_strings.dart';
 import 'package:tampay/src/models.dart';
@@ -14,6 +15,7 @@ class RegistrationViewModel extends ChangeNotifier {
   final registrationFormKey = GlobalKey<FormState>();
   final registerationCreatePasswordFormKey = GlobalKey<FormState>();
   String _bvnDetails = dialUSSDToSeeYourBVN;
+  final TextEditingController _surnameController = TextEditingController();
   final TextEditingController _bvnNumberController = TextEditingController();
   final TextEditingController _registerEmailController = TextEditingController();
   final TextEditingController _registerPwdController = TextEditingController();
@@ -41,7 +43,7 @@ class RegistrationViewModel extends ChangeNotifier {
 
   bool _obscurePasswordText = true;
   bool _obscureConfirmPwdText = true;
-
+  TextEditingController get surnameController => _surnameController;
   TextEditingController get bvnNumberController => _bvnNumberController;
   TextEditingController get registerEmailController => _registerEmailController;
   TextEditingController get registerPwdController => _registerPwdController;
@@ -72,8 +74,7 @@ class RegistrationViewModel extends ChangeNotifier {
     if (
         // _firstNameController.text.isNotEmpty &
         //     _lastNameController.text.isNotEmpty &
-        _registerEmailController.text.isNotEmpty &
-            _userNameController.text.isNotEmpty) {
+        _registerEmailController.text.isNotEmpty & _userNameController.text.isNotEmpty) {
       _buttonRegisterState = CustomButtonState(
         buttonState: ButtonState.idle,
         text: continueText,
@@ -88,7 +89,7 @@ class RegistrationViewModel extends ChangeNotifier {
   }
 
   void updateVerifyBVNButtonState() {
-    if (_bvnNumberController.text.length == 11) {
+    if (_bvnNumberController.text.length == 11 && _surnameController.text.isNotEmpty) {
       _verifyBVNButtonState = CustomButtonState(
         buttonState: ButtonState.idle,
         text: verify,

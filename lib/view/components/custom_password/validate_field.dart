@@ -167,12 +167,13 @@ class PasswordValidatedFieldsState
                 enabledBorder: widget.isFilled
                     ? OutlineInputBorder(
                         borderRadius: BorderRadius.circular(widget.borderRadius),
+                        borderSide: const BorderSide(color: AppColors.kGrey400),
                       )
                     : InputBorder.none,
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide:
-                      BorderSide(color: AppColors.kCoolGray, width: widget.borderWidth!.spMin),
+                      BorderSide(color: AppColors.kPrimary1, width: widget.borderWidth!.spMin),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),

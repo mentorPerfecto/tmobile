@@ -43,24 +43,27 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                       fontWeight: FontWeight.w600,
                     ),
                     Gap(20.h),
-                    Form(
-                      key: provider.registerationCreatePasswordFormKey,
-                      child: PasswordValidatedFields(
-                        textEditingController: provider.registerPwdController,
-                        obscureInput: provider.obscurePasswordText,
-                        confirmPasswordWidget: CustomTextField(
-                          fieldLabel: confirmPassword,
-                          controller: provider.registerConfirmPwdController,
-                          password: true,
-                          validator: (value) => Validators().validateConfirmPassword(
-                            provider.registerPwdController.text,
-                            provider.registerConfirmPwdController.text,
+                    SingleChildScrollView(
+                      child: Form(
+                        key: provider.registerationCreatePasswordFormKey,
+                        child: PasswordValidatedFields(
+                          textEditingController: provider.registerPwdController,
+                          obscureInput: provider.obscurePasswordText,
+                          confirmPasswordWidget: CustomTextField(
+                            fieldLabel: confirmPassword,
+                            hint: enterPassword,
+                            controller: provider.registerConfirmPwdController,
+                            password: true,
+                            validator: (value) => Validators().validateConfirmPassword(
+                              provider.registerPwdController.text,
+                              provider.registerConfirmPwdController.text,
+                            ),
+                            obscureInput: provider.obscureConfirmPwdText,
+                            onObscureText: provider.toggleConfirmPwdVisibility,
+                            onChanged: (p0) => provider.updateRegisterButtonCreatePasswordState(),
                           ),
-                          obscureInput: provider.obscureConfirmPwdText,
-                          onObscureText: provider.toggleConfirmPwdVisibility,
-                          onChanged: (p0) => provider.updateRegisterButtonCreatePasswordState(),
+                          onObscureText: provider.togglePwdVisibility,
                         ),
-                        onObscureText: provider.togglePwdVisibility,
                       ),
                     ),
                   ],
@@ -68,11 +71,10 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                 Gap(260.h),
                 DefaultButtonMain(
                     text: createAccount,
-                    borderRadius: 8.r,
                     color: AppColors.kPrimary1,
                     buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
                     onPressed: () {
-                      navigatePush(context, VerifyBVNScreen());
+                      navigatePush(context, VerifyAccountScreen());
                     }),
               ],
             ),

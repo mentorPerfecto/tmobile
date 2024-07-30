@@ -7,7 +7,9 @@ class AppColors {
     end: Alignment.bottomCenter,
     stops: [
       0.0, // Starting point
-      1.0, // Ending point
+      1.0,
+      0.0,
+      1.0, //Ending point
     ],
     colors: [
       Color(0xff1EC9FF),
@@ -24,6 +26,7 @@ class AppColors {
   static const kGraphiteGray = Color(0xff555962);
   static const kGrey500 = Color(0xff667185);
   static const kStormyGrey = Color(0xff3A3B3D);
+  static const kSmokyBlue = Color(0xff606B7E);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);
