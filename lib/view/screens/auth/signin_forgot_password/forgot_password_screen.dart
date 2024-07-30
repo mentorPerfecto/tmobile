@@ -28,7 +28,8 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
         context,
         backgroundColor: theme.scaffoldBackgroundColor,
         arrowBackColor: theme.colorScheme.primary,
-        text: resetPass,
+          bottomVisible: true,
+          bottomText: resetPass
       ),
       body: SafeArea(
         child: Padding(
@@ -43,7 +44,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
               Column(
                 children: [
                   const TextView(
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.left,
                     text: pleaseEnterEmailAttachedToYouToResetMail,
                   ),
                   Gap(20.h),
@@ -64,7 +65,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                 //   vertical: 14.h,
                 //   horizontal: 28.w,
                 // ),
-                text: resetPass,
+                text: reset,
                 color: AppColors.kPrimary1,
                 buttonState: provider.buttonForgotPWdState!.buttonState,
                 onPressed: () {
@@ -76,7 +77,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                         email: hintEmail,
                         isForgotPassword: true,
                         isSignIn: false,
-                        actionText: createAccount,
+                        actionText: verify,
                       ),
                     );
                   }

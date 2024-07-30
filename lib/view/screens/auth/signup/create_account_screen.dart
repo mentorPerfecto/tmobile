@@ -58,6 +58,8 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
       appBar: AppBars.mainAppBar(context,
           backgroundColor: theme.scaffoldBackgroundColor,
           arrowBackColor: theme.colorScheme.primary,
+        bottomVisible: true,
+        bottomText: createAccount,
       ),
    
       body: SafeArea(
@@ -72,53 +74,43 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextView(
-                        text: createAccount,
-                        textStyle: theme.textTheme.titleLarge,
-                      ),
-                      Gap(20.h),
-                      Form(
-                        key: provider.registrationFormKey,
-                        child: Column(
-                          children: [
-                            CustomTextField(
-                              fieldLabel: emailText,
-                              hint: hintEmail,
-                              controller: provider.registerEmailController,
-                              validator: (value) => Validators().validateEmail(value),
-                              //onChanged: (value)=> provider.updateButtonState(),
-                              onChanged: (p0) {
-                                provider.updateRegisterButtonState();
-                              },
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            CustomTextField(
-                              fieldLabel: userName,
-                              hint: hintUserName,
-                              controller: provider.userNameController,
-                              validator: (value) => Validators().validateEmptyTextField(value),
-                              onChanged: (p0) {
-                                provider.updateRegisterButtonState();
-                              },
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            CustomTextField(
-                              borderWidth: 1.w,
-                              fieldLabel: enterReferralCode,
-                              hint: referralCode,
-                              controller: provider.refCodeController,
-                            ),
-                          ],
+                  child: Form(
+                    key: provider.registrationFormKey,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          fieldLabel: emailText,
+                          hint: hintEmail,
+                          controller: provider.registerEmailController,
+                          validator: (value) => Validators().validateEmail(value),
+                          //onChanged: (value)=> provider.updateButtonState(),
+                          onChanged: (p0) {
+                            provider.updateRegisterButtonState();
+                          },
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        CustomTextField(
+                          fieldLabel: userName,
+                          hint: hintUserName,
+                          controller: provider.userNameController,
+                          validator: (value) => Validators().validateEmptyTextField(value),
+                          onChanged: (p0) {
+                            provider.updateRegisterButtonState();
+                          },
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        CustomTextField(
+                          borderWidth: 1.w,
+                          fieldLabel: enterReferralCode,
+                          hint: referralCode,
+                          controller: provider.refCodeController,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

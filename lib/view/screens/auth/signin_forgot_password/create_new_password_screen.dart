@@ -21,10 +21,13 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
     var provider = ref.watch(authViewModel);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBars.mainAppBar(context,
-          backgroundColor: theme.scaffoldBackgroundColor,
-          arrowBackColor: theme.colorScheme.primary,
-          text: createNewPassword),
+      appBar: AppBars.mainAppBar(
+        context,
+        backgroundColor: theme.scaffoldBackgroundColor,
+        arrowBackColor: theme.colorScheme.primary,
+        bottomVisible: true,
+        bottomText: createNewPassword,
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -35,26 +38,30 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Form(
-                key: provider.resetPassFormKey,
-                child: Form(
-                  key: provider.changePasswordFormKey,
-                  child: PasswordValidatedFields(
-                    textEditingController: provider.newPasswordController,
-                    obscureInput: provider.obscureNewPass,
-                    confirmPasswordWidget: CustomTextField(
-                      fieldLabel: confirmPassword,
-                      controller: provider.confirmNewPasswordController,
-                      password: true,
-                      validator: (value) => Validators().validateConfirmPassword(
-                        provider.newPasswordController.text,
-                        provider.confirmNewPasswordController.text,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: provider.resetPassFormKey,
+                    child: Form(
+                      key: provider.changePasswordFormKey,
+                      child: PasswordValidatedFields(
+                        textEditingController: provider.newPasswordController,
+                        obscureInput: provider.obscureNewPass,
+                        confirmPasswordWidget: CustomTextField(
+                          fieldLabel: confirmPassword,
+                          controller: provider.confirmNewPasswordController,
+                          password: true,
+                          validator: (value) => Validators().validateConfirmPassword(
+                            provider.newPasswordController.text,
+                            provider.confirmNewPasswordController.text,
+                          ),
+                          obscureInput: provider.obscureConfirmPass,
+                          onObscureText: provider.toggleConfirmPassVisibility,
+                          onChanged: (p0) => provider.updateCreateNewPassButtonState(),
+                        ),
+                        onObscureText: provider.toggleNewPassVisibility,
                       ),
-                      obscureInput: provider.obscureConfirmPass,
-                      onObscureText: provider.toggleConfirmPassVisibility,
-                      onChanged: (p0) => provider.updateCreateNewPassButtonState(),
                     ),
-                    onObscureText: provider.toggleNewPassVisibility,
                   ),
                 ),
               ),
@@ -63,14 +70,27 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
                 borderRadius: 8.r,
                 color: AppColors.kPrimary1,
                 buttonState: provider.buttonChangePwdState!.buttonState,
-                onPressed: () {
-                  showModalBottomSheet(backgroundColor: Colors.transparent,
+                onPressed: () async {
+                  await showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
                       barrierColor: AppColors.kTransparent,
                       context: context,
                       builder: (context) {
                         return BackdropFilter(
                           filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                          child: const ResetPassPopUp(),
+                          child: TPayDefaultProgressStatusPopUp(
+                            progressStatusLogo: AppImages.checkLogo,
+                            progressStatusTextTitle: "Password Changed",
+                            progressStatusTextBody:
+                                "You have successfully changed your password,\nplease login with the new password",
+                            action: DefaultButtonMain(
+                              color: AppColors.kPrimary1,
+                              text: "Back to login",
+                              onPressed: () {
+                                navigatePush(context, const SignInScreen());
+                              },
+                            ),
+                          ),
                         );
                       });
                 },

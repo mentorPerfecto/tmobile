@@ -35,6 +35,7 @@ const ensureToSend = 'Please ensure to send only ';
 const toThisAddress = ' to this address or you may lose your funds.';
 const welcomeBack = 'Welcome back';
 const resetPass = 'Reset Password';
+const reset = "Reset";
 const confirmPassword = 'Confirm Password';
 const pleaseEnterEmailAttachedToYouToResetMail =
     "Please enter the email attached to your account to\n"
@@ -349,7 +350,6 @@ const filter = 'Filter';
 const bedroom = 'Bedroom';
 const bathroom = 'Bathroom';
 const apply = 'Apply';
-const reset = 'Reset';
 const propertyType = 'Property Type';
 const any = 'Any';
 const newTenantsRequestText = 'New Access Request';

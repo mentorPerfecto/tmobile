@@ -40,6 +40,8 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
             ),
           ),
         ),
+        bottomVisible: true,
+        bottomText: verifyAccount,
       ),
       body: SafeArea(
         child: Padding(
@@ -53,8 +55,7 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextView(text: verifyAccount, textStyle: theme.textTheme.titleLarge),
-                  Gap(15.h),
+                 
                   CustomTextField(
                     fieldLabel: surname,
                     hint: enterSurname,
