@@ -76,7 +76,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
     var theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBars.mainAppBar(context, arrowBackColor: theme.colorScheme.primary),
+      appBar: AppBars.mainAppBar(context, arrowBackColor: theme.colorScheme.primary, bottomText: verifyEmail ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -91,10 +91,6 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextView(
-                    text: verifyEmail,
-                    textStyle: theme.textTheme.titleLarge,
-                  ),
                   Gap(20.h),
                   Text.rich(
                     TextSpan(
