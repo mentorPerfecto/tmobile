@@ -19,7 +19,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   @override
   void initState() {
-    ref.read(onboardingViewModel).initData(context);
+    ref.read(onboardingViewModel).checkUser(context);
     super.initState();
   }
 

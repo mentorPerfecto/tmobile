@@ -16,13 +16,13 @@ class ThemeConfig extends ChangeNotifier {
 
   late SharedPreferences sharedPreferences;
 
-  ThemeMode _themeMode = ThemeMode.dark;
+  ThemeMode _themeMode = ThemeMode.light;
 
   init() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    DummyData.isLightTheme = sharedPreferences.getBool("isLightTheme") ?? false;
+    DummyData.isDarkTheme = sharedPreferences.getBool("isDarkTheme") ?? false;
     _themeMode =
-        DummyData.isLightTheme == true ? ThemeMode.light : ThemeMode.dark;
+    DummyData.isDarkTheme == true ? ThemeMode.dark : ThemeMode.light;
     DummyData.accessToken = sharedPreferences.getString("accessToken");
     notifyListeners();
   }
@@ -36,7 +36,7 @@ class ThemeConfig extends ChangeNotifier {
   void _setStatusBar() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarBrightness:
-          _themeMode == ThemeMode.light ? Brightness.light : Brightness.dark,
+      _themeMode == ThemeMode.light ? Brightness.light : Brightness.dark,
     ));
   }
 
