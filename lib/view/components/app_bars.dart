@@ -13,23 +13,24 @@ class AppBars {
     void Function()? callback,
     bool isVisible = true,
     bool bottomVisible = true,
-   required Color? backgroundColor,
-    required Color? arrowBackColor,
+  
     Color? titleColor,
     bool? iWantToEditAProperty,
-
   }) {
+    ThemeData theme = Theme.of(context);
     return AppBar(
-      backgroundColor: backgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       surfaceTintColor: Colors.transparent,
-      leadingWidth: 90.w, automaticallyImplyLeading: false,
+      leadingWidth: 90.w,
+      automaticallyImplyLeading: false,
       leading: Visibility(
         visible: isVisible,
         child: InkWell(
             onTap: () {
               navigateBack(context);
             },
-            child: Row( mainAxisAlignment: MainAxisAlignment.start,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Gap(15),
                 GestureDetector(
@@ -42,12 +43,15 @@ class AppBars {
                   child: Icon(
                     Icons.arrow_back_ios,
                     size: 18.r,
-                    color: arrowBackColor,
+                    color: theme.colorScheme.primary,
                   ),
                 ),
-                TextView(text: back, fontSize:  14.spMin,
+                TextView(
+                  text: back,
+                  fontSize: 14.spMin,
                   fontFamily: soraFont,
-                  fontWeight: FontWeight.w600,)
+                  fontWeight: FontWeight.w600,
+                )
               ],
             )),
       ),
@@ -63,20 +67,22 @@ class AppBars {
       actions: [trailing ?? const SizedBox.shrink()],
       bottom: bottomVisible
           ? PreferredSize(
-              preferredSize:  Size(0, 20.h), child: Align( alignment: Alignment.centerLeft,
-          child: Row(
-            children: [
+              preferredSize: Size(0, 20.h),
+              child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: [
                       const Gap(15),
-              bottomText != null
-                  ? TextView(
-                text: bottomText,
-                fontSize: textSize == null ? 20.spMin : textSize.spMin,
-                fontFamily: soraFont,
-                fontWeight: FontWeight.w600,
-              )
-                  : const SizedBox.shrink(),
-            ],
-          )))
+                      bottomText != null
+                          ? TextView(
+                              text: bottomText,
+                              fontSize: textSize == null ? 20.spMin : textSize.spMin,
+                              fontFamily: soraFont,
+                              fontWeight: FontWeight.w600,
+                            )
+                          : const SizedBox.shrink(),
+                    ],
+                  )))
           : null,
     );
   }

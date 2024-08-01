@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class OnboardingViewModel {
+class OnboardingViewItemsModel {
   final String title;
   final String? description;
-  OnboardingViewModel({required this.title, this.description});
+  OnboardingViewItemsModel({required this.title, this.description});
 }
 
 class CryptoRatesModel {

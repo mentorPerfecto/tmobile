@@ -46,28 +46,31 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    ImageView.asset(
-                      AppImages.tpayLogo,
-                      width: 53.w,
-                      height: 53.h,
-                      color: AppColors.kPrimary1,
-                    ),
-                    Gap(10.h),
-                    TextView(
-                      text: "Cryptpay",
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20.spMin,
-                      color: AppColors.kPrimary1,
-                    )
-                  ],
+                Center(
+                  child: Column(
+                    children: [
+                      ImageView.asset(
+                        AppImages.tpayLogo,
+                        width: 53.w,
+                        height: 53.h,
+                        color: AppColors.kPrimary1,
+                      ),
+                      Gap(10.h),
+                      TextView(
+                        text: "Cryptpay",
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20.spMin,
+                        color: AppColors.kPrimary1,
+                      )
+                    ],
+                  ),
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
+                    SizedBox(
+                      height: 400.h,
                       child: PageView.builder(
                         controller: _pageController,
                         itemCount: onboardingProvider.onboardingViewObjects.length,
@@ -92,62 +95,63 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                                   Visibility(
                                     visible: index != 0,
                                     child: Column(
-                                      children: [
-                                        ...onboardingProvider
-                                            .tPayCryptoRatesAtBuyingOrSelling(index)
-                                            .map(
-                                              (cryptoCoins) => Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  vertical: 12.h,
-                                                  horizontal: 8.w,
+                                        children: List.generate(
+                                            onboardingProvider
+                                                .tPayCryptoRatesAtBuyingOrSelling(index)
+                                                .length, (cryptoListRateIndex) {
+                                      CryptoRatesModel cryptoCoins =
+                                          onboardingProvider.tPayCryptoRatesAtBuyingOrSelling(
+                                              index)[cryptoListRateIndex];
+                                      return Container(
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 12.h,
+                                          horizontal: 8.w,
+                                        ),
+                                        margin: EdgeInsets.only(bottom: 15.h),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(16.r),
+                                          color: themeMode == ThemeMode.dark
+                                              ? AppColors.kOnyxBlack
+                                              : AppColors.kLightSilver,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Image.asset(
+                                                  onboardingProvider
+                                                      .cryptoCoinImages[cryptoListRateIndex],
+                                                  width: 32.w,
+                                                  height: 32.h,
                                                 ),
-                                                margin: EdgeInsets.only(bottom: 15.h),
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(16.r),
-                                                  color: themeMode == ThemeMode.dark
-                                                      ? AppColors.kOnyxBlack
-                                                      : AppColors.kLightSilver,
+                                                Gap(3.w),
+                                                TextView(
+                                                  text: cryptoCoins.crypto ?? "Error",
+                                                  textStyle: theme.textTheme.titleMedium,
+                                                )
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                TextView(
+                                                  text: "${cryptoCoins.rate}/$dollarSign",
+                                                  textStyle: theme.textTheme.titleMedium,
                                                 ),
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: [
-                                                    Row(
-                                                      children: [
-                                                        Image.asset(
-                                                          onboardingProvider
-                                                              .cryptoCoinImages[index],
-                                                          width: 32.w,
-                                                          height: 32.h,
-                                                        ),
-                                                        Gap(3.w),
-                                                        TextView(
-                                                          text: cryptoCoins.crypto ?? "Error",
-                                                          textStyle: theme.textTheme.titleMedium,
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        TextView(
-                                                          text: "${cryptoCoins.rate}/$dollarSign",
-                                                          textStyle: theme.textTheme.titleMedium,
-                                                        ),
-                                                        Gap(10.w),
-                                                        Icon(
-                                                          Icons.arrow_forward_ios,
-                                                          size: 20.spMin,
-                                                          color: themeMode == ThemeMode.dark
-                                                              ? AppColors.kGrey900
-                                                              : AppColors.kWhite,
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            )
-                                      ],
-                                    ),
+                                                Gap(10.w),
+                                                Icon(
+                                                  Icons.arrow_forward_ios,
+                                                  size: 20.spMin,
+                                                  color: themeMode == ThemeMode.light
+                                                      ? AppColors.kGrey900
+                                                      : AppColors.kWhite,
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    })),
                                   ),
                                 ],
                               ),
@@ -162,7 +166,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                                   children: [
                                     Gap(10.h),
                                     TextView(
-                                      text: onboardingViewObject.description!,
+                                      text: onboardingViewObject.description ?? "Error",
+                                      maxLines: 2,
                                       fontSize: 14.spMin,
                                     ),
                                   ],
@@ -173,22 +178,26 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         },
                       ),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: List.generate(
-                        3,
-                        (index) => AnimatedContainer(
-                          curve: Curves.easeIn,
-                          width: onboardingProvider.currentPage == index ? 27.w : 7.w,
-                          height: 7.h,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: onboardingProvider.currentPage == index
-                                ? AppColors.kPrimary1
-                                : AppColors.kGrey300,
+                    SizedBox(
+                      width: 57.w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: List.generate(
+                          3,
+                          (index) => AnimatedContainer(
+                            curve: Curves.easeIn,
+                            width: onboardingProvider.currentPage == index ? 27.w : 7.w,
+                            height: 7.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              color: onboardingProvider.currentPage == index
+                                  ? AppColors.kPrimary1
+                                  : themeMode == ThemeMode.light
+                                      ? AppColors.kGrey300
+                                      : AppColors.kGrey700,
+                            ),
+                            duration: const Duration(milliseconds: 150),
                           ),
-                          duration: const Duration(milliseconds: 150),
                         ),
                       ),
                     ),
@@ -202,19 +211,21 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 }
 
-class OnBoardingBottomActions extends StatelessWidget {
+class OnBoardingBottomActions extends ConsumerWidget {
   const OnBoardingBottomActions({
     super.key,
   });
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         DefaultButtonMain(
           padding: EdgeInsets.symmetric(horizontal: 26.w),
           text: login,
-          borderColor: AppColors.kWhite,
+          textColor: themeMode == ThemeMode.dark ? AppColors.kWhite : AppColors.kPrimary1,
+          borderColor: themeMode == ThemeMode.dark ? AppColors.kWhite : AppColors.kPrimary1,
           onPressed: () {
             navigatePush(context, const SignInScreen());
           },

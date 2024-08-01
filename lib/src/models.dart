@@ -18,4 +18,4 @@ export 'package:tampay/model/response/personal_listings_response.dart';
 export 'package:tampay/model/response/local_response/listing_type_response.dart';
 export 'package:tampay/model/response/tenants_response_model.dart';
 export 'package:tampay/model/response/local_response/tpay_coin_response/crypto_coin_response.dart';
-export 'package:tampay/model/local/crypto_rates_model.dart';
+export 'package:tampay/model/local/onboarding_model.dart';

@@ -208,7 +208,10 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                         titleColor: AppColors.kLogOutText,
                       ),
                     ),
-            ]));
+          const SettingsThemeItem(logo: AppImages.btcLogo, title: "Settings")
+        ],
+      ),
+    );
   }
 }
 

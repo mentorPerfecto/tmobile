@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rebirth/rebirth.dart';
@@ -179,6 +180,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       // );
                     },
                   ),
+            const SettingsThemeItem(logo: AppImages.btcLogo, title: "Settings")
           ],
         )
       ],
@@ -327,6 +329,138 @@ class UserAccountDetails extends ConsumerWidget {
           ],
         )
       ],
+    );
+  }
+}
+
+
+class SettingsItem extends StatelessWidget {
+  const SettingsItem(
+      {super.key,
+      required this.logo,
+      required this.title,
+      this.titleColor,
+      this.onTap,
+      this.logoColor});
+  final String title;
+  final String logo;
+  final Color? titleColor;
+  final VoidCallback? onTap;
+  final Color? logoColor;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        // height: 40.h,
+        padding: EdgeInsets.symmetric(vertical: 12.h),
+        // color: Colors.red,
+
+        width: double.infinity,
+        child: Row(
+          children: [
+            Image.asset(
+              logo,
+              width: 24.w,
+              height: 24.h,
+              color: logoColor,
+            ),
+            SizedBox(
+              width: 10.w,
+            ),
+            TextView(
+              onTap: onTap,
+              text: title,
+              fontSize: 16.spMin,
+              fontWeight: FontWeight.w500,
+              fontFamily: soraFont,
+              color: titleColor,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SettingsThemeItem extends ConsumerStatefulWidget {
+  const SettingsThemeItem({
+    super.key,
+    required this.logo,
+    required this.title,
+    this.onTap,
+  });
+  final String title;
+  final String logo;
+
+  final VoidCallback? onTap;
+  @override
+  ConsumerState<SettingsThemeItem> createState() => _SettingsThemeItemState();
+}
+
+class _SettingsThemeItemState extends ConsumerState<SettingsThemeItem> {
+  @override
+  Widget build(BuildContext context) {
+    var themeProvider = ref.watch(themeViewModel);
+    return InkWell(
+      onTap: widget.onTap,
+      child: SizedBox(
+        height: 40.h,
+        // color: Colors.red,
+
+        width: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Image.asset(
+                  widget.logo,
+                  width: 24.w,
+                  height: 24.h,
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? AppColors.kIcon
+                      : AppColors.kPrimary150,
+                ),
+                SizedBox(
+                  width: 10.w,
+                ),
+                TextView(
+                  onTap: widget.onTap,
+                  text: widget.title,
+                  fontSize: 16.spMin,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: soraFont,
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? AppColors.kTextBlack
+                      : AppColors.kWhite,
+                )
+              ],
+            ),
+            ListenableBuilder(
+                listenable: themeProvider,
+                builder: (BuildContext context, Widget? child) {
+                  final themeMode = themeProvider.themeMode;
+
+                  return CupertinoSwitch(
+                    value: themeMode == ThemeMode.light,
+                    onChanged: (value) async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      if (value) {
+                        themeProvider.setThemeMode(ThemeMode.light);
+                        prefs.setBool('isLightTheme', true);
+                        return;
+                      }
+                      themeProvider.setThemeMode(ThemeMode.dark);
+                      prefs.setBool('isLightTheme', false);
+                    },
+                    activeColor:
+                        themeMode == ThemeMode.light ? AppColors.kPrimary1 : AppColors.kPrimary150,
+                  );
+                })
+          ],
+        ),
+      ),
     );
   }
 }
