@@ -443,19 +443,21 @@ class _SettingsThemeItemState extends ConsumerState<SettingsThemeItem> {
                   final themeMode = themeProvider.themeMode;
 
                   return CupertinoSwitch(
-                    value: themeMode == ThemeMode.light,
+                    value: themeMode == ThemeMode.dark,
                     onChanged: (value) async {
-                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
                       if (value) {
-                        themeProvider.setThemeMode(ThemeMode.light);
-                        prefs.setBool('isLightTheme', true);
+                        themeProvider.setThemeMode(ThemeMode.dark);
+                        prefs.setBool('isDarkTheme', true);
                         return;
                       }
-                      themeProvider.setThemeMode(ThemeMode.dark);
-                      prefs.setBool('isLightTheme', false);
+                      themeProvider.setThemeMode(ThemeMode.light);
+                      prefs.setBool('isDarkTheme', false);
                     },
-                    activeColor:
-                        themeMode == ThemeMode.light ? AppColors.kPrimary1 : AppColors.kPrimary150,
+                    activeColor: themeMode == ThemeMode.light
+                        ? AppColors.kPrimary1
+                        : AppColors.kPrimary150,
                   );
                 })
           ],

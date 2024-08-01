@@ -1,17 +1,14 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
-import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/auth/signup/facial_verification_screen.dart';
-import '../../../../src/components.dart';
+import 'package:tampay/src/components.dart';
 
 class VerifyAccountScreen extends ConsumerStatefulWidget {
-  VerifyAccountScreen({Key? key}) : super(key: key);
+  const VerifyAccountScreen({super.key});
 
   @override
   ConsumerState<VerifyAccountScreen> createState() => _VerifyAccountScreenState();
@@ -21,7 +18,7 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    var registerationProvider = ref.watch(registrationViewModel);
+    var registrationProvider = ref.watch(registrationViewModel);
     var userProfileProvider = ref.watch(profileViewModel);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -56,19 +53,24 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomTextField(
-                    fieldLabel: surname,
-                    hint: enterSurname,
-                    controller: registerationProvider.surnameController,
-                    onChanged: (bvn) => registerationProvider.updateVerifyBVNButtonState(),
+                    keyboardType: TextInputType.number,
+                    maxLength: 11,
+                    fieldLabel: bvnNumber,
+                    hint: enterNumber,
+                    controller: registrationProvider.bvnNumberController,
+                    onChanged: (bvn) => registrationProvider.updateVerifyBVNButtonState(),
+                  ),
+                  TextView(
+                    text: registrationProvider.bvnDetails,
+                    color: AppColors.kGrey500,
+                    fontSize: 14.spMin,
                   ),
                   Gap(10.h),
                   CustomTextField(
-                    keyboardType: TextInputType.number,
-                    maxlength: 11,
-                    fieldLabel: bvnNumber,
-                    hint: enterNumber,
-                    controller: registerationProvider.bvnNumberController,
-                    onChanged: (bvn) => registerationProvider.updateVerifyBVNButtonState(),
+                    fieldLabel: surname,
+                    hint: enterSurname,
+                    controller: registrationProvider.surnameController,
+                    onChanged: (bvn) => registrationProvider.updateVerifyBVNButtonState(),
                   ),
                   userProfileProvider.isLoadingVerifiedBanks
                       ? Column(
@@ -94,41 +96,21 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
                             ),
                           ],
                         )
-                      : TextView(
-                          text: registerationProvider.bvnDetails,
-                          color: AppColors.kGrey500,
-                          fontSize: 14.spMin,
-                        ),
+                      : const SizedBox.shrink()
                 ],
               ),
-              DefaultButtonMain(
-                color: AppColors.kPrimary1,
-                text: next,
-                buttonState: registerationProvider.verifyBVNButtonState.buttonState,
-                onPressed: () {
-                  navigatePush(context, FacialVerificationScreen());
-                  // await showModalBottomSheet(
-                  //     backgroundColor: Colors.transparent,
-                  //     barrierColor: AppColors.kTransparent,
-                  //     context: context,
-                  //     builder: (context) {
-                  //       return BackdropFilter(
-                  //         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                  //         child: TPayDefaultPopUp(
-                  //           action: DefaultButtonMain(
-                  //             color: AppColors.kPrimary1,
-                  //             text: "Confirm",
-                  //             onPressed: () {
-                  //               navigatePush(context, const AddBankDetailsScreen());
-                  //             },
-                  //           ),
-                  //         ),
-                  //       );
-                  //     });
-                  // userProfileProvider.addUserAccountNumber(
-                  //   context,
-                  // );
-                },
+              Column(
+                children: [
+                  DefaultButtonMain(
+                    color: AppColors.kPrimary1,
+                    text: next,
+                    buttonState: registrationProvider.verifyBVNButtonState.buttonState,
+                    onPressed: () {
+                      navigatePush(context, FacialVerificationScreen());
+                    },
+                  ),
+                  Gap(40.h),
+                ],
               ),
             ],
           ),

@@ -46,6 +46,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Gap(0.h),
                 Center(
                   child: Column(
                     children: [

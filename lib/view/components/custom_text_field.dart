@@ -26,6 +26,7 @@ class CustomTextField extends ConsumerStatefulWidget {
     this.showSuffixText = false,
     this.prefixIcon,
     this.password = false,
+    this.showCounter = false,
     this.trailing,
     this.inputFormatter,
     this.prefix,
@@ -42,7 +43,7 @@ class CustomTextField extends ConsumerStatefulWidget {
     this.obscureInput = false,
     this.onObscureText,
     this.borderRadius = 12,
-    this.maxlength,
+    this.maxLength,
     this.enabled = true,
     this.useForgotPass = false,
     this.onForgotPassTap,
@@ -69,6 +70,7 @@ class CustomTextField extends ConsumerStatefulWidget {
   final Widget? prefixIcon;
   final Widget? prefix;
   final bool? password;
+  final bool showCounter;
   final bool? showSuffixIcon;
   final bool? showSuffixText;
   final Widget? trailing;
@@ -87,7 +89,7 @@ class CustomTextField extends ConsumerStatefulWidget {
   final bool obscureInput;
   final void Function()? onObscureText;
   final double borderRadius;
-  final int? maxlength;
+  final int? maxLength;
   final bool useForgotPass;
   final bool enabled;
   final void Function()? onForgotPassTap;
@@ -134,7 +136,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
             TextFormField(
 
               onChanged: widget.onChanged,
-              maxLength: widget.maxlength,
+              maxLength: widget.maxLength,
               inputFormatters: widget.inputFormatter,
               controller: widget.controller,
               textInputAction: widget.textInputAction,
@@ -175,6 +177,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 ),
                 prefixIcon: widget.prefixIcon,
                 prefix: widget.prefix,
+                counterText: widget.showCounter ? null : '',
                 suffixText: widget.showSuffixText! ? widget.suffixText : '',
                 suffixIcon: widget.textAlign == TextAlign.center
                     ? null
@@ -210,7 +213,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                 filled: widget.isFilled,
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                fillColor: themeMode == ThemeMode.light ? AppColors.kGrey300 : widget.fillColor,
+                fillColor: themeMode == ThemeMode.light ? AppColors.kSnowWhite : widget.fillColor,
                 enabledBorder: widget.readOnly
                     ? OutlineInputBorder(
                         borderRadius:
@@ -219,10 +222,8 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                       )
                     : OutlineInputBorder(
                         borderRadius: BorderRadius.circular(widget.borderRadius.r),
-                        borderSide: BorderSide(
-                          color: themeMode == ThemeMode.dark
-                              ? AppColors.kGrey400
-                              : AppColors.kSnowWhite,
+                        borderSide: const BorderSide(
+                          color: AppColors.kGrey300,
                         ),
                       ),
                   

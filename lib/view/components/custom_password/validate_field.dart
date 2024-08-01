@@ -164,14 +164,14 @@ class PasswordValidatedFieldsState
                   ),
                 ),
                 filled: true,
-                fillColor: themeMode == ThemeMode.light ? AppColors.kGrey300 : widget.fillColor,
+                fillColor: themeMode == ThemeMode.light ? AppColors.kSnowWhite : widget.fillColor,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 border: widget.readOnly ? InputBorder.none : null,
                 // fillColor: widget.fillColor ?? theme.cardColor,
                 enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide: BorderSide(
-                    color: themeMode == ThemeMode.dark ? AppColors.kGrey400 : AppColors.kSnowWhite,
+                    color: AppColors.kGrey300
                   ),
                 ),
                    

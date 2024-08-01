@@ -65,106 +65,48 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
                   ),
                 ),
               ),
-              DefaultButtonMain(
-                text: resetPass,
-                borderRadius: 8.r,
-                color: AppColors.kPrimary1,
-                buttonState: provider.buttonChangePwdState!.buttonState,
-                onPressed: () async {
-                  await showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      barrierColor: AppColors.kTransparent,
-                      context: context,
-                      builder: (context) {
-                        return BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                          child: TPayDefaultProgressStatusPopUp(
-                            progressStatusLogo: AppImages.checkLogo,
-                            progressStatusTextTitle: "Password Changed",
-                            progressStatusTextBody:
-                                "You have successfully changed your password,\nplease login with the new password",
-                            action: DefaultButtonMain(
-                              color: AppColors.kPrimary1,
-                              text: "Back to login",
-                              onPressed: () {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => const SignInScreen()),
-                                  (route) => false,
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      });
-                },
+              Column(
+                children: [
+                  DefaultButtonMain(
+                    text: resetPass,
+                    borderRadius: 8.r,
+                    color: AppColors.kPrimary1,
+                    buttonState: provider.buttonChangePwdState!.buttonState,
+                    onPressed: () async {
+                      await showModalBottomSheet(
+                          backgroundColor: Colors.transparent,
+                          barrierColor: Colors.black38,
+                          context: context,
+                          builder: (context) {
+                            return BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3 ),
+                              child: TPayDefaultProgressStatusPopUp(
+                                progressStatusLogo: AppImages.checkLogo,
+                                height: 300,
+                                progressStatusTextTitle: "Password Changed",
+                                progressStatusTextBody:
+                                    "You have successfully changed your password,\nplease login with the new password",
+                                action: DefaultButtonMain(
+                                  color: AppColors.kPrimary1,
+                                  text: backToLogin, width: 150.w,
+                                  onPressed: () {
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const SignInScreen()),
+                                      (route) => false,
+                                    );
+                                  },
+                                ),
+                              ),
+                            );
+                          });
+                    },
+                  ),
+                  Gap(40.h),
+                ],
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class ResetPassPopUp extends StatelessWidget {
-  const ResetPassPopUp({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 360.h,
-      decoration: BoxDecoration(
-        color: AppColors.kPrimaryDark,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(
-            12.r,
-          ),
-          topRight: Radius.circular(
-            12.r,
-          ),
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 15.h,
-          horizontal: 15.w,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.asset(
-              AppImages.successLogo,
-              width: 72.w,
-              height: 72.h,
-            ),
-            Column(
-              children: [
-                TextView(
-                  text: successful,
-                  fontSize: 16.spMin,
-                  fontWeight: FontWeight.w600,
-                ),
-                Gap(15.h),
-                TextView(
-                  textAlign: TextAlign.center,
-                  text: youHaveSuccessfullyChangedPWordLoginToAccount,
-                  fontSize: 12.spMin,
-                  fontWeight: FontWeight.w400,
-                ),
-              ],
-            ),
-            DefaultButtonMain(
-              textColor: AppColors.kWhite,
-              color: AppColors.kPrimary1,
-              text: backToLogin,
-              onPressed: () {
-                navigatePush(context, const SignInScreen());
-              },
-            )
-          ],
         ),
       ),
     );

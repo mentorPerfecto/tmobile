@@ -10,6 +10,7 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
     this.action,
     this.progressStatusLogo,
     this.progressStatusTextBody,
+    this.height = 500.0,
     this.progressStatusTextTitle,
   });
 
@@ -17,11 +18,13 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
   final String? progressStatusTextTitle;
   final String? progressStatusTextBody;
   final Widget? action;
+  final double height;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
     return Container(
+      height: height.h,
       decoration: BoxDecoration(
         color: themeMode == ThemeMode.dark ? AppColors.kCharcoalBlack : AppColors.kTextWhite,
         borderRadius: BorderRadius.only(
@@ -65,7 +68,7 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
                 ),
               ],
             ),
-            Align(alignment: AlignmentDirectional.bottomEnd, child: action)
+            Align(alignment: AlignmentDirectional.center, child: action)
           ],
         ),
       ),

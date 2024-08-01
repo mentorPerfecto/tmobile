@@ -158,9 +158,9 @@ const yourPropertyView = 'Here is how we will show your property, make\n'
 final userEmail = DummyData.emailAddress.toString().toLowerCase();
 const pleaseEnterDetails = 'Please enter your details to sign in';
 final sentOTPUserEmail = 'We sent an OTP to $userEmail.';
-final enterEmailCodeForEmailVerification =
-    'Enter code sent to $userEmail to verify your email address';
-final enterEmailCodeStart = 'Enter code sent to $userEmail to reset password';
+// final enterEmailCodeForEmailVerification =
+//     'Enter code sent to $userEmail to verify your email address';
+// final enterEmailCodeStart = 'Enter code sent to $userEmail to reset password';
 
 const verifiedListing = 'Verified Listing';
 const exVerified = 'Extended Verification';

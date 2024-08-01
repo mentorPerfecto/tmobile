@@ -32,7 +32,7 @@ class AppBars {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Gap(15),
+                const Gap(15),
                 GestureDetector(
                   onTap: () {
                     if (callback != null) {

@@ -61,38 +61,42 @@ class BVNVerificationScreen extends ConsumerWidget {
                   )
                 ],
               ),
-              DefaultButtonMain(
-                textColor: AppColors.kWhite,
-                color: AppColors.kPrimary1,
-                text: profileProvider.verifyBVNButtonState.text,
-                buttonState: profileProvider.verifyBVNButtonState.buttonState,
-                onPressed: () {
-                  if (_bvnFormKey.currentState!.validate()) {
-                    _bvnFormKey.currentState!.save();
-                    showModalBottomSheet(
-                        backgroundColor: Colors.transparent,
-                        barrierColor: AppColors.kTransparent,
-                        context: context,
-                        builder: (context) {
-                          return BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                            child: TPayDefaultProgressStatusPopUp(
-                              progressStatusLogo: AppImages.inProgressLogo,
-                              progressStatusTextTitle: inProgress,
-                              progressStatusTextBody: yourAccountVerificationIsUnderReview,
-                              action: DefaultButtonMain(
-                                textColor: AppColors.kWhite,
-                                color: AppColors.kPrimary1,
-                                text: backToHome,
-                                onPressed: () {
-                                  dashboardProvider.setPageIndexToHome(context);
-                                },
-                              ),
-                            ),
-                          );
-                        });
-                  }
-                },
+              Column(
+                children: [
+                  DefaultButtonMain(
+                    textColor: AppColors.kWhite,
+                    color: AppColors.kPrimary1,
+                    text: profileProvider.verifyBVNButtonState.text,
+                    buttonState: profileProvider.verifyBVNButtonState.buttonState,
+                    onPressed: () {
+                      if (_bvnFormKey.currentState!.validate()) {
+                        _bvnFormKey.currentState!.save();
+                        showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
+                            barrierColor: AppColors.kTransparent,
+                            context: context,
+                            builder: (context) {
+                              return BackdropFilter(
+                                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                                child: TPayDefaultProgressStatusPopUp(
+                                  progressStatusLogo: AppImages.inProgressLogo,
+                                  progressStatusTextTitle: inProgress,
+                                  progressStatusTextBody: yourAccountVerificationIsUnderReview,
+                                  action: DefaultButtonMain(
+                                    textColor: AppColors.kWhite,
+                                    color: AppColors.kPrimary1,
+                                    text: backToHome,
+                                    onPressed: () {
+                                      dashboardProvider.setPageIndexToHome(context);
+                                    },
+                                  ),
+                                ),
+                              );
+                            });
+                      }
+                    },
+                  ),
+                ],
               )
             ],
           ),

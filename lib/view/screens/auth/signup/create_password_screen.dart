@@ -17,15 +17,11 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     var provider = ref.watch(registrationViewModel);
-    var themeMode = ref.watch(themeViewModel).themeMode;
     var theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
-        context,
-      
-        bottomVisible: true,
-        bottomText: createPassword,
+        context,  bottomVisible: true, bottomText: createPassword,
       ),
       body: SafeArea(
         child: Padding(
@@ -63,13 +59,18 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                   ),
                 ),
               ),
-              DefaultButtonMain(
-                  text: createAccount,
-                  color: AppColors.kPrimary1,
-                  buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
-                  onPressed: () {
-                    navigatePush(context, VerifyAccountScreen());
-                  }),
+              Column(
+                children: [
+                  DefaultButtonMain(
+                      text: createAccount,
+                      color: AppColors.kPrimary1,
+                      buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
+                      onPressed: () {
+                        navigatePush(context, const VerifyAccountScreen());
+                      }),
+                  Gap(40.h),
+                ],
+              ),
             ],
           ),
         ),

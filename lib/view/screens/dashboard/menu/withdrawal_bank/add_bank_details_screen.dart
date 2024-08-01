@@ -145,7 +145,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
                   CustomTextField(
                     controller: userProfileProvider.accountNumberController,
                     fieldLabel: accountNumber,
-                    maxlength: 10,
+                    maxLength: 10,
                     hint: enterTenDigitsAccNumberText,
                     keyboardType: TextInputType.number,
                     onChanged: (accountNumber) {

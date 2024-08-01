@@ -70,7 +70,6 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
 
   @override
   Widget build(BuildContext context) {
-    String timerText = secondsRemaining > 9 ? "$secondsRemaining" : "0$secondsRemaining";
     var authProvider = ref.watch(authViewModel);
     ref.watch(themeViewModel).themeMode;
     var theme = Theme.of(context);
@@ -84,7 +83,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 15.0.w,
-            vertical: 30.h,
+            vertical: 10.h,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,12 +93,12 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Gap(20.h),
+
                   Text.rich(
                     TextSpan(
                       text: weHaveSentAnOTP,
                       style: theme.textTheme.titleMedium!.copyWith(
-                        color: AppColors.kTextWhite,
+                      //  color: AppColors.kTextWhite,
                         fontSize: 12.sp,
                       ),
                       children: [
@@ -153,12 +152,9 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                               inactiveColor: AppColors.kStormyGrey,
                               // inactiveFillColor: AppColors.kWhite,
                               selectedFillColor: AppColors.kOnyxBlack,
-                              activeColor: AppColors
-                                  .kPrimary1, // The color of the border of the active PIN code cell (digit being currently entered).
-                              activeFillColor: AppColors
-                                  .kOnyxBlack, // The color to fill the background of the active PIN code cell.
-                              selectedColor: AppColors
-                                  .kPrimary1 // The color of the border of the selected PIN code cell.,
+                              activeColor: AppColors .kPrimary1, // The color of the border of the active PIN code cell (digit being currently entered).
+                              activeFillColor: AppColors .kOnyxBlack, // The color to fill the background of the active PIN code cell.
+                              selectedColor: AppColors.kPrimary1 // The color of the border of the selected PIN code cell.,
 
                               ),
                         ),
@@ -183,27 +179,32 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                         )
                 ],
               ),
-              DefaultButtonMain(
-                text: widget.actionText,
-                color: AppColors.kPrimary1,
-                buttonState: authProvider.buttonVerifyState!.buttonState,
-                onPressed: () {
-                  if (pinFormKey.currentState!.validate()) {
-                    pinFormKey.currentState!.save();
-                    navigatePush(
-                      context,
-                      widget.isForgotPassword
-                          ? CreateNewPasswordScreen()
-                          : widget.isSignIn
-                              ? AuthSuccessScreen(
-                                  infoText:
-                                      widget.isSignIn ? welcomeBack : successfulAccountCreation,
-                                  newPage: const DashBoardScreen(),
-                                )
-                              : const CreatePasswordScreen(),
-                    );
-                  }
-                },
+              Column(
+                children: [
+                  DefaultButtonMain(
+                    text: widget.actionText,
+                    color: AppColors.kPrimary1,
+                    buttonState: authProvider.buttonVerifyState!.buttonState,
+                    onPressed: () {
+                      if (pinFormKey.currentState!.validate()) {
+                        pinFormKey.currentState!.save();
+                        navigatePush(
+                          context,
+                          widget.isForgotPassword
+                              ? CreateNewPasswordScreen()
+                              : widget.isSignIn
+                                  ? AuthSuccessScreen(
+                                      infoText:
+                                          widget.isSignIn ? welcomeBack : successfulAccountCreation,
+                                      newPage: const DashBoardScreen(),
+                                    )
+                                  : const CreatePasswordScreen(),
+                        );
+                      }
+                    },
+                  ),
+                  Gap(40.h),
+                ],
               ),
             ],
           ),
