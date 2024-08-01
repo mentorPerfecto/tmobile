@@ -18,6 +18,18 @@ class AppColors {
       Color(0xffFFCB27),
     ],
   );
+  static const kOceanBreezeGradient = LinearGradient(
+    colors: [
+      Color(0xff1EC9FF),
+      Color(0xff1CB2A0),
+    ],
+  );
+  static const kSunriseHorizonGradient = LinearGradient(
+    colors: [
+      Color(0xff3A66FF),
+      Color(0xffFFCB27),
+    ],
+  );
   static const kCharcoalBlack = Color(0xff141414);
   static const kPrimary1 = Color(0xff3A66FE);
   static const kOnyxBlack = Color(0xff1F1F1F);
@@ -27,6 +39,15 @@ class AppColors {
   static const kGrey500 = Color(0xff667185);
   static const kStormyGrey = Color(0xff3A3B3D);
   static const kSmokyBlue = Color(0xff606B7E);
+  static const kGrey900 = Color(0xff101928);
+  static const kGrey800 = Color(0xff1D2739);
+  static const kLightModebackground = Color(0xFFFFFFFF);
+  static const kSnowWhite = Color(0xffFAFAFA);
+  static const kGrey300 = Color(0xffD0D5DD);
+  static const kGrey700 = Color(0xff344054);
+  static const kGrey400 = Color(0xff98A2B3);
+  static const kLimeGreen = Color(0xff41E755);
+  static const kLightSilver = Color(0xffF1F1F1);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);
@@ -46,19 +67,18 @@ class AppColors {
   static const kDarkBlue = Color(0xff1D2739);
   static const kHarvestGold = Color(0xffF7C164);
   static const kMidnightBlue = Color(0xff141D57);
-  static const kGrey300 = Color(0xffD0D5DD);
+
   static const kSunFlower = Color(0xffF5B546);
   static const kVeryLightYellow = Color(0xffFFFCF6);
-  static const kGrey400 = Color(0xff98A2B3);
+
   static const kFloralWhite = Color(0xffFFF8EB);
   static const kMidnight950 = Color(0xff060B29);
-  static const kGrey700 = Color(0xff344054);
 
   static const kError300 = Color(0xffDD524D);
   static const kSlateGrey = Color(0xff6A6F76);
 //
   static const kWhite = Color(0xFFFFFFFF);
-  static const kLightModebackground = Color(0xFFFFFFFF);
+
   static const kDarkModebackground = Color(0xff060B29);
   static const kTextBlack = Color(0xff101010);
   static const kDisabledButton = Color(0xffEAECF0);

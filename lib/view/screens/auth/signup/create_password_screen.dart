@@ -23,7 +23,7 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        arrowBackColor: theme.colorScheme.primary,
+      
         bottomVisible: true,
         bottomText: createPassword,
       ),

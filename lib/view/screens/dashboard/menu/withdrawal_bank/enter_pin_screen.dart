@@ -23,8 +23,7 @@ class _EnterPinScreenState extends ConsumerState<EnterPinScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.colorScheme.primary,
+     
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(

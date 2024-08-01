@@ -141,9 +141,13 @@ class PasswordValidatedFieldsState
               ),
               decoration: InputDecoration(
                 hintStyle: theme.textTheme.bodyMedium!.copyWith(
-                  color: widget.readOnly ? AppColors.kGrey500 : AppColors.kGraphiteGray,
+                  color: widget.readOnly
+                      ? AppColors.kSmokyBlue
+                      : themeMode == ThemeMode.dark
+                          ? AppColors.kGraphiteGray
+                          : AppColors.kGrey400,
                   fontFamily: soraFont,
-                  fontSize: 15.spMin,
+                  fontSize: 14.spMin,
                   fontWeight: FontWeight.w400,
                 ),
                 hintText: enterPassword,
@@ -160,16 +164,17 @@ class PasswordValidatedFieldsState
                   ),
                 ),
                 filled: true,
-                fillColor: widget.fillColor,
+                fillColor: themeMode == ThemeMode.light ? AppColors.kGrey300 : widget.fillColor,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 border: widget.readOnly ? InputBorder.none : null,
                 // fillColor: widget.fillColor ?? theme.cardColor,
-                enabledBorder: widget.isFilled
-                    ? OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(widget.borderRadius),
-                        borderSide: const BorderSide(color: AppColors.kGrey400),
-                      )
-                    : InputBorder.none,
+                  borderSide: BorderSide(
+                    color: themeMode == ThemeMode.dark ? AppColors.kGrey400 : AppColors.kSnowWhite,
+                  ),
+                ),
+                   
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide:

@@ -33,7 +33,7 @@ class PassCheckRequirements extends ConsumerWidget {
   final Color? activeColor;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(themeViewModel).themeMode;
+    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
    
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3.5),
@@ -42,7 +42,11 @@ class PassCheckRequirements extends ConsumerWidget {
           /// requirement IconData based on check!
           Icon(
               Icons.check_circle_outline_rounded,
-            color: passCheck! ? AppColors.kGreenishTeal : AppColors.kManatee,
+            color: passCheck!
+                ? AppColors.kGreenishTeal
+                : themeMode == ThemeMode.dark
+                    ? AppColors.kManatee
+                    : AppColors.kGrey800,
             ),
           const SizedBox(width: 8),
 
@@ -50,7 +54,11 @@ class PassCheckRequirements extends ConsumerWidget {
           Text(
             requirementText!,
             style: TextStyle(
-              color: passCheck! ? AppColors.kGreenishTeal : AppColors.kManatee,
+              color: passCheck!
+                  ? AppColors.kGreenishTeal
+                  : themeMode == ThemeMode.dark
+                      ? AppColors.kManatee
+                      : AppColors.kGrey800,
               fontFamily: soraFont,
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,

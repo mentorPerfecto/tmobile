@@ -63,7 +63,7 @@ class DefaultButtonMain extends StatelessWidget {
             //     ? AppColors.disabledGradient
             //     : AppColors.gradientMain,
             // border: Border.all(color: borderColor ?? Colors.transparent),
-            borderRadius: BorderRadius.circular(borderRadius ?? 8.0.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 18.0.r),
             border: Border.all(color: borderColor ?? Colors.transparent)),
         child: Center(
           /// This code is setting the child of the `TextButton` widget. It checks the value of the

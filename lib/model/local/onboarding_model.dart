@@ -1,13 +1,25 @@
+import 'package:flutter/material.dart';
+
+class OnboardingViewModel {
+  final String title;
+  final String? description;
+  OnboardingViewModel({required this.title, this.description});
+}
+
 class CryptoRatesModel {
-  String cryptoImage;
-  String crypto;
-  int rate;
+  String? crypto;
+  int? rate;
 
   CryptoRatesModel({
-    required this.crypto,
-    required this.cryptoImage,
-    required this.rate,
+    this.crypto,
+    this.rate,
   });
+  factory CryptoRatesModel.fromJson(Map<String, dynamic> json) {
+    return CryptoRatesModel(
+      crypto: json["id"] as String?,
+      rate: json["rate"] as int?,
+    );
+  }
 }
 
 // List<OnBoardingItemModel> onboardingItemModel = [

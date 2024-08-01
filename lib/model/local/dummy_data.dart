@@ -7,7 +7,7 @@ class DummyData {
   static String? lastName = '';
   static String? phoneNumber;
   static bool? firstTimeOnApp = true;
-  static bool isDarkTheme = false;
+  static bool isLightTheme = false;
   static String? accessToken = "";
   static String? coinValue = '';
   static DateTime? userDateOfBirth;

@@ -21,8 +21,7 @@ class _AddBankScreenState extends ConsumerState<AddBankScreen> {
     return Scaffold(
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: Colors.white,
+     
         text: addNewBankText,
         textSize: 20.spMin,
       ),

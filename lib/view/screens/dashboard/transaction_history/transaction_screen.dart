@@ -45,7 +45,7 @@ class TransactionScreen extends ConsumerWidget {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        arrowBackColor: theme.colorScheme.primary,
+     
         text: "Transactions",
         trailing: Padding(
           padding: EdgeInsets.only(right: 15.0.w),

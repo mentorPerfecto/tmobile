@@ -7,6 +7,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
+import 'package:tampay/view/screens/auth/signup/facial_verification_screen.dart';
 import '../../../../src/components.dart';
 
 class VerifyAccountScreen extends ConsumerStatefulWidget {
@@ -26,8 +27,7 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.colorScheme.primary,
+   
         trailing: Padding(
           padding: const EdgeInsets.only(right: 15.0),
           child: InkWell(
@@ -55,7 +55,6 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 
                   CustomTextField(
                     fieldLabel: surname,
                     hint: enterSurname,
@@ -104,27 +103,28 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
               ),
               DefaultButtonMain(
                 color: AppColors.kPrimary1,
-                text: registerationProvider.verifyBVNButtonState.text,
+                text: next,
                 buttonState: registerationProvider.verifyBVNButtonState.buttonState,
-                onPressed: () async {
-                  await showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      barrierColor: AppColors.kTransparent,
-                      context: context,
-                      builder: (context) {
-                        return BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                          child: TPayDefaultPopUp(
-                            action: DefaultButtonMain(
-                              color: AppColors.kPrimary1,
-                              text: "Confirm",
-                              onPressed: () {
-                                navigatePush(context, const AddBankDetailsScreen());
-                              },
-                            ),
-                          ),
-                        );
-                      });
+                onPressed: () {
+                  navigatePush(context, FacialVerificationScreen());
+                  // await showModalBottomSheet(
+                  //     backgroundColor: Colors.transparent,
+                  //     barrierColor: AppColors.kTransparent,
+                  //     context: context,
+                  //     builder: (context) {
+                  //       return BackdropFilter(
+                  //         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                  //         child: TPayDefaultPopUp(
+                  //           action: DefaultButtonMain(
+                  //             color: AppColors.kPrimary1,
+                  //             text: "Confirm",
+                  //             onPressed: () {
+                  //               navigatePush(context, const AddBankDetailsScreen());
+                  //             },
+                  //           ),
+                  //         ),
+                  //       );
+                  //     });
                   // userProfileProvider.addUserAccountNumber(
                   //   context,
                   // );

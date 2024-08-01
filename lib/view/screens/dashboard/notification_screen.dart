@@ -26,7 +26,8 @@ class _NotificationScreenState extends ConsumerState<NotificationScreen> {
       child: Scaffold(
         backgroundColor: theme.scaffoldBackgroundColor,
         appBar: AppBars.mainAppBar(context,
-            arrowBackColor: theme.colorScheme.primary, text: notification),
+          text: notification,
+        ),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(

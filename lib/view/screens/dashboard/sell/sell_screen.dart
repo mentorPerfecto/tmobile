@@ -25,8 +25,7 @@ class _SellSectionScreenState extends ConsumerState<SellSectionScreen> {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBars.mainAppBar(context,
-          backgroundColor: theme.scaffoldBackgroundColor,
-          arrowBackColor: Colors.white,
+       
           text: selectCoin,
           textSize: 20.spMin,
           callback: (){

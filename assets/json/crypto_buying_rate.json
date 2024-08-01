@@ -1,0 +1,6 @@
+[
+  { "id":"Bitcoin","rate":1780},
+  { "id":"Ethereum","rate":1850},
+  { "id":"USDT","rate":1650},
+  { "id":"Solana","rate":1650}
+ ]

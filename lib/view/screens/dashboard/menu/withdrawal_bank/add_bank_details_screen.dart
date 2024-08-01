@@ -45,8 +45,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.colorScheme.primary,
+     
         trailing: Padding(
           padding: const EdgeInsets.only(right: 15.0),
           child: InkWell(

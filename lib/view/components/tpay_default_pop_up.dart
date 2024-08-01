@@ -20,9 +20,10 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.kCharcoalBlack,
+        color: themeMode == ThemeMode.dark ? AppColors.kCharcoalBlack : AppColors.kTextWhite,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(
             32.r,
@@ -40,8 +41,10 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image.asset(
-              progressStatusLogo ?? "",
+            progressStatusLogo == null
+                ? const SizedBox.shrink()
+                : Image.asset(
+                    progressStatusLogo!,
               width: 42.w,
               height: 42.h,
             ),
@@ -81,9 +84,10 @@ class TPayDefaultPopUp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ThemeData theme = Theme.of(context);
+    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.kCharcoalBlack,
+        color: themeMode == ThemeMode.dark ? AppColors.kCharcoalBlack : AppColors.kTextWhite,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(
             24.r,

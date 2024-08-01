@@ -50,4 +50,6 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const tpayOnboardingLogo = '${_baseUrl}tpay_onboarding_logo_mobile.png';
   static const checkLogo = '${_baseUrl}check_logo_mobile.png';
   static const editTextLogo = '${_baseUrl}edit_text_logo_mobile.png';
+  static const tPayOnboardingImageLightMode = '${_baseUrl}tpay_onboarding_image_light_mobile.png';
+  static const tPayOnboardingImageDarkMode = '${_baseUrl}tpay_onboarding_image_dark_mobile.png';
 }

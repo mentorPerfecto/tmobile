@@ -16,13 +16,13 @@ class ThemeConfig extends ChangeNotifier {
 
   late SharedPreferences sharedPreferences;
 
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.dark;
 
   init() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    DummyData.isDarkTheme = sharedPreferences.getBool("isDarkTheme") ?? false;
+    DummyData.isLightTheme = sharedPreferences.getBool("isLightTheme") ?? false;
     _themeMode =
-        DummyData.isDarkTheme == true ? ThemeMode.dark : ThemeMode.light;
+        DummyData.isLightTheme == true ? ThemeMode.light : ThemeMode.dark;
     DummyData.accessToken = sharedPreferences.getString("accessToken");
     notifyListeners();
   }

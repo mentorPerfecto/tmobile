@@ -27,8 +27,7 @@ class _EnterAmountScreenState extends ConsumerState<EnterAmountScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.primaryColor,
+      
         text: enterAmount,
       ),
       body: SafeArea(

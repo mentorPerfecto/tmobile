@@ -22,8 +22,7 @@ class _FillBankDetailsScreenState extends ConsumerState<FillBankDetailsScreen> {
     return Scaffold(
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: Colors.white,
+     
         text: addNewBankText,
         textSize: 20.spMin,
       ),

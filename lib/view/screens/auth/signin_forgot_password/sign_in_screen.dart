@@ -6,6 +6,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({
@@ -63,8 +64,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-          backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.colorScheme.primary, bottomVisible: true,
+         bottomVisible: true,
         bottomText: login
 
       ),
@@ -130,7 +130,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                        loginFormKey.currentState!.save();
                        navigatePush(
                          context,
-                         const EmailVerificationScreen(
+                          const EmailVerificationScreen(
                            isSignIn: true,
                            isForgotPassword: false,
                            email: hintEmail,
@@ -151,3 +151,4 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
     );
   }
 }
+

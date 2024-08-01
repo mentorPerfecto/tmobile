@@ -23,8 +23,7 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.colorScheme.primary,
+
         bottomVisible: true,
         bottomText: createNewPassword,
       ),
@@ -88,7 +87,11 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
                               color: AppColors.kPrimary1,
                               text: "Back to login",
                               onPressed: () {
-                                navigatePush(context, const SignInScreen());
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const SignInScreen()),
+                                  (route) => false,
+                                );
                               },
                             ),
                           ),

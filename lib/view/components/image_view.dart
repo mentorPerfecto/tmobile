@@ -28,12 +28,11 @@ class ImageView extends StatelessWidget {
       this.fit,
       this.width,
       this.alignment = Alignment.center,
-      Key? key})
+      super.key})
       : type = ImageType.svg,
         placeholder = null,
         errorWidget = null,
-        imageFile = null,
-        super(key: key);
+        imageFile = null;
 
   const ImageView.network(this.url,
       {this.color,
@@ -45,10 +44,9 @@ class ImageView extends StatelessWidget {
       this.errorWidget,
       this.placeholder,
       this.alignment = Alignment.center,
-      Key? key})
+      super.key})
       : type = ImageType.network,
-        imageFile = null,
-        super(key: key);
+        imageFile = null;
 
   const ImageView.asset(this.url,
       {this.color,
@@ -58,12 +56,11 @@ class ImageView extends StatelessWidget {
       this.fit,
       this.width,
       this.alignment = Alignment.center,
-      Key? key})
+      super.key})
       : type = ImageType.asset,
         placeholder = null,
         errorWidget = null,
-        imageFile = null,
-        super(key: key);
+        imageFile = null;
 
   const ImageView.file(this.imageFile,
       {this.color,
@@ -73,12 +70,11 @@ class ImageView extends StatelessWidget {
       this.fit,
       this.width,
       this.alignment = Alignment.center,
-      Key? key})
+      super.key})
       : type = ImageType.file,
         placeholder = null,
         errorWidget = null,
-        url = null,
-        super(key: key);
+        url = null;
 
   @override
   Widget build(BuildContext context) {

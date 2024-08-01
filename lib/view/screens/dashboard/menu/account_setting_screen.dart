@@ -45,8 +45,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
             appBar: AppBars.mainAppBar(
               context,
               text: "Account",
-              backgroundColor: theme.scaffoldBackgroundColor,
-              arrowBackColor: theme.colorScheme.primary,
+           
               trailing: Padding(
                 padding: const EdgeInsets.all(17.0),
                 child: GestureDetector(

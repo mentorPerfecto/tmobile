@@ -21,8 +21,7 @@ class BVNVerificationScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.colorScheme.primary,
+    
         text: verifyAccountTextInCaps,
       ),
       body: SafeArea(

@@ -56,8 +56,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(context,
-          backgroundColor: theme.scaffoldBackgroundColor,
-          arrowBackColor: theme.colorScheme.primary,
+       
         bottomVisible: true,
         bottomText: createAccount,
       ),

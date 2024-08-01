@@ -20,7 +20,7 @@ class _ReferAndEarnScreenState extends ConsumerState<ReferAndEarnScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        arrowBackColor: theme.colorScheme.primary,
+     
         text: "Referrals",
       ),
       body: SingleChildScrollView(

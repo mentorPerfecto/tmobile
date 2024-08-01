@@ -29,8 +29,7 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
     return Scaffold(
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.primaryColor,
+     
           text: selectCoin,
         callback: (){
           dashboardProvider.setPageIndexToHome(context);

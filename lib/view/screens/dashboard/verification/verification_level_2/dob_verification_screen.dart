@@ -21,8 +21,7 @@ class DateOfBirthVerificationScreen extends ConsumerWidget {
         backgroundColor: theme.scaffoldBackgroundColor,
         appBar: AppBars.mainAppBar(
           context,
-          backgroundColor: theme.scaffoldBackgroundColor,
-          arrowBackColor: theme.colorScheme.primary,
+       
           text: verifyAccountTextInCaps,
         ),
         body: SafeArea(

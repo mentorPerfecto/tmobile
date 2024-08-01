@@ -70,8 +70,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        arrowBackColor: theme.primaryColor,
+    
         text: buyCoin,
       ),
       body: SafeArea(
