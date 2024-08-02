@@ -5,8 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rebirth/rebirth.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/screens.dart';
-import 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
-import 'package:tampay/view/screens/sticky.dart';
+
 import 'package:tampay/view_model/theme_view_model.dart';
 import 'package:smile_id/smile_id.dart';
 

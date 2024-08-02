@@ -26,3 +26,6 @@ export 'package:tampay/view/screens/dashboard/verification/verification_level_2/
 export 'package:tampay/view/screens/dashboard/notification_screen.dart';
 export 'package:tampay/view/screens/dashboard/refer_and_earn_screen.dart';
 export 'package:tampay/view/screens/dashboard/transaction_history/transaction_screen.dart';
+export 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
+export 'package:tampay/view/screens/auth/signup/facial_verification_screen.dart';
+export 'package:tampay/view/screens/sticky.dart';
