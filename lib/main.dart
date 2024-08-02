@@ -69,7 +69,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       },
 
 
-      child: const WelcomeBackScreen(),
+      child: const SplashScreen(),
     );
   }
 }
