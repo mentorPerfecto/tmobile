@@ -31,10 +31,7 @@ class AuthViewModel extends ChangeNotifier {
   ///final TextEditingController _pinCodeController = TextEditingController();
 
   String _pinCode = '';
-  int _role = 1;
-  String _roleName = '';
 
-  // int? selectedRole;
 
   bool _loginObscurePass = true;
   bool _obscureOldPass = true;
@@ -46,9 +43,6 @@ class AuthViewModel extends ChangeNotifier {
 
   bool get obscureResetPass => _obscureResetPass;
   bool get obscureResetConfirmPass => _obscureResetConfirmPass;
-  // bool get isSwitchingRole => _isSwitchingRole;
-  int get role => _role;
-  String get roleName => _roleName;
   bool _isResendingOTP = false;
 
   bool get isResendingOTP => _isResendingOTP;
@@ -59,13 +53,6 @@ class AuthViewModel extends ChangeNotifier {
   final resetPassFormKey = GlobalKey<FormState>();
   final forgotPassFormKey = GlobalKey<FormState>();
   final pinFormKey = GlobalKey<FormState>();
-
-  // final loginFormKey = GlobalKey<FormState>();
-  // final forgotPassFormKey = GlobalKey<FormState>();
-  // final resetPassFormKey = GlobalKey<FormState>();
-  // final pinFormKey = GlobalKey<FormState>();
-
-  //
 
   CustomButtonState _buttonLoginState = CustomButtonState(
     buttonState: ButtonState.disabled,
@@ -130,28 +117,6 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void validateNewPassword() {
-  //   if (_newPasswordController.text.length >= 8) {
-  //     _isAtLeastEightCharacters = true;
-  //   } else if (Validators()
-  //       .mustContainCapital
-  //       .hasMatch(_newPasswordController.text)) {
-  //     _mustContainUpperCase = true;
-  //   } else if (Validators()
-  //       .mustContainNumber
-  //       .hasMatch(_newPasswordController.text)) {
-  //   }  else if (Validators()
-  //       .mustContainCharacter
-  //       .hasMatch(_newPasswordController.text)) {
-  //       _mustContainSpecialCharacter = true;
-  //   }else {
-  //     _mustContainSpecialCharacter = false;
-  //     _isAtLeastEightCharacters = false;
-  //     _mustContainUpperCase = false;
-  //
-  //   }
-  //   notifyListeners();
-  // }
 
   void updateVerifyButtonState(String value) {
     _pinCode = value;
@@ -530,68 +495,6 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-  // Future<void> resetPwd(
-  //   context,
-  // ) async {
-  //   try {
-  //     _buttonResetPwdState = CustomButtonState(
-  //       buttonState: ButtonState.loading,
-  //       text: continueText,
-  //     );
-  //     notifyListeners();
-  //     await authService
-  //         .resetPassword(
-  //       email: _forgotPwdEmailController.text.toString().toLowerCase(),
-  //       password: _resetPwdConfirmController.text.toString(),
-  //       otp: _pinCode.toString(),
-  //     )
-  //         .then((value) async {
-  //       if (value != null) {
-  //         if (value['status'].toString() == 'true') {
-  //           _buttonResetPwdState = CustomButtonState(
-  //             buttonState: ButtonState.idle,
-  //             text: continueText,
-  //           );
-
-  //           Navigator.of(context).pushAndRemoveUntil(
-  //             // the new route
-  //             MaterialPageRoute(
-  //                 builder: (BuildContext context) => const SuccessScreen(
-  //                       infoText: pwdResetSuccessful,
-  //                       newPage: SignInScreen(),
-  //                       navigateButtonText: continueText,
-  //                     )),
-
-  //             // this function should return true when we're done removing routes
-  //             // but because we want to remove all other screens, we make it
-  //             // always return false
-  //             (Route route) => false,
-  //           );
-  //         } else if (value['status'].toString() == 'false') {
-  //           showToast(
-  //             msg: value['message'].toString(),
-  //             isError: false,
-  //           );
-  //           notifyListeners();
-  //         }
-  //       }
-  //     }).whenComplete(() {
-  //       _buttonResetPwdState = CustomButtonState(
-  //         buttonState: ButtonState.idle,
-  //         text: continueText,
-  //       );
-  //       notifyListeners();
-  //     });
-  //   } catch (e, s) {
-  //     showToast(
-  //       msg: somethingWentWrong,
-  //       isError: true,
-  //     );
-  //     logger
-  //       ..i(checkErrorLogs)
-  //       ..e(s);
-  //   }
-  // }
 
   Future<void> changePwd(context, {required int setIndex}) async {
     try {
@@ -649,63 +552,6 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-  // Future<void> switchUserRole(BuildContext context) async {
-  //   navigatePush(context, SuccessLoadingScreen(informationText: "Switching to $roleName account"));
-  //   // await getAccessToken();
-  //   try {
-  //     _buttonRoleState = CustomButtonState(
-  //       buttonState: ButtonState.loading,
-  //       text: continueText,
-  //     );
-  //     notifyListeners();
-  //     await authService
-  //         .switchUserRole(role: role, accessToken: DummyData.accessToken!.toString())
-  //         .then((value) async {
-  //       if (value != null) {
-  //         if (value['status'].toString() == 'true') {
-  //           _buttonRoleState = CustomButtonState(
-  //             buttonState: ButtonState.idle,
-  //             text: continueText,
-  //           );
-  //           showToast(
-  //             msg: 'Account changed successfully',
-  //             isError: false,
-  //           );
-  //           // _isSwitchingRole = false;
-  //           notifyListeners();
-  //         } else {
-  //           navigateBack(context);
-  //           notifyListeners();
-  //           showToast(
-  //             msg: value['message'].toString(),
-  //             isError: false,
-  //           );
-  //         }
-
-  //         WidgetRebirth.createRebirth(context: context);
-  //       }
-  //     });
-  //   } catch (e, s) {
-  //     WidgetRebirth.createRebirth(context: context);
-  //     // showToast(
-  //     //   msg: somethingWentWrong,
-  //     //   isError: true,
-  //     // );
-  //     logger
-  //       ..i(checkErrorLogs)
-  //       ..e(s);
-  //   }
-  // }
-
-  Future<void> updateRole(int value) async {
-    _role = value;
-    _roleName = value == 1
-        ? "Guest"
-        : value == 2
-            ? "Tenant"
-            : "Landlord";
-    notifyListeners();
-  }
 
   saveUserEmail(localUserEmail) async {
     sharedPreferences = await SharedPreferences.getInstance();

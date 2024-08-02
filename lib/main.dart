@@ -8,10 +8,12 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
 import 'package:tampay/view/screens/sticky.dart';
 import 'package:tampay/view_model/theme_view_model.dart';
+import 'package:smile_id/smile_id.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  SmileID.initialize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
       (value) => runApp(
           const WidgetRebirth(materialApp: ProviderScope(child: MyApp()))));
@@ -33,9 +35,19 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   @override
   void initState() {
+    initPlatformState();
     super.initState();
+
   }
 
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+    SmileID.initialize();
+  }
   @override
   Widget build(BuildContext context) {
     var themeProvider = ref.watch(themeViewModel);

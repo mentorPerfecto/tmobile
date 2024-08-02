@@ -74,11 +74,11 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
                 Gap(25.h),
                 DefaultButtonMain(
                   onPressed: () {
-                    if (provider.changePasswordFormKey.currentState!
-                        .validate()) {
-                      provider.changePasswordFormKey.currentState!.save();
-                      provider.changePwd(context, setIndex: provider.role == 2 ? 3 : 4);
-                    }
+                    // if (provider.changePasswordFormKey.currentState!
+                    //     .validate()) {
+                    //   provider.changePasswordFormKey.currentState!.save();
+                    //   provider.changePwd(context, setIndex: provider.role == 2 ? 3 : 4);
+                    // }
                   },
                   height: 48.h,
                   borderRadius: 40.r,

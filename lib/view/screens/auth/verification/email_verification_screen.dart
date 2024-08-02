@@ -193,11 +193,12 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                           widget.isForgotPassword
                               ? CreateNewPasswordScreen()
                               : widget.isSignIn
-                                  ? AuthSuccessScreen(
-                                      infoText:
-                                          widget.isSignIn ? welcomeBack : successfulAccountCreation,
-                                      newPage: const DashBoardScreen(),
-                                    )
+                                  ? const DashBoardScreen()
+                          // AuthSuccessScreen(
+                          //             infoText:
+                          //                 widget.isSignIn ? welcomeBack : successfulAccountCreation,
+                          //             newPage: const DashBoardScreen(),
+                          //           )
                                   : const CreatePasswordScreen(),
                         );
                       }
