@@ -12,12 +12,12 @@ final localAuthViewModel =
 class LocalAuthViewModel extends ChangeNotifier {
   final LocalAuthentication auth = LocalAuthentication();
   SupportState _supportState = SupportState.unknown;
-  bool? _canCheckBiometrics;
-  List<BiometricType>? _availableBiometrics;
+  SupportState get supportState => _supportState; // bool? _canCheckBiometrics;
+  // List<BiometricType>? _availableBiometrics;
   String _authorized = 'Not Authorized';
   bool _isAuthenticating = false;
-
   bool get isAuthenticating => _isAuthenticating;
+  String get authorized => _authorized;
   // final CustomButtonState _localAuthButtonState = CustomButtonState(buttonState: ButtonState.idle, text: "Authenticate");
   // CustomButtonState? get localAuthButtonState => _localAuthButtonState;
 
@@ -28,67 +28,68 @@ class LocalAuthViewModel extends ChangeNotifier {
             isSupported ? SupportState.supported : SupportState.unsupported;
       },
     );
-  }
-  Future<void> _checkBiometrics(bool mounted) async {
-    late bool canCheckBiometrics;
-    try {
-      canCheckBiometrics = await auth.canCheckBiometrics;
-    } on PlatformException catch (e) {
-      canCheckBiometrics = false;
-      logger.w(e);
-    }
-    if (!mounted) {
-      return;
-    }
-    _canCheckBiometrics = canCheckBiometrics;
     notifyListeners();
   }
+  // Future<void> _checkBiometrics(bool mounted) async {
+  //   late bool canCheckBiometrics;
+  //   try {
+  //     canCheckBiometrics = await auth.canCheckBiometrics;
+  //   } on PlatformException catch (e) {
+  //     canCheckBiometrics = false;
+  //     logger.w(e);
+  //   }
+  //   if (!mounted) {
+  //     return;
+  //   }
+  //  /// _canCheckBiometrics = canCheckBiometrics;
+  //   notifyListeners();
+  // }
+  //
+  // Future<void> _getAvailableBiometrics(bool mounted) async {
+  //   late List<BiometricType> availableBiometrics;
+  //   try {
+  //     availableBiometrics = await auth.getAvailableBiometrics();
+  //   } on PlatformException catch (e) {
+  //     availableBiometrics = <BiometricType>[];
+  //     logger.w(e);
+  //   }
+  //   if (!mounted) {
+  //     return;
+  //   }
+  //
+  //   _availableBiometrics = availableBiometrics;
+  // }
 
-  Future<void> _getAvailableBiometrics(bool mounted) async {
-    late List<BiometricType> availableBiometrics;
-    try {
-      availableBiometrics = await auth.getAvailableBiometrics();
-    } on PlatformException catch (e) {
-      availableBiometrics = <BiometricType>[];
-      logger.w(e);
-    }
-    if (!mounted) {
-      return;
-    }
-
-    _availableBiometrics = availableBiometrics;
-  }
-
-
-  Future<void> _authenticate(bool mounted) async {
-    bool authenticated = false;
-    try {
-      _isAuthenticating = true;
-      _authorized = 'Authenticating';
-      notifyListeners();
-      authenticated = await auth.authenticate(
-        localizedReason: 'Let OS determine authentication method',
-        options: const AuthenticationOptions(
-          stickyAuth: true,
-        ),
-      );
-      _isAuthenticating = false;
-      notifyListeners();
-    } on PlatformException catch (e) {
-      logger.w(e);
-      _isAuthenticating = false;
-      _authorized = 'Error - ${e.message}';
-      notifyListeners();
-      return;
-    }
-    if (!mounted) {
-      return;
-    }
-
-    _authorized = authenticated ? 'Authorized' : 'Not Authorized';
-    notifyListeners();
-
-  }
+  //
+  // Future<void> _authenticate(bool mounted) async {
+  //   bool authenticated = false;
+  //   try {
+  //     _isAuthenticating = true;
+  //     _authorized = 'Authenticating';
+  //     notifyListeners();
+  //     authenticated = await auth.authenticate(
+  //       localizedReason: 'Let OS determine authentication method',
+  //       options: const AuthenticationOptions(
+  //         stickyAuth: true,
+  //       ),
+  //     );
+  //     _isAuthenticating = false;
+  //     notifyListeners();
+  //   } on PlatformException catch (e) {
+  //     logger.w(e);
+  //     _isAuthenticating = false;
+  //     _authorized = 'Error - ${e.message}';
+  //     notifyListeners();
+  //     return;
+  //   }
+  //   if (!mounted) {
+  //     return;
+  //   }
+  //
+  //   _authorized = authenticated ? 'Authorized' : 'Not Authorized';
+  //   notifyListeners();
+  //
+  // }
 
   Future<void> authenticateWithBiometrics(context, bool mounted) async {
     bool authenticated = false;

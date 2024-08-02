@@ -69,14 +69,14 @@ class _WelcomeBackScreenState extends ConsumerState<WelcomeBackScreen> {
                     ],
                   ),
                 ),
-                DefaultButtonMain(
+                provider.supportState == SupportState.supported ? DefaultButtonMain(
                   color: AppColors.kPrimary1,
                   text: "Use Biometrics",
                   buttonState: provider.isAuthenticating ? ButtonState.loading : ButtonState.idle ,
                   onPressed: () {
                     provider.authenticateWithBiometrics(context, mounted);
                   },
-                )
+                ) : const SizedBox.shrink()
               ],
             ),
           ),
