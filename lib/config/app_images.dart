@@ -52,4 +52,12 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const editTextLogo = '${_baseUrl}edit_text_logo_mobile.png';
   static const tPayOnboardingImageLightMode = '${_baseUrl}tpay_onboarding_image_light_mobile.png';
   static const tPayOnboardingImageDarkMode = '${_baseUrl}tpay_onboarding_image_dark_mobile.png';
+  static const zapLogo = '${_baseUrl}zap_mobile.png';
+  static const dummyImage = '${_baseUrl}dummy_image_mobile.png';
+  static const moreLogo = '${_baseUrl}more_mobile.png';
+  static const arrowDownIcon = '${_baseUrl}arrow_down_mobile.png';
+  static const arrowUpIcon = '${_baseUrl}arrow_up_mobile.png';
+  static const notificationIcon = '${_baseUrl}notification_mobile.png';
+  static const warningLogo = '${_baseUrl}warning_mobile.png';
+  static const transactionsLogo = '${_baseUrl}transactions_mobile.png';
 }
