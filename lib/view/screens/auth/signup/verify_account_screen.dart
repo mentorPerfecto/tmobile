@@ -41,78 +41,81 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
         bottomText: verifyAccount,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 15.h,
-            horizontal: 15.w,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomTextField(
-                    keyboardType: TextInputType.number,
-                    maxLength: 11,
-                    fieldLabel: bvnNumber,
-                    hint: enterNumber,
-                    controller: registrationProvider.bvnNumberController,
-                    onChanged: (bvn) => registrationProvider.updateVerifyBVNButtonState(),
-                  ),
-                  TextView(
-                    text: registrationProvider.bvnDetails,
-                    color: AppColors.kGrey500,
-                    fontSize: 14.spMin,
-                  ),
-                  Gap(10.h),
-                  CustomTextField(
-                    fieldLabel: surname,
-                    hint: enterSurname,
-                    controller: registrationProvider.surnameController,
-                    onChanged: (bvn) => registrationProvider.updateVerifyBVNButtonState(),
-                  ),
-                  userProfileProvider.isLoadingVerifiedBanks
-                      ? Column(
-                          children: [
-                            Gap(10.h),
-                            Container(
-                              // color: Colors.red,
-                              // height: 50.h,
-                              alignment: Alignment.center,
-                              child: SizedBox(
-                                height: 70,
-                                width: 70,
-                                child: LoadingIndicator(
-                                  indicatorType: Indicator.ballGridPulse,
-                                  colors: const [
-                                    AppColors.kPrimary2,
-                                  ],
-                                  strokeWidth: 2,
-                                  backgroundColor: theme.scaffoldBackgroundColor,
-                                  pathBackgroundColor: theme.colorScheme.primary,
+        child: SingleChildScrollView(
+          child: Container(
+            height: 650.h,
+            padding: EdgeInsets.symmetric(
+              vertical: 15.h,
+              horizontal: 15.w,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomTextField(
+                      keyboardType: TextInputType.number,
+                      maxLength: 11,
+                      fieldLabel: bvnNumber,
+                      hint: enterNumber,
+                      controller: registrationProvider.bvnNumberController,
+                      onChanged: (bvn) => registrationProvider.updateVerifyBVNButtonState(),
+                    ),
+                    TextView(
+                      text: registrationProvider.bvnDetails,
+                      color: AppColors.kGrey500,
+                      fontSize: 14.spMin,
+                    ),
+                    Gap(10.h),
+                    CustomTextField(
+                      fieldLabel: surname,
+                      hint: enterSurname,
+                      controller: registrationProvider.surnameController,
+                      onChanged: (bvn) => registrationProvider.updateVerifyBVNButtonState(),
+                    ),
+                    userProfileProvider.isLoadingVerifiedBanks
+                        ? Column(
+                            children: [
+                              Gap(10.h),
+                              Container(
+                                // color: Colors.red,
+                                // height: 50.h,
+                                alignment: Alignment.center,
+                                child: SizedBox(
+                                  height: 70,
+                                  width: 70,
+                                  child: LoadingIndicator(
+                                    indicatorType: Indicator.ballGridPulse,
+                                    colors: const [
+                                      AppColors.kPrimary2,
+                                    ],
+                                    strokeWidth: 2,
+                                    backgroundColor: theme.scaffoldBackgroundColor,
+                                    pathBackgroundColor: theme.colorScheme.primary,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )
-                      : const SizedBox.shrink()
-                ],
-              ),
-              Column(
-                children: [
-                  DefaultButtonMain(
-                    color: AppColors.kPrimary1,
-                    text: next,
-                    buttonState: registrationProvider.verifyBVNButtonState.buttonState,
-                    onPressed: () {
-                      navigatePush(context, FacialVerificationScreen());
-                    },
-                  ),
-                  Gap(40.h),
-                ],
-              ),
-            ],
+                            ],
+                          )
+                        : const SizedBox.shrink()
+                  ],
+                ),
+                Column(
+                  children: [
+                    DefaultButtonMain(
+                      color: AppColors.kPrimary1,
+                      text: next,
+                      buttonState: registrationProvider.verifyBVNButtonState.buttonState,
+                      onPressed: () {
+                        navigatePush(context, const FacialVerificationScreen());
+                      },
+                    ),
+                    Gap(40.h),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

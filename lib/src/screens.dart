@@ -29,3 +29,4 @@ export 'package:tampay/view/screens/dashboard/transaction_history/transaction_sc
 export 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
 export 'package:tampay/view/screens/auth/signup/facial_verification_screen.dart';
 export 'package:tampay/view/screens/sticky.dart';
+export 'package:tampay/view/screens/auth/signup/account_verified_confirmation_screen.dart';
