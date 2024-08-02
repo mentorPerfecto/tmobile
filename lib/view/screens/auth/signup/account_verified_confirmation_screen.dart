@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/screens.dart';
+import 'package:tampay/src/utils.dart';
 
 class AccountVerifiedConfirmationScreen extends StatelessWidget {
-  const AccountVerifiedConfirmationScreen({Key? key}) : super(key: key);
+  const AccountVerifiedConfirmationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +15,7 @@ class AccountVerifiedConfirmationScreen extends StatelessWidget {
       appBar: AppBars.mainAppBar(
         context,
         isVisible: false,
-        text: "Account Verified",
-        bottomVisible: false,
+        bottomText: "Account Verified",
       ),
       body: SafeArea(
         child: Padding(
@@ -37,7 +38,9 @@ class AccountVerifiedConfirmationScreen extends StatelessWidget {
               DefaultButtonMain(
                 color: AppColors.kPrimary1,
                 text: done,
-                onPressed: () {},
+                onPressed: () {
+                  navigateReplace(context, const DashBoardScreen());
+                },
               )
             ],
           ),

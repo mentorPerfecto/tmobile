@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:smile_id/smile_id_smart_selfie_enrollment.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/screens.dart';
+import 'package:tampay/src/utils.dart';
 
 class FacialVerificationScreen extends StatefulWidget {
   const FacialVerificationScreen({super.key});
@@ -26,38 +28,35 @@ class _FacialVerificationScreenState extends State<FacialVerificationScreen> {
           bottomText: "Facial Verification"
 
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 15.h,
-            horizontal: 15.w,
-          ),
-          child: Column (
-            children: [
-              const TextView(
+      body: SingleChildScrollView(
+        child: Column (
+          children: [
+            Padding(
+              padding: EdgeInsets.all(15.r),
+              child: const TextView(
                 text: 'You will need to start the video recording and place your face on the center of the circle to confirm',
+                maxLines: 3,
                 color: AppColors.kGrey400,
               ),
-              SizedBox(height:  600.h,
-                child: SmileIDSmartSelfieEnrollment(
-                  onSuccess: (String? result) {
-                    // Your success handling logic
-                    Map<String, dynamic> jsonResult = json.decode(result ?? '{}');
-                    String formattedResult = jsonEncode(jsonResult);
-                    final snackBar = SnackBar(content: Text("Success: $formattedResult"));
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    Navigator.of(context).pop();
-                  },
-                  onError: (String errorMessage) {
-                    // Your error handling logic
-                    final snackBar = SnackBar(content: Text("Error: $errorMessage"));
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    Navigator.of(context).pop();
-                  },
-                ),
-              )
-            ],
-          ),
+            ),
+           // Gap(5),
+            SizedBox(height:  640.h,
+              child: SmileIDSmartSelfieEnrollment(
+                onSuccess: (String? result) {
+                  // Your success handling logic
+                  Map<String, dynamic> jsonResult = json.decode(result ?? '{}');
+                  String formattedResult = jsonEncode(jsonResult);
+                  showToast(msg: "Success: $formattedResult", isError: false);
+                  navigateReplace(context, const AccountVerifiedConfirmationScreen());
+                },
+                onError: (String errorMessage) {
+                  // Your error handling logic
+                  showToast(msg: "Could not complete Facial Verification", isError: false);
+                  navigateReplace(context, const AccountVerifiedConfirmationScreen());
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
