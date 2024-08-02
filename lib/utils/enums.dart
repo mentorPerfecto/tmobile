@@ -32,3 +32,8 @@ enum VerificationStatus {
   unverified,
 }
 
+enum SupportState {
+  unknown,
+  supported,
+  unsupported,
+}

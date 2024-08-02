@@ -1,19 +1,36 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
+import 'package:tampay/view_model/auth/local_auth_view_model.dart';
 
 
-class WelcomeBackScreen extends StatelessWidget {
-  const WelcomeBackScreen({Key? key}) : super(key: key);
+class WelcomeBackScreen extends ConsumerStatefulWidget {
+  const WelcomeBackScreen({super.key});
+
+  @override
+  ConsumerState<WelcomeBackScreen> createState() => _WelcomeBackScreenState();
+}
+
+class _WelcomeBackScreenState extends ConsumerState<WelcomeBackScreen> {
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    ref.read(localAuthViewModel).initLocalAuth();
+  }
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    var provider = ref.watch(localAuthViewModel);
     return Scaffold(
         backgroundColor: AppColors.kCharcoalBlack,
         body: Stack(children: [
@@ -55,7 +72,10 @@ class WelcomeBackScreen extends StatelessWidget {
                 DefaultButtonMain(
                   color: AppColors.kPrimary1,
                   text: "Use Biometrics",
-                  onPressed: () {},
+                  buttonState: provider.isAuthenticating ? ButtonState.loading : ButtonState.idle ,
+                  onPressed: () {
+                    provider.authenticateWithBiometrics(context, mounted);
+                  },
                 )
               ],
             ),
