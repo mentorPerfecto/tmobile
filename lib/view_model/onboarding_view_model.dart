@@ -93,11 +93,11 @@ class OnboardingViewModel extends ChangeNotifier {
       DummyData.firstTimeOnApp = sharedPreferences.getBool("firstTimeOnApp");
 
       /// DummyData.firstTimeOnApp == null || DummyData.firstTimeOnApp == true
-      if (false) {
+      if (DummyData.firstTimeOnApp == null || DummyData.firstTimeOnApp == true) {
         navigateReplace(context, const OnboardingScreen());
       } else {
         // DummyData.accessToken!.isNotEmpty || DummyData.accessToken == null
-        if (false) {
+        if (DummyData.accessToken!.isNotEmpty || DummyData.accessToken == null) {
           logger.i("Check User");
           //  DummyData.localUserID = sharedPreferences.getString("UserID");`
           DummyData.emailAddress = sharedPreferences.getString("Email");
