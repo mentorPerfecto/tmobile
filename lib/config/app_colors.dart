@@ -12,10 +12,7 @@ class AppColors {
     //   1.0, //Ending point
     // ],
     colors: [
-      Color(0xff1EC9FF),
-      Color(0xff1CB2A0),
-      Color(0xff3A66FF),
-      Color(0xffFFCB27),
+
     ],
   );
   static const kOceanBreezeGradient = LinearGradient(
@@ -30,6 +27,10 @@ class AppColors {
       Color(0xffFFCB27),
     ],
   );
+
+  static const kSeaBlue = Color(0xff1EC9FF);
+  static const kTurquoise = Color(0xff1CB2A0);
+  static const kAmber = Color(0xffFFCB27);
   static const kCharcoalBlack = Color(0xff141414);
   static const kPrimary1 = Color(0xff3A66FE);
   static const kOnyxBlack = Color(0xff1F1F1F);
@@ -41,7 +42,7 @@ class AppColors {
   static const kSmokyBlue = Color(0xff606B7E);
   static const kGrey900 = Color(0xff101928);
   static const kGrey800 = Color(0xff1D2739);
-  static const kLightModebackground = Color(0xFFFFFFFF);
+  static const kLightModeBackground = Color(0xFFFFFFFF);
   static const kSnowWhite = Color(0xffFAFAFA);
   static const kGrey300 = Color(0xffD0D5DD);
   static const kGrey700 = Color(0xff344054);
@@ -63,7 +64,7 @@ class AppColors {
 
   static const kManatee = Color(0xff8E97AA);
   static const kGreenishTeal = Color(0xff5DBE7E);
-  static const kScreaminGreen = Color(0xff7FF68C);
+  static const kScreamingGreen = Color(0xff7FF68C);
   static const kDarkBlue = Color(0xff1D2739);
   static const kHarvestGold = Color(0xffF7C164);
   static const kMidnightBlue = Color(0xff141D57);
@@ -79,7 +80,7 @@ class AppColors {
 //
   static const kWhite = Color(0xFFFFFFFF);
 
-  static const kDarkModebackground = Color(0xff060B29);
+  static const kDarkModeBackground = Color(0xff060B29);
   static const kTextBlack = Color(0xff101010);
   static const kDisabledButton = Color(0xffEAECF0);
   static const kLightAsh = Color(0xffCED0D4);

@@ -33,7 +33,7 @@ class AppTheme {
     // canvasColor: AppColors.lightCanvasColor,
     // dividerColor: AppColors.lightDividerColor,
     // dialogBackgroundColor: AppColors.lightBackgroundColor,
-    scaffoldBackgroundColor: AppColors.kLightModebackground,
+    scaffoldBackgroundColor: AppColors.kLightModeBackground,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     // colorScheme: const ColorScheme.light(
     //     secondary: AppColors.lightSecondaryColor,

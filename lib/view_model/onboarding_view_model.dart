@@ -11,6 +11,7 @@ import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
 
 import '../model/local/onboarding_model.dart';
 
@@ -94,7 +95,7 @@ class OnboardingViewModel extends ChangeNotifier {
       if (DummyData.firstTimeOnApp == true ||
           DummyData.firstTimeOnApp == null ||
           DummyData.accessToken == null) {
-        navigateReplace(context, OnboardingScreen());
+        navigateReplace(context, const OnboardingScreen());
       } else {
         logger.i("Check User");
         //  DummyData.localUserID = sharedPreferences.getString("UserID");`
@@ -130,8 +131,9 @@ class OnboardingViewModel extends ChangeNotifier {
           if (DummyData.emailAddress != null && DummyData.password != null) {
             logger.i(DummyData.emailAddress);
             logger.i(DummyData.password);
-            AuthViewModel().userAutoLogin(context,
-                email: DummyData.emailAddress.toString(), password: DummyData.password.toString());
+            navigateReplace(context, const WelcomeBackScreen());
+            // AuthViewModel().userAutoLogin(context,
+            //     email: DummyData.emailAddress.toString(), password: DummyData.password.toString());
           } else {
             navigateReplace(context, const OnboardingScreen());
             logger.e("error");

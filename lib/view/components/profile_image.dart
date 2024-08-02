@@ -50,67 +50,68 @@ class ProfileImage extends ConsumerWidget {
             borderRadius: BorderRadius.circular(100),
             border: showBorder ? Border.all() : null,
           ),
-          child: imageUrl != null
-              ? ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: CachedNetworkImage(
-                    height: height,
-                    width: width,
-                    imageUrl: imageUrl ?? '',
-                    fit: BoxFit.cover,
-                    progressIndicatorBuilder:
-                        (context, url, DownloadProgress progress) {
-                      return SizedBox.fromSize(
-                        child: CircularProgressIndicator(
-                          value: progress.progress,
-                          backgroundColor: AppColors.kWhite,
-                        ),
-                      );
-                    },
-                    // errorWidget: (context, url, __) => Image.asset(
-                    //   (imageType == ProfileImageType.user)
-                    //       ? AppImages.account
-                    //       : AppImages.account,
-                    //   // ignore: deprecated_member_use
-                    //   color: placeHolderColor, scale: 2.5,
-                    // ),
-                    // placeholder: (context, url) => SvgPicture.asset(
-                    //   (imageType == ProfileImageType.organization)
-                    //       ? AppAsset.organizationIcon
-                    //       : AppAsset.personIcon,
-                    //   // ignore: deprecated_member_use
-                    //   color: placeHolderColor,
-                    // ),
-                  ),
-                )
-              : DummyData.firstName!.isNotEmpty ||
-                      DummyData.lastName!.isNotEmpty
+          child: CachedNetworkImage(
+            imageUrl: imageUrl ?? '',
+            fit: BoxFit.cover,
+            imageBuilder: (context, imageProvider) => Container(
+              height: height.h,
+              width: width.h,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    image: imageProvider, fit: BoxFit.cover),
+              ),
+            ),
+            progressIndicatorBuilder:
+                (context, url, DownloadProgress progress) {
+              return SizedBox.fromSize(
+                child: CircularProgressIndicator(
+                  value: progress.progress,
+                  color: AppColors.kPrimary1,
+                  backgroundColor: AppColors.kWhite,
+                ),
+              );
+            },
+            errorWidget: (context, url, __) {
+              return DummyData.firstName!.isNotEmpty ||
+                  DummyData.lastName!.isNotEmpty
                   ? Container(
-                      height: height,
-                      width: width,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: AppColors.kPrimary1),
-                      child: Center(
-                          child: TextView(
-                        text: profileProvider.getInitials(
-                            firstName: DummyData.firstName ?? "",
-                            lastName: DummyData.lastName ?? ""),
-                        color: Colors.white,
-                        fontSize: fontSize,
-                      )),
-                    )
+                height: height,
+                width: width,
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: AppColors.kPrimary1),
+                child: Center(
+                    child: TextView(
+                      text: profileProvider.getInitials(
+                          firstName: DummyData.firstName ?? "",
+                          lastName: DummyData.lastName ?? ""),
+                      color: Colors.white,
+                      fontSize: fontSize,
+                    )),
+              )
                   : Container(
-                      width: width,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.kGrey300,
-                      ),
-                      child: const Center(
-                          child: Icon(
-                        Icons.person_outlined,
-                        color: AppColors.kGrey600,
-                      )),
-                    ),
+                height: height.h,
+                width: width.h,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.kGrey300,
+                ),
+                child: Center(
+                    child: Icon(
+                      Icons.person,
+                      color: AppColors.kGrey600,
+                      size:  height.h,
+                    )),
+              );
+            },
+            // placeholder: (context, url) => SvgPicture.asset(
+            //   (imageType == ProfileImageType.organization)
+            //       ? AppAsset.organizationIcon
+            //       : AppAsset.personIcon,
+            //   // ignore: deprecated_member_use
+            //   color: placeHolderColor,
+            // ),
+          ),
         ),
         Visibility(
           visible: editImage,

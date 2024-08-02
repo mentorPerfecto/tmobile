@@ -29,7 +29,7 @@ class TransactionScreen extends ConsumerWidget {
       case "Pending":
         return AppColors.kHarvestGold;
       case "Completed":
-        return AppColors.kScreaminGreen;
+        return AppColors.kScreamingGreen;
       case "Failed":
         return AppColors.kError300;
 
