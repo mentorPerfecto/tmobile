@@ -60,4 +60,7 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const notificationIcon = '${_baseUrl}notification_mobile.png';
   static const warningLogo = '${_baseUrl}warning_mobile.png';
   static const transactionsLogo = '${_baseUrl}transactions_mobile.png';
+  static const moonIcon = '${_baseUrl}moon_icon_mobile.png';
+  static const friendsIcon = '${_baseUrl}friends_icon_mobile.png';
+  static const bankIcon = '${_baseUrl}bank_icon_mobile.png';
 }

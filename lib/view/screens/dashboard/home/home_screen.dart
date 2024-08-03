@@ -1,5 +1,9 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
@@ -171,6 +175,46 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () async {
+                    await showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        barrierColor: Colors.black38,
+                        context: context,
+                        builder: (context) {
+                          return BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                            child: TPayDefaultPopUp(
+                              action: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  HomeItems(
+                                    theme: theme,
+                                    icon: AppImages.zapLogo,
+                                    onPressed: () {},
+                                    subText: "See exciting trading rates",
+                                    title: "View Rate",
+                                  ),
+                                  HomeItems(
+                                    theme: theme,
+                                    icon: AppImages.friendsIcon,
+                                    onPressed: () {},
+                                    subText: "Earn commission from referrals",
+                                    title: "Refer A Friend",
+                                  ),
+                                  HomeItems(
+                                    theme: theme,
+                                    icon: AppImages.bankIcon,
+                                    onPressed: () {},
+                                    subText: "View your payout bank accounts",
+                                    title: "Bank Details",
+                                  ),
+                                  const DarkModeItem()
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                  },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
                     decoration: BoxDecoration(
@@ -197,6 +241,151 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class HomeItems extends ConsumerWidget {
+  const HomeItems({
+    super.key,
+    required this.theme,
+    required this.icon,
+    required this.onPressed,
+    required this.subText,
+    required this.title,
+  });
+
+  final ThemeData theme;
+  final String icon;
+  final String title;
+  final String subText;
+  final VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
+    return GestureDetector(
+      onTap: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 32.w,
+                height: 32.h,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: themeMode == ThemeMode.dark ? AppColors.kGrey200 : AppColors.kPrimary1,
+                ),
+                child: Center(
+                  child: ImageView.asset(
+                    icon,
+                    width: 9.w,
+                    height: 13.h,
+                    color: themeMode == ThemeMode.dark ? AppColors.kWhite : AppColors.kGrey900,
+                  ),
+                ),
+              ),
+              Gap(10.w),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextView(
+                    text: title,
+                    fontSize: 14.spMin,
+                  ),
+                  Gap(15.h),
+                  TextView(
+                    text: subText,
+                    color: themeMode == ThemeMode.light ? AppColors.kGrey500 : AppColors.kGrey400,
+                  ),
+                ],
+              )
+            ],
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            size: 18.r,
+            color: theme.colorScheme.primary,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class DarkModeItem extends ConsumerWidget {
+  const DarkModeItem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    var themeProvider = ref.watch(themeViewModel);
+    ThemeMode themeMode = themeProvider.themeMode;
+    return GestureDetector(
+      onTap: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 32.w,
+                height: 32.h,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: themeMode == ThemeMode.dark ? AppColors.kGrey200 : AppColors.kPrimary1,
+                ),
+                child: Center(
+                  child: ImageView.asset(
+                    "",
+                    width: 9.w,
+                    height: 13.h,
+                    color: themeMode == ThemeMode.dark ? AppColors.kWhite : AppColors.kGrey900,
+                  ),
+                ),
+              ),
+              Gap(10.w),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextView(
+                    text: "Dark Theme",
+                    fontSize: 14.spMin,
+                  ),
+                  Gap(15.h),
+                  TextView(
+                    text: "Select the feel of your app",
+                    color: themeMode == ThemeMode.light ? AppColors.kGrey500 : AppColors.kGrey400,
+                  ),
+                ],
+              )
+            ],
+          ),
+          ListenableBuilder(
+              listenable: themeProvider,
+              builder: (BuildContext context, Widget? child) {
+                final themeMode = themeProvider.themeMode;
+
+                return CupertinoSwitch(
+                    value: themeMode == ThemeMode.light,
+                    onChanged: (value) async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      if (value) {
+                        themeProvider.setThemeMode(ThemeMode.light);
+                        prefs.setBool('isDarkTheme', false);
+                        return;
+                      }
+                      themeProvider.setThemeMode(ThemeMode.dark);
+                      prefs.setBool('isDarkTheme', true);
+                    },
+                    activeColor: AppColors.kPrimary1);
+              })
         ],
       ),
     );

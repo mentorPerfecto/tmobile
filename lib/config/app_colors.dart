@@ -55,6 +55,7 @@ class AppColors {
   static const kCharcoalGray = Color(0xff2F2F2F);
   static const kTransparentCharcoal = Color(0x26373737);
   static const kDarkSlateGrey = Color(0xff373737);
+  static const kGrey200 = Color(0xffE4E7EC);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);
