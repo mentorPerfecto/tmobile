@@ -97,7 +97,7 @@ class OnboardingViewModel extends ChangeNotifier {
         navigateReplace(context, const OnboardingScreen());
       } else {
         // DummyData.accessToken!.isNotEmpty || DummyData.accessToken == null
-        if (DummyData.accessToken!.isNotEmpty || DummyData.accessToken == null) {
+        if (DummyData.accessToken.toString() != "null") {
           logger.i("Check User");
           //  DummyData.localUserID = sharedPreferences.getString("UserID");`
           DummyData.emailAddress = sharedPreferences.getString("Email");
