@@ -589,7 +589,7 @@ class AuthViewModel extends ChangeNotifier {
     logger.i("saved refreshToken");
   }
 
-  saveAppTme() async {
+  Future<void>saveAppTme() async {
     sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setBool("firstTimeOnApp", false);
     logger.i("saved firstTimeOnApp");

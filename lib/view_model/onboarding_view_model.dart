@@ -92,52 +92,56 @@ class OnboardingViewModel extends ChangeNotifier {
       DummyData.isDarkTheme = sharedPreferences.getBool("isDarkTheme") ?? false;
       DummyData.firstTimeOnApp = sharedPreferences.getBool("firstTimeOnApp");
 
-      if (DummyData.firstTimeOnApp == true ||
-          DummyData.firstTimeOnApp == null ||
-          DummyData.accessToken == null) {
+      /// DummyData.firstTimeOnApp == null || DummyData.firstTimeOnApp == true
+      if (DummyData.firstTimeOnApp == null || DummyData.firstTimeOnApp == true) {
         navigateReplace(context, const OnboardingScreen());
       } else {
-        logger.i("Check User");
-        //  DummyData.localUserID = sharedPreferences.getString("UserID");`
-        DummyData.emailAddress = sharedPreferences.getString("Email");
-        DummyData.password = sharedPreferences.getString("Password");
-        DummyData.accessToken = sharedPreferences.getString("accessToken");
-
-        logger.i(DummyData.emailAddress);
-        logger.i(DummyData.accessToken);
-
-        bool hasExpired = Jwt.isExpired(DummyData.accessToken.toString());
-        logger.w(hasExpired);
-
-        if (!hasExpired) {
-          await ProfileViewModel().loadData(context).then((value) async {
-            if (value != null) {
-              DummyData.firstName = value.firstName.toString();
-              DummyData.lastName = value.lastName.toString();
-              // await navigateReplace(context, const DashBoardScreen());
-            } else {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              await prefs.remove('Email');
-              await prefs.remove('Password');
-              await prefs.remove('accessToken');
-              DummyData.firstName = '';
-              DummyData.lastName = '';
-              await Future.delayed(const Duration(seconds: 2));
-              WidgetRebirth.createRebirth(context: context);
-              // navigateReplace(context, const DashBoardScreen(setIndex: 1,));
-            }
-          });
-        } else {
-          if (DummyData.emailAddress != null && DummyData.password != null) {
-            logger.i(DummyData.emailAddress);
-            logger.i(DummyData.password);
-            navigateReplace(context, const WelcomeBackScreen());
-            // AuthViewModel().userAutoLogin(context,
-            //     email: DummyData.emailAddress.toString(), password: DummyData.password.toString());
+        // DummyData.accessToken!.isNotEmpty || DummyData.accessToken == null
+        if (DummyData.accessToken!.isNotEmpty || DummyData.accessToken == null) {
+          logger.i("Check User");
+          //  DummyData.localUserID = sharedPreferences.getString("UserID");`
+          DummyData.emailAddress = sharedPreferences.getString("Email");
+          DummyData.password = sharedPreferences.getString("Password");
+          DummyData.accessToken = sharedPreferences.getString("accessToken");
+          
+          logger.i(DummyData.emailAddress);
+          logger.i(DummyData.accessToken);
+          
+          bool hasExpired = Jwt.isExpired(DummyData.accessToken.toString());
+          logger.w(hasExpired);
+          
+          if (!hasExpired) {
+            await ProfileViewModel().loadData(context).then((value) async {
+              if (value != null) {
+                DummyData.firstName = value.firstName.toString();
+                DummyData.lastName = value.lastName.toString();
+                // await navigateReplace(context, const DashBoardScreen());
+              } else {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.remove('Email');
+                await prefs.remove('Password');
+                await prefs.remove('accessToken');
+                DummyData.firstName = '';
+                DummyData.lastName = '';
+                await Future.delayed(const Duration(seconds: 2));
+                WidgetRebirth.createRebirth(context: context);
+                // navigateReplace(context, const DashBoardScreen(setIndex: 1,));
+              }
+            });
           } else {
-            navigateReplace(context, const OnboardingScreen());
-            logger.e("error");
+            if (DummyData.emailAddress != null && DummyData.password != null) {
+              logger.i(DummyData.emailAddress);
+              logger.i(DummyData.password);
+              navigateReplace(context, const WelcomeBackScreen());
+              // AuthViewModel().userAutoLogin(context,
+              //     email: DummyData.emailAddress.toString(), password: DummyData.password.toString());
+            } else {
+              navigateReplace(context, const OnboardingScreen());
+              logger.e("error");
+            }
           }
+        } else{
+          navigateReplace(context, const WelcomeBackScreen());
         }
       }
     });
