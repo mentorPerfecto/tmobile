@@ -42,4 +42,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /ios/Runner/smile_config.json
-/android/app/src/main/asset/smile_config.json
+#/android/app/src/main/assets/smile_config.json

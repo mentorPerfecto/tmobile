@@ -12,7 +12,6 @@ import 'package:smile_id/smile_id.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SmileID.initialize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
       (value) => runApp(
           const WidgetRebirth(materialApp: ProviderScope(child: MyApp()))));
