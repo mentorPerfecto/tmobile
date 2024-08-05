@@ -80,7 +80,7 @@ class MResponsiveWrap extends ConsumerWidget {
           onRefresh: onRefresh,
           displacement: 5,
           edgeOffset: 4,
-          child: ListView(
+          child: ListView( shrinkWrap: true,
             controller: controller,
             padding: padding,
             children: loading

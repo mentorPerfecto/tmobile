@@ -113,22 +113,19 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
             fontWeight: FontWeight.w600,
           ),
           items: [
-            BottomNavigationBarItem(
-              icon: ImageView.asset(
-                  // dashProvider.currentIndex == 0
-
-                  AppImages.dashboardHomeLogo,
+            BottomNavigationBarItem( label: "",
+              icon: ImageView.asset( AppImages.dashboardHomeLogo,
                   width: 20.w,
                   height: 20.h,
                   color: dashProvider.currentIndex == 0 ? AppColors.kPrimary1 : null),
             ),
-            BottomNavigationBarItem(
+            BottomNavigationBarItem(  label: "",
               icon: ImageView.asset(AppImages.transactionsLogo,
                   width: 22.w,
                   height: 22.h,
                   color: dashProvider.currentIndex == 1 ? AppColors.kPrimary1 : null),
             ),
-            BottomNavigationBarItem(
+            BottomNavigationBarItem(  label: "",
               icon: ImageView.asset(AppImages.profileLogo,
                   width: 22.w,
                   height: 22.h,
