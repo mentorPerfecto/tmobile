@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
@@ -39,4 +40,14 @@ class DashboardViewModel extends ChangeNotifier {
     _currentIndex = selectedPageIndex;
     notifyListeners();
   }
+
+  Future<void> copyToClipboard(String value) async {
+    await Clipboard.setData(ClipboardData(text: value));
+    showToast(msg: "Copied $value to clipboard", isError: false);
+  }
+
+
+  AnimationController? animationController;
+  Animation<double>? animation;
+
 }

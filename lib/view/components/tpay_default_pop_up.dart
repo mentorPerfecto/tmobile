@@ -9,6 +9,7 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
     super.key,
     this.action,
     this.progressStatusLogo,
+    this.progressStatusLogoColor = AppColors.kPrimary1,
     this.progressStatusTextBody,
     this.height = 500.0,
     this.progressStatusTextTitle,
@@ -18,6 +19,7 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
   final String? progressStatusTextTitle;
   final String? progressStatusTextBody;
   final Widget? action;
+  final Color? progressStatusLogoColor;
   final double height;
 
   @override
@@ -49,7 +51,7 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
                 : Image.asset(
                     progressStatusLogo!,
               width: 42.w,
-              height: 42.h,
+              height: 42.h, color: progressStatusLogoColor,
             ),
             Column(
               children: [

@@ -86,26 +86,26 @@ class ProfileViewModel extends ChangeNotifier {
     text: login,
   );
 
-  TextEditingController _documentNumberController = TextEditingController();
-  TextEditingController get nextOfKinFirstNameController => _nextOfKinFirstNameController;
-  final TextEditingController _nextOfKinFirstNameController = TextEditingController();
-  final TextEditingController _nextOfKinLastNameController = TextEditingController();
-  final TextEditingController _nextOfKinPhoneNoController = TextEditingController();
-  final TextEditingController _nextOfKinEmailController = TextEditingController();
-  final TextEditingController _nextOfKinRelationController = TextEditingController();
-  final TextEditingController _driverLicenseController = TextEditingController();
-  final TextEditingController _ninLicenseController = TextEditingController();
+  // TextEditingController _documentNumberController = TextEditingController();
+  // TextEditingController get nextOfKinFirstNameController => _nextOfKinFirstNameController;
+  // final TextEditingController _nextOfKinFirstNameController = TextEditingController();
+  // final TextEditingController _nextOfKinLastNameController = TextEditingController();
+  // final TextEditingController _nextOfKinPhoneNoController = TextEditingController();
+  // final TextEditingController _nextOfKinEmailController = TextEditingController();
+  // final TextEditingController _nextOfKinRelationController = TextEditingController();
+  // final TextEditingController _driverLicenseController = TextEditingController();
+  // final TextEditingController _ninLicenseController = TextEditingController();
   TextEditingController _accountNumberController = TextEditingController();
   final TextEditingController _validatePasswordControllers = TextEditingController();
   TextEditingController get validatePasswordControllers => _validatePasswordControllers;
-  final TextEditingController _firstNameController =
+  final TextEditingController _fullNameController =
       TextEditingController(text: DummyData.firstName ?? '');
-  final TextEditingController _lastNameController =
+  final TextEditingController _usernameController =
       TextEditingController(text: DummyData.lastName ?? '');
   final TextEditingController _emailAddressController =
       TextEditingController(text: DummyData.emailAddress ?? '');
-  final TextEditingController _phoneNumberController =
-      TextEditingController(text: DummyData.phoneNumber ?? '');
+  // final TextEditingController _phoneNumberController =
+  //     TextEditingController(text: DummyData.phoneNumber ?? '');
 
   final bvnFormKey = GlobalKey<FormState>();
   final driverFormKey = GlobalKey<FormState>();
@@ -123,9 +123,9 @@ class ProfileViewModel extends ChangeNotifier {
   String _accountName = accountNameText;
   String? _bankName;
   String? _bankCode;
-  String? _gender;
+  // String? _gender;
 
-  String? get gender => _gender;
+  // String? get gender => _gender;
   UserResponseModel? _profileData;
 
   UserResponseModel? get profileData => _profileData;
@@ -172,13 +172,12 @@ class ProfileViewModel extends ChangeNotifier {
   String? get bankName => _bankName;
   String? get bankCode => _bankCode;
   TextEditingController get accountNumberController => _accountNumberController;
-  TextEditingController get phoneNumberController => _phoneNumberController;
   TextEditingController get emailAddressController => _emailAddressController;
-  TextEditingController get lastNameController => _lastNameController;
-  TextEditingController get firstNameController => _firstNameController;
-  TextEditingController get documentNumberController => _documentNumberController;
-  TextEditingController get driverLicenseController => _driverLicenseController;
-  TextEditingController get ninLicenseController => _ninLicenseController;
+  TextEditingController get fullNameController => _fullNameController;
+  TextEditingController get usernameController => _usernameController;
+  // TextEditingController get documentNumberController => _documentNumberController;
+  // TextEditingController get driverLicenseController => _driverLicenseController;
+  // TextEditingController get ninLicenseController => _ninLicenseController;
   CustomButtonState get buttonSubmitKYCState => _buttonSubmitKYCState;
   bool isBankAccountNumberAdded = false;
   BankAccountValidatedResponse? validatedUserResponse;
@@ -200,25 +199,25 @@ class ProfileViewModel extends ChangeNotifier {
   double get uploadProgress => _uploadProgress;
   bool get showUploadIndicator => _showUploadIndicator;
 
-  String? validateInput() {
-    if (_documentNumberController.text.length >= 8) {
-      return 'Must be 11 digits';
-    } else {}
+  // String? validateInput() {
+  //   if (_documentNumberController.text.length >= 8) {
+  //     return 'Must be 11 digits';
+  //   } else {}
+  //
+  //   notifyListeners();
+  //   return null;
+  // }
 
-    notifyListeners();
-    return null;
-  }
+  // changeIdType(String? value) {
+  //   _documentType = value!;
+  //   validateInput();
+  //   notifyListeners();
+  // }
 
-  changeIdType(String? value) {
-    _documentType = value!;
-    validateInput();
-    notifyListeners();
-  }
-
-  getGender(String? value) {
-    _gender = value!;
-    notifyListeners();
-  }
+  // getGender(String? value) {
+  //   _gender = value!;
+  //   notifyListeners();
+  // }
 
   void newBankName(String newBankName) {
     _bankName = newBankName;
@@ -249,48 +248,48 @@ class ProfileViewModel extends ChangeNotifier {
   }
 
   ///Method to update user profile
-  Future<void> updateUserProfile(BuildContext context, showContactInfo) async {
-    _isUpdatingUserProfile = true;
-    notifyListeners();
-    try {
-      await profileService
-          .updateUserProfile(
-        firstname: _firstNameController.text.toString(),
-        lastName: _lastNameController.text.toString(),
-        phoneNumber: _phoneNumberController.text.toString(),
-        gender: UtilFunctions.capitalizeAllWord(_gender ?? profileData!.gender.toString()),
-        showContactInfo: showContactInfo ?? profileData!.showContactInfo,
-      )
-          .then((value) async {
-        if (value != null) {
-          final decodedResponse = jsonDecode(value.toString());
-
-          if (decodedResponse['status'].toString() == 'true') {
-            showToast(
-              msg: decodedResponse['message'].toString(),
-              isError: false,
-            );
-            _isUpdatingUserProfile = false;
-            notifyListeners();
-          } else if (value['status'].toString() == 'false') {
-            showToast(
-              msg: value['message'].toString(),
-              isError: false,
-            );
-            _isUpdatingUserProfile = false;
-            notifyListeners();
-          }
-        }
-      }).whenComplete(() {
-        _isUpdatingUserProfile = false;
-        notifyListeners();
-      });
-    } catch (e, s) {
-      logger
-        ..i(checkErrorLogs)
-        ..e(s);
-    }
-  }
+  // Future<void> updateUserProfile(BuildContext context) async {
+  //   _isUpdatingUserProfile = true;
+  //   notifyListeners();
+  //   try {
+  //     await profileService
+  //         .updateUserProfile(
+  //       firstname: _firstNameController.text.toString(),
+  //       lastName: _lastNameController.text.toString(),
+  //       phoneNumber: _phoneNumberController.text.toString(),
+  //       gender: UtilFunctions.capitalizeAllWord(_gender ?? profileData!.gender.toString()),
+  //       showContactInfo: false,
+  //     )
+  //         .then((value) async {
+  //       if (value != null) {
+  //         final decodedResponse = jsonDecode(value.toString());
+  //
+  //         if (decodedResponse['status'].toString() == 'true') {
+  //           showToast(
+  //             msg: decodedResponse['message'].toString(),
+  //             isError: false,
+  //           );
+  //           _isUpdatingUserProfile = false;
+  //           notifyListeners();
+  //         } else if (value['status'].toString() == 'false') {
+  //           showToast(
+  //             msg: value['message'].toString(),
+  //             isError: false,
+  //           );
+  //           _isUpdatingUserProfile = false;
+  //           notifyListeners();
+  //         }
+  //       }
+  //     }).whenComplete(() {
+  //       _isUpdatingUserProfile = false;
+  //       notifyListeners();
+  //     });
+  //   } catch (e, s) {
+  //     logger
+  //       ..i(checkErrorLogs)
+  //       ..e(s);
+  //   }
+  // }
 
 //Method to delete user profile.
   Future<void> deleteUserProfile(BuildContext context) async {
@@ -541,147 +540,80 @@ class ProfileViewModel extends ChangeNotifier {
     }
   }
 
-  ///Method for Submitting KYC
-  Future<void> submitExtendedValidation(BuildContext context, listingId) async {
-    _isSubmittingKYC = true;
-    try {
-      _buttonSubmitKYCState = CustomButtonState(
-        buttonState: ButtonState.loading,
-        text: login,
-      );
-      notifyListeners();
-      await profileService
-          .submitExtendValidation(
-        listingId: listingId,
-        attachments: proofOfOwnership,
-      )
-          .then((value) async {
-        if (value != null) {
-          final decodedResponse = jsonDecode(value.toString());
-          logger.t(decodedResponse['status'] == true);
-          if (decodedResponse['status'] == true) {
-            await navigateReplace(
-                context,
-                SuccessScreen(
-                    infoText: decodedResponse['message'].toString(),
-                    newPage: const DashBoardScreen(
-                      setIndex: 2,
-                    ),
-                    navigateButtonText: continueText));
-
-            clearKYCData();
-            _buttonSubmitKYCState = CustomButtonState(
-              buttonState: ButtonState.idle,
-              text: login,
-            );
-            _isSubmittingKYC = false;
-            notifyListeners();
-            // fetchKYC(context);
-          } else {
-            _isSubmittingKYC = false;
-
-            showToast(
-              msg: decodedResponse['message'].toString(),
-              isError: false,
-            );
-          }
-
-          notifyListeners();
-        }
-      }).whenComplete(() async {
-        _isSubmittingKYC = false;
-
-        _buttonSubmitKYCState = CustomButtonState(
-          buttonState: ButtonState.idle,
-          text: login,
-        );
-        // fetchKYC(context);
-        notifyListeners();
-      });
-    } catch (e, s) {
-      // showToast(
-      //   msg: somethingWentWrong,
-      //   isError: true,
-      // );
-      logger
-        ..i(checkErrorLogs)
-        ..e(s);
-    }
-  }
-
-  Future<void> submitKYC(BuildContext context, listingId, token) async {
-    _isSubmittingKYC = true;
-    try {
-      _buttonSubmitKYCState = CustomButtonState(
-        buttonState: ButtonState.loading,
-        text: login,
-      );
-      notifyListeners();
-      await profileService
-          .submitKYC(
-              fullName: '${DummyData.lastName} ${DummyData.firstName}',
-              documentType: _documentType.toString(),
-              attachments: imageFrontAndBckImage,
-              documentNumber: _documentNumberController.text.toString(),
-              listingId: listingId,
-              token: token,
-              nextOfKinFirstName: _nextOfKinFirstNameController.text.toString(),
-              nextOfKinLastName: _nextOfKinLastNameController.text.toString(),
-              nextOfKinPhoneNumber: _nextOfKinPhoneNoController.text.toString(),
-              nextOfKinEmail: _nextOfKinEmailController.text.toString(),
-              nextOfKinRelationship: _nextOfKinRelationController.text.toString())
-          .then((value) async {
-        if (value != null) {
-          final decodedResponse = jsonDecode(value.toString());
-          logger.t(decodedResponse['status'] == true);
-          if (decodedResponse['status'] == true) {
-            if (decodedResponse['status'] == true) {
-              await navigateReplace(
-                  context,
-                  SuccessScreen(
-                      infoText: decodedResponse['message'].toString(),
-                      newPage: const DashBoardScreen(
-                        setIndex: 4,
-                      ),
-                      navigateButtonText: continueText));
-
-              clearKYCData();
-            }
-            _isSubmittingKYC = false;
-            notifyListeners();
-            // navigateReplace(context, const DashBoardScreen());
-            // fetchKYC(context);
-          } else {
-            _isSubmittingKYC = false;
-
-            showToast(
-              msg: decodedResponse['message'].toString(),
-              isError: false,
-            );
-          }
-
-          notifyListeners();
-        }
-      }).whenComplete(() async {
-        _isSubmittingKYC = false;
-
-        _buttonSubmitKYCState = CustomButtonState(
-          buttonState: ButtonState.idle,
-          text: login,
-        );
-        // fetchKYC(context);
-        notifyListeners();
-      });
-    } catch (e, s) {
-      // showToast(
-      //   msg: somethingWentWrong,
-      //   isError: true,
-      // );
-      logger
-        ..i(checkErrorLogs)
-        ..e(s);
-    }
-  }
+  //
+  // Future<void> submitKYC(BuildContext context, listingId, token) async {
+  //   _isSubmittingKYC = true;
+  //   try {
+  //     _buttonSubmitKYCState = CustomButtonState(
+  //       buttonState: ButtonState.loading,
+  //       text: login,
+  //     );
+  //     notifyListeners();
+  //     await profileService
+  //         .submitKYC(
+  //             fullName: '${DummyData.lastName} ${DummyData.firstName}',
+  //             documentType: _documentType.toString(),
+  //             attachments: imageFrontAndBckImage,
+  //             documentNumber: _documentNumberController.text.toString(),
+  //             listingId: listingId,
+  //             token: token,
+  //             nextOfKinFirstName: _nextOfKinFirstNameController.text.toString(),
+  //             nextOfKinLastName: _nextOfKinLastNameController.text.toString(),
+  //             nextOfKinPhoneNumber: _nextOfKinPhoneNoController.text.toString(),
+  //             nextOfKinEmail: _nextOfKinEmailController.text.toString(),
+  //             nextOfKinRelationship: _nextOfKinRelationController.text.toString())
+  //         .then((value) async {
+  //       if (value != null) {
+  //         final decodedResponse = jsonDecode(value.toString());
+  //         logger.t(decodedResponse['status'] == true);
+  //         if (decodedResponse['status'] == true) {
+  //           if (decodedResponse['status'] == true) {
+  //             await navigateReplace(
+  //                 context,
+  //                 SuccessScreen(
+  //                     infoText: decodedResponse['message'].toString(),
+  //                     newPage: const DashBoardScreen(
+  //                       setIndex: 4,
+  //                     ),
+  //                     navigateButtonText: continueText));
+  //
+  //             clearKYCData();
+  //           }
+  //           _isSubmittingKYC = false;
+  //           notifyListeners();
+  //           // navigateReplace(context, const DashBoardScreen());
+  //           // fetchKYC(context);
+  //         } else {
+  //           _isSubmittingKYC = false;
+  //
+  //           showToast(
+  //             msg: decodedResponse['message'].toString(),
+  //             isError: false,
+  //           );
+  //         }
+  //
+  //         notifyListeners();
+  //       }
+  //     }).whenComplete(() async {
+  //       _isSubmittingKYC = false;
+  //
+  //       _buttonSubmitKYCState = CustomButtonState(
+  //         buttonState: ButtonState.idle,
+  //         text: login,
+  //       );
+  //       // fetchKYC(context);
+  //       notifyListeners();
+  //     });
+  //   } catch (e, s) {
+  //     // showToast(
+  //     //   msg: somethingWentWrong,
+  //     //   isError: true,
+  //     // );
+  //     logger
+  //       ..i(checkErrorLogs)
+  //       ..e(s);
+  //   }
+  // }
 
   // Future<KycResponseStatus?> fetchKYC(BuildContext context) async {
   //   try {
@@ -812,31 +744,31 @@ class ProfileViewModel extends ChangeNotifier {
     _documentType = docType;
     notifyListeners();
   }
-
-  Future<void> updateDocumentNumberController() async {
-    _documentNumberController = TextEditingController();
-    notifyListeners();
-  }
-
-  Future<void> clearKYCData() async {
-    _documentNumberController = TextEditingController();
-    driversLicenceImageFront = null;
-    driversLicenceImageBack = null;
-
-    ninImageFront = null;
-    ninImageBack = null;
-
-    intlPassportImageFront = null;
-    intlPassportImageBack = null;
-
-    proofOfOwnership = null;
-    nextOfKinFirstNameController.clear();
-    nextOfKinLastNameController.clear();
-    nextOfKinEmailController.clear();
-    nextOfKinPhoneNoController.clear();
-    nextOfKinRelationController.clear();
-    notifyListeners();
-  }
+  //
+  // Future<void> updateDocumentNumberController() async {
+  //   _documentNumberController = TextEditingController();
+  //   notifyListeners();
+  // }
+  //
+  // Future<void> clearKYCData() async {
+  //   _documentNumberController = TextEditingController();
+  //   driversLicenceImageFront = null;
+  //   driversLicenceImageBack = null;
+  //
+  //   ninImageFront = null;
+  //   ninImageBack = null;
+  //
+  //   intlPassportImageFront = null;
+  //   intlPassportImageBack = null;
+  //
+  //   proofOfOwnership = null;
+  //   nextOfKinFirstNameController.clear();
+  //   nextOfKinLastNameController.clear();
+  //   nextOfKinEmailController.clear();
+  //   nextOfKinPhoneNoController.clear();
+  //   nextOfKinRelationController.clear();
+  //   notifyListeners();
+  // }
 
   void updateImageFrontAndBack(frontImage, backImage) {
     imageFrontAndBckImage = [frontImage, backImage];
@@ -954,11 +886,11 @@ class ProfileViewModel extends ChangeNotifier {
     return initials += firstName[0] + lastName[0].toUpperCase();
   }
 
-  TextEditingController get nextOfKinLastNameController => _nextOfKinLastNameController;
-
-  TextEditingController get nextOfKinPhoneNoController => _nextOfKinPhoneNoController;
-
-  TextEditingController get nextOfKinEmailController => _nextOfKinEmailController;
-
-  TextEditingController get nextOfKinRelationController => _nextOfKinRelationController;
+  // TextEditingController get nextOfKinLastNameController => _nextOfKinLastNameController;
+  //
+  // TextEditingController get nextOfKinPhoneNoController => _nextOfKinPhoneNoController;
+  //
+  // TextEditingController get nextOfKinEmailController => _nextOfKinEmailController;
+  //
+  // TextEditingController get nextOfKinRelationController => _nextOfKinRelationController;
 }

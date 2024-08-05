@@ -127,7 +127,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
               children: [
                       TextView(
                         text: widget.fieldLabel,
-                        fontSize: 14.sp,
+                        fontSize: 14.spMin,
                         fontWeight: FontWeight.w400,
                       ),
                 const Gap(10),
