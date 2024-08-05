@@ -82,7 +82,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: 650.h,
+            height: 715.h,
             padding: EdgeInsets.symmetric(
               horizontal: 15.0.w,
               vertical: 10.h,

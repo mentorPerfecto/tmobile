@@ -10,19 +10,10 @@ final dashboardViewModel = ChangeNotifierProvider((ref) => DashboardViewModel())
 
 class DashboardViewModel extends ChangeNotifier {
   int? _currentIndex = 0;
-  String? _landlordProperty;
-
-  String? get landlordProperty => _landlordProperty;
-  final String _token = '';
-  String get token => _token;
+  int? _exchangeCurrentIndex = 0;
 
   int get currentIndex => _currentIndex!;
-  String? country, state, locality, subLocality;
-
-  void selectProperty(String? property) {
-    _landlordProperty = property;
-    notifyListeners();
-  }
+  int get exchangeCurrentIndex => _exchangeCurrentIndex!;
 
   void setPageIndexToHome(BuildContext context) {
     _currentIndex = 0;
@@ -36,18 +27,16 @@ class DashboardViewModel extends ChangeNotifier {
     // getDeviceLocation();
   }
 
-  Future<void> setBottomBarItem(BuildContext context, int selectedPageIndex) async {
-    _currentIndex = selectedPageIndex;
+  setExchangePageIndex({int? selectedPageIndex}) {
+    _exchangeCurrentIndex = selectedPageIndex ?? 0;
     notifyListeners();
+    // getDeviceLocation();
   }
+
 
   Future<void> copyToClipboard(String value) async {
     await Clipboard.setData(ClipboardData(text: value));
     showToast(msg: "Copied $value to clipboard", isError: false);
   }
-
-
-  AnimationController? animationController;
-  Animation<double>? animation;
 
 }

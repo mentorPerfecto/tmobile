@@ -11,6 +11,8 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/utils/blur.dart';
 import 'package:tampay/utils/enums.dart';
+import 'package:tampay/view/screens/dashboard/exchange/exchange_screen.dart';
+import 'package:tampay/view_model/dashboard/wallet_view_model.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -39,7 +41,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     double screenWidth = 360.w;
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
-    // var walletProvider = ref.watch(walletViewModel);
+    var walletProvider = ref.watch(walletViewModel);
     var profileProvider = ref.watch(profileViewModel);
     var dashProvider = ref.watch(dashboardViewModel);
 
@@ -58,203 +60,183 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         },
         //loading: marketPlaceProvider.isGettingPropertiesListings,
         children: [
-          const HomeDisplay(),
-          Gap(20.h),
-          CompleteAccountSetupWarning(themeMode: themeMode, theme: theme),
-          Gap(20.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SellBuyMore(
-                onPressed: () {},
-                id: sell,
-                icon: AppImages.arrowDownIcon,
-                backgroundColor: themeMode == ThemeMode.light
-                    ? AppColors.kPalePeriwinkle
-                    : AppColors.kCharcoalGray,
-                iconColor: theme.colorScheme.primary,
-              ),
-              Gap(15.w),
-              SellBuyMore(
-                onPressed: () {},
-                id: buy,
-                icon: AppImages.arrowUpIcon,
-                backgroundColor: AppColors.kPrimary1,
-                iconColor: AppColors.kWhite,
-              ),
-              Gap(15.w),
-              SellBuyMore(
-                onPressed: () async {
-                  await showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      barrierColor: Colors.black38,
-                      context: context,
-                      builder: (context) {
-                        return BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                          child: TPayDefaultPopUp(
-                            action: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                HomeItems(
-                                  theme: theme,
-                                  icon: AppImages.zapLogo,
-                                  onPressed: () {},
-                                  subText: "See exciting trading rates",
-                                  title: "View Rate",
-                                ),
-                                HomeItems(
-                                  theme: theme,
-                                  icon: AppImages.friendsIcon,
-                                  onPressed: () {},
-                                  subText: "Earn commission from referrals",
-                                  title: "Refer A Friend",
-                                ),
-                                HomeItems(
-                                  theme: theme,
-                                  icon: AppImages.bankIcon,
-                                  onPressed: () {},
-                                  subText: "View your payout bank accounts",
-                                  title: "Bank Details",
-                                ),
-                                const DarkModeItem()
-                              ],
-                            ),
+          // const Gap(30),
+          Container( height: 450.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(36.r),
+              color: AppColors.kCharcoalBlack,
+            ),
+            child: Stack(
+              children: [
+              MovingCircles( height: 450, borderRadius: BorderRadius.circular(36.r),),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              ImageView.asset(
+                                AppImages.dummyImage,
+                                width: 36.w,
+                                height: 36.h,
+                              ),
+                              Gap(10.w),
+                              TextView(
+                                text: "Hello, Daniel",
+                                fontSize: 14.sp,
+                                color: AppColors.kWhite,
+                              ),
+                            ],
                           ),
-                        );
-                      });
-                },
-                id: more,
-                icon: AppImages.moreLogo,
-                backgroundColor: themeMode == ThemeMode.light
-                    ? AppColors.kPalePeriwinkle
-                    : AppColors.kCharcoalGray,
-                iconColor: theme.colorScheme.primary,
-              ),
-            ],
+                          ImageView.asset(
+                            AppImages.notificationIcon,
+                            width: 32.w,
+                            height: 32.h,
+                          )
+                        ],
+                      ),
+                      const Spacer(
+                        flex: 1,
+                      ),
+                      Column(
+                        children: [
+                          TextView(
+                            text: "TOTAL PAYOUT",
+                            fontSize: 10.spMin,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.kWhite,
+                          ),
+                          Gap(15.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              walletProvider.showWalletBal ?
+                              RichText( text: TextSpan(
+                                text: r"$56,590.",
+                                style: TextStyle(
+                                  fontSize: 40.spMin,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.kWhite,
+                                  fontFamily: soraFont
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: '08',
+                                    style: TextStyle(
+                                      fontSize: 40.spMin,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.kGrey500,
+                                        fontFamily: soraFont
+                                    ),
+                                  ),
+                                ],
+                              ),) :
+
+
+                              TextView(
+                                text:"****",
+                                fontSize: 40.spMin,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.kWhite,
+                              ),
+                              Gap(10.w),
+                              GestureDetector(
+                                onTap: walletProvider.toggleWalletBal ,
+                                child: Icon(
+                                  Icons.visibility_outlined,
+                                  color: AppColors.kWhite,
+                                  size: 14.spMin,
+                                ),
+                              )
+                            ],
+                          ),
+                          Gap(15.h),
+                          TextView(
+                            text: "~ ${UtilFunctions.currency(context)} 10,234,456",
+                            color: AppColors.kWhite,
+                          )
+                        ],
+                      ),
+                      const Spacer(
+                        flex: 2,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-          Gap(20.h),
-          GestureDetector(
-            onTap: () async {},
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.spMin),
-                color: themeMode == ThemeMode.dark
-                    ? AppColors.kDarkSlateGrey
-                    : AppColors.kTransparentCharcoal,
-              ),
+          CompleteAccountSetupWarning(themeMode: themeMode, theme: theme),
+          Padding(
+            padding:  EdgeInsets.only(left:50.w,  right:  50.w, top: 15.w),
+            child: SizedBox(
+              width: 200.w,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ImageView.asset(
-                    AppImages.zapLogo,
-                    width: 18.w,
-                    height: 18.h,
+                  SellBuyMore(
+                    id: sell,
+                    icon: AppImages.arrowDownIcon,
+                    backgroundColor: themeMode == ThemeMode.light
+                        ? AppColors.kPalePeriwinkle
+                        : AppColors.kCharcoalGray,
+                    iconColor: theme.colorScheme.primary,
                   ),
-                  const TextView(
-                    text: "View rates",
+                  const SellBuyMore(
+                    id: buy,
+                    icon: AppImages.arrowUpIcon,
+                    backgroundColor: AppColors.kPrimary1,
+                    iconColor: AppColors.kWhite,
+                  ),
+                  SellBuyMore(
+                    id: more,
+                    icon: AppImages.moreLogo,
+                    backgroundColor: themeMode == ThemeMode.light
+                        ? AppColors.kPalePeriwinkle
+                        : AppColors.kCharcoalGray,
+                    iconColor: theme.colorScheme.primary,
                   ),
                 ],
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
 
-class HomeDisplay extends StatelessWidget {
-  const HomeDisplay({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 450.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(36.r),
-        color: AppColors.kCharcoalBlack,
-      ),
-      child: Stack(
-        children: [
-          MovingCircles(
-            height: 450,
-            borderRadius: BorderRadius.circular(36.r),
-          ),
           Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        ImageView.asset(
-                          AppImages.dummyImage,
-                          width: 36.w,
-                          height: 36.h,
-                        ),
-                        Gap(10.w),
-                        TextView(
-                          text: "Hello, Daniel",
-                          fontSize: 14.sp,
-                          color: AppColors.kWhite,
-                        ),
-                      ],
-                    ),
-                    ImageView.asset(
-                      AppImages.notificationIcon,
-                      width: 32.w,
-                      height: 32.h,
-                    )
-                  ],
+            padding: EdgeInsets.only(top: 30.h, bottom: 15.h),
+            child: GestureDetector(
+              onTap: () async {
+                dashProvider.setPageIndex(selectedPageIndex: 2);
+              },
+              child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal:120.w),
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.spMin),
+                    color: themeMode == ThemeMode.dark
+                        ? AppColors.kDarkSlateGrey
+                        : AppColors.kTransparentCharcoal,
+                  ),
+                  child: Row(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ImageView.asset(
+                        AppImages.zapLogo,
+                        width: 18.w,
+                        height: 18.h,
+                      ),
+                      const TextView(
+                        text: "View rates",
+                      ),
+                    ],
+                  ),
                 ),
-                const Spacer(
-                  flex: 1,
-                ),
-                Column(
-                  children: [
-                    TextView(
-                      text: "TOTAL PAYOUT",
-                      fontSize: 10.spMin,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.kWhite,
-                    ),
-                    Gap(15.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextView(
-                          text: r"$7,534.05",
-                          fontSize: 40.spMin,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.kWhite,
-                        ),
-                        Gap(10.w),
-                        Icon(
-                          Icons.visibility_outlined,
-                          color: AppColors.kWhite,
-                          size: 14.spMin,
-                        )
-                      ],
-                    ),
-                    Gap(15.h),
-                    TextView(
-                      text: "~ ${UtilFunctions.currency(context)} 10,234,456",
-                      color: AppColors.kWhite,
-                    )
-                  ],
-                ),
-                const Spacer(
-                  flex: 2,
-                ),
-              ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -406,24 +388,74 @@ class DarkModeItem extends ConsumerWidget {
   }
 }
 
-class SellBuyMore extends StatelessWidget {
+class SellBuyMore extends ConsumerWidget {
   const SellBuyMore({
     super.key,
     required this.id,
     required this.icon,
     required this.backgroundColor,
     required this.iconColor,
-    required this.onPressed,
   });
   final String id;
   final Color backgroundColor;
   final Color iconColor;
   final String icon;
-  final VoidCallback onPressed;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ThemeData theme = Theme.of(context);
+    var dashProvider = ref.watch(dashboardViewModel);
     return GestureDetector(
-      onTap: onPressed,
+      onTap: () async {
+        if(id == more){
+          await showModalBottomSheet(
+          backgroundColor: Colors.transparent,
+          barrierColor: Colors.black38,
+          context: context,
+          builder: (context) {
+            return BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+              child: TPayDefaultPopUp(
+                action: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    HomeItems(
+                      theme: theme,
+                      icon: AppImages.zapLogo,
+                      onPressed: () {},
+                      subText: "See exciting trading rates",
+                      title: "View Rate",
+                    ),
+                    HomeItems(
+                      theme: theme,
+                      icon: AppImages.friendsIcon,
+                      onPressed: () {},
+                      subText: "Earn commission from referrals",
+                      title: "Refer A Friend",
+                    ),
+                    HomeItems(
+                      theme: theme,
+                      icon: AppImages.bankIcon,
+                      onPressed: () {},
+                      subText: "View your payout bank accounts",
+                      title: "Bank Details",
+                    ),
+                    const DarkModeItem()
+                  ],
+                ),
+              ),
+            );
+          });
+
+        } else{
+          if(id == sell){
+            dashProvider.setPageIndex(selectedPageIndex: 1);
+            dashProvider.setExchangePageIndex(selectedPageIndex: 1);
+          } else {
+            dashProvider.setPageIndex(selectedPageIndex: 1);
+            dashProvider.setExchangePageIndex(selectedPageIndex: 0);
+          }
+        }
+      },
       child: Column(
         children: [
           Container(
@@ -491,9 +523,8 @@ class CompleteAccountSetupWarning extends StatelessWidget {
                 Gap(15.w),
                 TextView(
                   text: "Complete Account Setup",
-                  color: themeMode == ThemeMode.dark
-                      ? AppColors.kAmberOrange
-                      : AppColors.kGoldenOrange,
+                  color:
+                      themeMode == ThemeMode.dark ? AppColors.kAmberOrange : AppColors.kGoldenOrange,
                 )
               ],
             ),
