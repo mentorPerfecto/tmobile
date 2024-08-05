@@ -62,10 +62,7 @@ class BuyViewModel extends ChangeNotifier {
         ));
   }
 
-  Future<void> copyToClipboard(String value) async {
-    await Clipboard.setData(ClipboardData(text: value));
-    showToast(msg: "Copied $value to clipboard", isError: false);
-  }
+
 
   Future<void> getCryptoCoins() async {
     var cryptoJson = await rootBundle.loadString("assets/json/coin_list.json");

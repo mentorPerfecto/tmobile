@@ -96,7 +96,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
         body: dashboardPages[dashProvider.currentIndex],
         backgroundColor: theme.scaffoldBackgroundColor,
         bottomNavigationBar: Container(
-          height: 74.h,
+          height: 80.h,
           padding: EdgeInsets.symmetric(vertical: 8.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(

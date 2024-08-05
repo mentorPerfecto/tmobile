@@ -868,76 +868,76 @@ Future<dynamic> addPhotosFromCameraOrGalleryDialog(
 // }
 
 //8
-Future<dynamic> displayLogoutDialog(
-  BuildContext context, {
-  required VoidCallback onTap,
-  required ThemeMode themeMode,
-  required ThemeData theme,
-}) async {
-  return showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        backgroundColor:
-            themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
-        title: Center(
-          child: TextView(
-            text: logOut,
-            fontSize: 16.spMin,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        content: TextView(
-          text: sureYouWntToLgout,
-          fontSize: 14.spMin,
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          fontWeight: FontWeight.w500,
-        ),
-        actions: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: DefaultButtonMain(
-                  color: themeMode == ThemeMode.light
-                      ? AppColors.kWhite200
-                      : AppColors.kTextWhite,
-                  width: 120.w,
-                  textColor: AppColors.kTextBlack,
-                  text: cancel,
-                  borderRadius: 38.r,
-                  borderColor:
-                      themeMode == ThemeMode.dark ? AppColors.kTextBlack : null,
-                  height: 48.h,
-                  onPressed: () {
-                    navigateBack(context);
-                  },
-                ),
-              ),
-              SizedBox(
-                width: 5.w,
-              ),
-              Expanded(
-                child: DefaultButtonMain(
-                  color: AppColors.kPrimary1,
-                  width: 120.w,
-                  text: logOut,
-                  borderColor: AppColors.kPrimary1,
-                  borderRadius: 38.r,
-                  height: 48.h,
-                  onPressed: onTap,
-                ),
-              ),
-            ],
-          )
-        ],
-      );
-    },
-  );
-}
+// Future<dynamic> displayLogoutDialog(
+//   BuildContext context, {
+//   required VoidCallback onTap,
+//   required ThemeMode themeMode,
+//   required ThemeData theme,
+// }) async {
+//   return showDialog(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return AlertDialog(
+//         shape:
+//             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+//         backgroundColor:
+//             themeMode == ThemeMode.light ? Colors.white : theme.cardColor,
+//         title: Center(
+//           child: TextView(
+//             text: logOut,
+//             fontSize: 16.spMin,
+//             fontWeight: FontWeight.w600,
+//           ),
+//         ),
+//         content: TextView(
+//           text: sureYouWntToLgout,
+//           fontSize: 14.spMin,
+//           maxLines: 2,
+//           textAlign: TextAlign.center,
+//           fontWeight: FontWeight.w500,
+//         ),
+//         actions: <Widget>[
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Expanded(
+//                 child: DefaultButtonMain(
+//                   color: themeMode == ThemeMode.light
+//                       ? AppColors.kWhite200
+//                       : AppColors.kTextWhite,
+//                   width: 120.w,
+//                   textColor: AppColors.kTextBlack,
+//                   text: cancel,
+//                   borderRadius: 38.r,
+//                   borderColor:
+//                       themeMode == ThemeMode.dark ? AppColors.kTextBlack : null,
+//                   height: 48.h,
+//                   onPressed: () {
+//                     navigateBack(context);
+//                   },
+//                 ),
+//               ),
+//               SizedBox(
+//                 width: 5.w,
+//               ),
+//               Expanded(
+//                 child: DefaultButtonMain(
+//                   color: AppColors.kPrimary1,
+//                   width: 120.w,
+//                   text: logOut,
+//                   borderColor: AppColors.kPrimary1,
+//                   borderRadius: 38.r,
+//                   height: 48.h,
+//                   onPressed: onTap,
+//                 ),
+//               ),
+//             ],
+//           )
+//         ],
+//       );
+//     },
+//   );
+// }
 
 Future<void> displayRestrictionMessageAlert(
   BuildContext context,
@@ -1732,7 +1732,7 @@ class _SellCoinBottomModalSheetContentState
                           color: AppColors.kDarkDividerColor,
                           borderRadius: 8.r,
                           onPressed: () {
-                            buySectionProvider.copyToClipboard(
+                            dashboardProvider.copyToClipboard(
                                 'bc1q04tvdada..............wjdgfee7g');
                           }),
                       defaultButton(

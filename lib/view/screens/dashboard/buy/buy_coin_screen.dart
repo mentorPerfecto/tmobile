@@ -65,6 +65,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     var buySectionProvider = ref.watch(buyViewModel);
+    var dashViewModel = ref.watch(dashboardViewModel);
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -195,7 +196,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                               Gap(5.w),
                               InkWell(
                                 onTap: () {
-                                  buySectionProvider.copyToClipboard('256521T5841sgasga5514sjsg');
+                                  dashViewModel.copyToClipboard('256521T5841sgasga5514sjsg');
                                 },
                                 child: Image.asset(
                                   AppImages.copyLogo,
@@ -240,7 +241,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                             Gap(5.w),
                             InkWell(
                               onTap: () {
-                                buySectionProvider.copyToClipboard('Fidelity Bank');
+                                dashViewModel.copyToClipboard('Fidelity Bank');
                               },
                               child: Image.asset(
                                 AppImages.copyLogo,
@@ -271,7 +272,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                             Gap(5.w),
                             InkWell(
                               onTap: () {
-                                buySectionProvider.copyToClipboard('0550241576');
+                                dashViewModel.copyToClipboard('0550241576');
                               },
                               child: Image.asset(
                                 AppImages.copyLogo,
@@ -302,7 +303,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                             Gap(5.w),
                             InkWell(
                               onTap: () {
-                                buySectionProvider.copyToClipboard('Pius Moses');
+                                dashViewModel.copyToClipboard('Pius Moses');
                               },
                               child: Image.asset(
                                 AppImages.copyLogo,

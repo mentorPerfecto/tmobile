@@ -1,32 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  //tpaymobile
-  static const kBlueSunsetGradient = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    // stops: [
-    //   0.0, // Starting point
-    //   1.0,
-    //   0.0,
-    //   1.0, //Ending point
-    // ],
-    colors: [
-
-    ],
-  );
-  static const kOceanBreezeGradient = LinearGradient(
-    colors: [
-      Color(0xff1EC9FF),
-      Color(0xff1CB2A0),
-    ],
-  );
-  static const kSunriseHorizonGradient = LinearGradient(
-    colors: [
-      Color(0xff3A66FF),
-      Color(0xffFFCB27),
-    ],
-  );
 
   static const kSeaBlue = Color(0xff1EC9FF);
   static const kTurquoise = Color(0xff1CB2A0);
@@ -68,6 +42,8 @@ class AppColors {
   static const kDarkBlue = Color(0xff1D2739);
   static const kHarvestGold = Color(0xffF7C164);
   static const kMidnightBlue = Color(0xff141D57);
+  static const kMidnight200 = Color(0xffD7EAFF);
+  static const kMidnight50 = Color(0xffE9F4FF);
 
   static const kSunFlower = Color(0xffF5B546);
   static const kVeryLightYellow = Color(0xffFFFCF6);

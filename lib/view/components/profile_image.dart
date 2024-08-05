@@ -123,10 +123,11 @@ class ProfileImage extends ConsumerWidget {
               child: Container(
                 height: 25.h,
                 width: 25.w,
-                decoration: BoxDecoration(
-                  color: AppColors.kGrey600,
-                  borderRadius: BorderRadius.circular(100),
-                  border: Border.all(color: AppColors.kWhite),
+                decoration: const BoxDecoration(
+                  color: AppColors.kGrey,
+                  // borderRadius: BorderRadius.circular(100),
+                  shape: BoxShape.circle
+                //  border: Border.all(color: AppColors.kWhite),
                 ),
                 alignment: Alignment.center,
                 child: Icon(
