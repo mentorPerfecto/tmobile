@@ -150,6 +150,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SellBuyMore(
+                        onPressed: () {},
                         id: sell,
                         icon: AppImages.arrowDownIcon,
                         backgroundColor: themeMode == ThemeMode.light
@@ -157,25 +158,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             : AppColors.kCharcoalGray,
                         iconColor: theme.colorScheme.primary,
                       ),
-                      const SellBuyMore(
+                      SellBuyMore(
+                        onPressed: () {},
                         id: buy,
                         icon: AppImages.arrowUpIcon,
                         backgroundColor: AppColors.kPrimary1,
                         iconColor: AppColors.kWhite,
                       ),
                       SellBuyMore(
-                        id: more,
-                        icon: AppImages.moreLogo,
-                        backgroundColor: themeMode == ThemeMode.light
-                            ? AppColors.kPalePeriwinkle
-                            : AppColors.kCharcoalGray,
-                        iconColor: theme.colorScheme.primary,
-                      ),
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () async {
+                        onPressed: () async {
                     await showModalBottomSheet(
                         backgroundColor: Colors.transparent,
                         barrierColor: Colors.black38,
@@ -214,6 +205,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ),
                           );
                         });
+                        },
+                        id: more,
+                        icon: AppImages.moreLogo,
+                        backgroundColor: themeMode == ThemeMode.light
+                            ? AppColors.kPalePeriwinkle
+                            : AppColors.kCharcoalGray,
+                        iconColor: theme.colorScheme.primary,
+                      ),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async {
+                   
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
@@ -399,37 +404,42 @@ class SellBuyMore extends StatelessWidget {
     required this.icon,
     required this.backgroundColor,
     required this.iconColor,
+    required this.onPressed,
   });
   final String id;
   final Color backgroundColor;
   final Color iconColor;
   final String icon;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 45.w,
-          height: 45.h,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: backgroundColor,
-          ),
-          child: Center(
-            child: ImageView.asset(
-              icon,
-              width: 16.w,
-              height: 10.h,
-              color: iconColor,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Column(
+        children: [
+          Container(
+            width: 45.w,
+            height: 45.h,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: backgroundColor,
+            ),
+            child: Center(
+              child: ImageView.asset(
+                icon,
+                width: 16.w,
+                height: 10.h,
+                color: iconColor,
+              ),
             ),
           ),
-        ),
-        Gap(10.h),
-        TextView(
-          text: id,
-          fontSize: 14.spMin,
-        )
-      ],
+          Gap(10.h),
+          TextView(
+            text: id,
+            fontSize: 14.spMin,
+          )
+        ],
+      ),
     );
   }
 }
