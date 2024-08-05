@@ -113,7 +113,8 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
             fontWeight: FontWeight.w600,
           ),
           items: [
-            BottomNavigationBarItem( label: "",
+            BottomNavigationBarItem(
+              label: "",
               icon: ImageView.asset( AppImages.dashboardHomeLogo,
                   width: 20.w,
                   height: 20.h,
