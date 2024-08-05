@@ -9,15 +9,18 @@ class OnboardingViewItemsModel {
 class CryptoRatesModel {
   String? crypto;
   int? rate;
+  String? cryptoAncronym;
 
   CryptoRatesModel({
     this.crypto,
     this.rate,
+    this.cryptoAncronym,
   });
   factory CryptoRatesModel.fromJson(Map<String, dynamic> json) {
     return CryptoRatesModel(
       crypto: json["id"] as String?,
       rate: json["rate"] as int?,
+      cryptoAncronym: json["short_form"] as String?,
     );
   }
 }

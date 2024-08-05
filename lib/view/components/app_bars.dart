@@ -13,6 +13,7 @@ class AppBars {
     void Function()? callback,
     bool isVisible = true,
     bool bottomVisible = true,
+   
   
     Color? titleColor,
     bool? iWantToEditAProperty,
@@ -80,7 +81,7 @@ class AppBars {
                               fontFamily: soraFont,
                               fontWeight: FontWeight.w600,
                             )
-                          : const SizedBox.shrink(),
+                          : const SizedBox.shrink()
                     ],
                   )))
           : null,

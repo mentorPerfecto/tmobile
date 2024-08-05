@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-
   static const kSeaBlue = Color(0xff1EC9FF);
   static const kTurquoise = Color(0xff1CB2A0);
   static const kAmber = Color(0xffFFCB27);
@@ -32,6 +31,9 @@ class AppColors {
   static const kTransparentCharcoal = Color(0x26373737);
   static const kDarkSlateGrey = Color(0xff373737);
   static const kGrey200 = Color(0xffE4E7EC);
+  static const kLightMist = Color(0xffEDEDED);
+  static const kEbonyGray = Color(0xff1C1C1C);
+  static const kCloudGray = Color(0xffA0A0A0);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);

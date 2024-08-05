@@ -1,6 +1,6 @@
 [
- { "id":"Bitcoin","rate":1780},
- { "id":"Ethereum","rate":1850},
- { "id":"USDT","rate":1650},
- { "id":"Solana","rate":1650}
+ { "id":"Bitcoin","rate":1780,"short_form":"BTC"},
+ { "id":"Ethereum","rate":1850,"short_form":"ETH"},
+ { "id":"USDT","rate":1650,"short_form":"USDT"},
+ { "id":"Solana","rate":1650,"short_form":"SOL"}
 ]

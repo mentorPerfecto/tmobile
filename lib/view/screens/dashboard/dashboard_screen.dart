@@ -12,7 +12,7 @@ import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/dashboard/buy/buy_screen.dart';
 import 'package:tampay/view/screens/dashboard/exchange/exchange_screen.dart';
 import 'package:tampay/view/screens/dashboard/profile/profile_screen.dart';
-import 'package:tampay/view/screens/dashboard/sell/sell_screen.dart';
+import 'package:tampay/view/screens/dashboard/sell%20asset/select_bank.dart';
 
 class DashBoardScreen extends ConsumerStatefulWidget {
   final int? setIndex;

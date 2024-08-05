@@ -14,6 +14,7 @@ class DummyData {
   // static bool isLoggedIn = false;
   static String? city;
   static String state = "";
+  static String cryptoAbbreviation = "";
   // static String? searchKey = "";
   // static String? sortOption = "";
   // static String? sortOptionText = "";
