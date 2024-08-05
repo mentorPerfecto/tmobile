@@ -92,7 +92,7 @@ class OnboardingViewModel extends ChangeNotifier {
       DummyData.isDarkTheme = sharedPreferences.getBool("isDarkTheme") ?? false;
       DummyData.firstTimeOnApp = sharedPreferences.getBool("firstTimeOnApp");
 
-      navigateReplace(context, const DashBoardScreen());
+      navigateReplace(context, const OnboardingScreen());
       // /// DummyData.firstTimeOnApp == null || DummyData.firstTimeOnApp == true
       // if (DummyData.firstTimeOnApp == null || DummyData.firstTimeOnApp == true) {
       //   navigateReplace(context, const OnboardingScreen());
