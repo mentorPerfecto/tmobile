@@ -23,6 +23,15 @@ class AppColors {
   static const kGrey400 = Color(0xff98A2B3);
   static const kLimeGreen = Color(0xff41E755);
   static const kLightSilver = Color(0xffF1F1F1);
+  static const kSoftPeach = Color(0xffFFDDA3);
+  static const kDarkBronze = Color(0xff593F0C);
+  static const kGoldenOrange = Color(0xffF3A218);
+  static const kAmberOrange = Color(0xffFFA800);
+  static const kPalePeriwinkle = Color(0xffD1D9F6);
+  static const kCharcoalGray = Color(0xff2F2F2F);
+  static const kTransparentCharcoal = Color(0x26373737);
+  static const kDarkSlateGrey = Color(0xff373737);
+  static const kGrey200 = Color(0xffE4E7EC);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);

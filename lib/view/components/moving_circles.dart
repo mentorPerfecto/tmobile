@@ -60,7 +60,6 @@ class _MovingCirclesState extends State<MovingCircles> with TickerProviderStateM
     ));
   }
 
-
   @override
   void dispose() {
     _controller1.dispose();
@@ -76,10 +75,12 @@ class _MovingCirclesState extends State<MovingCircles> with TickerProviderStateM
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Align(alignment: Alignment.topLeft,
-                child: AnimatedCircle(animation: _animation1, color:  AppColors.kSeaBlue )),
-           AnimatedCircle(animation: _animation2, color:  AppColors.kPrimary1),
-            Align( alignment: Alignment.bottomRight,
+            Align(
+                alignment: Alignment.topLeft,
+                child: AnimatedCircle(animation: _animation1, color: AppColors.kSeaBlue)),
+            AnimatedCircle(animation: _animation2, color: AppColors.kPrimary1),
+            Align(
+                alignment: Alignment.bottomRight,
                 child: AnimatedCircle(animation: _animation3, color: AppColors.kAmber)),
             // Align(alignment: Alignment.bottomLeft,
             //     child: AnimatedCircle(animation: _animation1, color:  AppColors.kTurquoise, )),
@@ -87,11 +88,14 @@ class _MovingCirclesState extends State<MovingCircles> with TickerProviderStateM
         ),
         BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 70, sigmaY: 70),
-          child: Container(height: double.infinity,),
+          child: Container(
+            height: double.infinity,
+          ),
         ),
       ],
     );
   }
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

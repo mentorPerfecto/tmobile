@@ -107,44 +107,47 @@ class TPayDefaultPopUp extends ConsumerWidget {
           vertical: 15.h,
           horizontal: 15.w,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextView(
-              text: "Confirm Details",
-              textStyle: theme.textTheme.titleLarge!.copyWith(fontSize: 16.spMin),
-            ),
-            Column(
-              children: [
-                const CustomTextField(
-                  fieldLabel: "Full Name",
-                  readOnly: true,
-                  hint: dummyName,
-                ),
-                Gap(10.h),
-                const CustomTextField(
-                  fieldLabel: "Date of Birth",
-                  readOnly: true,
-                  hint: "",
-                ),
-                Gap(10.h),
-                CustomTextField(
-                  fieldLabel: "Phone Number",
-                  readOnly: true,
-                  hint: "",
-                  showSuffixIcon: true,
-                  trailing: Image.asset(
-                    AppImages.editTextLogo,
-                    width: 14.w,
-                    height: 14.h,
-                  ),
-                ),
-              ],
-            ),
-            action ?? const SizedBox.shrink()
-          ],
-        ),
+          child: action
       ),
     );
   }
 }
+
+
+// Column(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//             TextView(
+//               text: "Confirm Details",
+//               textStyle: theme.textTheme.titleLarge!.copyWith(fontSize: 16.spMin),
+//             ),
+//             Column(
+//               children: [
+//                 const CustomTextField(
+//                   fieldLabel: "Full Name",
+//                   readOnly: true,
+//                   hint: dummyName,
+//                 ),
+//                 Gap(10.h),
+//                 const CustomTextField(
+//                   fieldLabel: "Date of Birth",
+//                   readOnly: true,
+//                   hint: "",
+//                 ),
+//                 Gap(10.h),
+//                 CustomTextField(
+//                   fieldLabel: "Phone Number",
+//                   readOnly: true,
+//                   hint: "",
+//                   showSuffixIcon: true,
+//                   trailing: Image.asset(
+//                     AppImages.editTextLogo,
+//                     width: 14.w,
+//                     height: 14.h,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             action ?? const SizedBox.shrink()
+//           ],
+//         ),
