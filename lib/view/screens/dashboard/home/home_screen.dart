@@ -11,6 +11,8 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/utils/blur.dart';
 import 'package:tampay/utils/enums.dart';
+import 'package:tampay/view/screens/dashboard/exchange/exchange_screen.dart';
+import 'package:tampay/view_model/dashboard/wallet_view_model.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -39,7 +41,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     double screenWidth = 360.w;
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
-    // var walletProvider = ref.watch(walletViewModel);
+    var walletProvider = ref.watch(walletViewModel);
     var profileProvider = ref.watch(profileViewModel);
     var dashProvider = ref.watch(dashboardViewModel);
 
@@ -111,23 +113,49 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              walletProvider.showWalletBal ?
+                              RichText( text: TextSpan(
+                                text: r"$56,590.",
+                                style: TextStyle(
+                                  fontSize: 40.spMin,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.kWhite,
+                                  fontFamily: soraFont
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: '08',
+                                    style: TextStyle(
+                                      fontSize: 40.spMin,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.kGrey500,
+                                        fontFamily: soraFont
+                                    ),
+                                  ),
+                                ],
+                              ),) :
+
+
                               TextView(
-                                text: r"$7,534.05",
+                                text:"****",
                                 fontSize: 40.spMin,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.kWhite,
                               ),
                               Gap(10.w),
-                              Icon(
-                                Icons.visibility_outlined,
-                                color: AppColors.kWhite,
-                                size: 14.spMin,
+                              GestureDetector(
+                                onTap: walletProvider.toggleWalletBal ,
+                                child: Icon(
+                                  Icons.visibility_outlined,
+                                  color: AppColors.kWhite,
+                                  size: 14.spMin,
+                                ),
                               )
                             ],
                           ),
                           Gap(15.h),
                           TextView(
-                            text: "~ ${UtilFunctions.currency(context)} 10,234,456",
+                            text: "~ ${UtilFunctions.currency(context)} 10,234,456.oo",
                             color: AppColors.kWhite,
                           )
                         ],
@@ -397,7 +425,7 @@ class DarkModeItem extends ConsumerWidget {
   }
 }
 
-class SellBuyMore extends StatelessWidget {
+class SellBuyMore extends ConsumerWidget {
   const SellBuyMore({
     super.key,
     required this.id,
@@ -410,31 +438,48 @@ class SellBuyMore extends StatelessWidget {
   final Color iconColor;
   final String icon;
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 45.w,
-          height: 45.h,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: backgroundColor,
-          ),
-          child: Center(
-            child: ImageView.asset(
-              icon,
-              width: 16.w,
-              height: 10.h,
-              color: iconColor,
+  Widget build(BuildContext context, WidgetRef ref) {
+    
+    var dashProvider = ref.watch(dashboardViewModel);
+    return GestureDetector(
+      onTap: (){
+        if(id == more){
+          dashProvider.setPageIndex(selectedPageIndex: 2);
+        } else{
+          if(id == sell){
+            dashProvider.setPageIndex(selectedPageIndex: 1);
+            dashProvider.setExchangePageIndex(selectedPageIndex: 1);
+          } else {
+            dashProvider.setPageIndex(selectedPageIndex: 1);
+            dashProvider.setExchangePageIndex(selectedPageIndex: 0);
+          }
+        }
+      },
+      child: Column(
+        children: [
+          Container(
+            width: 45.w,
+            height: 45.h,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: backgroundColor,
+            ),
+            child: Center(
+              child: ImageView.asset(
+                icon,
+                width: 16.w,
+                height: 10.h,
+                color: iconColor,
+              ),
             ),
           ),
-        ),
-        Gap(10.h),
-        TextView(
-          text: id,
-          fontSize: 14.spMin,
-        )
-      ],
+          Gap(10.h),
+          TextView(
+            text: id,
+            fontSize: 14.spMin,
+          )
+        ],
+      ),
     );
   }
 }

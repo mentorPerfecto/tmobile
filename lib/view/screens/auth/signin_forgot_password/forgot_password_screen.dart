@@ -33,7 +33,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: 650.h,
+            height: 715.h,
             padding: EdgeInsets.only(
               left: 15.w,
               right: 15.w,

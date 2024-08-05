@@ -10,6 +10,7 @@ import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/dashboard/buy/buy_screen.dart';
+import 'package:tampay/view/screens/dashboard/exchange/exchange_screen.dart';
 import 'package:tampay/view/screens/dashboard/profile/profile_screen.dart';
 import 'package:tampay/view/screens/dashboard/sell/sell_screen.dart';
 
@@ -47,7 +48,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
   // int profileProvider.currentIndex = 0;
   List<Widget> dashboardPages = [
     const HomeScreen(),
-    const BuySectionScreen(),
+    const ExchangeScreen(),
     const ProfileScreen(),
   ];
 

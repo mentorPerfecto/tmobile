@@ -30,7 +30,7 @@ class _CreateNewPasswordScreenState extends ConsumerState<CreateNewPasswordScree
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: 650.h,
+            height: 715.h,
             padding: EdgeInsets.symmetric(
               vertical: 15.h,
               horizontal: 20.w,

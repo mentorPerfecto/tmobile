@@ -109,7 +109,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                         ),
                         child: SizedBox(
                           width: 360.w,
-                          height: 650.h,
+                          height: 715.h,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
