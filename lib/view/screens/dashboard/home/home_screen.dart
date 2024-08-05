@@ -60,7 +60,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         },
         //loading: marketPlaceProvider.isGettingPropertiesListings,
         children: [
-          const Gap(30),
+          // const Gap(30),
           Container( height: 450.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(36.r),
@@ -155,7 +155,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                           Gap(15.h),
                           TextView(
-                            text: "~ ${UtilFunctions.currency(context)} 10,234,456.oo",
+                            text: "~ ${UtilFunctions.currency(context)} 10,234,456",
                             color: AppColors.kWhite,
                           )
                         ],
@@ -208,44 +208,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             padding: EdgeInsets.only(top: 30.h, bottom: 15.h),
             child: GestureDetector(
               onTap: () async {
-                await showModalBottomSheet(
-                    backgroundColor: Colors.transparent,
-                    barrierColor: Colors.black38,
-                    context: context,
-                    builder: (context) {
-                      return BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                        child: TPayDefaultPopUp(
-                          action: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              HomeItems(
-                                theme: theme,
-                                icon: AppImages.zapLogo,
-                                onPressed: () {},
-                                subText: "See exciting trading rates",
-                                title: "View Rate",
-                              ),
-                              HomeItems(
-                                theme: theme,
-                                icon: AppImages.friendsIcon,
-                                onPressed: () {},
-                                subText: "Earn commission from referrals",
-                                title: "Refer A Friend",
-                              ),
-                              HomeItems(
-                                theme: theme,
-                                icon: AppImages.bankIcon,
-                                onPressed: () {},
-                                subText: "View your payout bank accounts",
-                                title: "Bank Details",
-                              ),
-                              const DarkModeItem()
-                            ],
-                          ),
-                        ),
-                      );
-                    });
+                dashProvider.setPageIndex(selectedPageIndex: 2);
               },
               child: Padding(
                 padding:  EdgeInsets.symmetric(horizontal:120.w),
@@ -439,12 +402,50 @@ class SellBuyMore extends ConsumerWidget {
   final String icon;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
+    ThemeData theme = Theme.of(context);
     var dashProvider = ref.watch(dashboardViewModel);
     return GestureDetector(
-      onTap: (){
+      onTap: () async {
         if(id == more){
-          dashProvider.setPageIndex(selectedPageIndex: 2);
+          await showModalBottomSheet(
+          backgroundColor: Colors.transparent,
+          barrierColor: Colors.black38,
+          context: context,
+          builder: (context) {
+            return BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+              child: TPayDefaultPopUp(
+                action: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    HomeItems(
+                      theme: theme,
+                      icon: AppImages.zapLogo,
+                      onPressed: () {},
+                      subText: "See exciting trading rates",
+                      title: "View Rate",
+                    ),
+                    HomeItems(
+                      theme: theme,
+                      icon: AppImages.friendsIcon,
+                      onPressed: () {},
+                      subText: "Earn commission from referrals",
+                      title: "Refer A Friend",
+                    ),
+                    HomeItems(
+                      theme: theme,
+                      icon: AppImages.bankIcon,
+                      onPressed: () {},
+                      subText: "View your payout bank accounts",
+                      title: "Bank Details",
+                    ),
+                    const DarkModeItem()
+                  ],
+                ),
+              ),
+            );
+          });
+
         } else{
           if(id == sell){
             dashProvider.setPageIndex(selectedPageIndex: 1);
