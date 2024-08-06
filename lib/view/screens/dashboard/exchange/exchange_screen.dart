@@ -4,8 +4,9 @@ import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/dashboard/buy/buy_screen.dart';
-import 'package:tampay/view/screens/dashboard/sell/sell_screen.dart';
+import 'package:tampay/view/screens/dashboard/sell%20asset/select_bank_screen.dart';
 
 class ExchangeScreen extends ConsumerStatefulWidget {
   const ExchangeScreen({super.key});
@@ -150,7 +151,7 @@ class _ExchangeScreenState extends ConsumerState<ExchangeScreen>
   }
 }
 
-class ExchangeScreenTradingAssets extends StatelessWidget {
+class ExchangeScreenTradingAssets extends ConsumerWidget {
   const ExchangeScreenTradingAssets({
     super.key,
     required this.onboardingProvider,
@@ -165,55 +166,65 @@ class ExchangeScreenTradingAssets extends StatelessWidget {
   final int index;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var dashProvider = ref.watch(dashboardViewModel);
     return Column(
       children: List.generate(
         onboardingProvider.tPayCryptoRatesAtBuyingOrSelling(index).length,
         (cryptoListRateIndex) {
           CryptoRatesModel cryptoCoins =
               onboardingProvider.tPayCryptoRatesAtBuyingOrSelling(index)[cryptoListRateIndex];
-          return Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 12.h,
-              horizontal: 8.w,
-            ),
-            margin: EdgeInsets.only(bottom: 15.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.r),
-              color: themeMode == ThemeMode.dark ? AppColors.kOnyxBlack : AppColors.kLightSilver,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Image.asset(
-                      onboardingProvider.cryptoCoinImages[cryptoListRateIndex],
-                      width: 32.w,
-                      height: 32.h,
-                    ),
-                    Gap(3.w),
-                    TextView(
-                      text: cryptoCoins.crypto ?? "Error",
-                      textStyle: theme.textTheme.titleMedium,
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    TextView(
-                      text: "${cryptoCoins.rate}/$dollarSign",
-                      textStyle: theme.textTheme.titleMedium,
-                    ),
-                    Gap(10.w),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20.spMin,
-                      color: themeMode == ThemeMode.light ? AppColors.kGrey900 : AppColors.kWhite,
-                    )
-                  ],
-                ),
-              ],
+        
+          return GestureDetector(
+            onTap: () {
+              if (index == 2) {
+                navigatePush(context, const SelectBankScreen());
+                dashProvider.getCrptoAcronym(cryptoCoins.cryptoAncronym);
+              }
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 12.h,
+                horizontal: 8.w,
+              ),
+              margin: EdgeInsets.only(bottom: 15.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.r),
+                color: themeMode == ThemeMode.dark ? AppColors.kOnyxBlack : AppColors.kLightSilver,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(
+                        onboardingProvider.cryptoCoinImages[cryptoListRateIndex],
+                        width: 32.w,
+                        height: 32.h,
+                      ),
+                      Gap(3.w),
+                      TextView(
+                        text: cryptoCoins.crypto ?? "Error",
+                        textStyle: theme.textTheme.titleMedium,
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      TextView(
+                        text: "${cryptoCoins.rate}/$dollarSign",
+                        textStyle: theme.textTheme.titleMedium,
+                      ),
+                      Gap(10.w),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 20.spMin,
+                        color: themeMode == ThemeMode.light ? AppColors.kGrey900 : AppColors.kWhite,
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         },

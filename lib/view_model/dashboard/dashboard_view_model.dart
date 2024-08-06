@@ -15,6 +15,11 @@ class DashboardViewModel extends ChangeNotifier {
   int get currentIndex => _currentIndex!;
   int get exchangeCurrentIndex => _exchangeCurrentIndex!;
 
+  String? _cryptoAcronym;
+  final List<String> _tPayCryptoAssets = ["BTC", "USDT", "ETH", "SOL"];
+  String? get cryptoAcronym => _cryptoAcronym;
+  List<String> get tPayCryptoAssets => _tPayCryptoAssets;
+
   void setPageIndexToHome(BuildContext context) {
     _currentIndex = 0;
     notifyListeners();
@@ -33,10 +38,21 @@ class DashboardViewModel extends ChangeNotifier {
     // getDeviceLocation();
   }
 
-
-  Future<void> copyToClipboard(String value) async {
-    await Clipboard.setData(ClipboardData(text: value));
-    showToast(msg: "Copied $value to clipboard", isError: false);
+  getCrptoAcronym(String? acronym) {
+    DummyData.cryptoAbbreviation = acronym ?? "Error";
+    _cryptoAcronym = acronym;
+    notifyListeners();
   }
 
+  selectACyptoAsset(String? crypto) {
+    _cryptoAcronym = crypto;
+    notifyListeners();
+  }
+
+  Future<void> copyToClipboard(
+    String value,
+  ) async {
+    await Clipboard.setData(ClipboardData(text: value));
+
+  }
 }

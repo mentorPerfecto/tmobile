@@ -2,8 +2,8 @@ class AppImages {
   static const String _baseUrl = 'assets/images/';
 
   // General image res
-  static const downloadIcon = '${_baseUrl}download_icon.png';
-  static const dropDownIcon = '${_baseUrl}drop_down.png';
+ 
+ 
   static const bankDetailsLogo = '${_baseUrl}bank_details_logo.png';
  
   static const cancelCircleLogo = '${_baseUrl}cancel_circle.png';
@@ -63,4 +63,8 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const moonIcon = '${_baseUrl}moon_icon_mobile.png';
   static const friendsIcon = '${_baseUrl}friends_icon_mobile.png';
   static const bankIcon = '${_baseUrl}bank_icon_mobile.png';
+  static const barScanCode = '${_baseUrl}image_for_scan_mobile.png';
+  static const dropDownIcon = '${_baseUrl}drop_down_icon_mobile.png';
+  static const copyIcon = '${_baseUrl}copy_icon_mobile.png';
+  static const downloadIcon = '${_baseUrl}download_icon_mobile.png';
 }

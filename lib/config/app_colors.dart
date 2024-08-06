@@ -34,6 +34,7 @@ class AppColors {
   static const kLightMist = Color(0xffEDEDED);
   static const kEbonyGray = Color(0xff1C1C1C);
   static const kCloudGray = Color(0xffA0A0A0);
+  static const kSilverMist = Color(0xffC1C1C1);
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);
