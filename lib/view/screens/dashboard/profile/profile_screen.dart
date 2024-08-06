@@ -59,8 +59,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   }
 
   Widget moreSection() {
-    var themeProvider = ref.watch(themeViewModel).themeMode;
-    var theme = Theme.of(context);
+    var themeMode = ref.watch(themeViewModel).themeMode;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -133,7 +132,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                     title: logoutText,
                     iconPath: AppImages.logOutLogo, isLogout: true,
                     onTap: () async {
-
                       await showModalBottomSheet(
                           backgroundColor: Colors.transparent,
                           barrierColor: Colors.black38,
@@ -146,31 +144,46 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                 height: 300, progressStatusLogoColor: AppColors.kGrey,
                                 progressStatusTextTitle: logoutText,
                                 progressStatusTextBody: sureYouWntToLogout,
-                                action: DefaultButtonMain(
-                                  color: AppColors.kPrimary1,
-                                  text: backToLogin, width: 150.w,
-                                  onPressed: () async {
-                                    navigateBack(context);
-                                    setState(() {
-                                      isLogOutLoading = true;
-                                    });
-                                    try {
-                                      SharedPreferences prefs =
-                                          await SharedPreferences.getInstance();
-                                      await prefs.remove('Email');
-                                      await prefs.remove('Password');
-                                      await prefs.remove('accessToken');
-                                      await prefs.remove('firstTimeOnApp');
-                                      DummyData.firstName = '';
-                                      DummyData.lastName = '';
-                                      await Future.delayed(const Duration(seconds: 2));
-                                      WidgetRebirth.createRebirth(context: context);
-                                    } catch (e) {
-                                      setState(() {
-                                        isLogOutLoading = false;
-                                      });
-                                    }
-                                  },
+                                action: Row( mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    DefaultButtonMain(
+                                      padding: EdgeInsets.symmetric(horizontal: 26.w),
+                                      text: cancel,
+                                      textColor: themeMode == ThemeMode.dark ? AppColors.kWhite : AppColors.kPrimary1,
+                                      borderColor: themeMode == ThemeMode.dark ? AppColors.kWhite : AppColors.kPrimary1,
+                                      onPressed: () {
+                                        navigatePush(context, const SignInScreen());
+                                      },
+                                    ),
+                                    Gap(10.w),
+                                    DefaultButtonMain(
+                                      padding: EdgeInsets.symmetric(horizontal: 26.w),
+                                      color: AppColors.kError300,
+                                      text: logoutText,
+                                      onPressed: () async {
+                                        navigateBack(context);
+                                        setState(() {
+                                          isLogOutLoading = true;
+                                        });
+                                        try {
+                                          SharedPreferences prefs =
+                                              await SharedPreferences.getInstance();
+                                          await prefs.remove('Email');
+                                          await prefs.remove('Password');
+                                          await prefs.remove('accessToken');
+                                          await prefs.remove('firstTimeOnApp');
+                                          DummyData.firstName = '';
+                                          DummyData.lastName = '';
+                                          await Future.delayed(const Duration(seconds: 2));
+                                          WidgetRebirth.createRebirth(context: context);
+                                        } catch (e) {
+                                          setState(() {
+                                            isLogOutLoading = false;
+                                          });
+                                        }
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ),
                             );

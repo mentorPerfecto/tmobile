@@ -5,7 +5,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/view/screens/dashboard/buy/buy_screen.dart';
-import 'package:tampay/view/screens/dashboard/sell/sell_screen.dart';
+// import 'package:tampay/view/screens/dashboard/sell/sell_screen.dart';
 
 class ExchangeScreen extends ConsumerStatefulWidget {
   const ExchangeScreen({super.key});

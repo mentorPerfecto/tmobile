@@ -19,6 +19,7 @@ class TextView extends ConsumerWidget {
     this.maxLines,
     this.decoration,
     this.wordSpacing,
+    this.letterSpacing,
     this.softRap,
     this.height,
   });
@@ -35,6 +36,7 @@ class TextView extends ConsumerWidget {
   final FontWeight? fontWeight;
   final TextDecoration? decoration;
   final double? wordSpacing;
+  final double? letterSpacing;
   final bool? softRap;
   final double? height;
   @override
@@ -59,6 +61,7 @@ class TextView extends ConsumerWidget {
               // : Theme.of(context).primaryColor),
               decoration: decoration,
               wordSpacing: wordSpacing,
+              letterSpacing: letterSpacing,
             ),
         textAlign: textAlign,
         overflow: textOverflow,

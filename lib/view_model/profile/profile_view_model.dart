@@ -98,14 +98,12 @@ class ProfileViewModel extends ChangeNotifier {
   TextEditingController _accountNumberController = TextEditingController();
   final TextEditingController _validatePasswordControllers = TextEditingController();
   TextEditingController get validatePasswordControllers => _validatePasswordControllers;
-  final TextEditingController _fullNameController =
-      TextEditingController(text: DummyData.firstName ?? '');
+  final TextEditingController _fullNameController = TextEditingController(text: DummyData.firstName ?? '');
   final TextEditingController _usernameController =
       TextEditingController(text: DummyData.lastName ?? '');
   final TextEditingController _emailAddressController =
       TextEditingController(text: DummyData.emailAddress ?? '');
-  // final TextEditingController _phoneNumberController =
-  //     TextEditingController(text: DummyData.phoneNumber ?? '');
+  final TextEditingController _phoneNumberController = TextEditingController(text: DummyData.phoneNumber ?? '');
 
   final bvnFormKey = GlobalKey<FormState>();
   final driverFormKey = GlobalKey<FormState>();
@@ -175,7 +173,7 @@ class ProfileViewModel extends ChangeNotifier {
   TextEditingController get emailAddressController => _emailAddressController;
   TextEditingController get fullNameController => _fullNameController;
   TextEditingController get usernameController => _usernameController;
-  // TextEditingController get documentNumberController => _documentNumberController;
+  TextEditingController get phoneNumberController => _phoneNumberController;
   // TextEditingController get driverLicenseController => _driverLicenseController;
   // TextEditingController get ninLicenseController => _ninLicenseController;
   CustomButtonState get buttonSubmitKYCState => _buttonSubmitKYCState;

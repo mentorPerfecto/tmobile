@@ -8,8 +8,9 @@ import 'package:tampay/view/screens/auth/signup/facial_verification_screen.dart'
 import 'package:tampay/src/components.dart';
 
 class VerifyAccountScreen extends ConsumerStatefulWidget {
-  const VerifyAccountScreen({super.key});
+  final bool isAuth;
 
+  const VerifyAccountScreen({super.key, required this.isAuth});
   @override
   ConsumerState<VerifyAccountScreen> createState() => _VerifyAccountScreenState();
 }
@@ -28,7 +29,9 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
         trailing: Padding(
           padding: const EdgeInsets.only(right: 15.0),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              navigatePush(context, const FacialVerificationScreen());
+            },
             child: TextView(
               text: skip,
               fontWeight: FontWeight.w600,

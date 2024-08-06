@@ -138,24 +138,47 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       CustomTextField(
+                                        fieldLabel: 'Full Name',
+                                        hint: firstNameText, readOnly: true,
+                                        controller: userProfileProvider.fullNameController,
+                                      ),
+
+                                      const Gap(15),
+                                      CustomTextField(
                                         fieldLabel: 'Email',
                                         hint: emailText,
                                         controller: userProfileProvider
                                             .emailAddressController,
                                         readOnly: true,
                                       ),
-                                      Gap(5.h),
+                                      const Gap(15),
                                       CustomTextField(
-                                        fieldLabel: 'Full Name',
-                                        hint: firstNameText,
+                                        fieldLabel: 'Birthday',
+                                        hint: '09 Jun, 2024',  readOnly: true,
                                         controller: userProfileProvider.fullNameController,
                                       ),
-                                      Gap(5.h),
+
+                                      const Gap(15),
                                       CustomTextField(
                                         fieldLabel: 'Username',
                                         hint: lastNameText,
-                                        controller:
-                                            userProfileProvider.usernameController,
+                                        showSuffixIcon: true, trailing: const Icon(Icons.edit_note_outlined),
+                                        controller: userProfileProvider.usernameController,
+                                      ),
+                                      const Gap(15),
+                                      CustomTextField(
+                                        fieldLabel: phoneNumberText,
+                                        hint: hintPhoneNumber,
+                                        maxLength: 10, showSuffixIcon: true, trailing: const Icon(Icons.edit_note_outlined),
+                                        prefix: const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: TextView( text: "+234",),
+                                        ),
+                                        controller: userProfileProvider.phoneNumberController,
+                                        validator: (value) => Validators().validatePhoneNumber(value),
+                                        onChanged: (p0) {
+                                        /////  provider.updateRegisterButtonState();
+                                        },
                                       ),
 
                                     ],

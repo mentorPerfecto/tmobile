@@ -68,7 +68,7 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
                         color: AppColors.kPrimary1,
                         buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
                         onPressed: () {
-                          navigatePush(context, const VerifyAccountScreen());
+                          navigatePush(context, const VerifyAccountScreen( isAuth: true,));
                         }),
                     Gap(40.h),
                   ],

@@ -143,7 +143,6 @@ const support = 'Support';
 const yourBnkDetlsSved = 'Your Bank Details was saved successfully';
 const withdrawText = 'Withdraw';
 const about = 'About';
-const logOut = 'Logout';
 const credit = "credit";
 
 const accountNameNotFound = "no account name found";
@@ -370,7 +369,7 @@ const no = 'No';
 const addPhotosFrm = 'Add photos from';
 const gallery = "Gallery";
 const camera = "Camera";
-const sureYouWntToLogout = 'Are you sure you want to logout of your account?';
+const sureYouWntToLogout = 'Are you sure you want to log out of your account?';
 const bckgrndchecks = 'Background Checks';
 const tenantManagement = 'Tenant Management';
 const payForBackgroundChecks = 'Pay For Background Checks';
@@ -417,7 +416,7 @@ const securityText = 'Security';
 const faqText = 'FAQs';
 const privacyPolicyText = 'Privacy policy';
 const helpCenterText = 'Help center';
-const logoutText = 'Logout';
+const logoutText = 'Log out';
 const addNewBankText = 'Add New Bank';
 
 
