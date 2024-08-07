@@ -307,7 +307,9 @@ class BottomActionButton extends StatelessWidget {
           borderColor: AppColors.kPrimary1,
           textColor: AppColors.kPrimary1,
           text: "Cancel trade",
-          onPressed: () {},
+          onPressed: () {
+            navigateBack(context);
+          },
         ),
         DefaultButtonMain(
           width: 160.w,
