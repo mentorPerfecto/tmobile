@@ -5,12 +5,12 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 
 class EnterAmountScreen extends ConsumerStatefulWidget {
-  EnterAmountScreen({
-    Key? key,
+  const EnterAmountScreen({
+    super.key,
     this.cryptoName = bitcoin,
     this.cryptoAcronym = btc,
     this.ratePerCrypto = 1505,
-  }) : super(key: key);
+  });
   final String cryptoName;
   final String cryptoAcronym;
   final int ratePerCrypto;

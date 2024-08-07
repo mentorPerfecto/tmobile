@@ -276,7 +276,7 @@ class SellBuyMore extends ConsumerWidget {
             return BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
               child: TPayDefaultPopUp(
-                action: Container( height: 400.h,
+                action: SizedBox( height: 400.h,
                   child: Column(
                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:tampay/src/models.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 
@@ -130,10 +129,10 @@ class LocalAuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _cancelAuthentication() async {
-    await auth.stopAuthentication();
-    _isAuthenticating = false;
-    notifyListeners();
-  }
+  // Future<void> _cancelAuthentication() async {
+  //   await auth.stopAuthentication();
+  //   _isAuthenticating = false;
+  //   notifyListeners();
+  // }
 
 }

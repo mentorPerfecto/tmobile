@@ -16,15 +16,27 @@ class ThemeConfig extends ChangeNotifier {
 
   late SharedPreferences sharedPreferences;
 
+  List<String> modes = ["Light Mode", "Dark Mode", "System Mode"];
+
   ThemeMode _themeMode = ThemeMode.light;
 
   init() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    DummyData.isDarkTheme = sharedPreferences.getBool("isDarkTheme") ?? false;
-    _themeMode =
-    DummyData.isDarkTheme == true ? ThemeMode.dark : ThemeMode.light;
+    // DummyData.isDarkTheme = sharedPreferences.getBool("isDarkTheme") ?? false;
+    DummyData.appTheme = sharedPreferences.getString("AppTheme");
+    _themeMode = DummyData.appTheme!.isEmpty || DummyData.appTheme!.toString() == 'System Mode'?
+    ThemeMode.system : DummyData.appTheme!.toString() == 'Dark Mode'?  ThemeMode.dark : ThemeMode.light;
+
+    setThemeMode( ThemeMode.system == ThemeMode.dark ?  ThemeMode.dark :  ThemeMode.light);
     DummyData.accessToken = sharedPreferences.getString("accessToken");
     notifyListeners();
+  }
+
+  String selectAppTheme (String val) {
+    DummyData.appTheme = val ;
+    notifyListeners();
+    return DummyData.appTheme.toString();
+
   }
 
   void setThemeMode(ThemeMode mode) {
@@ -36,7 +48,7 @@ class ThemeConfig extends ChangeNotifier {
   void _setStatusBar() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarBrightness:
-      _themeMode == ThemeMode.light ? Brightness.light : Brightness.dark,
+      _themeMode == ThemeMode.light ? Brightness.dark : Brightness.light,
     ));
   }
 

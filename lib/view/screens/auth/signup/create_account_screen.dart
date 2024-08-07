@@ -8,7 +8,7 @@ import 'package:tampay/src/utils.dart';
 import 'package:tampay/src/screens.dart';
 
 class CreateAccountScreen extends ConsumerStatefulWidget {
-  const CreateAccountScreen({Key? key}) : super(key: key);
+  const CreateAccountScreen({super.key});
 
   @override
   ConsumerState<CreateAccountScreen> createState() => _CreateAccountScreenState();

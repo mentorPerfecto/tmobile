@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tampay/config/app_colors.dart';
-import 'package:tampay/config/app_images.dart';
 import 'package:tampay/config/app_strings.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/providers.dart';
@@ -12,11 +11,11 @@ class ErrorScreen extends ConsumerStatefulWidget {
   final Widget newPage;
   final String navigateButtonText;
   const ErrorScreen({
-    Key? key,
+    super.key,
     required this.infoText,
     required this.navigateButtonText,
     required this.newPage,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<ErrorScreen> createState() => _ErrorScreenState();

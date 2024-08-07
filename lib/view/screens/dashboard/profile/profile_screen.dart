@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rebirth/rebirth.dart';
@@ -106,7 +105,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               subText: 'Protect yourself from intruders',
               icon: AppImages.securityIcon,
               onPressed: () {
-                // navigatePush(context, const CustomerSupportScreen());
+                navigatePush(context, const ChangePasswordScreen());
               },
             ),
 
@@ -285,158 +284,3 @@ class UserAccountDetails extends ConsumerWidget {
     );
   }
 }
-
-// class ProfileItem extends ConsumerWidget {
-//    final String title;
-//    final String subTitle;
-//    final VoidCallback? onTap;
-//    final String iconPath;
-//    final bool isLogout;
-//
-//   const ProfileItem({super.key, required this.title,
-//     this.isLogout = false,
-//     required this.subTitle,
-//     this.onTap, required this.iconPath});
-//
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     var themeProvider = ref.watch(themeViewModel).themeMode;
-//     return GestureDetector(
-//       onTap: onTap,
-//       child: Padding(
-//         padding:  EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-//
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//
-//             Row(
-//               children: [
-//                 Container(
-//                   decoration:  BoxDecoration(
-//                       shape: BoxShape.circle, color: isLogout ? AppColors.kError300 :
-//                   themeProvider ==ThemeMode.light?  AppColors.kPrimary1 : AppColors.kGrey300
-//                   ),
-//                   child: Padding(
-//                     padding: const EdgeInsets.all(8.0),
-//                     child: ImageView.asset(
-//                         iconPath,
-//                         width: 20.w, color: isLogout ? AppColors.kWhite : themeProvider ==ThemeMode.dark?
-//                     AppColors.kBlack8 : AppColors.kWhite
-//                     ),
-//                   ),
-//                 ),
-//                 const Gap(15),
-//                 Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     TextView(
-//                       text: title, fontSize: 14.spMin,
-//                       fontWeight: FontWeight.w400,
-//                       // color: AppColors.kErrorPrimary,
-//                     ),
-//                     isLogout ? const SizedBox.shrink() : const Gap(6),
-//                     isLogout ? const SizedBox.shrink() :  TextView(
-//                         text: subTitle, fontSize: 12.spMin,
-//                         color: AppColors.kGrey500
-//                     ),
-//                   ],
-//                 ),
-//               ],
-//             ),
-//             Icon(
-//                 Icons.arrow_forward_ios,
-//                 size: 16.r,
-//                 color: AppColors.kGrey500
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-//
-
-// class SettingsThemeItem extends ConsumerStatefulWidget {
-//   const SettingsThemeItem({
-//     super.key,
-//     required this.logo,
-//     required this.title,
-//     this.onTap,
-//   });
-//   final String title;
-//   final String logo;
-//
-//   final VoidCallback? onTap;
-//   @override
-//   ConsumerState<SettingsThemeItem> createState() => _SettingsThemeItemState();
-// }
-//
-// class _SettingsThemeItemState extends ConsumerState<SettingsThemeItem> {
-//   @override
-//   Widget build(BuildContext context) {
-//     var themeProvider = ref.watch(themeViewModel);
-//     return GestureDetector(
-//       onTap: widget.onTap,
-//       child: SizedBox(
-//         height: 40.h,
-//         // color: Colors.red,
-//
-//         width: double.infinity,
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             Row(
-//               children: [
-//                 Image.asset(
-//                   widget.logo,
-//                   width: 24.w,
-//                   height: 24.h,
-//                   color: themeProvider.themeMode == ThemeMode.light
-//                       ? AppColors.kIcon
-//                       : AppColors.kPrimary150,
-//                 ),
-//                 SizedBox(
-//                   width: 10.w,
-//                 ),
-//                 TextView(
-//                   onTap: widget.onTap,
-//                   text: widget.title,
-//                   fontSize: 16.spMin,
-//                   fontWeight: FontWeight.w500,
-//                   fontFamily: soraFont,
-//                   color: themeProvider.themeMode == ThemeMode.light
-//                       ? AppColors.kTextBlack
-//                       : AppColors.kWhite,
-//                 )
-//               ],
-//             ),
-//             ListenableBuilder(
-//                 listenable: themeProvider,
-//                 builder: (BuildContext context, Widget? child) {
-//                   final themeMode = themeProvider.themeMode;
-//
-//                   return CupertinoSwitch(
-//                     value: themeMode == ThemeMode.dark,
-//                     onChanged: (value) async {
-//                       SharedPreferences prefs =
-//                       await SharedPreferences.getInstance();
-//                       if (value) {
-//                         themeProvider.setThemeMode(ThemeMode.dark);
-//                         prefs.setBool('isDarkTheme', true);
-//                         return;
-//                       }
-//                       themeProvider.setThemeMode(ThemeMode.light);
-//                       prefs.setBool('isDarkTheme', false);
-//                     },
-//                     activeColor: themeMode == ThemeMode.light
-//                         ? AppColors.kPrimary1
-//                         : AppColors.kPrimary150,
-//                   );
-//                 })
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

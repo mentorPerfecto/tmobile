@@ -6,7 +6,7 @@ import 'package:tampay/src/providers.dart';
 import 'package:tampay/utils/validator.dart';
 
 class ChangePasswordScreen extends ConsumerStatefulWidget {
-  const ChangePasswordScreen({Key? key}) : super(key: key);
+  const ChangePasswordScreen({super.key});
 
   @override
   ConsumerState<ChangePasswordScreen> createState() =>
@@ -33,45 +33,31 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
-        context,
+        context, bottomVisible: true, bottomText: changePassword
        
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: 20.h,
-          horizontal: 20.w,
+          vertical: 10.h,
+          horizontal: 10.w,
         ),
-        child: SizedBox(
-          width: 360.w,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: SizedBox(
+            width: 360.w, height: 600.h,
+            child: Column( mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextView(
-                      text: changePassword,
-                      fontSize: 22.spMin,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: soraFont,
-                    ),
-                    TextView(
-                      text: enterYourOldPWordToChangePWord,
-                      fontSize: 15.spMin,
-                      fontWeight: FontWeight.w400,
-                      color: theme.colorScheme.secondary,
-                      fontFamily: soraFont,
-                    )
-                  ],
-                ),
-                //change password validation, comes here.
-                Gap(30.h),
 
-                formField(),
-                // Gap(8.h),
-                // conditionList(),
-                Gap(25.h),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [  const TextView(
+                  text: enterYourOldPWordToChangePWord,
+                  maxLines: 3,
+                  color: AppColors.kGrey400,
+                ),
+                  Gap(30.h),
+                  formField(),
+                ],
+              ),
                 DefaultButtonMain(
                   onPressed: () {
                     // if (provider.changePasswordFormKey.currentState!
@@ -80,8 +66,7 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
                     //   provider.changePwd(context, setIndex: provider.role == 2 ? 3 : 4);
                     // }
                   },
-                  height: 48.h,
-                  borderRadius: 40.r,
+
                   color: AppColors.kPrimary1,
                   text: changePassword,
                   textColor: AppColors.kWhite,

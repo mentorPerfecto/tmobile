@@ -193,7 +193,7 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                           navigatePush(
                             context,
                             widget.isForgotPassword
-                                ? CreateNewPasswordScreen()
+                                ? const CreateNewPasswordScreen()
                                 : widget.isSignIn
                                     ? const DashBoardScreen()
                             // AuthSuccessScreen(

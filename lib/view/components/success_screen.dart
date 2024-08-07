@@ -45,7 +45,7 @@ class _SuccessScreenState extends ConsumerState<SuccessScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
+            const Column(
               children: [
                 // Image.asset(
                 //   AppImages.success,

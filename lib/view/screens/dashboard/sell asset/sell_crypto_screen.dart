@@ -8,7 +8,7 @@ import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
 
 class SellCryptoScreen extends ConsumerStatefulWidget {
-  SellCryptoScreen({Key? key}) : super(key: key);
+  const SellCryptoScreen({super.key});
 
   @override
   ConsumerState<SellCryptoScreen> createState() => _SellCryptoScreenState();
@@ -98,7 +98,7 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextView(text: "Wallet Address"),
+                const TextView(text: "Wallet Address"),
                 Gap(5.h),
                 Row(
                   children: [

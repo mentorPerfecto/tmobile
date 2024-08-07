@@ -10,8 +10,8 @@ import 'package:tampay/src/providers.dart';
 
 class WithdrawalBankScreen extends ConsumerStatefulWidget {
   const WithdrawalBankScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState<WithdrawalBankScreen> createState() =>

@@ -4,13 +4,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:rebirth/rebirth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tampay/src/components.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/repository.dart';
 import 'package:tampay/src/config.dart';

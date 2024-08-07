@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
-import 'package:tampay/src/utils.dart';
 
 class ReferralLeaderboardScreen extends ConsumerStatefulWidget {
   const ReferralLeaderboardScreen({super.key});

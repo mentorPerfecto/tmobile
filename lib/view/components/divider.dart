@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/providers.dart';
 
 class TampayDivider extends ConsumerWidget {
-  const TampayDivider({Key? key}) : super(key: key);
+  const TampayDivider({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

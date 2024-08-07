@@ -17,7 +17,7 @@ class AUserBank extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigatePush(context, SellCryptoScreen());
+        navigatePush(context, const SellCryptoScreen());
       },
       child: Container(
         padding: EdgeInsets.symmetric(

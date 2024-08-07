@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tampay/model/local/dummy_data.dart';
 
 final settingsViewModel = ChangeNotifierProvider((ref) => SettingsViewModel());
 
@@ -13,11 +14,6 @@ class SettingsViewModel extends ChangeNotifier {
   bool _sendPromotionsEmail = false;
 
   String selectedCurrency ='';
-  String selectedTheme='';
-
-
-
-
 
   void togglePromotionsEmail(bool val) {
     _sendPromotionsEmail = val ;

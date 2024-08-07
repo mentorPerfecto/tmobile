@@ -9,7 +9,7 @@ import 'package:tampay/src/providers.dart';
 import '../../../../src/utils.dart';
 
 class BuyCoinScreen extends ConsumerStatefulWidget {
-  BuyCoinScreen({Key? key, required this.cryptoAcronym}) : super(key: key);
+  BuyCoinScreen({super.key, required this.cryptoAcronym});
   final String cryptoAcronym;
   @override
   ConsumerState<BuyCoinScreen> createState() => _BuyCoinScreenState();

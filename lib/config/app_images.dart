@@ -43,4 +43,6 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const securityIcon = '${_baseUrl}security_icon.png';
   static const preferenceIcon = '${_baseUrl}preference_icon.png';
   static const userAcctIcon = '${_baseUrl}user_acct.png';
+  static const notificationSquareIcon = '${_baseUrl}notification_square.png';
+  static const notificationCircle = '${_baseUrl}notification_circle.png';
 }

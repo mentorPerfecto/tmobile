@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tampay/utils/enums.dart';
 
-import '../../config/app_images.dart';
 
 class ImageView extends StatelessWidget {
   final String? url;

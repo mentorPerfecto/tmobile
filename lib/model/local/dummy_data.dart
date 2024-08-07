@@ -8,6 +8,7 @@ class DummyData {
   static String? phoneNumber;
   static bool? firstTimeOnApp = true;
   static bool isDarkTheme = false;
+  static String? appTheme = '';
   static String? accessToken = "";
   static String? coinValue = '';
   static DateTime? userDateOfBirth;

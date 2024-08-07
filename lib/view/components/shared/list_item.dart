@@ -98,10 +98,12 @@ class ListItems extends ConsumerWidget {
                       if (value) {
                         themeProvider.setThemeMode(ThemeMode.dark);
                         prefs.setBool('isDarkTheme', true);
+                        prefs.setString('AppTheme', "Dark Mode");
                         return;
                       }
                       themeProvider.setThemeMode(ThemeMode.light);
                       prefs.setBool('isDarkTheme', false);
+                      prefs.setString('AppTheme', "Light Mode");
                     },
                     activeColor: themeMode == ThemeMode.light
                         ? AppColors.kPrimary1

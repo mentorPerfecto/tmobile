@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 
 
@@ -16,6 +20,7 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
   @override
   Widget build(BuildContext context) {
    var settingsProvider = ref.watch(settingsViewModel);
+   var themeProvider = ref.watch(themeViewModel);
 
    var theme = Theme.of(context);
     return Scaffold(
@@ -37,14 +42,14 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
               child: Column(
                 children: [
                   const Gap(30),
+                  // ListItems(
+                  //   icon: AppImages.friendsIcon,
+                  //   onPressed: () {},
+                  //   subText: "Choose your default currency",
+                  //   title: "Currency",
+                  // ),
                   ListItems(
-                    icon: AppImages.friendsIcon,
-                    onPressed: () {},
-                    subText: "Choose your default currency",
-                    title: "Currency",
-                  ),
-                  ListItems(
-                    icon: AppImages.friendsIcon,
+                    icon: AppImages.notificationCircle,
                     onPressed: () {},
                     isToggleChange: true,
 
@@ -54,7 +59,7 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
                     onChanged: settingsProvider.togglePushNotification,
                   ),
                   ListItems(
-                    icon: AppImages.friendsIcon,
+                    icon: AppImages.notificationCircle,
                     onPressed: () {},
                     isToggleChange: true,
                     subText: "Send notification to email",
@@ -63,7 +68,7 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
                     onChanged: (val) => settingsProvider.toggleEmailNotification(val),
                   ),
                   ListItems(
-                    icon: AppImages.friendsIcon,
+                    icon: AppImages.notificationSquareIcon,
                     onPressed: () {},
                     isToggleChange: true,
                     subText: "Send marketing update to email",
@@ -72,10 +77,70 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
                     onChanged: settingsProvider.togglePromotionsEmail,
                   ),
                   ListItems(
-                    icon: AppImages.bankIcon,
-                    onPressed: () {},
+                    icon: AppImages.moonIcon,
+                    onPressed: () async {    await showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    barrierColor: Colors.black38,
+                    context: context,
+                    builder: (context) {
+
+                      return BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                        child: TPayDefaultPopUp(
+                          action: SizedBox( height: 250.h,
+                            child: Column(
+                              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                
+                                TextView(text: "Mode", fontSize: 24.spMin,),
+                                ListenableBuilder(
+                                    listenable: themeProvider,
+                                    builder: (BuildContext context, Widget? child) {
+                                      return  ListView.builder( shrinkWrap: true,
+                                          physics: const NeverScrollableScrollPhysics(),
+                                          padding: EdgeInsets.zero,
+                                          itemCount: themeProvider.modes.length ,
+                                          scrollDirection: Axis.vertical,
+                                          itemBuilder: (context, index) {
+                                            return  GestureDetector(
+                                              onTap: () async {
+                                                String setTheme = themeProvider.selectAppTheme(themeProvider.modes[index].toString());
+                                                SharedPreferences prefs = await SharedPreferences.getInstance();
+                                               if(setTheme == 'System Mode'){
+                                                 themeProvider. setThemeMode( ThemeMode.system == ThemeMode.dark ?  ThemeMode.dark :  ThemeMode.light);
+                                                 prefs.setBool('isDarkTheme', ThemeMode.system == ThemeMode.dark);
+                                                 prefs.setString('AppTheme', "System Mode");
+                                               } else{
+                                                 if (setTheme == 'Dark Mode') {
+                                                   themeProvider.setThemeMode(ThemeMode.dark);
+                                                   prefs.setBool('isDarkTheme', true);
+                                                   prefs.setString('AppTheme', "Dark Mode");
+                                                   return;
+                                                 } else {
+                                                   themeProvider.setThemeMode(ThemeMode.light);
+                                                   prefs.setBool('isDarkTheme', false);
+                                                   prefs.setString('AppTheme', "Light Mode");
+                                                 }
+                                               }
+
+                                              },
+                                              child: ListTile(
+                                                  title: TextView(text: themeProvider.modes[index].toString(),),
+                                                  trailing:  DummyData.appTheme ==  themeProvider.modes[index] ?
+                                                  const Icon(Icons.check_circle_outline, color: AppColors.kPrimary1,) : const SizedBox.shrink()
+                                              ),
+                                            );
+                                          });
+                                    })
+
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    });},
                     subText:  "Select the feel of your app",
-                    title: "Dark Theme",
+                    title: "App Theme",
                     isToggleChange: false,
                   ),
 

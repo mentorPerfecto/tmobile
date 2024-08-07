@@ -7,7 +7,6 @@ export 'package:tampay/view/screens/dashboard/profile/profile_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile/account_setting_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile/settings/change_password_screen.dart';
 export 'package:tampay/view/screens/onboarding/onboarding_screen.dart';
-export 'package:tampay/view/screens/dashboard/profile/settings/settings_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile//withdrawal_bank/withdrawal_bank_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile/withdrawal_bank/add_bank_details_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile/withdrawal_bank/enter_pin_screen.dart';

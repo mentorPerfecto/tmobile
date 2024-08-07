@@ -1557,8 +1557,6 @@ class _AddBankBottomModalSheetState
       shrinkWrap: true,
       // physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        // Check if it's the last item
-        bool isLastItem = index == 1;
 
         return GestureDetector(
           onTap: () {

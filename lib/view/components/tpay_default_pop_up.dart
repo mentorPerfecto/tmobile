@@ -90,6 +90,7 @@ class TPayDefaultPopUp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ThemeData theme = Theme.of(context);
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
+    ref.watch(settingsViewModel);
     return Container(
       decoration: BoxDecoration(
         color: themeMode == ThemeMode.dark ? AppColors.kCharcoalBlack : AppColors.kTextWhite,
