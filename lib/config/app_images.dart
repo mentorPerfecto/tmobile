@@ -75,4 +75,5 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const countryIcon = '${_baseUrl}Country_mobile.png';
   static const squareArrowIcon = '${_baseUrl}square-arrow-mobile.png';
   static const tronCircleIcon = '${_baseUrl}tron_circle_mobile.png';
+  static const checkmarkCircleIcon = '${_baseUrl}checkmark-circle-mobile.png';
 }
