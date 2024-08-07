@@ -134,7 +134,6 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                             text: widget.fieldLabel,
                             fontSize: 14.spMin,
                             fontWeight: FontWeight.w400,
-
                           ),
                           widget.fieldLabelActionWidget ?? const SizedBox.shrink(),
                         ],

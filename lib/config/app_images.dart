@@ -71,4 +71,8 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const tronIcon = '${_baseUrl}trc_mobile.png';
   static const scanIcon = '${_baseUrl}scan_mobile.png';
   static const notebookIcon = '${_baseUrl}notebook_mobile.png';
+  static const infoIcon = '${_baseUrl}info_mobile.png';
+  static const countryIcon = '${_baseUrl}Country_mobile.png';
+  static const squareArrowIcon = '${_baseUrl}square-arrow-mobile.png';
+  static const tronCircleIcon = '${_baseUrl}tron_circle_mobile.png';
 }

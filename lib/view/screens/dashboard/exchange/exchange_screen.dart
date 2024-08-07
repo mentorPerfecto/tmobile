@@ -264,7 +264,7 @@ class ExchangeScreenTradingAssets extends ConsumerWidget {
   }
 }
 
-class NetworkType extends StatelessWidget {
+class NetworkType extends ConsumerWidget {
   const NetworkType({
     super.key,
     required this.themeMode,
@@ -275,9 +275,11 @@ class NetworkType extends StatelessWidget {
   final ThemeData theme;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var dashboardProvider = ref.watch(dashboardViewModel);
     return GestureDetector(
       onTap: () {
+        dashboardProvider.setNetworkType("TRC 20");
         navigatePush(context, const BuyCryptoAssetScreen());
       },
       child: Container(

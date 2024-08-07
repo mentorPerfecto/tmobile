@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tampay/model/local/button_state.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/screens.dart';
@@ -11,10 +12,11 @@ final dashboardViewModel = ChangeNotifierProvider((ref) => DashboardViewModel())
 class DashboardViewModel extends ChangeNotifier {
   int? _currentIndex = 0;
   int? _exchangeCurrentIndex = 0;
-
+  CustomButtonState _buyCryptoAssetButtonState =
+      CustomButtonState(buttonState: ButtonState.disabled, text: next);
   int get currentIndex => _currentIndex!;
   int get exchangeCurrentIndex => _exchangeCurrentIndex!;
-
+  CustomButtonState get buyCryptoAssetButtonState => _buyCryptoAssetButtonState;
   String? _cryptoAcronym;
   final List<String> _tPayCryptoAssets = ["BTC", "USDT", "ETH", "SOL"];
   String? get cryptoAcronym => _cryptoAcronym;
@@ -48,6 +50,11 @@ class DashboardViewModel extends ChangeNotifier {
   selectACyptoAsset({String? cryptoAcronym, String? name}) {
     _cryptoAcronym = cryptoAcronym;
     DummyData.cryptoAbbreviation = cryptoAcronym ?? "Error";
+    notifyListeners();
+  }
+
+  setNetworkType(String? networkType) {
+    DummyData.networkType = networkType;
     notifyListeners();
   }
 

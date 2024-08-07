@@ -40,6 +40,8 @@ class AppColors {
   static const kWoodSmoke700 = Color(0xff4F4F4F);
   static const kWoodSmoke300 = Color(0xffB0B0B0);
   static const kTealBreeze = Color(0xff26A17B);
+  static const kStormySky = Color(0xff5A6271);
+  
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);
