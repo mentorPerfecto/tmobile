@@ -31,10 +31,10 @@ class AccountUpgradeScreen extends ConsumerWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Gap(15),
+                          
                           GestureDetector(
                             onTap: () {
-                              navigateBack(context);
+                              navigatePush(context, CreatePasswordScreen());
                             },
                             child: Icon(
                               Icons.arrow_back_ios,
@@ -47,6 +47,7 @@ class AccountUpgradeScreen extends ConsumerWidget {
                             fontSize: 14.spMin,
                             fontFamily: soraFont,
                             fontWeight: FontWeight.w600,
+                            color: AppColors.kWhite,
                           )
                         ],
                       ),
