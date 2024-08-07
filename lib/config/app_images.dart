@@ -1,33 +1,19 @@
 class AppImages {
   static const String _baseUrl = 'assets/images/';
 
-  // General image res
-
-
   static const refreshLogo = '${_baseUrl}dashboard_buy_will_receive_will_pay_logo.png';
   static const dashboardHomeLogo = '${_baseUrl}dashboard_home.png';
   static const deleteLogo = '${_baseUrl}delete_logo.png';
-  static const faqsLogo = '${_baseUrl}faqs.png';
-  static const helpCenterLogo = '${_baseUrl}help_center.png';
   static const inProgressLogo = '${_baseUrl}in_progress_logo.png';
   static const logOutLogo = '${_baseUrl}log_out.png';
   static const receiveMoneyLogo = '${_baseUrl}money_receive_white.png';
   static const sendMoneyLogoWhite = '${_baseUrl}money-send-white.png';
- 
    static const tPayAsset = '${_baseUrl}onboarding_ultimate_cash_image.png';
-  static const piggyBankLogo = '${_baseUrl}piggy_bank.png';
   static const placeholderNotificationLogo = '${_baseUrl}placeholder_logo_notifications.png';
-  static const privacyPolicyLogo = '${_baseUrl}privacy_policy.png';
-  static const referralsInvitesLogo = '${_baseUrl}referalls_invite.png';
-  static const securityLogo = '${_baseUrl}security_logo.png';
   static const successLogo = '${_baseUrl}success_logo.png';
-  static const copyLogo = '${_baseUrl}t_pay_copy.png';
   static const profileLogo = '${_baseUrl}t_pay_profile.png';
   static const unverifiedBadgeLogo = '${_baseUrl}unverified_badge.png';
   static const verifiedBadgeLogo = '${_baseUrl}verified_badge.png';
-
-static const barCode = '${_baseUrl}bar_code.png';
-static const verifyAccountIcon = '${_baseUrl}verify_account_icon.png';
 static const filterButtonIcon = '${_baseUrl}filter-button.png';
 ////////////////////////////////////////////////
   static const tpayLogo = '${_baseUrl}tpay_logo_mobile.png';
@@ -53,4 +39,8 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const eyeSlashIcon = '${_baseUrl}eye_slash.png';
   static const infoIcon = '${_baseUrl}info_icon.png';
   static const inviteRefIcon = '${_baseUrl}invite_ref.png';
+  static const supportIcon = '${_baseUrl}headset.png';
+  static const securityIcon = '${_baseUrl}security_icon.png';
+  static const preferenceIcon = '${_baseUrl}preference_icon.png';
+  static const userAcctIcon = '${_baseUrl}user_acct.png';
 }

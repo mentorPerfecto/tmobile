@@ -291,7 +291,6 @@ const agricultural = 'Agricultural';
 const specialPurpose = 'Special Purpose';
 const newconstruction = 'New Construction';
 const waterfront = 'Waterfront';
-const editPropertyText = 'Edit Property';
 const deletePropertyText = 'Delete Property';
 const freezePropertyText = 'Freeze Property';
 const unFreezePropertyText = 'Unfreeze Property';

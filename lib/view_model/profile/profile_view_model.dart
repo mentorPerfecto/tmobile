@@ -238,12 +238,6 @@ class ProfileViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void copyToClipBoard(context, {required String value}) {
-    Clipboard.setData(
-      ClipboardData(text: value.toString()),
-    );
-    showToast(msg: "Copied '$value' to clipboard", isError: false);
-  }
 
   ///Method to update user profile
   // Future<void> updateUserProfile(BuildContext context) async {

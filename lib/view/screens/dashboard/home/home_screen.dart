@@ -1,16 +1,12 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/utils/blur.dart';
-import 'package:tampay/utils/enums.dart';
 
 import 'package:tampay/view/screens/dashboard/exchange/exchange_screen.dart';
 import 'package:tampay/view_model/dashboard/wallet_view_model.dart';
@@ -286,19 +282,25 @@ class SellBuyMore extends ConsumerWidget {
                     children: [
                       ListItems(
                         icon: AppImages.zapLogo,
-                        onPressed: () {},
+                        onPressed: () {
+                          navigatePush(context, const ExchangeScreen());
+                        },
                         subText: "See exciting trading rates",
                         title: "View Rate",
                       ),
                       ListItems(
                         icon: AppImages.friendsIcon,
-                        onPressed: () {},
+                        onPressed: () {
+                          navigatePush(context, const ReferAndEarnScreen());
+                        },
                         subText: "Earn commission from referrals",
                         title: "Refer A Friend",
                       ),
                       ListItems(
                         icon: AppImages.bankIcon,
-                        onPressed: () {},
+                        onPressed: () {
+                          navigatePush(context, const AddBankScreen());
+                        },
                         subText: "View your payout bank accounts",
                         title: "Bank Details",
                       ),

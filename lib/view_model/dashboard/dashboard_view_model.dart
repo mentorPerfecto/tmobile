@@ -53,6 +53,6 @@ class DashboardViewModel extends ChangeNotifier {
     String value,
   ) async {
     await Clipboard.setData(ClipboardData(text: value));
-
+    showToast(msg: "Copied '$value' to clipboard", isError: false);
   }
 }

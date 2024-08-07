@@ -1,14 +1,13 @@
 import 'dart:ui';
 
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/dashboard/profile/bank_details/add_bank_screen.dart';
-import 'package:tampay/view_model/dashboard/buy_view_model.dart';
 
 //1
 Future<void> displayDeleteConfirmationMessageAlert(
@@ -1703,9 +1702,28 @@ class _SellCoinBottomModalSheetContentState
                   SizedBox(
                     height: 48.h,
                   ),
-                  ImageView.asset(
-                    AppImages.barCode,
+                  SizedBox(
                     width: 236.w,
+                    child: QrImageView(
+                      data: "message",
+                      version: QrVersions.auto,
+                      eyeStyle: const QrEyeStyle(
+                        eyeShape: QrEyeShape.square,
+                        color: AppColors.kPrimary1,
+                        // borderRadius: 10,
+                      ),
+                      dataModuleStyle: const QrDataModuleStyle(
+                        dataModuleShape: QrDataModuleShape.square,
+                        color: AppColors.kPrimary1,
+                        // borderRadius: 5,
+                        // roundedOutsideCorners: true,
+                      ),
+                      embeddedImage: const AssetImage('assets/images/4.0x/logo_yakka_transparent.png'),
+                      embeddedImageStyle: const QrEmbeddedImageStyle(
+                        size: Size.square(40),
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: 12.h,
@@ -1728,7 +1746,7 @@ class _SellCoinBottomModalSheetContentState
                       defaultButton(
                           width: 150.w,
                           text: copy,
-                          imagePath: AppImages.copyLogo,
+                          imagePath: AppImages.copyIcon,
                           color: AppColors.kDarkDividerColor,
                           borderRadius: 8.r,
                           onPressed: () {

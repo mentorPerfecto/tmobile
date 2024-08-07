@@ -39,13 +39,11 @@ class _ReferralDetailsScreenState extends ConsumerState<ReferralDetailsScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const ReferralsDetailBox(
-                detailLogo: AppImages.piggyBankLogo,
                 detailTitle: "Earnings",
                 detailValue: "₦25,550.65",
                 color: AppColors.kPrimary1, textColor: AppColors.kWhite,
               ),
               ReferralsDetailBox( color:  themeMode == ThemeMode.light ? AppColors.kLightSilver : AppColors.kOnyxBlack,
-                detailLogo: AppImages.referralsInvitesLogo,
                 detailTitle: "Number of Invites",
                 detailValue: "124", textColor:  themeMode == ThemeMode.dark ? AppColors.kLightSilver : AppColors.kBlack8,
               ),

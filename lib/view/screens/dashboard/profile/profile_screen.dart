@@ -69,7 +69,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             ListItems(
               title: accountUpgrade,
               subText: 'Complete account verification',
-              icon: AppImages.verifyAccountIcon,
+              icon: AppImages.userAcctIcon,
               onPressed: () {
                 navigatePush(context, const VerifyAccountLevelScreen());
               },
@@ -86,7 +86,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             ListItems(
               title: "Referrals",
               subText: 'Earn commissions for inviting friends',
-              icon: AppImages.securityLogo,
+              icon: AppImages.friendsIcon,
               onPressed: () {
                 navigatePush(context, const ReferAndEarnScreen());
               },
@@ -95,7 +95,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             ListItems(
               title: "Preference",
               subText: 'More Configuration options',
-              icon: AppImages.faqsLogo,
+              icon: AppImages.preferenceIcon,
               onPressed: () {
                 navigatePush(context, const PreferencesScreen());
               },
@@ -104,7 +104,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             ListItems(
               title: securityText,
               subText: 'Protect yourself from intruders',
-              icon: AppImages.securityLogo,
+              icon: AppImages.securityIcon,
               onPressed: () {
                 // navigatePush(context, const CustomerSupportScreen());
               },
@@ -114,7 +114,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             ListItems(
               title: "Support Center",
               subText: "Reach out to support and FAQs",
-              icon: AppImages.helpCenterLogo,
+              icon: AppImages.supportIcon,
               onPressed: () {
                 // launchInURL(Uri.parse(ApiConstants().bunchPayWebUrl));
               },

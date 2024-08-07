@@ -22,7 +22,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
   @override
 
   void initState() {
-    var userProfileProvider = ref.read(profileViewModel);
+   // var userProfileProvider = ref.read(profileViewModel);
     //
     // if(userProfileProvider.gender!.toLowerCase() == 'null' ){
     //
@@ -162,17 +162,26 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                                         CustomTextField(
                                           fieldLabel: 'Username',
                                           hint: lastNameText,
-                                          showSuffixIcon: true, trailing: const Icon(Icons.edit_note_outlined),
+                                          showSuffixIcon: true, trailing: Padding(
+                                            padding:  EdgeInsets.all(8.r),
+                                            child: Image.asset(AppImages.editTextLogo, height: 20,),
+                                          ),
                                           controller: userProfileProvider.usernameController,
                                         ),
                                         const Gap(15),
                                         CustomTextField(
                                           fieldLabel: phoneNumberText,
                                           hint: hintPhoneNumber,
-                                          maxLength: 10, showSuffixIcon: true, trailing: const Icon(Icons.edit_note_outlined),
-                                          prefix: const Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: TextView( text: "+234",),
+                                          maxLength: 10, showSuffixIcon: true, trailing: Padding(
+                                            padding:  EdgeInsets.all(8.r),
+                                            child: Image.asset(AppImages.editTextLogo, height: 20, ),
+                                          ),
+                                          prefixIcon:   Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: SizedBox( width: 30, child: Padding(
+                                              padding:  EdgeInsets.symmetric(vertical: 9.h),
+                                              child: const TextView( text: "+234", color:  AppColors.kWhite,),
+                                            )),
                                           ),
                                           controller: userProfileProvider.phoneNumberController,
                                           validator: (value) => Validators().validatePhoneNumber(value),
@@ -207,127 +216,6 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
               ),
             ),
           );
-  }
-}
-
-class tampayTenantIDDetails extends StatelessWidget {
-  const tampayTenantIDDetails({
-    super.key,
-    required this.uniqueIdFrmtampay,
-    required this.name,
-    required this.email,
-    required this.onTap,
-    required this.isContactDetailsVisible,
-    this.contactImage,
-  });
-
-  final String uniqueIdFrmtampay;
-  final String name;
-  final String email;
-  final VoidCallback onTap;
-  final String? contactImage;
-  final bool isContactDetailsVisible;
-
-  @override
-  Widget build(BuildContext context) {
-    return Visibility(
-      visible: isContactDetailsVisible,
-      child: SizedBox(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gap(20.h),
-            TextView(
-              text: tampayTenantIdHeading,
-              fontSize: 18.spMin,
-              fontWeight: FontWeight.w600,
-              fontFamily: soraFont,
-            ),
-            Gap(15.h),
-            Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 14.h,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.r),
-                color: AppColors.kBackground,
-              ),
-              child: Row(
-                children: [
-                  ProfileImage(
-                    height: 100.h,
-                    width: 100.w,
-                    imageType: ProfileImageType.user,
-                    imageUrl: contactImage ?? 'ded',
-                  ),
-                  Gap(15.w),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextView(
-                        text: name,
-                        fontSize: 16.spMin,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: soraFont,
-                        color: AppColors.kTextBlack,
-                      ),
-                      Gap(4.h),
-                      TextView(
-                        text: email,
-                        color: AppColors.kSubText,
-                        fontSize: 13.spMin,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: soraFont,
-                      ),
-                      Gap(
-                        6.h,
-                      ),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                                text: uniqueIDText,
-                                style: TextStyle(
-                                  fontSize: 13.spMin,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.kSubText,
-                                  fontFamily: soraFont,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: uniqueIdFrmtampay,
-                                    style: TextStyle(
-                                      fontSize: 13.spMin,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColors.kTextBlack,
-                                      fontFamily: soraFont,
-                                    ),
-                                  )
-                                ]),
-                          ),
-                          Gap(
-                            5.w,
-                          ),
-                          // GestureDetector(
-                          //   onTap: onTap,
-                          //   child: Image.asset(
-                          //     AppImages.copyTextIcon,
-                          //     width: 16.w,
-                          //     height: 16.h,
-                          //   ),
-                          // )
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
   }
 }
 

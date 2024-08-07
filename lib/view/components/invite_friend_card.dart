@@ -61,13 +61,11 @@ class _InviteFriendCardState extends ConsumerState<InviteFriendCard> {
 class ReferralsDetailBox extends StatelessWidget {
   const ReferralsDetailBox({
     super.key,
-    required this.detailLogo,
     required this.detailTitle,
     required this.detailValue,
     required this.color,
     required this.textColor,
   });
-  final String detailLogo;
   final String detailTitle;
   final String detailValue;
   final Color color;

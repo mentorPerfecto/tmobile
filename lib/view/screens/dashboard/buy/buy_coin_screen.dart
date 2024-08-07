@@ -6,7 +6,6 @@ import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
-import 'package:tampay/view/components/tpay_default_pop_up.dart';
 import '../../../../src/utils.dart';
 
 class BuyCoinScreen extends ConsumerStatefulWidget {
@@ -199,7 +198,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                                   dashViewModel.copyToClipboard('256521T5841sgasga5514sjsg');
                                 },
                                 child: Image.asset(
-                                  AppImages.copyLogo,
+                                  AppImages.copyIcon,
                                   width: 18.w,
                                   height: 18.h,
                                   color: AppColors.kPrimary1,
@@ -244,7 +243,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                                 dashViewModel.copyToClipboard('Fidelity Bank');
                               },
                               child: Image.asset(
-                                AppImages.copyLogo,
+                                AppImages.copyIcon,
                                 width: 18.w,
                                 height: 18.h,
                                 color: AppColors.kPrimary1,
@@ -275,7 +274,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                                 dashViewModel.copyToClipboard('0550241576');
                               },
                               child: Image.asset(
-                                AppImages.copyLogo,
+                                AppImages.copyIcon,
                                 width: 18.w,
                                 height: 18.h,
                                 color: AppColors.kPrimary1,
@@ -306,7 +305,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                                 dashViewModel.copyToClipboard('Pius Moses');
                               },
                               child: Image.asset(
-                                AppImages.copyLogo,
+                                AppImages.copyIcon,
                                 width: 18.w,
                                 height: 18.h,
                                 color: AppColors.kPrimary1,

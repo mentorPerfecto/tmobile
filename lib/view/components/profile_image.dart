@@ -9,7 +9,6 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/components/custom_text.dart';
 
 class ProfileImage extends ConsumerWidget {
   const ProfileImage({
@@ -92,16 +91,16 @@ class ProfileImage extends ConsumerWidget {
               )
                   : imageType == ProfileImageType.user ? ImageView.asset(
                 AppImages.dummyImage,
-                width: 36.w,
-                height: 36.h,
+                width: width.w,
+                height: height.h,
               )  :  imageType == ProfileImageType.asset ? ImageView.asset(
                 AppImages.tPayAsset,
-                width: 36.w, //
-                height: 36.h,
+                width: width.w, //
+                height: height.h,
               )  :  ImageView.asset(
                 AppImages.bankIcon,
-                width: 36.w,
-                height: 36.h,
+                width: width.w,
+                height: height.h,
               );
             },
             // placeholder: (context, url) => SvgPicture.asset(
