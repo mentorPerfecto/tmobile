@@ -9,9 +9,9 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
     super.key,
     this.action,
     this.progressStatusLogo,
-    this.progressStatusLogoColor = AppColors.kPrimary1,
+    this.progressStatusLogoColor,
     this.progressStatusTextBody,
-    this.height = 500.0,
+    this.height = 320.0,
     this.progressStatusTextTitle,
   });
 
@@ -50,9 +50,10 @@ class TPayDefaultProgressStatusPopUp extends ConsumerWidget {
                 ? const SizedBox.shrink()
                 : Image.asset(
                     progressStatusLogo!,
-              width: 42.w,
-              height: 42.h, color: progressStatusLogoColor,
-            ),
+                    width: 50.w,
+                    height: 50.h,
+                    color: progressStatusLogoColor,
+                  ),
             Column(
               children: [
                 TextView(
@@ -82,15 +83,17 @@ class TPayDefaultPopUp extends ConsumerWidget {
   const TPayDefaultPopUp({
     super.key,
     this.action,
+    this.height,
   });
 
   final Widget? action;
-
+  final double? height;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ThemeData theme = Theme.of(context);
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
     return Container(
+      height: height?.h,
       decoration: BoxDecoration(
         color: themeMode == ThemeMode.dark ? AppColors.kCharcoalBlack : AppColors.kTextWhite,
         borderRadius: BorderRadius.only(
@@ -103,12 +106,11 @@ class TPayDefaultPopUp extends ConsumerWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 15.h,
-          horizontal: 15.w,
-        ),
-          child: action
-      ),
+          padding: EdgeInsets.symmetric(
+            vertical: 15.h,
+            horizontal: 15.w,
+          ),
+          child: action),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/model/local/dummy_data.dart';
@@ -73,13 +75,44 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextView(text: "Credited Account"),
+                const TextView(text: "Credited Account"),
                 Gap(5.h),
                 AUserBank(themeMode: themeMode)
               ],
             ),
             Gap(20.h),
             SomethingToNote(themeMode: themeMode),
+            Gap(20.h),
+            DefaultButtonMain(
+              color: AppColors.kPrimary1,
+              text: "Completed",
+              onPressed: () async {
+                await showModalBottomSheet(
+                  context: context,
+                  builder: (context) => BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                    child: TPayDefaultProgressStatusPopUp(
+                      progressStatusLogo: AppImages.inProgressIcon,
+                      progressStatusLogoColor: themeMode == ThemeMode.light
+                          ? AppColors.kWoodSmoke300
+                          : AppColors.kWoodSmoke700,
+                      progressStatusTextTitle: "In progress",
+                      progressStatusTextBody:
+                          "Your order has been received. We will notify you when it's ready,"
+                          " usually within 45 seconds",
+                      action: DefaultButtonMain(
+                        width: 195.w,
+                        color: AppColors.kPrimary1,
+                        text: "Back to Home",
+                        onPressed: () {
+                          dashProvider.setPageIndexToHome(context);
+                        },
+                      ),
+                    ),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),
@@ -115,6 +148,7 @@ class SomethingToNote extends StatelessWidget {
             color: AppColors.kWhite,
             fontSize: 14.spMin,
           ),
+          Gap(15.h),
           TextView(
             text: "Please ensure to send only ${DummyData.crypto} (${DummyData.cryptoAbbreviation})"
                 " to this address or you may lose your funds.",

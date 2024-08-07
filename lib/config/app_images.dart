@@ -67,4 +67,8 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const dropDownIcon = '${_baseUrl}drop_down_icon_mobile.png';
   static const copyIcon = '${_baseUrl}copy_icon_mobile.png';
   static const downloadIcon = '${_baseUrl}download_icon_mobile.png';
+  static const inProgressIcon = '${_baseUrl}clock-04_mobile.png';
+  static const tronIcon = '${_baseUrl}trc_mobile.png';
+  static const scanIcon = '${_baseUrl}scan_mobile.png';
+  static const notebookIcon = '${_baseUrl}notebook_mobile.png';
 }

@@ -53,6 +53,7 @@ class CustomTextField extends ConsumerStatefulWidget {
     this.showError = false,
     this.errorText,
     this.onChanged,
+    this.fieldLabelActionWidget,
   });
 
   final String? hint;
@@ -100,6 +101,7 @@ class CustomTextField extends ConsumerStatefulWidget {
   final bool? showError;
   final String? errorText;
   final Function(String?)? onChanged;
+  final Widget? fieldLabelActionWidget;
 
   @override
   ConsumerState<CustomTextField> createState() => _CustomTextFieldState();
@@ -121,20 +123,27 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
         // padding: EdgeInsets.only(bottom: 4.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
-            widget.fieldLabel.isNotEmpty ? Column(
-              children: [
-                      TextView(
-                        text: widget.fieldLabel,
-                        fontSize: 14.spMin,
-                        fontWeight: FontWeight.w400,
-                      ),
-                const Gap(10),
-              ],
-            ) : const SizedBox.shrink(),
-            TextFormField(
+            widget.fieldLabel.isNotEmpty
+                ? Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextView(
+                            text: widget.fieldLabel,
+                            fontSize: 14.spMin,
+                            fontWeight: FontWeight.w400,
 
+                          ),
+                          widget.fieldLabelActionWidget ?? const SizedBox.shrink(),
+                        ],
+                      ),
+                      const Gap(10),
+                    ],
+                  )
+                : const SizedBox.shrink(),
+            TextFormField(
               onChanged: widget.onChanged,
               maxLength: widget.maxLength,
               inputFormatters: widget.inputFormatter,
@@ -158,7 +167,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
               validator: widget.validator,
               obscureText: widget.obscureInput,
               decoration: InputDecoration(
-              //  label:
+                //  label:
                 border: widget.readOnly
                     ? InputBorder.none
                     : OutlineInputBorder(
@@ -211,14 +220,11 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                           )
                         : null,
                 filled: widget.isFilled,
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 fillColor: themeMode == ThemeMode.light ? AppColors.kSnowWhite : widget.fillColor,
                 enabledBorder: widget.readOnly
                     ? OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(widget.borderRadius.r),
-
+                        borderRadius: BorderRadius.circular(widget.borderRadius.r),
                       )
                     : OutlineInputBorder(
                         borderRadius: BorderRadius.circular(widget.borderRadius.r),
@@ -226,8 +232,8 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
                           color: AppColors.kGrey300,
                         ),
                       ),
-                  
-                focusedBorder:   OutlineInputBorder(
+
+                focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide: BorderSide(
                       color: widget.readOnly ? AppColors.kOnyxBlack : AppColors.kPrimary1,
@@ -281,8 +287,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
     );
   }
 
-  String? validateText(
-      String text, String? Function(String) validationFunction) {
+  String? validateText(String text, String? Function(String) validationFunction) {
     return validationFunction(text);
   }
 }

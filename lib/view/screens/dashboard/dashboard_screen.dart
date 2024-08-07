@@ -9,7 +9,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/dashboard/buy/buy_screen.dart';
+import 'package:tampay/view/screens/dashboard/buy/buy_crypto_asset_screen.dart';
 import 'package:tampay/view/screens/dashboard/exchange/exchange_screen.dart';
 import 'package:tampay/view/screens/dashboard/profile/profile_screen.dart';
 import 'package:tampay/view/screens/dashboard/sell%20asset/select_bank_screen.dart';

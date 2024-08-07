@@ -7,33 +7,32 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import '../../../../src/components.dart';
 
-class BuySectionScreen extends ConsumerStatefulWidget {
-  const BuySectionScreen({super.key});
+class BuyCryptoAssetScreen extends ConsumerStatefulWidget {
+  const BuyCryptoAssetScreen({super.key});
 
   @override
-  ConsumerState<BuySectionScreen> createState() => _BuySectionScreenState();
+  ConsumerState<BuyCryptoAssetScreen> createState() => _BuyCryptoAssetScreenState();
 }
 
-class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
-  
+class _BuyCryptoAssetScreenState extends ConsumerState<BuyCryptoAssetScreen> {
   @override
   void initState() {
     super.initState();
     ref.read(buyViewModel).getCryptoCoins();
   }
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
     var buySectionProvider = ref.watch(buyViewModel);
     var dashboardProvider = ref.watch(dashboardViewModel);
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-     
-          text: selectCoin,
-        callback: (){
-          dashboardProvider.setPageIndexToHome(context);
-        }
+        bottomVisible: true,
+        bottomText: "Buy ${DummyData.cryptoAbbreviation}",
       ),
       body: XResponsiveWrap.mobile(
         onRefresh: () => buySectionProvider.getCryptoCoins(),
@@ -41,51 +40,7 @@ class _BuySectionScreenState extends ConsumerState<BuySectionScreen> {
           SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 15.0.w,
-                    right: 15.0.w,
-                    top: 25.h,
-                  ),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextView(text: assetsText),
-                      TextView(text: ratesText),
-                    ],
-                  ),
-                ),
-                Gap(10.h),
-                const TampayDivider(),
-                ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: buySectionProvider.cryptoList.length,
-                    itemBuilder: (context, index) {
-                      CryptoCoinResponse aCryptoCoin = buySectionProvider.cryptoList[index];
-                      String cryptoName = aCryptoCoin.id?.name ?? notAvailable;
-                      String cryptoAcronym = aCryptoCoin.id?.acronym ?? notAvailable;
-                      String cryptoSymbol = aCryptoCoin.symbol ?? notAvailable;
-
-                      return CryptoCoinView(
-                        cryptoSymbol: cryptoSymbol,
-                        cryptoName: cryptoName,
-                        cryptoAcronym: cryptoAcronym,
-                        aCryptoCoin: aCryptoCoin,
-                        onPressed: () {
-                          navigatePush(
-                              context,
-                              EnterAmountScreen(
-                                cryptoName: cryptoName,
-                                cryptoAcronym: cryptoAcronym,
-                                ratePerCrypto: aCryptoCoin.rate ?? 1505,
-                              ));
-                        },
-                      );
-                    })
-              ],
+              children: [],
             ),
           ),
         ],
@@ -126,7 +81,6 @@ class CryptoCoinView extends StatelessWidget {
               ),
               child: GestureDetector(
                 onTap: onPressed,
-
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,

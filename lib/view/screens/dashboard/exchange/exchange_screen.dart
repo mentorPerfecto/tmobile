@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
@@ -5,7 +7,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/dashboard/buy/buy_screen.dart';
+import 'package:tampay/view/screens/dashboard/buy/buy_crypto_asset_screen.dart';
 import 'package:tampay/view/screens/dashboard/sell%20asset/select_bank_screen.dart';
 
 class ExchangeScreen extends ConsumerStatefulWidget {
@@ -174,13 +176,41 @@ class ExchangeScreenTradingAssets extends ConsumerWidget {
         (cryptoListRateIndex) {
           CryptoRatesModel cryptoCoins =
               onboardingProvider.tPayCryptoRatesAtBuyingOrSelling(index)[cryptoListRateIndex];
-        
+
           return GestureDetector(
-            onTap: () {
+            onTap: () async {
               if (index == 2) {
                 navigatePush(context, const SelectBankScreen());
                 dashProvider.getCrptoAcronymAndName(
                     acronym: cryptoCoins.cryptoAncronym, name: cryptoCoins.crypto);
+              } else {
+                dashProvider.getCrptoAcronymAndName(
+                    acronym: cryptoCoins.cryptoAncronym, name: cryptoCoins.crypto);
+                await showModalBottomSheet(
+                  context: context,
+                  builder: (context) => BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                    child: TPayDefaultPopUp(
+                      height: 320,
+                      action: Column(
+                        children: [
+                          TextView(
+                            text: "Select Network",
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.spMin,
+                          ),
+                          Gap(30.h),
+                          Column(
+                            children: List.generate(
+                              3,
+                              (index) => NetworkType(themeMode: themeMode, theme: theme),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               }
             },
             child: Container(
@@ -229,6 +259,86 @@ class ExchangeScreenTradingAssets extends ConsumerWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class NetworkType extends StatelessWidget {
+  const NetworkType({
+    super.key,
+    required this.themeMode,
+    required this.theme,
+  });
+
+  final ThemeMode themeMode;
+  final ThemeData theme;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        navigatePush(context, const BuyCryptoAssetScreen());
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 30.h),
+        color: AppColors.kTransparent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      width: 32.w,
+                      height: 32.h,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.kTealBreeze,
+                      ),
+                      child: Center(
+                        child: ImageView.asset(
+                          AppImages.tronIcon,
+                          width: 20.w,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 20,
+                      top: 20,
+                      child: ImageView.asset(
+                        AppImages.solanaLogo,
+                        width: 10.w,
+                        height: 10.h,
+                      ),
+                    )
+                  ],
+                ),
+                Gap(3.w),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextView(
+                      text: "TRC 20",
+                      fontSize: 14.spMin,
+                    ),
+                    TextView(
+                      text: "5 minutes estimated time",
+                      color: themeMode == ThemeMode.light ? AppColors.kGrey500 : AppColors.kGrey400,
+                    )
+                  ],
+                )
+              ],
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 20.spMin,
+              color: theme.colorScheme.primary,
+            ),
+          ],
+        ),
       ),
     );
   }
