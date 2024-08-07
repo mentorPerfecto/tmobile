@@ -5,6 +5,7 @@ import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
+import 'package:tampay/view/screens/dashboard/buy/crypto_asset_final_purchase_screen.dart';
 import '../../../../src/components.dart';
 
 class BuyCryptoAssetScreen extends ConsumerStatefulWidget {
@@ -37,39 +38,60 @@ class _BuyCryptoAssetScreenState extends ConsumerState<BuyCryptoAssetScreen> {
       body: XResponsiveWrap.mobile(
         onRefresh: () => buySectionProvider.getCryptoCoins(),
         children: [
-          SingleChildScrollView(
-            padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 15.w),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.0.w, vertical: 20.h),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                WalletAddress(theme: theme, themeMode: themeMode),
-                Gap(25.h),
-                const AmountYouWillPayInNaira(),
-                Gap(20.h),
+                SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      WalletAddress(theme: theme, themeMode: themeMode),
+                      Gap(25.h),
+                      const AmountYouWillPayInNaira(),
+                      Gap(20.h),
+                      Align(
+                        alignment: Alignment.center,
+                        child: ImageView.asset(
+                          AppImages.squareArrowIcon,
+                          width: 24.w,
+                          height: 24.h,
+                        ),
+                      ),
+                      Gap(20.h),
+                      CustomTextField(
+                        controller: dashboardProvider.cryptoAssetController,
+                        onChanged: (p0) => dashboardProvider.setBuyCryptoAssetButtonState(),
+                        trailing: TextView(
+                          text: "0.000000000",
+                          fontSize: 14.spMin,
+                          color: AppColors.kGrey500,
+                        ),
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.end,
+                        fieldLabel: "You'll receive (${DummyData.cryptoAbbreviation})",
+                        prefixIcon: ImageView.asset(
+                          AppImages.tronCircleIcon,
+                          width: 15.w,
+                          height: 15.h,
+                          scale: 4,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Gap(100.h),
                 Align(
-                  alignment: Alignment.center,
-                  child: ImageView.asset(
-                    AppImages.squareArrowIcon,
-                    width: 24.w,
-                    height: 24.h,
+                  alignment: AlignmentDirectional.bottomEnd,
+                  child: DefaultButtonMain(
+                    color: AppColors.kPrimary1,
+                    text: dashboardProvider.buyCryptoAssetButtonState.text,
+                    buttonState: dashboardProvider.buyCryptoAssetButtonState.buttonState,
+                    onPressed: () {
+                      ///`validate wallet address text field`
+                      navigatePush(context, const CryptoAssetFinalPurchaseScreen());
+                    },
                   ),
-                ),
-                Gap(20.h),
-                CustomTextField(
-                  fieldLabel: "You'll receive (${DummyData.cryptoAbbreviation})",
-                  prefixIcon: ImageView.asset(
-                    AppImages.tronCircleIcon,
-                    width: 15.w,
-                    height: 15.h,
-                    scale: 4,
-                  ),
-                  showSuffixText: true,
-                  suffixText: "0.000000000",
-                ),
-                Gap(80.h),
-                DefaultButtonMain(
-                  text: dashboardProvider.buyCryptoAssetButtonState.text,
-                  buttonState: dashboardProvider.buyCryptoAssetButtonState.buttonState,
                 )
               ],
             ),
@@ -80,17 +102,22 @@ class _BuyCryptoAssetScreenState extends ConsumerState<BuyCryptoAssetScreen> {
   }
 }
 
-class AmountYouWillPayInNaira extends StatelessWidget {
+class AmountYouWillPayInNaira extends ConsumerWidget {
   const AmountYouWillPayInNaira({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var dashProvider = ref.watch(dashboardViewModel);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomTextField(
+          controller: dashProvider.amountToPayInNairaController,
+          onChanged: (p0) => dashProvider.setBuyCryptoAssetButtonState(),
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.end,
           fieldLabel: "You'll pay (NGN)",
           prefixIcon: ImageView.asset(
             AppImages.countryIcon,
@@ -98,7 +125,6 @@ class AmountYouWillPayInNaira extends StatelessWidget {
             height: 15.h,
             scale: 4,
           ),
-          showSuffixText: true,
           suffixText: "NGN 0",
         ),
         Gap(5.h),
@@ -112,7 +138,7 @@ class AmountYouWillPayInNaira extends StatelessWidget {
   }
 }
 
-class WalletAddress extends StatelessWidget {
+class WalletAddress extends ConsumerWidget {
   const WalletAddress({
     super.key,
     required this.theme,
@@ -123,29 +149,35 @@ class WalletAddress extends StatelessWidget {
   final ThemeMode themeMode;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var dashProvider = ref.watch(dashboardViewModel);
     return Column(
       children: [
-        CustomTextField(
-          fieldLabelActionWidget: Row(
-            children: [
-              ImageView.asset(
-                AppImages.notebookIcon,
-                width: 20.w,
-                height: 20.h,
-                color: theme.colorScheme.primary,
-              ),
-              Gap(25.w),
-              ImageView.asset(
-                AppImages.scanIcon,
-                width: 20.w,
-                height: 20.h,
-                color: theme.colorScheme.primary,
-              ),
-            ],
+        Form(
+          key: dashProvider.walletAddressFormKey,
+          child: CustomTextField(
+            controller: dashProvider.walletAddressController,
+            onChanged: (p0) => dashProvider.setBuyCryptoAssetButtonState(),
+            fieldLabelActionWidget: Row(
+              children: [
+                ImageView.asset(
+                  AppImages.notebookIcon,
+                  width: 20.w,
+                  height: 20.h,
+                  color: theme.colorScheme.primary,
+                ),
+                Gap(25.w),
+                ImageView.asset(
+                  AppImages.scanIcon,
+                  width: 20.w,
+                  height: 20.h,
+                  color: theme.colorScheme.primary,
+                ),
+              ],
+            ),
+            fieldLabel: "Address",
+            hint: "Enter Wallet Address",
           ),
-          fieldLabel: "Address",
-          hint: "Enter Wallet Address",
         ),
         Gap(10.h),
         Container(
@@ -197,93 +229,6 @@ class WalletAddress extends StatelessWidget {
           ),
         )
       ],
-    );
-  }
-}
-
-class CryptoCoinView extends StatelessWidget {
-  const CryptoCoinView(
-      {super.key,
-      required this.cryptoSymbol,
-      required this.cryptoName,
-      required this.cryptoAcronym,
-      required this.aCryptoCoin,
-      required this.onPressed});
-
-  final String cryptoSymbol;
-  final String cryptoName;
-  final String cryptoAcronym;
-  final CryptoCoinResponse aCryptoCoin;
-  final VoidCallback onPressed;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          InkWell(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: onPressed,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 25.h,
-                horizontal: 15.w,
-              ),
-              child: GestureDetector(
-                onTap: onPressed,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 112.w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 32.h,
-                            width: 32.w,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: AssetImage(cryptoSymbol),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              TextView(
-                                text: cryptoName,
-                                fontSize: 14.spMin,
-                              ),
-                              Gap(3.h),
-                              TextView(
-                                text: cryptoAcronym,
-                                color: AppColors.kCardText,
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    TextView(
-                      text:
-                          "₦${UtilFunctions.formatAmount(aCryptoCoin.rate?.toDouble() ?? 0.0)}/$dollarSign",
-                      fontSize: 14.spMin,
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          const TampayDivider(),
-        ],
-      ),
     );
   }
 }

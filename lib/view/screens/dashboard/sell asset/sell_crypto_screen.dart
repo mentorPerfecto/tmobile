@@ -8,6 +8,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/components/a_user_bank_container.dart';
+import 'package:tampay/view/components/exchange_screen_component/note_card.dart';
 
 class SellCryptoScreen extends ConsumerStatefulWidget {
   SellCryptoScreen({Key? key}) : super(key: key);
@@ -81,7 +82,15 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
               ],
             ),
             Gap(20.h),
-            SomethingToNote(themeMode: themeMode),
+            SomethingToNote(
+              thingsToNote: TextView(
+                text:
+                    "Please ensure to send only ${DummyData.crypto} (${DummyData.cryptoAbbreviation})"
+                    " to this address or you may lose your funds.",
+                color: AppColors.kWhite,
+                maxLines: 2,
+              ),
+            ),
             Gap(20.h),
             DefaultButtonMain(
               color: AppColors.kPrimary1,
@@ -120,46 +129,7 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
   }
 }
 
-class SomethingToNote extends StatelessWidget {
-  const SomethingToNote({
-    super.key,
-    required this.themeMode,
-  });
 
-  final ThemeMode themeMode;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 18.h,
-        horizontal: 16.w,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.r),
-        color: themeMode == ThemeMode.light ? AppColors.kSunFlower : AppColors.kWarning500,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          TextView(
-            text: "Note",
-            color: AppColors.kWhite,
-            fontSize: 14.spMin,
-          ),
-          Gap(15.h),
-          TextView(
-            text: "Please ensure to send only ${DummyData.crypto} (${DummyData.cryptoAbbreviation})"
-                " to this address or you may lose your funds.",
-            color: AppColors.kWhite,
-            maxLines: 2,
-          )
-        ],
-      ),
-    );
-  }
-}
 
 class WalletAddress extends StatelessWidget {
   const WalletAddress({
