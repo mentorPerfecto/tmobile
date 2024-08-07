@@ -17,6 +17,15 @@ class PreferencesScreen extends ConsumerStatefulWidget {
 }
 
 class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
+  late SharedPreferences prefs;
+  @override
+  void initState()  {
+
+    Future.microtask(() async {
+      prefs = await SharedPreferences.getInstance();
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
    var settingsProvider = ref.watch(settingsViewModel);
@@ -96,6 +105,7 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
                                 ListenableBuilder(
                                     listenable: themeProvider,
                                     builder: (BuildContext context, Widget? child) {
+                                      DummyData.appTheme = prefs.getString("AppTheme");
                                       return  ListView.builder( shrinkWrap: true,
                                           physics: const NeverScrollableScrollPhysics(),
                                           padding: EdgeInsets.zero,
@@ -105,7 +115,7 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
                                             return  GestureDetector(
                                               onTap: () async {
                                                 String setTheme = themeProvider.selectAppTheme(themeProvider.modes[index].toString());
-                                                SharedPreferences prefs = await SharedPreferences.getInstance();
+
                                                if(setTheme == 'System Mode'){
                                                  themeProvider. setThemeMode( ThemeMode.system == ThemeMode.dark ?  ThemeMode.dark :  ThemeMode.light);
                                                  prefs.setBool('isDarkTheme', ThemeMode.system == ThemeMode.dark);
