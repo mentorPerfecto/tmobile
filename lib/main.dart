@@ -68,7 +68,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       },
 
 
-      child: const AccountUpgradeScreen(),
+      child: const SplashScreen(),
     );
   }
 }

@@ -13,14 +13,13 @@ class AppBars {
     void Function()? callback,
     bool isVisible = true,
     bool bottomVisible = true,
-    Color? backGroundColor,
   
     Color? titleColor,
     bool? iWantToEditAProperty,
   }) {
     ThemeData theme = Theme.of(context);
     return AppBar(
-      backgroundColor: backGroundColor ?? theme.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       surfaceTintColor: Colors.transparent,
       leadingWidth: 90.w,
       automaticallyImplyLeading: false,
