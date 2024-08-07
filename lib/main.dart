@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rebirth/rebirth.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/screens.dart';
+import 'package:tampay/view/screens/dashboard/buy/account_upgrade_screen.dart';
 
 import 'package:tampay/view_model/theme_view_model.dart';
 import 'package:smile_id/smile_id.dart';
@@ -67,7 +68,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       },
 
 
-      child: const SplashScreen(),
+      child: const AccountUpgradeScreen(),
     );
   }
 }
