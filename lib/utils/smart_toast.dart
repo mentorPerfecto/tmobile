@@ -90,7 +90,7 @@ class _AlertBodyState extends State<AlertBody> with SingleTickerProviderStateMix
 
   init(){
     _animationController = AnimationController(
-      duration: Duration(seconds: 4),
+      duration: const Duration(seconds: 4),
       vsync: this,
     );
 

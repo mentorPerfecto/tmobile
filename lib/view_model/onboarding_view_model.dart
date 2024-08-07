@@ -3,15 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jwt_decode/jwt_decode.dart';
-import 'package:rebirth/rebirth.dart';
 import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/src/config.dart';
-import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
 
 import '../model/local/onboarding_model.dart';
 
@@ -27,10 +23,10 @@ class OnboardingViewModel extends ChangeNotifier {
   List<CryptoRatesModel> _cryptPayBuyingRates = [];
   List<CryptoRatesModel> _cryptPaySellingRates = [];
   final List<String> _cryptoCoinImages = [
-    AppImages.btcLogo,
-    AppImages.ethLogo,
-    AppImages.usdtLogo,
-    AppImages.solanaLogo,
+    AppImages.tPayAsset,
+    AppImages.tPayAsset,
+    AppImages.tPayAsset,
+    AppImages.tPayAsset,
   ];
   List<String> get cryptoCoinImages => _cryptoCoinImages;
   void onPageChange({required int newPage}) {

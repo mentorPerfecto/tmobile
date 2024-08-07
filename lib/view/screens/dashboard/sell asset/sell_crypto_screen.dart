@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
@@ -39,12 +40,39 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
                 color: themeMode == ThemeMode.dark ? AppColors.kOnyxBlack : AppColors.kSilverMist,
               ),
               child: Center(
-                child: ImageView.asset(
-                  AppImages.barScanCode,
-                  width: 177.w,
+                child:
+                SizedBox(
+                  width:177.w,
                   height: 177.h,
-                  color: themeMode == ThemeMode.dark ? AppColors.kGrey200 : AppColors.kWhite,
+                  child: Center(
+                    child: QrImageView(
+                      data: "message",
+                      version: QrVersions.auto,
+                      eyeStyle: const QrEyeStyle(
+                        eyeShape: QrEyeShape.square,
+                        color: AppColors.kPrimary1,
+                        // borderRadius: 10,
+                      ),
+                      dataModuleStyle: const QrDataModuleStyle(
+                        dataModuleShape: QrDataModuleShape.square,
+                        color: AppColors.kPrimary1,
+                        // borderRadius: 5,
+                        // roundedOutsideCorners: true,
+                      ),
+                      embeddedImage: const AssetImage('assets/images/4.0x/logo_yakka_transparent.png'),
+                      embeddedImageStyle: const QrEmbeddedImageStyle(
+                        size: Size.square(40),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
+                // ImageView.asset(
+                //   AppImages.barScanCode,
+                //   width: 177.w,
+                //   height: 177.h,
+                //   color: themeMode == ThemeMode.dark ? AppColors.kGrey200 : AppColors.kWhite,
+                // ),
               ),
             ),
             Gap(20.h),
@@ -104,7 +132,7 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
                     WalletActionButton(
                       themeMode: themeMode,
                       onPressed: () {},
-                      actionImage: AppImages.downloadIcon,
+                      actionImage: AppImages.shareIcon,
                     ),
                   ],
                 ),

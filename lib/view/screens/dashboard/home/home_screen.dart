@@ -151,7 +151,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               Gap(10.w),
                               GestureDetector(
                                 onTap: walletProvider.toggleWalletBal ,
-                                child: Icon(
+                                child: walletProvider.showWalletBal  ? Image.asset(
+                                  AppImages.eyeSlashIcon,
+                                  color: AppColors.kWhite,
+                                  width: 14.w,
+                                ):  Icon(
                                   Icons.visibility_outlined,
                                   color: AppColors.kWhite,
                                   size: 14.spMin,
@@ -185,7 +189,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 children: [
                   SellBuyMore(
                     id: sell,
-                    icon: AppImages.arrowDownIcon,
+                    icon: AppImages.arrowUpIcon,
                     backgroundColor: themeMode == ThemeMode.light
                         ? AppColors.kPalePeriwinkle
                         : AppColors.kCharcoalGray,
@@ -193,7 +197,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   const SellBuyMore(
                     id: buy,
-                    icon: AppImages.arrowUpIcon,
+                    icon: AppImages.arrowDownIcon,
                     backgroundColor: AppColors.kPrimary1,
                     iconColor: AppColors.kWhite,
                   ),
@@ -214,7 +218,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             padding: EdgeInsets.only(top: 30.h, bottom: 15.h),
             child: GestureDetector(
               onTap: () async {
-                dashProvider.setPageIndex(selectedPageIndex: 2);
+               navigatePush(context, const ExchangeScreen());
               },
               child: Padding(
                 padding:  EdgeInsets.symmetric(horizontal:120.w),
@@ -299,7 +303,7 @@ class SellBuyMore extends ConsumerWidget {
                         title: "Bank Details",
                       ),
                       ListItems(
-                        icon: AppImages.bankIcon,
+                        icon: AppImages.moonIcon,
                         onPressed: () {},
                         subText:  "Select the feel of your app",
                         title: "Dark Theme",
@@ -315,11 +319,13 @@ class SellBuyMore extends ConsumerWidget {
 
         } else{
           if(id == sell){
-            dashProvider.setPageIndex(selectedPageIndex: 1);
             dashProvider.setExchangePageIndex(selectedPageIndex: 1);
+            navigatePush(context, const ExchangeScreen());
+
           } else {
-            dashProvider.setPageIndex(selectedPageIndex: 1);
             dashProvider.setExchangePageIndex(selectedPageIndex: 0);
+              navigatePush(context, const ExchangeScreen());
+
           }
         }
       },
@@ -335,8 +341,8 @@ class SellBuyMore extends ConsumerWidget {
             child: Center(
               child: ImageView.asset(
                 icon,
-                width: 16.w,
-                height: 10.h,
+                width: 25.w,
+                height: 25.h,
                 color: iconColor,
               ),
             ),

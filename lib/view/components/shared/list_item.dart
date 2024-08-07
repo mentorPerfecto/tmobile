@@ -5,10 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
-import 'package:tampay/view_model/theme_view_model.dart';
 
 class ListItems extends ConsumerWidget {
-  ListItems({
+  const ListItems({
     super.key,
     required this.icon,
     required this.onPressed,
@@ -27,7 +26,7 @@ class ListItems extends ConsumerWidget {
   final bool isToggleChange;
   final bool isThemeChange;
   final bool isLogout;
-  bool value;
+  final bool value;
   final VoidCallback onPressed;
   final  ValueChanged<bool>? onChanged;
   @override

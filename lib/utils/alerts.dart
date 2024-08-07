@@ -765,7 +765,7 @@ Future<dynamic> addPhotosFromCameraOrGalleryDialog(
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(
+                  GestureDetector(
                     onTap: galleryOnTap,
                     child: Column(
                       children: [
@@ -787,7 +787,7 @@ Future<dynamic> addPhotosFromCameraOrGalleryDialog(
                     ),
                   ),
                   const Gap(15),
-                  InkWell(
+                  GestureDetector(
                     onTap: cameraOnTap,
                     child: Column(
                       children: [
@@ -1561,7 +1561,7 @@ class _AddBankBottomModalSheetState
         // Check if it's the last item
         bool isLastItem = index == 1;
 
-        return InkWell(
+        return GestureDetector(
           onTap: () {
             navigateBack(context);
             sellCoinBottomModalSheetWidget(context);

@@ -48,7 +48,7 @@ class _AddBankDetailsScreenState extends ConsumerState<AddBankDetailsScreen> {
      
         trailing: Padding(
           padding: const EdgeInsets.only(right: 15.0),
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {},
             child: TextView(
               text: skip,

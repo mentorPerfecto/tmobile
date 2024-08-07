@@ -1,5 +1,5 @@
 enum ProfileImageType {
-  user, bank
+  user, bank, asset,
 }
 
 enum ButtonState {

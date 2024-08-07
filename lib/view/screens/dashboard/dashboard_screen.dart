@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,10 +8,6 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/dashboard/buy/buy_screen.dart';
-import 'package:tampay/view/screens/dashboard/exchange/exchange_screen.dart';
-import 'package:tampay/view/screens/dashboard/profile/profile_screen.dart';
-import 'package:tampay/view/screens/dashboard/sell%20asset/select_bank_screen.dart';
 
 class DashBoardScreen extends ConsumerStatefulWidget {
   final int? setIndex;
@@ -48,7 +43,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
   // int profileProvider.currentIndex = 0;
   List<Widget> dashboardPages = [
     const HomeScreen(),
-    const ExchangeScreen(),
+    TransactionScreen(),
     const ProfileScreen(),
   ];
 

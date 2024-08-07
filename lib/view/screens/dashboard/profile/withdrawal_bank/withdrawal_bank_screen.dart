@@ -83,7 +83,7 @@ class _WithdrawalBankScreenState extends ConsumerState<WithdrawalBankScreen> {
                               itemBuilder: (context, index) {
                                 var accountItem = profileProvider
                                     .landLordWithdrawalBanks[index];
-                                return InkWell(
+                                return GestureDetector(
                                   onTap: () {
                                     // listingProvider.deleteListing(context, id: widget.id);
                                     displayDeleteConfirmationMessageAlert(

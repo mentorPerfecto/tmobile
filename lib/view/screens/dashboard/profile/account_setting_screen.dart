@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/src/components.dart';
@@ -81,8 +80,8 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                       },
                     );
                   },
-                  child: const Icon(
-                    CupertinoIcons.delete,
+                  child: Image.asset(
+                    AppImages.deleteLogo,
                     color: AppColors.kErrorPrimary,
                   ),
                 ),
@@ -310,7 +309,7 @@ class tampayTenantIDDetails extends StatelessWidget {
                           Gap(
                             5.w,
                           ),
-                          // InkWell(
+                          // GestureDetector(
                           //   onTap: onTap,
                           //   child: Image.asset(
                           //     AppImages.copyTextIcon,

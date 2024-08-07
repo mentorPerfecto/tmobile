@@ -194,7 +194,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                                 color: AppColors.kGrey400,
                               ),
                               Gap(5.w),
-                              InkWell(
+                              GestureDetector(
                                 onTap: () {
                                   dashViewModel.copyToClipboard('256521T5841sgasga5514sjsg');
                                 },
@@ -239,7 +239,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                               color: AppColors.kGrey400,
                             ),
                             Gap(5.w),
-                            InkWell(
+                            GestureDetector(
                               onTap: () {
                                 dashViewModel.copyToClipboard('Fidelity Bank');
                               },
@@ -270,7 +270,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                               color: AppColors.kGrey400,
                             ),
                             Gap(5.w),
-                            InkWell(
+                            GestureDetector(
                               onTap: () {
                                 dashViewModel.copyToClipboard('0550241576');
                               },
@@ -301,7 +301,7 @@ class _BuyCoinScreenState extends ConsumerState<BuyCoinScreen> {
                               color: AppColors.kGrey400,
                             ),
                             Gap(5.w),
-                            InkWell(
+                            GestureDetector(
                               onTap: () {
                                 dashViewModel.copyToClipboard('Pius Moses');
                               },

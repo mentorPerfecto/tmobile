@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tampay/src/components.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
@@ -89,19 +90,18 @@ class ProfileImage extends ConsumerWidget {
                       fontSize: fontSize,
                     )),
               )
-                  : Container(
-                height: height.h,
-                width: width.h,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.kGrey300,
-                ),
-                child: Center(
-                    child: Icon(
-                      Icons.person,
-                      color: AppColors.kGrey600,
-                      size:  height.h,
-                    )),
+                  : imageType == ProfileImageType.user ? ImageView.asset(
+                AppImages.dummyImage,
+                width: 36.w,
+                height: 36.h,
+              )  :  imageType == ProfileImageType.asset ? ImageView.asset(
+                AppImages.tPayAsset,
+                width: 36.w, //
+                height: 36.h,
+              )  :  ImageView.asset(
+                AppImages.bankIcon,
+                width: 36.w,
+                height: 36.h,
               );
             },
             // placeholder: (context, url) => SvgPicture.asset(

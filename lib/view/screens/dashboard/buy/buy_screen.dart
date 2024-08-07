@@ -115,9 +115,9 @@ class CryptoCoinView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InkWell(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
+          GestureDetector(
+            // splashColor: Colors.transparent,
+            // highlightColor: Colors.transparent,
             onTap: onPressed,
             child: Padding(
               padding: EdgeInsets.symmetric(

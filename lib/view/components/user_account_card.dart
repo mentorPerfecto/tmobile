@@ -44,7 +44,7 @@ class UserAccountCard extends ConsumerWidget {
     var themeMode = ref.watch(themeViewModel).themeMode;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: InkWell(
+      child: GestureDetector(
         onTap: entireWidgetOnTap,
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 4.0),
@@ -108,7 +108,7 @@ class UserAccountCard extends ConsumerWidget {
                     ),
                   ),
                   Expanded(
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: onTap,
                       child: trailing ?? const SizedBox.shrink(),
                     ),

@@ -26,7 +26,7 @@ class AppBars {
       automaticallyImplyLeading: false,
       leading: Visibility(
         visible: isVisible,
-        child: InkWell(
+        child: GestureDetector(
             onTap: () {
               navigateBack(context);
             },

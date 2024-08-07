@@ -79,7 +79,7 @@ class _AddBankScreenState extends ConsumerState<AddBankScreen> {
             ),
           ],
         ),
-        InkWell(
+        GestureDetector(
             onTap: () {},
             child: ImageView.asset(
               AppImages.deleteLogo,

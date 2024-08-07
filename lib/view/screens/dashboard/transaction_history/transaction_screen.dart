@@ -5,7 +5,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/utils.dart';
 
 class TransactionScreen extends ConsumerWidget {
-  TransactionScreen({Key? key}) : super(key: key);
+  TransactionScreen({super.key});
   final List<TransactionStatus> _transactions = [
     TransactionStatus(
       price: "₦280,500",

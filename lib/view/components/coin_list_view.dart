@@ -18,7 +18,7 @@ class CoinListView extends ConsumerStatefulWidget {
 class _CoinListViewState extends ConsumerState<CoinListView> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: widget.onTap,
       child: Padding(
         padding: EdgeInsets.symmetric(

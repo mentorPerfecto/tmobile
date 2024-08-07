@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -68,7 +67,7 @@ class _FillBankDetailsScreenState extends ConsumerState<FillBankDetailsScreen> {
                   SizedBox(
                     height: 8.h,
                   ),
-                  TextView(
+                  const TextView(
                     text: 'Daniel Mason Ovie',
                     color: AppColors.kCardText,
                   )

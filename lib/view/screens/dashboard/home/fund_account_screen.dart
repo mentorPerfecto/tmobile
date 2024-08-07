@@ -29,7 +29,7 @@
 //                 child: Row(
 //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                   children: [
-//                     InkWell(
+//                     GestureDetector(
 //                       onTap: () => navigateBack(context),
 //                       child: Icon(
 //                         Icons.arrow_back_ios,

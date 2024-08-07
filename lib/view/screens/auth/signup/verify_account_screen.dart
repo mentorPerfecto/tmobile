@@ -28,7 +28,7 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
    
         trailing: Padding(
           padding: const EdgeInsets.only(right: 15.0),
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {
               navigatePush(context, const FacialVerificationScreen());
             },

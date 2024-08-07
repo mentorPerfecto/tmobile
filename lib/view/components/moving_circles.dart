@@ -1,8 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:tampay/config/app_colors.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/utils/blur.dart';
 

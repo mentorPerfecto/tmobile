@@ -113,12 +113,12 @@ class SystemNotificationTabView extends ConsumerWidget {
            subtitle:  Column(
              crossAxisAlignment: CrossAxisAlignment.start,
              children: [
-               Gap(10),
+               const Gap(10),
                TextView(text: 'A sign-in from Lagos Nigeria, 19:32:323:00 on an '
                    'android device was detected. Make sure it was you. If not you, '
                    'contact support as soon as possible',
                maxLines: 5, fontSize: 12.spMin,),
-               Gap(10),
+               const Gap(10),
                TextView(text: '12:45PM', fontSize: 12.spMin,  color: AppColors.kGrey500,),
              ],
            ),

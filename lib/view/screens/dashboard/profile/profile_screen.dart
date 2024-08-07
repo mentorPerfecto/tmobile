@@ -11,8 +11,6 @@ import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/dashboard/profile/preferences_screen.dart';
-
 
 
 
@@ -79,7 +77,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             ListItems(
               title: bankDetails,
               subText: 'View your payout bank accounts',
-              icon: AppImages.bankDetailsLogo,
+              icon: AppImages.bankIcon,
               onPressed: () {
                 navigatePush(context, const AddBankScreen());
               },
@@ -90,7 +88,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               subText: 'Earn commissions for inviting friends',
               icon: AppImages.securityLogo,
               onPressed: () {
-                // navigatePush(context, const CustomerSupportScreen());
+                navigatePush(context, const ReferAndEarnScreen());
               },
             ),
 
@@ -142,7 +140,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                             return BackdropFilter(
                               filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3 ),
                               child: TPayDefaultProgressStatusPopUp(
-                                progressStatusLogo: AppImages.inviteYourFriendsLogo,
+                                progressStatusLogo: AppImages.infoIcon,
                                 height: 300, progressStatusLogoColor: AppColors.kGrey,
                                 progressStatusTextTitle: logoutText,
                                 progressStatusTextBody: sureYouWntToLogout,
@@ -303,7 +301,7 @@ class UserAccountDetails extends ConsumerWidget {
 //   @override
 //   Widget build(BuildContext context, WidgetRef ref) {
 //     var themeProvider = ref.watch(themeViewModel).themeMode;
-//     return InkWell(
+//     return GestureDetector(
 //       onTap: onTap,
 //       child: Padding(
 //         padding:  EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
@@ -378,7 +376,7 @@ class UserAccountDetails extends ConsumerWidget {
 //   @override
 //   Widget build(BuildContext context) {
 //     var themeProvider = ref.watch(themeViewModel);
-//     return InkWell(
+//     return GestureDetector(
 //       onTap: widget.onTap,
 //       child: SizedBox(
 //         height: 40.h,

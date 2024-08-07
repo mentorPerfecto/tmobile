@@ -36,7 +36,7 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  Gap(30),
+                  const Gap(30),
                   ListItems(
                     icon: AppImages.friendsIcon,
                     onPressed: () {},

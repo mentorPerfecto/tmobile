@@ -170,7 +170,7 @@ class PasswordValidatedFieldsState
                 // fillColor: widget.fillColor ?? theme.cardColor,
                 enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(widget.borderRadius),
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: AppColors.kGrey300
                   ),
                 ),

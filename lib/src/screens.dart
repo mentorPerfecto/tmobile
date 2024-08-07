@@ -19,13 +19,15 @@ export 'package:tampay/view/screens/auth/auth_success_screen.dart';
 export 'package:tampay/view/screens/auth/signin_forgot_password/create_new_password_screen.dart';
 export 'package:tampay/view/screens/auth/signup/verify_account_screen.dart';
 export 'package:tampay/view/screens/dashboard/buy/enter_amount_screen.dart';
-export 'package:tampay/view/screens/dashboard/verification/verify_account_level_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile/bank_details/add_bank_screen.dart';
 export 'package:tampay/view/screens/dashboard/notification_screen.dart';
-export 'package:tampay/view/screens/dashboard/refer_and_earn_screen.dart';
+export 'package:tampay/view/screens/dashboard/profile/referrals/refer_and_earn_screen.dart';
 export 'package:tampay/view/screens/dashboard/transaction_history/transaction_screen.dart';
 export 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
 export 'package:tampay/view/screens/auth/signup/facial_verification_screen.dart';
 export 'package:tampay/view/screens/sticky.dart';
 export 'package:tampay/view/screens/auth/signup/account_verified_confirmation_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile/bank_details/fill_bank_details_screen.dart';
+export 'package:tampay/view/screens/dashboard/profile/preferences/preferences_screen.dart';
+export 'package:tampay/view/screens/dashboard/profile/verification/verify_account_level_screen.dart';
+
