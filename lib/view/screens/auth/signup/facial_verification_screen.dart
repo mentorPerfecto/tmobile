@@ -40,7 +40,7 @@ class _FacialVerificationScreenState extends State<FacialVerificationScreen> {
               ),
             ),
            // Gap(5),
-            SizedBox(height:  640.h,
+            SizedBox(height:  620.h,
               child: SmileIDSmartSelfieEnrollment(
                 onSuccess: (String? result) {
                   // Your success handling logic

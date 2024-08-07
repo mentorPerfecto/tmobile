@@ -60,8 +60,8 @@ class ProfileViewModel extends ChangeNotifier {
 
   List<File?> driversLicenseFrontAndBckImage = [];
   List<File?> imageFrontAndBckImage = [];
-  List<LandlordBankData> _landLordWithdrawalBanks = [];
-  List<LandlordBankData> get landLordWithdrawalBanks => _landLordWithdrawalBanks;
+  List<dynamic> _landLordWithdrawalBanks = [];
+  List<dynamic> get landLordWithdrawalBanks => _landLordWithdrawalBanks;
   bool _isFetchingBanks = false;
 
   CustomButtonState _buttonSaveBankDetailsState = CustomButtonState(
@@ -432,8 +432,7 @@ class ProfileViewModel extends ChangeNotifier {
           final decodedResponse = jsonDecode(value.toString());
 
           if (decodedResponse['status'].toString() == 'true') {
-            _landLordWithdrawalBanks =
-                (decodedResponse['data'] as List).map((e) => LandlordBankData.fromJson(e)).toList();
+          //  _landLordWithdrawalBanks = (decodedResponse['data'] as List).map((e) => LandlordBankData.fromJson(e)).toList();
 
             _isFetchingLandlordBanks = false;
 

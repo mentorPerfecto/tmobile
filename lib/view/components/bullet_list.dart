@@ -3,8 +3,11 @@ import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 
 class BulletList extends StatelessWidget {
-  const BulletList({Key? key, required this.list}) : super(key: key);
+
   final List<dynamic>? list;
+  final bool isCompleted;
+
+  const BulletList({super.key, this.list, required this.isCompleted});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,25 +15,24 @@ class BulletList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: list!.map<Widget>((listDetails) {
-          return SizedBox(
-            height: 25.h,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextView(
-                  text: "\u25AB",
-                  fontSize: 14.spMin,
-                  height: 1.5,
-                ),
-                Gap(5.w),
-                Expanded(
-                  child: TextView(
-                    text: listDetails,
-                    softRap: true,
-                    fontSize: 14.spMin,
-                  ),
-                )
-              ],
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: SizedBox(
+              height: 25.h,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  isCompleted ? const Icon(Icons.check_circle_outline,  color: AppColors.kGreenLoader,)
+                  : const Icon(Icons.remove_circle_outline, color: AppColors.kGrey600,),
+                  Gap(5.w),
+                  Expanded(
+                    child: TextView(
+                      text: listDetails,
+                      softRap: true, color: AppColors.kGrey600,
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         }).toList(),

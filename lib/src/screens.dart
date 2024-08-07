@@ -21,8 +21,6 @@ export 'package:tampay/view/screens/auth/signup/verify_account_screen.dart';
 export 'package:tampay/view/screens/dashboard/buy/enter_amount_screen.dart';
 export 'package:tampay/view/screens/dashboard/verification/verify_account_level_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile/bank_details/add_bank_screen.dart';
-export 'package:tampay/view/screens/dashboard/verification/verification_level_2/dob_verification_screen.dart';
-export 'package:tampay/view/screens/dashboard/verification/verification_level_2/bvn_verification_screen.dart';
 export 'package:tampay/view/screens/dashboard/notification_screen.dart';
 export 'package:tampay/view/screens/dashboard/refer_and_earn_screen.dart';
 export 'package:tampay/view/screens/dashboard/transaction_history/transaction_screen.dart';

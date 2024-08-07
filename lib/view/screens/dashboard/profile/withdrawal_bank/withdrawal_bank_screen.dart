@@ -40,7 +40,7 @@ class _WithdrawalBankScreenState extends ConsumerState<WithdrawalBankScreen> {
             appBar: AppBars.mainAppBar(
               context,
               text: accountDetailsText,
-          
+
             ),
             body: XResponsiveWrap.mobile(
               onRefresh: () {

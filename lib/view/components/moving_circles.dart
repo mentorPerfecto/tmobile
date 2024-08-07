@@ -76,20 +76,24 @@ class _MovingCirclesState extends State<MovingCircles> with TickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Blur(
-      blur: 20,
+      blur: 30,
       blurColor: AppColors.kTransparent, colorOpacity: 0.75,
       borderRadius: widget.borderRadius ,
       child: SizedBox(height:   widget.height.h,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Align(
-                alignment: Alignment.topLeft,
-                child: AnimatedCircle( height:  widget.height.h/5,  animation: _animation1, color: AppColors.kSeaBlue)),
+            Expanded(
+              child: Align(
+                  alignment: Alignment.topLeft,
+                  child: AnimatedCircle( height:  widget.height.h/5,  animation: _animation1, color: AppColors.kSeaBlue)),
+            ),
             Expanded(child: AnimatedCircle(  height:  widget.height.h/5,  animation: _animation2, color: AppColors.kPrimary1)),
-            Align(
-                alignment: Alignment.bottomRight,
-                child: AnimatedCircle( height:  widget.height.h/5,  animation: _animation3, color: AppColors.kAmber)),
+            Expanded(
+              child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: AnimatedCircle( height:  widget.height.h/5,  animation: _animation3, color: AppColors.kAmber)),
+            ),
             // Align(alignment: Alignment.bottomLeft,
             //     child: AnimatedCircle(animation: _animation1, color:  AppColors.kTurquoise, )),
           ],

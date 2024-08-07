@@ -127,6 +127,7 @@ class AppColors {
   static const kGreenLoader = Color(0xff88C941);
   static const kAsh = Color(0xffE8F0F4);
   // static const kCoolGray = Color(0xff111827);
+  // static const 0xFF009A47 = Color(0xFF009A47);
   static const kWhite400 = Color(0xffF7F7F7);
 
   ///Dark Theme

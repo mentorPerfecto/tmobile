@@ -11,6 +11,7 @@ import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
+import 'package:tampay/view/screens/dashboard/profile/preferences_screen.dart';
 
 
 
@@ -33,6 +34,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       body: SafeArea(
         child: XResponsiveWrap.mobile(
           onRefresh: () => profileProvider.loadData(context),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           // loading: provider.isGettingPersonalListings,
           // loadFailed:  recycleProvider.recycleHistoryResponse!.data == [],
           children: [
@@ -66,56 +68,56 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ProfileItem(
-              title: verifyAccount,
-              subTitle: 'complete account verification',
-              iconPath: AppImages.verifyAccountIcon,
-              onTap: () {
+            ListItems(
+              title: accountUpgrade,
+              subText: 'Complete account verification',
+              icon: AppImages.verifyAccountIcon,
+              onPressed: () {
                 navigatePush(context, const VerifyAccountLevelScreen());
               },
             ),
-            ProfileItem(
+            ListItems(
               title: bankDetails,
-              subTitle: 'View your payout bank accounts',
-              iconPath: AppImages.bankDetailsLogo,
-              onTap: () {
+              subText: 'View your payout bank accounts',
+              icon: AppImages.bankDetailsLogo,
+              onPressed: () {
                 navigatePush(context, const AddBankScreen());
               },
             ),
 
-            ProfileItem(
+            ListItems(
               title: "Referrals",
-              subTitle: 'Earn commissions for inviting friends',
-              iconPath: AppImages.securityLogo,
-              onTap: () {
+              subText: 'Earn commissions for inviting friends',
+              icon: AppImages.securityLogo,
+              onPressed: () {
                 // navigatePush(context, const CustomerSupportScreen());
               },
             ),
 
-            ProfileItem(
+            ListItems(
               title: "Preference",
-              subTitle: 'More Configuration options',
-              iconPath: AppImages.faqsLogo,
-              onTap: () {
-                // navigatePush(context, const AppDetailsScreen());
+              subText: 'More Configuration options',
+              icon: AppImages.faqsLogo,
+              onPressed: () {
+                navigatePush(context, const PreferencesScreen());
               },
             ),
 
-            ProfileItem(
+            ListItems(
               title: securityText,
-              subTitle: 'Protect yourself from intruders',
-              iconPath: AppImages.securityLogo,
-              onTap: () {
+              subText: 'Protect yourself from intruders',
+              icon: AppImages.securityLogo,
+              onPressed: () {
                 // navigatePush(context, const CustomerSupportScreen());
               },
             ),
 
             // divider(),
-            ProfileItem(
+            ListItems(
               title: "Support Center",
-              subTitle: "Reach out to support and FAQs",
-              iconPath: AppImages.helpCenterLogo,
-              onTap: () {
+              subText: "Reach out to support and FAQs",
+              icon: AppImages.helpCenterLogo,
+              onPressed: () {
                 // launchInURL(Uri.parse(ApiConstants().bunchPayWebUrl));
               },
             ),
@@ -128,10 +130,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         color: AppColors.kPrimary1,
                       ),
                     ))
-                : ProfileItem(
+                : ListItems(
                     title: logoutText,
-                    iconPath: AppImages.logOutLogo, isLogout: true,
-                    onTap: () async {
+                    icon: AppImages.logOutLogo, isLogout: true,
+                    onPressed: () async {
                       await showModalBottomSheet(
                           backgroundColor: Colors.transparent,
                           barrierColor: Colors.black38,
@@ -193,7 +195,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       //     themeMode: themeProvider, onTap: () async {
                       //
                       // });
-                    }, subTitle: '',
+                    }, subText: '',
                   ),
             // const SettingsThemeItem(logo: AppImages.btcLogo, title: "Settings")
           ],
@@ -220,144 +222,142 @@ class UserAccountDetails extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var themeProvider = ref.watch(themeViewModel).themeMode;
     var dashViewModel = ref.watch(dashboardViewModel);
-    return Padding(
-      padding:  EdgeInsets.all(15.r),
-      child: Container(
-        width: 460.w,
-        height: 200.h,
-        decoration: BoxDecoration(
-            color:  themeProvider ==ThemeMode.dark?
-            AppColors.kOnyxBlack : AppColors.kLightSilver,
-            borderRadius: BorderRadius.all(Radius.circular(24.r))
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ProfileImage(
-              imageType: ProfileImageType.user,
-              imageUrl: profilePicture,
-              height: 60, width: 60,
-            ),
-            SizedBox(
-              width: 10.w,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextView(
-                  text: name,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-                const Gap(4),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextView(
-                        text: "User ID: $userName",
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                        color: themeProvider ==ThemeMode.dark?
-                        AppColors.kGrey300 : AppColors.kGrey700),
-                    const Gap(5),
-                    GestureDetector(
-                      onTap: (){
-                        dashViewModel.copyToClipboard(userName);
-                      },
-                        child: SizedBox( height:  25.spMin, child: Image.asset(AppImages.copyLogo,
-                        color: themeProvider ==ThemeMode.dark?
-                        AppColors.kGrey300 : AppColors.kGrey700,)))
-                  ],
-                ),
-                const Gap(4),
-                TextView(
-                  text: "Edit Profile",
-                  fontSize: 12.sp, color: AppColors.kPrimary1,
-                  onTap: (){
-                    navigatePush(context, const AccountSettingScreen());
-                  },
-                ),
-              ],
-            )
-          ],
-        ),
+    return Container(
+      width: 460.w,
+      height: 200.h,
+      decoration: BoxDecoration(
+          color:  themeProvider ==ThemeMode.dark?
+          AppColors.kOnyxBlack : AppColors.kLightSilver,
+          borderRadius: BorderRadius.all(Radius.circular(24.r))
       ),
-    );
-  }
-}
-
-class ProfileItem extends ConsumerWidget {
-   final String title;
-   final String subTitle;
-   final VoidCallback? onTap;
-   final String iconPath;
-   final bool isLogout;
-
-  const ProfileItem({super.key, required this.title,
-    this.isLogout = false,
-    required this.subTitle,
-    this.onTap, required this.iconPath});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    var themeProvider = ref.watch(themeViewModel).themeMode;
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding:  EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-
-            Row(
-              children: [
-                Container(
-                  decoration:  BoxDecoration(
-                      shape: BoxShape.circle, color: isLogout ? AppColors.kError300 :
-                  themeProvider ==ThemeMode.light?  AppColors.kPrimary1 : AppColors.kGrey300
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ImageView.asset(
-                        iconPath,
-                        width: 20.w, color: isLogout ? AppColors.kWhite : themeProvider ==ThemeMode.dark?
-                    AppColors.kBlack8 : AppColors.kWhite
-                    ),
-                  ),
-                ),
-                const Gap(15),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextView(
-                      text: title, fontSize: 14.spMin,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ProfileImage(
+            imageType: ProfileImageType.user,
+            imageUrl: profilePicture,
+            height: 60, width: 60,
+          ),
+          SizedBox(
+            width: 10.w,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextView(
+                text: name,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w600,
+              ),
+              const Gap(4),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextView(
+                      text: "User ID: $userName",
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
-                      // color: AppColors.kErrorPrimary,
-                    ),
-                    isLogout ? const SizedBox.shrink() : const Gap(6),
-                    isLogout ? const SizedBox.shrink() :  TextView(
-                        text: subTitle, fontSize: 12.spMin,
-                        color: AppColors.kGrey500
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Icon(
-                Icons.arrow_forward_ios,
-                size: 16.r,
-                color: AppColors.kGrey500
-            ),
-          ],
-        ),
+                      color: themeProvider ==ThemeMode.dark?
+                      AppColors.kGrey300 : AppColors.kGrey700),
+                  const Gap(5),
+                  GestureDetector(
+                    onTap: (){
+                      dashViewModel.copyToClipboard(userName);
+                    },
+                      child: SizedBox(   width: 18.w,
+                          height: 18.h, child: Image.asset(AppImages.copyIcon,
+                      color: themeProvider ==ThemeMode.dark?
+                      AppColors.kGrey300 : AppColors.kGrey700,)))
+                ],
+              ),
+              const Gap(4),
+              TextView(
+                text: "Edit Profile",
+                fontSize: 12.sp, color: AppColors.kPrimary1,
+                onTap: (){
+                  navigatePush(context, const AccountSettingScreen());
+                },
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
 }
 
+// class ProfileItem extends ConsumerWidget {
+//    final String title;
+//    final String subTitle;
+//    final VoidCallback? onTap;
+//    final String iconPath;
+//    final bool isLogout;
+//
+//   const ProfileItem({super.key, required this.title,
+//     this.isLogout = false,
+//     required this.subTitle,
+//     this.onTap, required this.iconPath});
+//
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     var themeProvider = ref.watch(themeViewModel).themeMode;
+//     return InkWell(
+//       onTap: onTap,
+//       child: Padding(
+//         padding:  EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+//
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//
+//             Row(
+//               children: [
+//                 Container(
+//                   decoration:  BoxDecoration(
+//                       shape: BoxShape.circle, color: isLogout ? AppColors.kError300 :
+//                   themeProvider ==ThemeMode.light?  AppColors.kPrimary1 : AppColors.kGrey300
+//                   ),
+//                   child: Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: ImageView.asset(
+//                         iconPath,
+//                         width: 20.w, color: isLogout ? AppColors.kWhite : themeProvider ==ThemeMode.dark?
+//                     AppColors.kBlack8 : AppColors.kWhite
+//                     ),
+//                   ),
+//                 ),
+//                 const Gap(15),
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     TextView(
+//                       text: title, fontSize: 14.spMin,
+//                       fontWeight: FontWeight.w400,
+//                       // color: AppColors.kErrorPrimary,
+//                     ),
+//                     isLogout ? const SizedBox.shrink() : const Gap(6),
+//                     isLogout ? const SizedBox.shrink() :  TextView(
+//                         text: subTitle, fontSize: 12.spMin,
+//                         color: AppColors.kGrey500
+//                     ),
+//                   ],
+//                 ),
+//               ],
+//             ),
+//             Icon(
+//                 Icons.arrow_forward_ios,
+//                 size: 16.r,
+//                 color: AppColors.kGrey500
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
 
 // class SettingsThemeItem extends ConsumerStatefulWidget {
 //   const SettingsThemeItem({

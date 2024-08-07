@@ -11,11 +11,12 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/utils/blur.dart';
 import 'package:tampay/utils/enums.dart';
+
 import 'package:tampay/view/screens/dashboard/exchange/exchange_screen.dart';
 import 'package:tampay/view_model/dashboard/wallet_view_model.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
@@ -68,7 +69,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             child: Stack(
               children: [
-              MovingCircles( height: 450, borderRadius: BorderRadius.circular(36.r),),
+              MovingCircles( height: 460, borderRadius: BorderRadius.circular(36.r),),
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Column(
@@ -248,105 +249,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 }
 
-class HomeItems extends ConsumerWidget {
-  const HomeItems({
-    super.key,
-    required this.theme,
-    required this.icon,
-    required this.onPressed,
-    required this.subText,
-    required this.title,
-    this.isThemeChange = false,
-  });
-
-  final ThemeData theme;
-  final String icon;
-  final String title;
-  final String subText;
-  final bool isThemeChange;
-  final VoidCallback onPressed;
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
-    var themeProvider = ref.watch(themeViewModel);
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        padding:  EdgeInsets.symmetric(horizontal: 15.w),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 45.w,
-                  height: 45.h,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: themeMode == ThemeMode.dark ? AppColors.kGrey200 : AppColors.kPrimary1,
-                  ),
-                  child: Center(
-                    child: ImageView.asset(
-                      icon,
-                      width: 20.w,
-                      height: 20.h,
-                      color: themeMode == ThemeMode.light ? AppColors.kWhite : AppColors.kGrey900,
-                    ),
-                  ),
-                ),
-                Gap(10.w),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextView(
-                      text: title,
-                      fontSize: 14.spMin,
-                    ),
-                    Gap(5.h),
-                    TextView(
-                      text: subText,
-                      color: themeMode == ThemeMode.light ? AppColors.kGrey500 : AppColors.kGrey400,
-                    ),
-                  ],
-                )
-              ],
-            ),
-            !isThemeChange ? Icon(
-              Icons.arrow_forward_ios,
-              size: 18.r,
-             // color: theme.colorScheme.primary,
-            ) :     ListenableBuilder(
-                listenable: themeProvider,
-                builder: (BuildContext context, Widget? child) {
-                  final themeMode = themeProvider.themeMode;
-
-                  return CupertinoSwitch(
-                    value: themeMode == ThemeMode.dark,
-                    onChanged: (value) async {
-                      SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                      if (value) {
-                        themeProvider.setThemeMode(ThemeMode.dark);
-                        prefs.setBool('isDarkTheme', true);
-                        return;
-                      }
-                      themeProvider.setThemeMode(ThemeMode.light);
-                      prefs.setBool('isDarkTheme', false);
-                    },
-                    activeColor: themeMode == ThemeMode.light
-                        ? AppColors.kPrimary1
-                        : AppColors.kPrimary1,
-                  );
-                })
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
 class SellBuyMore extends ConsumerWidget {
   const SellBuyMore({
     super.key,
@@ -376,35 +278,32 @@ class SellBuyMore extends ConsumerWidget {
               child: TPayDefaultPopUp(
                 action: Container( height: 400.h,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      HomeItems(
-                        theme: theme,
+                      ListItems(
                         icon: AppImages.zapLogo,
                         onPressed: () {},
                         subText: "See exciting trading rates",
                         title: "View Rate",
                       ),
-                      HomeItems(
-                        theme: theme,
+                      ListItems(
                         icon: AppImages.friendsIcon,
                         onPressed: () {},
                         subText: "Earn commission from referrals",
                         title: "Refer A Friend",
                       ),
-                      HomeItems(
-                        theme: theme,
+                      ListItems(
                         icon: AppImages.bankIcon,
                         onPressed: () {},
                         subText: "View your payout bank accounts",
                         title: "Bank Details",
                       ),
-                      HomeItems(
-                        theme: theme,
+                      ListItems(
                         icon: AppImages.bankIcon,
                         onPressed: () {},
                         subText:  "Select the feel of your app",
                         title: "Dark Theme",
+                        isToggleChange: true,
                         isThemeChange: true,
                       ),
                     ],

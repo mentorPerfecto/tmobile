@@ -64,7 +64,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: 715.h,
+              height: 675.h, 
             padding: EdgeInsets.symmetric(
               vertical: 15.h,
               horizontal: 20.w,

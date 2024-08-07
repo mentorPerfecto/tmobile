@@ -82,18 +82,6 @@ class _FillBankDetailsScreenState extends ConsumerState<FillBankDetailsScreen> {
                     // buttonState: provider.buttonLoginState!.buttonState,
                     onPressed: () {
                       bankAddedSuccessfulBottomModalSheetWidget(context);
-                      // if (loginFormKey.currentState!.validate()) {
-                      //   loginFormKey.currentState!.save();
-                      //   navigatePush(
-                      //     context,
-                      //     const EmailVerificationScreen(
-                      //       isSignIn: true,
-                      //       isForgotPassword: false,
-                      //       email: hintEmail,
-                      //       actionText: login,
-                      //     ),
-                      //   );
-                      // }
                     },
                   ),
                   SizedBox(

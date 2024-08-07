@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tampay/config/app_strings.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
-import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
+import 'package:tampay/view_model/theme_view_model.dart';
 
 class VerifyAccountLevelScreen extends ConsumerWidget {
-  const VerifyAccountLevelScreen({Key? key}) : super(key: key);
+  const VerifyAccountLevelScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ThemeData theme = Theme.of(context);
-    List<String> _level2VerificationDetails = [dateOfBirth, bvnNumberText];
-    List<String> _level1VerificationDetails = [emailText, phoneNumberText, userName];
+    List<String> tier2VerificationDetails = ["Government  ID", 'House Address', 'Utility Bill of House Address'];
+    List<String> tier2Access = ['Unlimited Sell and Buy', 'More Bank Accounts' ];
+    List<String> tier1Access = ['Sell Only', 'One Bank Accounts' ];
+    List<String> tier1VerificationDetails = [emailText, bvnNumberText, liveliness];
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
      
-        text: verifyAccountTextInCaps,
+        bottomText: "Account Upgrade",
       ),
       body: SafeArea(
         child: Padding(
@@ -30,34 +31,17 @@ class VerifyAccountLevelScreen extends ConsumerWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    navigatePush(context, DateOfBirthVerificationScreen());
-                  },
-                  child: VerificationLevel(
-                    level2VerificationDetails: _level2VerificationDetails,
-                    verificationLogo: AppImages.verifiedBadgeLogo,
-                    level: level2,
-                    verificationStatus: const VerificationTextButton(isProfileScreen: false),
-                  ),
-                ),
                 Gap(25.h),
                 VerificationLevel(
-                  level2VerificationDetails: _level1VerificationDetails,
-                  verificationLogo: AppImages.verifiedBadgeLogo,
-                  level: level1,
-                  verificationStatus: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
-                    decoration: BoxDecoration(
-                        color: const Color(0xFFCCFCD1), borderRadius: BorderRadius.circular(4.r)),
-                    child: Center(
-                      child: TextView(
-                        text: verified,
-                        fontSize: 10.spMin,
-                        color: const Color(0xFF009A47),
-                      ),
-                    ),
-                  ),
+                  levelVerificationDetails: tier1VerificationDetails,
+                  verificationLogo: AppImages.verifiedBadgeLogo, dtl: '10000000',
+                  level: level1, isCompleted: true, levelAccess: tier1Access,
+                ),
+                const Gap(25),
+                VerificationLevel(
+                  levelVerificationDetails: tier2VerificationDetails, dtl: '10000000',
+                  verificationLogo: AppImages.verifiedBadgeLogo, isCompleted: false,
+                  level: level2, levelAccess: tier2Access,
                 ),
               ],
             ),
@@ -68,71 +52,104 @@ class VerifyAccountLevelScreen extends ConsumerWidget {
   }
 }
 
-class VerificationLevel extends StatelessWidget {
-  const VerificationLevel({
-    super.key,
-    required List<String> level2VerificationDetails,
-    required this.level,
-    required this.verificationLogo,
-    required this.verificationStatus,
-  }) : _level2VerificationDetails = level2VerificationDetails;
+class VerificationLevel extends ConsumerWidget {
 
-  final List<String> _level2VerificationDetails;
+
+  final List<String> levelVerificationDetails;
+  final List<String> levelAccess;
   final String verificationLogo;
   final String level;
-  final Widget verificationStatus;
+  final String dtl;
+  final bool isCompleted;
+
+  const VerificationLevel({super.key, required this.levelVerificationDetails,
+    required this.verificationLogo, required this.level, required this.levelAccess, required this.dtl,
+    required this.isCompleted});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 12.w,
-        vertical: 12.h,
-      ),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 0.5.w,
-          color: AppColors.kGrey700,
-        ),
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    height: 24.h,
-                    width: 91.w,
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          verificationLogo,
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        Gap(10.w),
-                        TextView(
-                          text: level,
-                          fontSize: 14.spMin,
-                        ),
-                      ],
-                    ),
-                  ),
-                  verificationStatus,
-                ],
+  Widget build(BuildContext context, WidgetRef ref) {
+    var themeMode = ref.watch(themeViewModel).themeMode;
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 25.h, ),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 12.w,
+              vertical: 12.h,
+            ),
+            decoration: BoxDecoration(
+              color: themeMode == ThemeMode.dark ? AppColors.kOnyxBlack : AppColors.kLightSilver,
+              border: Border.all(
+                width: 2.w,
+                color:  isCompleted ? AppColors.kLimeGreen: AppColors.kTransparent,
               ),
-              Gap(8.h),
-              const TampayDivider()
-            ],
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                isCompleted? const Gap(30) : const SizedBox.shrink(),
+
+                TextView(
+                  text: level,
+                  fontSize: 14.spMin, fontWeight: FontWeight.bold,
+                ),
+                const Gap(8),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const TextView(
+                      text: 'Daily Transaction Limit', color: AppColors.kGrey600,
+                    ),
+
+                    TextView(
+                      text: 'N ${UtilFunctions.formatAmount(double.parse(dtl))}',
+                    ),
+                  ],
+                ),
+                const Gap(8),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: levelAccess.map<Widget>((listDetails) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: TextView(
+                        text: listDetails,
+                        softRap: true, color: AppColors.kGrey600,
+                      ),
+                    );
+                  }).toList(),
+                ),
+                const Gap(8),
+
+                const TextView(
+                  text: 'Requirements',
+                ),
+                const Gap(8),
+                BulletList(list: levelVerificationDetails, isCompleted: isCompleted,),
+                const Gap(15),
+                !isCompleted ? DefaultButtonMain( color: AppColors.kPrimary1,
+                  text: 'Click to start upgrade', width: 180.w,): const SizedBox.shrink()
+              ],
+            ),
           ),
-          BulletList(list: _level2VerificationDetails),
-        ],
-      ),
+        ),
+        isCompleted? Padding(
+          padding: EdgeInsets.only(left: 20.h, ),
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.kLimeGreen,
+              border: Border.all(
+                width: 2.w,
+                color:  isCompleted ? AppColors.kLimeGreen: AppColors.kTransparent,
+              ),
+              borderRadius: BorderRadius.circular(12.r),
+            ), height: 40.h, width: 100.w,
+            child: const Center(child: TextView(text: 'Current Tier', color: AppColors.kWhite,)),
+          ),
+        ): const SizedBox.shrink()
+      ],
     );
   }
 }

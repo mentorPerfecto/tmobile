@@ -34,11 +34,10 @@ class AUserBank extends StatelessWidget {
           children: [
             Row(
               children: [
-                ImageView.network(
-                  "https://images.app.goo.gl/9iBndnVeTkrVioMV6",
+                ProfileImage(imageType: ProfileImageType.bank, imageUrl:   "https://images.app.goo.gl/9iBndnVeTkrVioMV6",
                   width: 30.w,
-                  height: 30.h,
-                ),
+                  height: 30.h,),
+
                 const TextView(
                   text: "Opay",
                 )

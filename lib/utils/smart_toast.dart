@@ -130,7 +130,7 @@ class _AlertBodyState extends State<AlertBody> with SingleTickerProviderStateMix
                 children: [
                   Row(
                     children: [
-                      Container( width: 25.w,
+                      Container( width: 30.w, height: 30.w,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.kPrimary1,
@@ -147,14 +147,10 @@ class _AlertBodyState extends State<AlertBody> with SingleTickerProviderStateMix
                       ),
                       const Gap(7),
                       SizedBox(
-                        // width: 250,
-                        child: Row(
-                          children: [
-                            TextView(text: widget.msg, color: AppColors.kMidnight950,
-                              fontSize: 14.spMin, maxLines: 3,
-                              fontWeight: FontWeight.w600,),
-                          ],
-                        ),
+                        width: 250.w,
+                        child: TextView(text: widget.msg, color: AppColors.kMidnight950,
+                          fontSize: 14.spMin, maxLines: 3,
+                          fontWeight: FontWeight.w600,),
                       ),
                     ],
                   ),

@@ -109,94 +109,96 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                         ),
                         child: SizedBox(
                           width: 360.w,
-                          height: 715.h,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  Gap(20.h),
-                                  Align(
-                                    child: ProfileImage(
-                                      imageUrl: userProfileProvider
-                                          .profileData?.profileImage
-                                          .toString(),
-                                      imageType: ProfileImageType.user,
-                                       editImage: true,
-                                      height: 100.h,
-                                      fontSize: 24.spMin,
-                                      width: 100.w,
-                                      onEditImageTap: () {
-                                        userProfileProvider
-                                            .updateProfilePhoto(context);
-                                      },
-                                    ),
-                                  ),
-                                  Gap(30.h),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      CustomTextField(
-                                        fieldLabel: 'Full Name',
-                                        hint: firstNameText, readOnly: true,
-                                        controller: userProfileProvider.fullNameController,
-                                      ),
-
-                                      const Gap(15),
-                                      CustomTextField(
-                                        fieldLabel: 'Email',
-                                        hint: emailText,
-                                        controller: userProfileProvider
-                                            .emailAddressController,
-                                        readOnly: true,
-                                      ),
-                                      const Gap(15),
-                                      CustomTextField(
-                                        fieldLabel: 'Birthday',
-                                        hint: '09 Jun, 2024',  readOnly: true,
-                                        controller: userProfileProvider.fullNameController,
-                                      ),
-
-                                      const Gap(15),
-                                      CustomTextField(
-                                        fieldLabel: 'Username',
-                                        hint: lastNameText,
-                                        showSuffixIcon: true, trailing: const Icon(Icons.edit_note_outlined),
-                                        controller: userProfileProvider.usernameController,
-                                      ),
-                                      const Gap(15),
-                                      CustomTextField(
-                                        fieldLabel: phoneNumberText,
-                                        hint: hintPhoneNumber,
-                                        maxLength: 10, showSuffixIcon: true, trailing: const Icon(Icons.edit_note_outlined),
-                                        prefix: const Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: TextView( text: "+234",),
-                                        ),
-                                        controller: userProfileProvider.phoneNumberController,
-                                        validator: (value) => Validators().validatePhoneNumber(value),
-                                        onChanged: (p0) {
-                                        /////  provider.updateRegisterButtonState();
+                            height: 675.h, 
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  children: [
+                                    Gap(20.h),
+                                    Align(
+                                      child: ProfileImage(
+                                        imageUrl: userProfileProvider
+                                            .profileData?.profileImage
+                                            .toString(),
+                                        imageType: ProfileImageType.user,
+                                         editImage: true,
+                                        height: 100.h,
+                                        fontSize: 24.spMin,
+                                        width: 100.w,
+                                        onEditImageTap: () {
+                                          userProfileProvider
+                                              .updateProfilePhoto(context);
                                         },
                                       ),
-
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              DefaultButtonMain(
-                                onPressed: () {
-                                  // userProfileProvider
-                                  //     .updateUserProfile(context)
-                                  //     .then((value) =>
-                                  //         userProfileProvider.loadData(context));
-                                },
-                                color: AppColors.kPrimary1,
-                                text: "Save",
-                                textColor: AppColors.kWhite,
-                              ),
-                            ],
+                                    ),
+                                    Gap(30.h),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        CustomTextField(
+                                          fieldLabel: 'Full Name',
+                                          hint: firstNameText, readOnly: true,
+                                          controller: userProfileProvider.fullNameController,
+                                        ),
+                            
+                                        const Gap(15),
+                                        CustomTextField(
+                                          fieldLabel: 'Email',
+                                          hint: emailText,
+                                          controller: userProfileProvider
+                                              .emailAddressController,
+                                          readOnly: true,
+                                        ),
+                                        const Gap(15),
+                                        CustomTextField(
+                                          fieldLabel: 'Birthday',
+                                          hint: '09 Jun, 2024',  readOnly: true,
+                                          controller: userProfileProvider.fullNameController,
+                                        ),
+                            
+                                        const Gap(15),
+                                        CustomTextField(
+                                          fieldLabel: 'Username',
+                                          hint: lastNameText,
+                                          showSuffixIcon: true, trailing: const Icon(Icons.edit_note_outlined),
+                                          controller: userProfileProvider.usernameController,
+                                        ),
+                                        const Gap(15),
+                                        CustomTextField(
+                                          fieldLabel: phoneNumberText,
+                                          hint: hintPhoneNumber,
+                                          maxLength: 10, showSuffixIcon: true, trailing: const Icon(Icons.edit_note_outlined),
+                                          prefix: const Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: TextView( text: "+234",),
+                                          ),
+                                          controller: userProfileProvider.phoneNumberController,
+                                          validator: (value) => Validators().validatePhoneNumber(value),
+                                          onChanged: (p0) {
+                                          /////  provider.updateRegisterButtonState();
+                                          },
+                                        ),
+                                        const Gap(30),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                DefaultButtonMain(
+                                  onPressed: () {
+                                    // userProfileProvider
+                                    //     .updateUserProfile(context)
+                                    //     .then((value) =>
+                                    //         userProfileProvider.loadData(context));
+                                  },
+                                  color: AppColors.kPrimary1,
+                                  text: "Save",
+                                  textColor: AppColors.kWhite,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

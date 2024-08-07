@@ -21,7 +21,7 @@ export 'package:tampay/view/components/paginated_list_view.dart';
 export 'package:tampay/view/components/drop_down_button_main.dart';
 export 'package:tampay/view/components/coin_list_view.dart';
 export 'package:tampay/view/components/invite_friend_card.dart';
-export 'package:tampay/view/components/verification_text_button.dart';
 export 'package:tampay/view/components/bullet_list.dart';
 export 'package:tampay/view/components/tpay_default_pop_up.dart';
 export 'package:tampay/view/components/moving_circles.dart';
+export 'package:tampay/view/components/shared/list_item.dart';

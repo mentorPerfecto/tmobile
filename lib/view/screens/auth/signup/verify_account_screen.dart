@@ -41,12 +41,12 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
           ),
         ),
         bottomVisible: true,
-        bottomText: verifyAccount,
+        bottomText: accountUpgrade,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: 715.h,
+              height: 675.h, 
             padding: EdgeInsets.symmetric(
               vertical: 15.h,
               horizontal: 15.w,
