@@ -15,6 +15,7 @@ class DummyData {
   static String? city;
   static String state = "";
   static String cryptoAbbreviation = "";
+  static String crypto = "";
   // static String? searchKey = "";
   // static String? sortOption = "";
   // static String? sortOptionText = "";

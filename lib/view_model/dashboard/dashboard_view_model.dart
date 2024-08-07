@@ -38,14 +38,16 @@ class DashboardViewModel extends ChangeNotifier {
     // getDeviceLocation();
   }
 
-  getCrptoAcronym(String? acronym) {
+  getCrptoAcronymAndName({String? acronym, String? name}) {
     DummyData.cryptoAbbreviation = acronym ?? "Error";
     _cryptoAcronym = acronym;
+    DummyData.crypto = name ?? "ERROR";
     notifyListeners();
   }
 
-  selectACyptoAsset(String? crypto) {
-    _cryptoAcronym = crypto;
+  selectACyptoAsset({String? cryptoAcronym, String? name}) {
+    _cryptoAcronym = cryptoAcronym;
+    DummyData.cryptoAbbreviation = cryptoAcronym ?? "Error";
     notifyListeners();
   }
 
@@ -53,6 +55,5 @@ class DashboardViewModel extends ChangeNotifier {
     String value,
   ) async {
     await Clipboard.setData(ClipboardData(text: value));
-
   }
 }

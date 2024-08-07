@@ -179,7 +179,8 @@ class ExchangeScreenTradingAssets extends ConsumerWidget {
             onTap: () {
               if (index == 2) {
                 navigatePush(context, const SelectBankScreen());
-                dashProvider.getCrptoAcronym(cryptoCoins.cryptoAncronym);
+                dashProvider.getCrptoAcronymAndName(
+                    acronym: cryptoCoins.cryptoAncronym, name: cryptoCoins.crypto);
               }
             },
             child: Container(
