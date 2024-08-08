@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
+import 'package:tampay/src/screens.dart';
 
 class FillBankDetailsScreen extends ConsumerStatefulWidget {
   const FillBankDetailsScreen({super.key});
@@ -77,8 +80,34 @@ class _FillBankDetailsScreenState extends ConsumerState<FillBankDetailsScreen> {
                     text: saveBankText,
                     color: AppColors.kPrimary1,
                     // buttonState: provider.buttonLoginState!.buttonState,
-                    onPressed: () {
-                      //bankAddedSuccessfulBottomModalSheetWidget(context);
+                    onPressed: () async {
+                      await showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      barrierColor: Colors.black38,
+                      context: context,
+                      builder: (context) {
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3 ),
+                          child: TPayDefaultProgressStatusPopUp(
+                            progressStatusLogo: AppImages.checkLogo,
+                            height: 300, progressStatusLogoColor: AppColors.kWoodSmoke300,
+                            progressStatusTextTitle: "Bank Added",
+                            progressStatusTextBody:
+                            "You have successfully added a new bank account details",
+                            action: DefaultButtonMain(
+                              color: AppColors.kPrimary1,
+                              text: "Done", width: 150.w,
+                              onPressed: () {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const DashBoardScreen()),
+                                      (route) => false,
+                                );
+                              },
+                            ),
+                          ),
+                        );
+                      });
                     },
                   ),
                   SizedBox(

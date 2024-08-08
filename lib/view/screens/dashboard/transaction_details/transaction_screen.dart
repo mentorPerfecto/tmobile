@@ -35,7 +35,7 @@ class TransactionScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
-        context,
+        context, isVisible: false,
         bottomText: "Transactions",
         bottomVisible: true,
       ),
