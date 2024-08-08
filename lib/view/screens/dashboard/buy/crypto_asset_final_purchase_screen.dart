@@ -8,6 +8,7 @@ import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/components/exchange_screen_component/note_card.dart';
+import 'package:tampay/view/components/transaction_details_card.dart';
 
 class CryptoAssetFinalPurchaseScreen extends ConsumerWidget {
   const CryptoAssetFinalPurchaseScreen({Key? key}) : super(key: key);
@@ -161,74 +162,6 @@ class CryptoAssetFinalPurchaseScreen extends ConsumerWidget {
   }
 }
 
-class TransactionDetails extends ConsumerWidget {
-  TransactionDetails({
-    super.key,
-    this.label,
-    required this.details,
-  });
-  String? label;
-  List<Widget> details;
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        label == null
-            ? const SizedBox.shrink()
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextView(
-                    text: label ?? "",
-                    fontSize: 14.spMin,
-                  ),
-                  Gap(15.h),
-                ],
-              ),
-        Container(
-          padding: EdgeInsets.symmetric(
-            vertical: 18.h,
-            horizontal: 20.w,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
-            color: themeMode == ThemeMode.light ? AppColors.kLightSilver : AppColors.kOnyxBlack,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: details,
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class Details extends ConsumerWidget {
-  const Details({
-    Key? key,
-    required this.title,
-    required this.trailing,
-  }) : super(key: key);
-  final String title;
-  final Widget trailing;
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        TextView(
-          text: title,
-          color: themeMode == ThemeMode.light ? AppColors.kGrey600 : AppColors.kGrey400,
-        ),
-        trailing
-      ],
-    );
-  }
-}
 
 class WarningNotesWhileTransacting extends StatelessWidget {
   const WarningNotesWhileTransacting({

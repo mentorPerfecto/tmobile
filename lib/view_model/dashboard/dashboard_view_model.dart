@@ -78,7 +78,7 @@ setBuyCryptoAssetButtonState() {
     DummyData.cryptoAbbreviation = cryptoAcronym ?? "Error";
     notifyListeners();
   }
-  
+
 
   setNetworkType(String? networkType) {
     DummyData.networkType = networkType;
@@ -89,5 +89,19 @@ setBuyCryptoAssetButtonState() {
     String value,
   ) async {
     await Clipboard.setData(ClipboardData(text: value));
+  }
+
+  Color transactionStatusColor(String transactionStatus) {
+    switch (transactionStatus) {
+      case "Pending":
+        return AppColors.kHarvestGold;
+      case "Completed":
+        return AppColors.kScreamingGreen;
+      case "Failed":
+        return AppColors.kError300;
+
+      default:
+        return AppColors.kWhite;
+    }
   }
 }
