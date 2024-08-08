@@ -67,86 +67,84 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
         bottomText: login
 
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 15.h,
-              horizontal: 15.w,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Form(
-                  key: loginFormKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                    
-                      CustomTextField(
-                        fieldLabel: emailText,
-                        hint: hintEmail,
-                        controller: provider.loginEmailController,
-                        validator: (value) => Validators().validateEmail(value),
-                        //onChanged: (value)=> provider.updateButtonState(),
-                        onChanged: (p0) {
-                          provider.updateButtonLoginState();
-                        },
-                      ),
-                      Gap(15.h),
-                      CustomTextField(
-                        password: true,
-                        obscureInput: provider.loginObscurePass,
-                        onObscureText: provider.toggleLoginPwdVisibility,
-                        fieldLabel: password,
-                        hint: enterPassword,
-                        controller: provider.loginPwdController,
-                        validator: (value) => Validators().validateEmptyTextField(value),
-                        //onChanged: (value)=> provider.updateButtonState(),
-                        onChanged: (p0) {
-                          provider.updateButtonLoginState();
-                        },
-                      ),
-                      Gap(5.h),
-                      TextView(
-                        text: forgotPassword,
-                        color: AppColors.kPrimary1,
-                        onTap: () {
-                          navigatePush(context, const ForgotPasswordScreen());
-                        },
-                      ),
-                    ],
-                  ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            vertical: 15.h,
+            horizontal: 15.w,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Form(
+                key: loginFormKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    CustomTextField(
+                      fieldLabel: emailText,
+                      hint: hintEmail,
+                      controller: provider.loginEmailController,
+                      validator: (value) => Validators().validateEmail(value),
+                      //onChanged: (value)=> provider.updateButtonState(),
+                      onChanged: (p0) {
+                        provider.updateButtonLoginState();
+                      },
+                    ),
+                    Gap(15.h),
+                    CustomTextField(
+                      password: true,
+                      obscureInput: provider.loginObscurePass,
+                      onObscureText: provider.toggleLoginPwdVisibility,
+                      fieldLabel: password,
+                      hint: enterPassword,
+                      controller: provider.loginPwdController,
+                      validator: (value) => Validators().validateEmptyTextField(value),
+                      //onChanged: (value)=> provider.updateButtonState(),
+                      onChanged: (p0) {
+                        provider.updateButtonLoginState();
+                      },
+                    ),
+                    Gap(5.h),
+                    TextView(
+                      text: forgotPassword,
+                      color: AppColors.kPrimary1,
+                      onTap: () {
+                        navigatePush(context, const ForgotPasswordScreen());
+                      },
+                    ),
+                  ],
                 ),
-                Gap(40.h),
-               Column(
-                 children: [
-                   DefaultButtonMain(
-                      text: login,
-                     color: AppColors.kPrimary1,
-                     buttonState: provider.buttonLoginState!.buttonState,
-                     onPressed: () {
-                       if (loginFormKey.currentState!.validate()) {
-                         loginFormKey.currentState!.save();
-                         navigatePush(
-                           context,
-                            const EmailVerificationScreen(
-                             isSignIn: true,
-                             isForgotPassword: false,
-                             email: hintEmail,
-                              actionText: verify,
-                           ),
-                         );
-                       }
-                     },
-                   ),
-                    const Gap(15),
-                   youANewUser(theme, themeMode),
-                 ],
-               )
-              ],
-            ),
+              ),
+              Gap(40.h),
+             Column(
+               children: [
+                 DefaultButtonMain(
+                    text: login,
+                   color: AppColors.kPrimary1,
+                   buttonState: provider.buttonLoginState!.buttonState,
+                   onPressed: () {
+                     if (loginFormKey.currentState!.validate()) {
+                       loginFormKey.currentState!.save();
+                       navigatePush(
+                         context,
+                          const EmailVerificationScreen(
+                           isSignIn: true,
+                           isForgotPassword: false,
+                           email: hintEmail,
+                            actionText: verify,
+                         ),
+                       );
+                     }
+                   },
+                 ),
+                  const Gap(15),
+                 youANewUser(theme, themeMode),
+               ],
+             )
+            ],
           ),
         ),
       ),

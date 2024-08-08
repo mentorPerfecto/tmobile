@@ -33,9 +33,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     ref.watch(themeViewModel);
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarColor:  AppColors.kBlack8 ,
-    ));
     return Scaffold( backgroundColor: AppColors.kBlack8,
       body: Stack(
         children: [

@@ -30,7 +30,6 @@ class ThemeConfig extends ChangeNotifier {
 
     setThemeMode( ThemeMode.system == ThemeMode.dark ?  ThemeMode.dark :  ThemeMode.light);
     DummyData.accessToken = sharedPreferences.getString("accessToken");
-    _setStatusBar();
     notifyListeners();
   }
 

@@ -54,10 +54,6 @@ class AppTheme {
           .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
       iconTheme: ThemeData.light().iconTheme,
       color: AppColors.kTransparent,
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.light,
-      ),
     ),
     textTheme: TextTheme(
       titleLarge: TextStyle(
@@ -118,10 +114,6 @@ class AppTheme {
           .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
       iconTheme: ThemeData.dark().iconTheme,
       color: AppColors.kPrimary1Dark,
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.dark,
-      ),
     ),
     textTheme: TextTheme(
       titleLarge: TextStyle(
@@ -176,10 +168,6 @@ class AppTheme {
   //         .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
   //     iconTheme: ThemeData.dark().iconTheme,
   //     // color: AppColors.darkPrimaryColor,
-  //     systemOverlayStyle: const SystemUiOverlayStyle(
-  //       statusBarBrightness: Brightness.dark,
-  //       statusBarIconBrightness: Brightness.dark,
-  //     ),
   //   ),
   // );
 }
