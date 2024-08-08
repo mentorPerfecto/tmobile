@@ -7,7 +7,7 @@ import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 
 class AccountUpgradeScreen extends ConsumerWidget {
-  const AccountUpgradeScreen({Key? key}) : super(key: key);
+  const AccountUpgradeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,7 +34,7 @@ class AccountUpgradeScreen extends ConsumerWidget {
                           
                           GestureDetector(
                             onTap: () {
-                              navigatePush(context, CreatePasswordScreen());
+                              navigatePush(context, const CreatePasswordScreen());
                             },
                             child: Icon(
                               Icons.arrow_back_ios,

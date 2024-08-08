@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
-import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/screens/dashboard/buy/crypto_asset_final_purchase_screen.dart';
 import '../../../../src/components.dart';

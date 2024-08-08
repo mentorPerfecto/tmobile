@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
-import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
 
 class SomethingToNote extends ConsumerWidget {

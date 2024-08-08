@@ -2,14 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/config/app_strings.dart';
 import 'package:tampay/model/local/button_state.dart';
-import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/model/response/local_response/tpay_coin_response/crypto_coin_response.dart';
 import 'package:tampay/src/utils.dart';
 

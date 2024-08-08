@@ -8,8 +8,8 @@ import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/components/transaction_details_card.dart';
 
 class DetailsScreen extends ConsumerWidget {
-  DetailsScreen({Key? key, this.transactionStatus}) : super(key: key);
-  String? transactionStatus;
+  const DetailsScreen({super.key, this.transactionStatus});
+  final String? transactionStatus;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ThemeData theme = Theme.of(context);

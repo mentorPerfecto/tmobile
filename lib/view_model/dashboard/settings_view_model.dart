@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tampay/model/local/dummy_data.dart';
 
 final settingsViewModel = ChangeNotifierProvider((ref) => SettingsViewModel());
 

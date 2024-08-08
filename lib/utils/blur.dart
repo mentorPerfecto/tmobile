@@ -67,13 +67,13 @@ extension BlurExtension on Widget {
     AlignmentGeometry alignment = Alignment.center,
   }) {
     return Blur(
-      child: this,
       blur: blur,
       blurColor: blurColor,
       borderRadius: borderRadius,
       colorOpacity: colorOpacity,
       overlay: overlay,
       alignment: alignment,
+      child: this,
     );
   }
 }

@@ -48,11 +48,9 @@ class _ExchangeScreenState extends ConsumerState<ExchangeScreen>
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = 360.w;
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
-    // var walletProvider = ref.watch(walletViewModel);
-    var profileProvider = ref.watch(profileViewModel);
-    var dashProvider = ref.watch(dashboardViewModel);
+ /*   var profileProvider = ref.watch(profileViewModel);
+    var dashProvider = ref.watch(dashboardViewModel);*/
     var onboardingProvider = ref.watch(onboardingViewModel);
 
     ThemeData theme = Theme.of(context);

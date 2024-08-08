@@ -36,11 +36,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = 360.w;
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
     var walletProvider = ref.watch(walletViewModel);
-    var profileProvider = ref.watch(profileViewModel);
-    var dashProvider = ref.watch(dashboardViewModel);
+    // var profileProvider = ref.watch(profileViewModel);
+    // var dashProvider = ref.watch(dashboardViewModel);
 
     ThemeData theme = Theme.of(context);
     return Scaffold(
@@ -263,7 +262,6 @@ class SellBuyMore extends ConsumerWidget {
   final String icon;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ThemeData theme = Theme.of(context);
     var dashProvider = ref.watch(dashboardViewModel);
     return GestureDetector(
       onTap: () async {

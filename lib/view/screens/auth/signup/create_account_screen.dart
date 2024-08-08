@@ -51,7 +51,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
   @override
   Widget build(BuildContext context) {
     var provider = ref.watch(registrationViewModel);
-    var themeMode = ref.watch(themeViewModel).themeMode;
+     ref.watch(themeViewModel).themeMode;
     var theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,

@@ -10,8 +10,8 @@ class TransactionDetails extends ConsumerWidget {
     this.label,
     required this.details,
   });
-  String? label;
-  List<Widget> details;
+  final String? label;
+  final List<Widget> details;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
@@ -51,10 +51,10 @@ class TransactionDetails extends ConsumerWidget {
 
 class Details extends ConsumerWidget {
   const Details({
-    Key? key,
+    super.key,
     required this.title,
     required this.trailing,
-  }) : super(key: key);
+  });
   final String title;
   final Widget trailing;
   @override

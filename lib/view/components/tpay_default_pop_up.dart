@@ -90,7 +90,6 @@ class TPayDefaultPopUp extends ConsumerWidget {
   final double? height;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ThemeData theme = Theme.of(context);
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
     ref.watch(settingsViewModel);
     return Container(

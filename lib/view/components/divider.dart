@@ -9,7 +9,6 @@ class TampayDivider extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(themeViewModel);
-    var theme = Theme.of(context);
     return SizedBox(
       width: double.infinity.w,
       child: Divider(

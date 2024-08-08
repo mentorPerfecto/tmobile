@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
-import 'package:tampay/src/utils.dart';
 
 class FillBankDetailsScreen extends ConsumerStatefulWidget {
   const FillBankDetailsScreen({super.key});
@@ -16,7 +15,6 @@ class FillBankDetailsScreen extends ConsumerStatefulWidget {
 class _FillBankDetailsScreenState extends ConsumerState<FillBankDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBars.mainAppBar(

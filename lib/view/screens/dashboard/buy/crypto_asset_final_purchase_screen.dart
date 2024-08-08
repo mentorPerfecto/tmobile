@@ -11,7 +11,7 @@ import 'package:tampay/view/components/exchange_screen_component/note_card.dart'
 import 'package:tampay/view/components/transaction_details_card.dart';
 
 class CryptoAssetFinalPurchaseScreen extends ConsumerWidget {
-  const CryptoAssetFinalPurchaseScreen({Key? key}) : super(key: key);
+  const CryptoAssetFinalPurchaseScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

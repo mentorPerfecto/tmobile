@@ -174,7 +174,7 @@ class WalletAddress extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextView(text: "Wallet Address"),
+        const TextView(text: "Wallet Address"),
         Gap(5.h),
         Row(
           children: [
@@ -216,7 +216,7 @@ class WalletAddress extends StatelessWidget {
 }
 
 class WalletActionButton extends StatelessWidget {
-  WalletActionButton({
+  const WalletActionButton({
     super.key,
     required this.themeMode,
     required this.actionImage,
@@ -225,7 +225,7 @@ class WalletActionButton extends StatelessWidget {
 
   final ThemeMode themeMode;
   final String actionImage;
-  VoidCallback? onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

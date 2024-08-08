@@ -7,7 +7,7 @@ import 'package:tampay/src/utils.dart';
 import 'package:tampay/src/providers.dart';
 
 class ForgotPasswordScreen extends ConsumerStatefulWidget {
-  const ForgotPasswordScreen({Key? key}) : super(key: key);
+  const ForgotPasswordScreen({super.key});
 
   @override
   ConsumerState<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
@@ -18,7 +18,6 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double textFieldButtonWidth = (MediaQuery.sizeOf(context).width - 15);
     ref.watch(themeViewModel).themeMode;
     var provider = ref.watch(authViewModel);
     var theme = Theme.of(context);

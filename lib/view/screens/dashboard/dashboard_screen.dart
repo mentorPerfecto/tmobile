@@ -49,7 +49,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var profileProvider = ref.watch(profileViewModel);
+    // var profileProvider = ref.watch(profileViewModel);
     var dashProvider = ref.watch(dashboardViewModel);
     var themeMode = ref.watch(themeViewModel).themeMode;
     var theme = Theme.of(context);

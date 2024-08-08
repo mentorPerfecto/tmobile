@@ -14,7 +14,7 @@ class ReferralLeaderboardScreen extends ConsumerStatefulWidget {
 class _ReferralLeaderboardScreenState extends ConsumerState<ReferralLeaderboardScreen> {
   @override
   Widget build(BuildContext context) {
-    var  themeMode = ref.watch(themeViewModel).themeMode;
+     ref.watch(themeViewModel);
     ThemeData theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,

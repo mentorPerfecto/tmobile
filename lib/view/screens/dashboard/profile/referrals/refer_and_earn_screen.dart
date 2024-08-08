@@ -109,7 +109,7 @@ class ReferralLinkCode extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var themeMode = ref.watch(themeViewModel).themeMode;
-    var dashProvider = ref.watch(dashboardViewModel);
+    // var dashProvider = ref.watch(dashboardViewModel);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

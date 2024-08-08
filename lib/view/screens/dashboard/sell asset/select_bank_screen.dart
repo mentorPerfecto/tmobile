@@ -16,9 +16,8 @@ class SelectBankScreen extends ConsumerStatefulWidget {
 class _SelectBankScreenState extends ConsumerState<SelectBankScreen> {
   @override
   Widget build(BuildContext context) {
-    var dashboardProvider = ref.watch(dashboardViewModel);
+    ref.watch(dashboardViewModel);
     ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
-    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBars.mainAppBar(
         context,

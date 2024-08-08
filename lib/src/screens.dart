@@ -11,7 +11,6 @@ export 'package:tampay/view/screens/dashboard/dashboard_screen.dart';
 export 'package:tampay/view/screens/auth/signin_forgot_password/forgot_password_screen.dart';
 export 'package:tampay/view/screens/auth/signup/create_account_screen.dart';
 export 'package:tampay/view/screens/auth/signup/create_password_screen.dart';
-export 'package:tampay/view/screens/auth/auth_success_screen.dart';
 export 'package:tampay/view/screens/auth/signin_forgot_password/create_new_password_screen.dart';
 export 'package:tampay/view/screens/auth/signup/verify_account_screen.dart';
 

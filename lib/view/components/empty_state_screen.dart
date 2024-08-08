@@ -19,9 +19,9 @@ class EmptyListStateWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ThemeMode themeMode = ref.watch(themeViewModel).themeMode;
+   ref.watch(themeViewModel);
     var theme = Theme.of(context);
-    final profileProvider = ref.watch(profileViewModel);
+     ref.watch(profileViewModel);
     return Container(
       alignment: Alignment.center,
       height: height ?? MediaQuery.of(context).size.height / 1.3,

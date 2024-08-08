@@ -81,7 +81,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                       },
                     );
                   },
-                  child: Icon( CupertinoIcons.delete, color: AppColors.kError300,),
+                  child: const Icon( CupertinoIcons.delete, color: AppColors.kError300,),
                 ),
               ),
             ),

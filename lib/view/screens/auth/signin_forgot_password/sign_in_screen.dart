@@ -6,7 +6,6 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/utils.dart';
 import 'package:tampay/src/screens.dart';
 import 'package:tampay/src/providers.dart';
-import 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({
