@@ -26,7 +26,6 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-              height: 675.h, 
             padding: EdgeInsets.symmetric(
               vertical: 15.h,
               horizontal: 20.w,
@@ -36,43 +35,35 @@ class _CreatePasswordScreenState extends ConsumerState<CreatePasswordScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                             
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Form(
-                      key: provider.registerationCreatePasswordFormKey,
-                      child: PasswordValidatedFields(
-                        textEditingController: provider.registerPwdController,
-                        obscureInput: provider.obscurePasswordText,
-                        confirmPasswordWidget: CustomTextField(
-                          fieldLabel: confirmPassword,
-                          hint: enterPassword,
-                          controller: provider.registerConfirmPwdController,
-                          password: true,
-                          validator: (value) => Validators().validateConfirmPassword(
-                            provider.registerPwdController.text,
-                            provider.registerConfirmPwdController.text,
-                          ),
-                          obscureInput: provider.obscureConfirmPwdText,
-                          onObscureText: provider.toggleConfirmPwdVisibility,
-                          onChanged: (p0) => provider.updateRegisterButtonCreatePasswordState(),
-                        ),
-                        onObscureText: provider.togglePwdVisibility,
+                Form(
+                  key: provider.registerationCreatePasswordFormKey,
+                  child: PasswordValidatedFields(
+                    textEditingController: provider.registerPwdController,
+                    obscureInput: provider.obscurePasswordText,
+                    confirmPasswordWidget: CustomTextField(
+                      fieldLabel: confirmPassword,
+                      hint: enterPassword,
+                      controller: provider.registerConfirmPwdController,
+                      password: true,
+                      validator: (value) => Validators().validateConfirmPassword(
+                        provider.registerPwdController.text,
+                        provider.registerConfirmPwdController.text,
                       ),
+                      obscureInput: provider.obscureConfirmPwdText,
+                      onObscureText: provider.toggleConfirmPwdVisibility,
+                      onChanged: (p0) => provider.updateRegisterButtonCreatePasswordState(),
                     ),
+                    onObscureText: provider.togglePwdVisibility,
                   ),
                 ),
-                Column(
-                  children: [
-                    DefaultButtonMain(
-                        text: continueText,
-                        color: AppColors.kPrimary1,
-                        buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
-                        onPressed: () {
-                          navigatePush(context, const VerifyAccountScreen( isAuth: true,));
-                        }),
-                    Gap(40.h),
-                  ],
-                ),
+                Gap(40.h),
+                DefaultButtonMain(
+                    text: continueText,
+                    color: AppColors.kPrimary1,
+                    buttonState: provider.buttonRegisterStateCreatePassword.buttonState,
+                    onPressed: () {
+                      navigatePush(context, const VerifyAccountScreen( isAuth: true,));
+                    }),
               ],
             ),
           ),

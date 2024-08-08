@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tampay/config/app_colors.dart';
 import 'package:tampay/model/local/dummy_data.dart';
 
 final themeViewModel = ChangeNotifierProvider((ref) => ThemeConfig());
@@ -29,6 +30,7 @@ class ThemeConfig extends ChangeNotifier {
 
     setThemeMode( ThemeMode.system == ThemeMode.dark ?  ThemeMode.dark :  ThemeMode.light);
     DummyData.accessToken = sharedPreferences.getString("accessToken");
+    _setStatusBar();
     notifyListeners();
   }
 
@@ -47,8 +49,11 @@ class ThemeConfig extends ChangeNotifier {
 
   void _setStatusBar() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarBrightness:
-      _themeMode == ThemeMode.light ? Brightness.dark : Brightness.light,
+      statusBarBrightness: _themeMode == ThemeMode.light ? Brightness.dark : Brightness.light,
+      statusBarColor: _themeMode == ThemeMode.light ? AppColors.kWhite :  AppColors.kCharcoalBlack ,
+      systemNavigationBarColor: _themeMode == ThemeMode.light ? AppColors.kWhite :  AppColors.kCharcoalBlack ,
+      statusBarIconBrightness: _themeMode == ThemeMode.light ? Brightness.dark : Brightness.light,
+
     ));
   }
 

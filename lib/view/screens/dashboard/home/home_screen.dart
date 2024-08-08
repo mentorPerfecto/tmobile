@@ -177,7 +177,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           SizedBox(  height: 250.h,
             child: Column( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // CompleteAccountSetupWarning(themeMode: themeMode, theme: theme),
+           //     CompleteAccountSetupWarning(themeMode: themeMode, theme: theme),
                 SizedBox(
                   width: 200.w,
                   child: Row(

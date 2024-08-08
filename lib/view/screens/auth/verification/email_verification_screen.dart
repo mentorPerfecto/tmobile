@@ -82,7 +82,6 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-              height: 675.h, 
             padding: EdgeInsets.symmetric(
               horizontal: 15.0.w,
               vertical: 10.h,
@@ -181,34 +180,31 @@ class _EmailVerificationScreenState extends ConsumerState<EmailVerificationScree
                           )
                   ],
                 ),
-                Column(
-                  children: [
-                    DefaultButtonMain(
-                      text: widget.actionText,
-                      color: AppColors.kPrimary1,
-                      buttonState: authProvider.buttonVerifyState!.buttonState,
-                      onPressed: () {
-                        if (pinFormKey.currentState!.validate()) {
-                          pinFormKey.currentState!.save();
-                          navigatePush(
-                            context,
-                            widget.isForgotPassword
-                                ? const CreateNewPasswordScreen()
-                                : widget.isSignIn
-                                    ? const DashBoardScreen()
-                            // AuthSuccessScreen(
-                            //             infoText:
-                            //                 widget.isSignIn ? welcomeBack : successfulAccountCreation,
-                            //             newPage: const DashBoardScreen(),
-                            //           )
-                                    : const CreatePasswordScreen(),
-                          );
-                        }
-                      },
-                    ),
-                    Gap(40.h),
-                  ],
+                Gap(40.h),
+                DefaultButtonMain(
+                  text: widget.actionText,
+                  color: AppColors.kPrimary1,
+                  buttonState: authProvider.buttonVerifyState!.buttonState,
+                  onPressed: () {
+                    if (pinFormKey.currentState!.validate()) {
+                      pinFormKey.currentState!.save();
+                      navigatePush(
+                        context,
+                        widget.isForgotPassword
+                            ? const CreateNewPasswordScreen()
+                            : widget.isSignIn
+                                ? const DashBoardScreen()
+                        // AuthSuccessScreen(
+                        //             infoText:
+                        //                 widget.isSignIn ? welcomeBack : successfulAccountCreation,
+                        //             newPage: const DashBoardScreen(),
+                        //           )
+                                : const CreatePasswordScreen(),
+                      );
+                    }
+                  },
                 ),
+
               ],
             ),
           ),

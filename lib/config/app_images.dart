@@ -16,8 +16,9 @@ class AppImages {
   static const verifiedBadgeLogo = '${_baseUrl}verified_badge.png';
 static const filterButtonIcon = '${_baseUrl}filter-button.png';
 ////////////////////////////////////////////////
-  static const tpayLogo = '${_baseUrl}app_icon.png';
-  static const tpayOnboardingLogo = '${_baseUrl}tpay_onboarding_logo_mobile.png';
+  static const tPayLogo = '${_baseUrl}app_icon.png';
+  static const tPayOnboardingLogo = '${_baseUrl}app_icon_white.png';
+  static const tPayLogoBlue= '${_baseUrl}app_icon_blue.png';
   static const checkLogo = '${_baseUrl}check_logo_mobile.png';
   static const editTextLogo = '${_baseUrl}edit_text_logo_mobile.png';
   static const tPayOnboardingImageLightMode = '${_baseUrl}tpay_onboarding_image_light_mobile.png';

@@ -106,7 +106,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                         ),
                         child: SizedBox(
                           width: 360.w,
-                            height: 675.h, 
+                            height: 675.h,
                           child: SingleChildScrollView(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

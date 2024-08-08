@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tampay/src/components.dart';
 
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
@@ -31,16 +33,31 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     ref.watch(themeViewModel);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor:  AppColors.kBlack8 ,
+    ));
     return Scaffold( backgroundColor: AppColors.kBlack8,
       body: Stack(
         children: [
           const MovingCircles(),
           Center(
-            child: Image.asset(
-              AppImages.tpayLogo,
-              width: 91.w,
-              height: 91.h,
-              // ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  AppImages.tPayOnboardingLogo,
+                  width: 91.w,
+                  height: 91.h,
+                  // ),
+                ),
+                Gap(20.h),
+                TextView(
+                  text: "Cryptpay",
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20.spMin, color: AppColors.kWhite,
+                )
+              ],
             ),
           ),
         ],

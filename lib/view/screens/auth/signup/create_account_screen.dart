@@ -64,7 +64,6 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-              height: 675.h, 
             padding: EdgeInsets.symmetric(
               vertical: 15.h,
               horizontal: 20.w,
@@ -73,64 +72,57 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Form(
-                      key: provider.registrationFormKey,
-                      child: Column(
-                        children: [
-                          CustomTextField(
-                            fieldLabel: emailText,
-                            hint: hintEmail,
-                            controller: provider.registerEmailController,
-                            validator: (value) => Validators().validateEmail(value),
-                            //onChanged: (value)=> provider.updateButtonState(),
-                            onChanged: (p0) {
-                              provider.updateRegisterButtonState();
-                            },
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          CustomTextField(
-                            fieldLabel: userName,
-                            hint: hintUserName,
-                            controller: provider.userNameController,
-                            validator: (value) => Validators().validateEmptyTextField(value),
-                            onChanged: (p0) {
-                              provider.updateRegisterButtonState();
-                            },
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          CustomTextField(
-                            borderWidth: 1.w,
-                            fieldLabel: enterReferralCode,
-                            hint: referralCode,
-                            controller: provider.refCodeController,
-                          ),
-                        ],
+                Form(
+                  key: provider.registrationFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        fieldLabel: emailText,
+                        hint: hintEmail,
+                        controller: provider.registerEmailController,
+                        validator: (value) => Validators().validateEmail(value),
+                        //onChanged: (value)=> provider.updateButtonState(),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
                       ),
-                    ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CustomTextField(
+                        fieldLabel: userName,
+                        hint: hintUserName,
+                        controller: provider.userNameController,
+                        validator: (value) => Validators().validateEmptyTextField(value),
+                        onChanged: (p0) {
+                          provider.updateRegisterButtonState();
+                        },
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CustomTextField(
+                        borderWidth: 1.w,
+                        fieldLabel: enterReferralCode,
+                        hint: referralCode,
+                        controller: provider.refCodeController,
+                      ),
+                    ],
                   ),
                 ),
-                Column(
-                  children: [
-                    DefaultButtonMain(
-                      text: continueText,
-                      color: AppColors.kPrimary1,
-                      buttonState: provider.buttonRegisterState.buttonState,
-                      onPressed: () {
-                        provider.userRegistration(context);
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    alreadyHaveAnAccount(theme)
-                  ],
-                )
+                Gap(40.h),
+                DefaultButtonMain(
+                  text: continueText,
+                  color: AppColors.kPrimary1,
+                  buttonState: provider.buttonRegisterState.buttonState,
+                  onPressed: () {
+                    provider.userRegistration(context);
+                  },
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                alreadyHaveAnAccount(theme)
               ],
             ),
           ),

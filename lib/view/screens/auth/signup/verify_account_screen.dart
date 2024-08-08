@@ -25,7 +25,6 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBars.mainAppBar(
         context,
-   
         trailing: Padding(
           padding: const EdgeInsets.only(right: 15.0),
           child: GestureDetector(
@@ -46,7 +45,6 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-              height: 675.h, 
             padding: EdgeInsets.symmetric(
               vertical: 15.h,
               horizontal: 15.w,
@@ -104,18 +102,14 @@ class _VerifyAccountScreenState extends ConsumerState<VerifyAccountScreen> {
                         : const SizedBox.shrink()
                   ],
                 ),
-                Column(
-                  children: [
-                    DefaultButtonMain(
-                      color: AppColors.kPrimary1,
-                      text: next,
-                      buttonState: registrationProvider.verifyBVNButtonState.buttonState,
-                      onPressed: () {
-                        navigatePush(context, const FacialVerificationScreen());
-                      },
-                    ),
-                    Gap(40.h),
-                  ],
+                Gap(40.h),
+                DefaultButtonMain(
+                  color: AppColors.kPrimary1,
+                  text: next,
+                  buttonState: registrationProvider.verifyBVNButtonState.buttonState,
+                  onPressed: () {
+                    navigatePush(context, const FacialVerificationScreen());
+                  },
                 ),
               ],
             ),

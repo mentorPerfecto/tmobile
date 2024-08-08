@@ -70,7 +70,6 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: 675.h,
             padding: EdgeInsets.symmetric(
               vertical: 15.h,
               horizontal: 15.w,
@@ -120,6 +119,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                     ],
                   ),
                 ),
+                Gap(40.h),
                Column(
                  children: [
                    DefaultButtonMain(

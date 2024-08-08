@@ -51,7 +51,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   child: Column(
                     children: [
                       ImageView.asset(
-                        AppImages.tpayLogo,
+                        AppImages.tPayLogoBlue,
                         width: 53.w,
                         height: 53.h,
                         color: AppColors.kPrimary1,
@@ -168,7 +168,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                                     Gap(10.h),
                                     TextView(
                                       text: onboardingViewObject.description ?? "Error",
-                                      maxLines: 2,
+                                      maxLines: 2,    textAlign: TextAlign.center,
                                       fontSize: 14.spMin,
                                     ),
                                   ],
@@ -224,7 +224,7 @@ class OnBoardingBottomActions extends ConsumerWidget {
       children: [
         DefaultButtonMain(
           padding: EdgeInsets.symmetric(horizontal: 26.w),
-          text: login,
+          text: login, width: 165.w,
           textColor: themeMode == ThemeMode.dark ? AppColors.kWhite : AppColors.kPrimary1,
           borderColor: themeMode == ThemeMode.dark ? AppColors.kWhite : AppColors.kPrimary1,
           onPressed: () {
@@ -235,7 +235,7 @@ class OnBoardingBottomActions extends ConsumerWidget {
         DefaultButtonMain(
           padding: EdgeInsets.symmetric(horizontal: 26.w),
           color: AppColors.kPrimary1,
-          text: signUp,
+          text: signUp,  width: 165.w,
           onPressed: () {
             navigatePush(context, const CreateAccountScreen());
           },
