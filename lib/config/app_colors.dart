@@ -35,6 +35,13 @@ class AppColors {
   static const kEbonyGray = Color(0xff1C1C1C);
   static const kCloudGray = Color(0xffA0A0A0);
   static const kSilverMist = Color(0xffC1C1C1);
+  static const kSunFlower = Color(0xffF5B546);
+  static const kWarning500 = Color(0xffDD900D);
+  static const kWoodSmoke700 = Color(0xff4F4F4F);
+  static const kWoodSmoke300 = Color(0xffB0B0B0);
+  static const kTealBreeze = Color(0xff26A17B);
+  static const kStormySky = Color(0xff5A6271);
+  
   //////////////////////////
 
   static const kPrimaryDark = Color(0xff060B29);
@@ -57,7 +64,6 @@ class AppColors {
   static const kMidnight200 = Color(0xffD7EAFF);
   static const kMidnight50 = Color(0xffE9F4FF);
 
-  static const kSunFlower = Color(0xffF5B546);
   static const kVeryLightYellow = Color(0xffFFFCF6);
 
   static const kFloralWhite = Color(0xffFFF8EB);

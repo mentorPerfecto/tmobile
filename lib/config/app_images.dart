@@ -45,4 +45,13 @@ static const filterButtonIcon = '${_baseUrl}filter-button.png';
   static const userAcctIcon = '${_baseUrl}user_acct.png';
   static const notificationSquareIcon = '${_baseUrl}notification_square.png';
   static const notificationCircle = '${_baseUrl}notification_circle.png';
+  static const inProgressIcon = '${_baseUrl}clock-04_mobile.png';
+  static const tronIcon = '${_baseUrl}trc_mobile.png';
+  static const scanIcon = '${_baseUrl}scan_mobile.png';
+  static const notebookIcon = '${_baseUrl}notebook_mobile.png';
+  static const infoIcon = '${_baseUrl}info_mobile.png';
+  static const countryIcon = '${_baseUrl}Country_mobile.png';
+  static const squareArrowIcon = '${_baseUrl}square-arrow-mobile.png';
+  static const tronCircleIcon = '${_baseUrl}tron_circle_mobile.png';
+  static const checkmarkCircleIcon = '${_baseUrl}checkmark-circle-mobile.png';
 }

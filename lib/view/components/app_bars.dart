@@ -13,7 +13,6 @@ class AppBars {
     void Function()? callback,
     bool isVisible = true,
     bool bottomVisible = true,
-   
   
     Color? titleColor,
     bool? iWantToEditAProperty,

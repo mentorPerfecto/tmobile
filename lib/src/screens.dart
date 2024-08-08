@@ -14,11 +14,11 @@ export 'package:tampay/view/screens/auth/signup/create_password_screen.dart';
 export 'package:tampay/view/screens/auth/auth_success_screen.dart';
 export 'package:tampay/view/screens/auth/signin_forgot_password/create_new_password_screen.dart';
 export 'package:tampay/view/screens/auth/signup/verify_account_screen.dart';
-export 'package:tampay/view/screens/dashboard/buy/enter_amount_screen.dart';
+
 export 'package:tampay/view/screens/dashboard/profile/bank_details/bank_list_screen.dart';
 export 'package:tampay/view/screens/dashboard/notification_screen.dart';
 export 'package:tampay/view/screens/dashboard/profile/referrals/refer_and_earn_screen.dart';
-export 'package:tampay/view/screens/dashboard/transaction_history/transaction_screen.dart';
+export 'package:tampay/view/screens/dashboard/transaction_details/transaction_screen.dart';
 export 'package:tampay/view/screens/auth/signin_forgot_password/welcome_back_screen.dart';
 export 'package:tampay/view/screens/auth/signup/facial_verification_screen.dart';
 export 'package:tampay/view/screens/sticky.dart';

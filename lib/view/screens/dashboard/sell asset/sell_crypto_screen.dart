@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -6,6 +8,8 @@ import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 import 'package:tampay/src/utils.dart';
+import 'package:tampay/view/components/a_user_bank_container.dart';
+import 'package:tampay/view/components/exchange_screen_component/note_card.dart';
 
 class SellCryptoScreen extends ConsumerStatefulWidget {
   const SellCryptoScreen({super.key});
@@ -80,7 +84,7 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
               title: dashProvider.cryptoAcronym,
               hintText: "",
               onTap: (crypto) {
-                dashProvider.selectACyptoAsset(crypto);
+                dashProvider.selectACyptoAsset(cryptoAcronym: crypto);
               },
               items: dashProvider.tPayCryptoAssets
                   .map(
@@ -95,52 +99,118 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
               label: "Network",
             ),
             Gap(20.h),
+            WalletAddress(themeMode: themeMode, dashProvider: dashProvider),
+            Gap(20.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TextView(text: "Wallet Address"),
+                const TextView(text: "Credited Account"),
                 Gap(5.h),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
-                        decoration: BoxDecoration(
-                            color: themeMode == ThemeMode.light
-                                ? AppColors.kLightSilver
-                                : AppColors.kOnyxBlack,
-                            borderRadius: BorderRadius.circular(16.r)),
-                        child: TextView(
-                          text: "bc1q04tvdada..............wjdgfee7g",
-                          color: themeMode == ThemeMode.light
-                              ? AppColors.kGrey600
-                              : AppColors.kGrey400,
-                        ),
+                AUserBank(themeMode: themeMode)
+              ],
+            ),
+            Gap(20.h),
+            SomethingToNote(
+              thingsToNote: TextView(
+                text:
+                    "Please ensure to send only ${DummyData.crypto} (${DummyData.cryptoAbbreviation})"
+                    " to this address or you may lose your funds.",
+                color: AppColors.kWhite,
+                maxLines: 2,
+              ),
+            ),
+            Gap(20.h),
+            DefaultButtonMain(
+              color: AppColors.kPrimary1,
+              text: "Completed",
+              onPressed: () async {
+                await showModalBottomSheet(
+                  context: context,
+                  builder: (context) => BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                    child: TPayDefaultProgressStatusPopUp(
+                      progressStatusLogo: AppImages.inProgressIcon,
+                      progressStatusLogoColor: themeMode == ThemeMode.light
+                          ? AppColors.kWoodSmoke300
+                          : AppColors.kWoodSmoke700,
+                      progressStatusTextTitle: "In progress",
+                      progressStatusTextBody:
+                          "Your order has been received. We will notify you when it's ready,"
+                          " usually within 45 seconds",
+                      action: DefaultButtonMain(
+                        width: 195.w,
+                        color: AppColors.kPrimary1,
+                        text: "Back to Home",
+                        onPressed: () {
+                          dashProvider.setPageIndexToHome(context);
+                        },
                       ),
                     ),
-                    Gap(7.w),
-                    WalletActionButton(
-                      themeMode: themeMode,
-                      onPressed: () async {
-                        dashProvider.copyToClipboard("bc1q04tvdada..............wjdgfee7g");
-                        showToast(msg: "Copied Wallet Address to clipboard", isError: false);
-                      },
-                      actionImage: AppImages.copyIcon,
-                    ),
-                    Gap(7.w),
-                    WalletActionButton(
-                      themeMode: themeMode,
-                      onPressed: () {},
-                      actionImage: AppImages.shareIcon,
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                );
+              },
             )
           ],
         ),
       ),
+    );
+  }
+}
+
+
+
+class WalletAddress extends StatelessWidget {
+  const WalletAddress({
+    super.key,
+    required this.themeMode,
+    required this.dashProvider,
+  });
+
+  final ThemeMode themeMode;
+  final DashboardViewModel dashProvider;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextView(text: "Wallet Address"),
+        Gap(5.h),
+        Row(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+                decoration: BoxDecoration(
+                    color: themeMode == ThemeMode.light
+                        ? AppColors.kLightSilver
+                        : AppColors.kOnyxBlack,
+                    borderRadius: BorderRadius.circular(16.r)),
+                child: TextView(
+                  text: "bc1q04tvdada..............wjdgfee7g",
+                  color: themeMode == ThemeMode.light ? AppColors.kGrey600 : AppColors.kGrey400,
+                ),
+              ),
+            ),
+            Gap(7.w),
+            WalletActionButton(
+              themeMode: themeMode,
+              onPressed: () async {
+                dashProvider.copyToClipboard("bc1q04tvdada..............wjdgfee7g");
+                showToast(msg: "Copied Wallet Address to clipboard", isError: false);
+              },
+              actionImage: AppImages.copyIcon,
+            ),
+            Gap(7.w),
+            WalletActionButton(
+              themeMode: themeMode,
+              onPressed: () {},
+              actionImage: AppImages.downloadIcon,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

@@ -12,7 +12,7 @@ import 'package:tampay/model/local/button_state.dart';
 import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/model/response/local_response/tpay_coin_response/crypto_coin_response.dart';
 import 'package:tampay/src/utils.dart';
-import 'package:tampay/view/screens/dashboard/buy/buy_coin_screen.dart';
+
 
 final buyViewModel = ChangeNotifierProvider((ref) => BuyViewModel());
 
@@ -51,16 +51,7 @@ class BuyViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void storeCryptoAmountInDummyDataAndPushToBuyCoinScreen(
-      BuildContext context, String cryptoAcronym) {
-    DummyData.coinValue = receipientController.text;
-    notifyListeners();
-    navigatePush(
-        context,
-        BuyCoinScreen(
-          cryptoAcronym: cryptoAcronym,
-        ));
-  }
+  
 
 
 
