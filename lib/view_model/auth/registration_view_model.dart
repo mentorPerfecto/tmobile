@@ -20,8 +20,8 @@ class RegistrationViewModel extends ChangeNotifier {
   final TextEditingController _registerEmailController = TextEditingController();
   final TextEditingController _registerPwdController = TextEditingController();
   final TextEditingController _registerConfirmPwdController = TextEditingController();
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
+  // final TextEditingController _firstNameController = TextEditingController();
+  // final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _refCodeController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
