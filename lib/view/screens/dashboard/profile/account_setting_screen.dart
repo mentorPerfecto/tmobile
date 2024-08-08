@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/model/local/dummy_data.dart';
 import 'package:tampay/src/components.dart';
@@ -80,10 +81,7 @@ class AccountSettingScreenState extends ConsumerState<AccountSettingScreen> {
                       },
                     );
                   },
-                  child: Image.asset(
-                    AppImages.deleteLogo,
-                    color: AppColors.kErrorPrimary,
-                  ),
+                  child: Icon( CupertinoIcons.delete, color: AppColors.kError300,),
                 ),
               ),
             ),

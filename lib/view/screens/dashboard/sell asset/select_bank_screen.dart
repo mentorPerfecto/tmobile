@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/src/screens.dart';
+import 'package:tampay/src/utils.dart';
 import 'package:tampay/view/components/a_user_bank_container.dart';
-
 class SelectBankScreen extends ConsumerStatefulWidget {
   const SelectBankScreen({super.key});
 
@@ -22,7 +23,7 @@ class _SelectBankScreenState extends ConsumerState<SelectBankScreen> {
       appBar: AppBars.mainAppBar(
         context,
         bottomVisible: true,
-        bottomText: "Select Bank",
+        bottomText: selectBankText,
         textSize: 20.spMin,
       ),
       body: SafeArea(
@@ -45,14 +46,14 @@ class _SelectBankScreenState extends ConsumerState<SelectBankScreen> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return AUserBank(themeMode: themeMode);
+                      return AUserBank(themeMode: themeMode, isBankList: false,);
                     }),
                 Gap(50.h),
                 Align(
                   alignment: Alignment.center,
                   child: GestureDetector(
                     onTap: () {
-                      ///`navigate to add bank screen`.
+                      navigatePush(context, const FillBankDetailsScreen());
                     },
                     child: Container(
                       width: 179.w,

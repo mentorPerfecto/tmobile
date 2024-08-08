@@ -47,7 +47,7 @@ class _FillBankDetailsScreenState extends ConsumerState<FillBankDetailsScreen> {
                     ),
                   ),
                   CustomTextField(
-                    fieldLabel: bankNameText,
+                    fieldLabel: selectBankText,
                     hint: selectBankText,
                     readOnly: true,
                     inputFormatter: [
@@ -80,7 +80,7 @@ class _FillBankDetailsScreenState extends ConsumerState<FillBankDetailsScreen> {
                     color: AppColors.kPrimary1,
                     // buttonState: provider.buttonLoginState!.buttonState,
                     onPressed: () {
-                      bankAddedSuccessfulBottomModalSheetWidget(context);
+                      //bankAddedSuccessfulBottomModalSheetWidget(context);
                     },
                   ),
                   SizedBox(

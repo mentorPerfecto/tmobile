@@ -54,11 +54,10 @@ const youWantToBuy = 'You want to buy';
 const addBank = 'Add Bank';
 const verify = 'Verify';
 const add = "Add";
-const bankNameText = 'Select bank';
 const numberFormat = "+234";
 const pleaseEnsureThatDetailsMatch =
     'Please ensure that your bank account name matches your BVN name';
-const selectBankText = 'Select bank';
+const selectBankText = 'Select Bank';
 const enterTenDigitsAccNumberText = 'Enter 10 digit account number';
 const bankName = "Bank name";
 const accountNumber = 'Account Number';

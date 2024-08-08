@@ -99,7 +99,7 @@ class ProfileImage extends ConsumerWidget {
                 height: height.h,
               )  :  ImageView.asset(
                 AppImages.bankIcon,
-                width: width.w,
+                width: width.w, color: AppColors.kPrimary1,
                 height: height.h,
               );
             },

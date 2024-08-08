@@ -299,7 +299,7 @@ class SellBuyMore extends ConsumerWidget {
                       ListItems(
                         icon: AppImages.bankIcon,
                         onPressed: () {
-                          navigatePush(context, const AddBankScreen());
+                          navigatePush(context, const BankListScreen());
                         },
                         subText: "View your payout bank accounts",
                         title: "Bank Details",
