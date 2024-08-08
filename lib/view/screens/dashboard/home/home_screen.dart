@@ -174,72 +174,72 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ],
             ),
           ),
-          CompleteAccountSetupWarning(themeMode: themeMode, theme: theme),
-          Padding(
-            padding:  EdgeInsets.only(left:50.w,  right:  50.w, top: 15.w),
-            child: SizedBox(
-              width: 200.w,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SellBuyMore(
-                    id: sell,
-                    icon: AppImages.arrowUpIcon,
-                    backgroundColor: themeMode == ThemeMode.light
-                        ? AppColors.kPalePeriwinkle
-                        : AppColors.kCharcoalGray,
-                    iconColor: theme.colorScheme.primary,
-                  ),
-                  const SellBuyMore(
-                    id: buy,
-                    icon: AppImages.arrowDownIcon,
-                    backgroundColor: AppColors.kPrimary1,
-                    iconColor: AppColors.kWhite,
-                  ),
-                  SellBuyMore(
-                    id: more,
-                    icon: AppImages.moreLogo,
-                    backgroundColor: themeMode == ThemeMode.light
-                        ? AppColors.kPalePeriwinkle
-                        : AppColors.kCharcoalGray,
-                    iconColor: theme.colorScheme.primary,
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          Padding(
-            padding: EdgeInsets.only(top: 30.h, bottom: 15.h),
-            child: GestureDetector(
-              onTap: () async {
-               navigatePush(context, const ExchangeScreen());
-              },
-              child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal:120.w),
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.spMin),
-                    color: themeMode == ThemeMode.dark
-                        ? AppColors.kDarkSlateGrey
-                        : AppColors.kTransparentCharcoal,
-                  ),
+          SizedBox(  height: 250.h,
+            child: Column( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // CompleteAccountSetupWarning(themeMode: themeMode, theme: theme),
+                SizedBox(
+                  width: 200.w,
                   child: Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ImageView.asset(
-                        AppImages.zapLogo,
-                        width: 18.w,
-                        height: 18.h,
+                      SellBuyMore(
+                        id: sell,
+                        icon: AppImages.arrowUpIcon,
+                        backgroundColor: themeMode == ThemeMode.light
+                            ? AppColors.kPalePeriwinkle
+                            : AppColors.kCharcoalGray,
+                        iconColor: theme.colorScheme.primary,
                       ),
-                      const TextView(
-                        text: "View rates",
+                      const SellBuyMore(
+                        id: buy,
+                        icon: AppImages.arrowDownIcon,
+                        backgroundColor: AppColors.kPrimary1,
+                        iconColor: AppColors.kWhite,
+                      ),
+                      SellBuyMore(
+                        id: more,
+                        icon: AppImages.moreLogo,
+                        backgroundColor: themeMode == ThemeMode.light
+                            ? AppColors.kPalePeriwinkle
+                            : AppColors.kCharcoalGray,
+                        iconColor: theme.colorScheme.primary,
                       ),
                     ],
                   ),
                 ),
-              ),
+
+                GestureDetector(
+                  onTap: () async {
+                   navigatePush(context, const ExchangeScreen());
+                  },
+                  child: Padding(
+                    padding:  EdgeInsets.symmetric(horizontal:120.w),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.spMin),
+                        color: themeMode == ThemeMode.dark
+                            ? AppColors.kDarkSlateGrey
+                            : AppColors.kTransparentCharcoal,
+                      ),
+                      child: Row(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ImageView.asset(
+                            AppImages.zapLogo,
+                            width: 18.w,
+                            height: 18.h,
+                          ),
+                          const TextView(
+                            text: "View rates",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -370,48 +370,45 @@ class CompleteAccountSetupWarning extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 15.h, top: 30.h),
-      child: GestureDetector(
-        onTap: (){
-          navigatePush(context, const VerifyAccountScreen( isAuth: false,));
-        },
-        child: Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(
-            vertical: 14.h,
-            horizontal: 12.w,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
-            color: themeMode == ThemeMode.dark ? AppColors.kDarkBronze : AppColors.kSoftPeach,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  ImageView.asset(
-                    AppImages.warningLogo,
-                    width: 24.w,
-                    height: 24.h,
-                    color: themeMode == ThemeMode.light ? AppColors.kGoldenOrange : null,
-                  ),
-                  Gap(15.w),
-                  TextView(
-                    text: "Complete Account Setup",
-                    color:
-                        themeMode == ThemeMode.dark ? AppColors.kAmberOrange : AppColors.kGoldenOrange,
-                  )
-                ],
-              ),
-              Icon(
-                Icons.arrow_forward_ios,
-                size: 24.spMin,
-                color: theme.colorScheme.primary,
-              )
-            ],
-          ),
+    return GestureDetector(
+      onTap: (){
+        navigatePush(context, const VerifyAccountScreen( isAuth: false,));
+      },
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          vertical: 14.h,
+          horizontal: 12.w,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.r),
+          color: themeMode == ThemeMode.dark ? AppColors.kDarkBronze : AppColors.kSoftPeach,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                ImageView.asset(
+                  AppImages.warningLogo,
+                  width: 24.w,
+                  height: 24.h,
+                  color: themeMode == ThemeMode.light ? AppColors.kGoldenOrange : null,
+                ),
+                Gap(15.w),
+                TextView(
+                  text: "Complete Account Setup",
+                  color:
+                      themeMode == ThemeMode.dark ? AppColors.kAmberOrange : AppColors.kGoldenOrange,
+                )
+              ],
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 24.spMin,
+              color: theme.colorScheme.primary,
+            )
+          ],
         ),
       ),
     );

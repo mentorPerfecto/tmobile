@@ -8,7 +8,7 @@ class AppImages {
   static const logOutLogo = '${_baseUrl}log_out.png';
   static const receiveMoneyLogo = '${_baseUrl}money_receive_white.png';
   static const sendMoneyLogoWhite = '${_baseUrl}money-send-white.png';
-   static const tPayAsset = '${_baseUrl}onboarding_ultimate_cash_image.png';
+   static const tPayAsset = '${_baseUrl}tron_circle_mobile.png';
   static const placeholderNotificationLogo = '${_baseUrl}placeholder_logo_notifications.png';
   static const successLogo = '${_baseUrl}success_logo.png';
   static const profileLogo = '${_baseUrl}t_pay_profile.png';
@@ -16,7 +16,7 @@ class AppImages {
   static const verifiedBadgeLogo = '${_baseUrl}verified_badge.png';
 static const filterButtonIcon = '${_baseUrl}filter-button.png';
 ////////////////////////////////////////////////
-  static const tpayLogo = '${_baseUrl}tpay_logo_mobile.png';
+  static const tpayLogo = '${_baseUrl}app_icon.png';
   static const tpayOnboardingLogo = '${_baseUrl}tpay_onboarding_logo_mobile.png';
   static const checkLogo = '${_baseUrl}check_logo_mobile.png';
   static const editTextLogo = '${_baseUrl}edit_text_logo_mobile.png';
