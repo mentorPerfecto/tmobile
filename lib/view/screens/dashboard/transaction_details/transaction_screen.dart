@@ -132,7 +132,7 @@ class Transactions extends ConsumerWidget {
             Row(
               children: [
                 Image.asset(
-                  transactionId == "Deposit" ? AppImages.receiveMoneyLogo : AppImages.sendMoneyLogo,
+                  transactionId == "Deposit" ? AppImages.receiveMoneyLogo : AppImages.sendMoneyLogoWhite,
                   width: 28.w,
                   height: 28.h,
                   color: theme.colorScheme.primary,

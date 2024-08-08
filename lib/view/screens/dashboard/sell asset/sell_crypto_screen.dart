@@ -106,7 +106,7 @@ class _SellCryptoScreenState extends ConsumerState<SellCryptoScreen> {
               children: [
                 const TextView(text: "Credited Account"),
                 Gap(5.h),
-                AUserBank(themeMode: themeMode)
+                AUserBank(themeMode: themeMode, isBankList: false,)
               ],
             ),
             Gap(20.h),
@@ -206,7 +206,7 @@ class WalletAddress extends StatelessWidget {
             WalletActionButton(
               themeMode: themeMode,
               onPressed: () {},
-              actionImage: AppImages.downloadIcon,
+              actionImage: AppImages.dropDownIcon,
             ),
           ],
         ),

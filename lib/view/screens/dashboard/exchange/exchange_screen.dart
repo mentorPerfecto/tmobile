@@ -311,7 +311,7 @@ class NetworkType extends ConsumerWidget {
                       left: 20,
                       top: 20,
                       child: ImageView.asset(
-                        AppImages.solanaLogo,
+                        AppImages.tPayAsset,
                         width: 10.w,
                         height: 10.h,
                       ),
