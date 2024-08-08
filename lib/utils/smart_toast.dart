@@ -67,10 +67,10 @@ class AlertBody extends StatefulWidget  {
 
 class _AlertBodyState extends State<AlertBody> with SingleTickerProviderStateMixin  {
 
-  double _start =5.0;
+  // double _start =5.0;
 
   AnimationController? _animationController;
-  Animation<double>? _animation;
+  Animation<double>? animation;
 
 
   @override
@@ -93,7 +93,7 @@ class _AlertBodyState extends State<AlertBody> with SingleTickerProviderStateMix
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 5.0, end: 0.0).animate(_animationController!)
+    animation = Tween<double>(begin: 5.0, end: 0.0).animate(_animationController!)
       ..addListener(() {
         initAnt();
       });
@@ -104,7 +104,7 @@ class _AlertBodyState extends State<AlertBody> with SingleTickerProviderStateMix
 
   Future <void >initAnt() async{
    setState(() {
-     _start = _animation!.value;
+    // _start = _animation!.value;
    });
   }
 

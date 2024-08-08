@@ -5,7 +5,7 @@ import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
 
 class TransactionDetails extends ConsumerWidget {
-  TransactionDetails({
+  const TransactionDetails({
     super.key,
     this.label,
     required this.details,

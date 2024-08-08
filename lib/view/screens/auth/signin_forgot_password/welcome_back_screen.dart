@@ -28,7 +28,6 @@ class _WelcomeBackScreenState extends ConsumerState<WelcomeBackScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
     var provider = ref.watch(localAuthViewModel);
     return Scaffold(
         backgroundColor: AppColors.kCharcoalBlack,
