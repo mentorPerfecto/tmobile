@@ -1,12 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tampay/src/components.dart';
 
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/providers.dart';
-import 'package:tampay/view/components/moving_circles.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});

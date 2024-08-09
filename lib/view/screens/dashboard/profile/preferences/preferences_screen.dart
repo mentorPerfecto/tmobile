@@ -28,7 +28,7 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
       DummyData.appTheme = prefs.getString("AppTheme") ;
 
     });
-    logger.v(  DummyData.appTheme);
+    logger.w(  DummyData.appTheme);
     super.initState();
   }
   @override
