@@ -7,6 +7,7 @@ import 'package:tampay/src/components.dart';
 import 'package:tampay/src/config.dart';
 import 'package:tampay/src/models.dart';
 import 'package:tampay/src/providers.dart';
+import 'package:tampay/src/utils.dart';
 
 
 class PreferencesScreen extends ConsumerStatefulWidget {
@@ -23,7 +24,11 @@ class _PreferencesScreenState extends ConsumerState<PreferencesScreen> {
 
     Future.microtask(() async {
       prefs = await SharedPreferences.getInstance();
+      DummyData.isDarkTheme = prefs.getBool("isDarkTheme")!;
+      DummyData.appTheme = prefs.getString("AppTheme") ;
+
     });
+    logger.v(  DummyData.appTheme);
     super.initState();
   }
   @override

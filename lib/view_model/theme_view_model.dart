@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tampay/config/app_colors.dart';
 import 'package:tampay/model/local/dummy_data.dart';
+import 'package:tampay/src/utils.dart';
 
 final themeViewModel = ChangeNotifierProvider((ref) => ThemeConfig());
 
@@ -23,12 +24,19 @@ class ThemeConfig extends ChangeNotifier {
 
   init() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    // DummyData.isDarkTheme = sharedPreferences.getBool("isDarkTheme") ?? false;
-    DummyData.appTheme = sharedPreferences.getString("AppTheme");
+    DummyData.isDarkTheme = sharedPreferences.getBool("isDarkTheme") ?? true;
+    DummyData.appTheme = sharedPreferences.getString("AppTheme") ?? "Dark Mode" ;
+
+    logger.w( DummyData.isDarkTheme );
+    logger.w( DummyData.appTheme );
+
+    sharedPreferences.setBool('isDarkTheme',DummyData.isDarkTheme );
+    sharedPreferences.setString('AppTheme', DummyData.appTheme.toString());
     _themeMode = DummyData.appTheme!.isEmpty || DummyData.appTheme!.toString() == 'System Mode'?
     ThemeMode.system : DummyData.appTheme!.toString() == 'Dark Mode'?  ThemeMode.dark : ThemeMode.light;
 
-    setThemeMode( ThemeMode.system == ThemeMode.dark ?  ThemeMode.dark :  ThemeMode.light);
+
+    setThemeMode( _themeMode == ThemeMode.dark ?  ThemeMode.dark :  ThemeMode.light);
     DummyData.accessToken = sharedPreferences.getString("accessToken");
     notifyListeners();
   }
@@ -42,6 +50,8 @@ class ThemeConfig extends ChangeNotifier {
 
   void setThemeMode(ThemeMode mode) {
     _themeMode = mode;
+
+
     _setStatusBar();
     notifyListeners();
   }

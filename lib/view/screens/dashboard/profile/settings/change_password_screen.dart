@@ -43,7 +43,7 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
         ),
         child: SingleChildScrollView(
           child: SizedBox(
-            width: 360.w, height: 600.h,
+            width: 360.w,
             child: Column( mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
 
@@ -56,22 +56,25 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
                 ),
                   Gap(30.h),
                   formField(),
-                ],
-              ),
-                DefaultButtonMain(
-                  onPressed: () {
-                    // if (provider.changePasswordFormKey.currentState!
-                    //     .validate()) {
-                    //   provider.changePasswordFormKey.currentState!.save();
-                    //   provider.changePwd(context, setIndex: provider.role == 2 ? 3 : 4);
-                    // }
-                  },
+                  Gap(40.h),
+                  DefaultButtonMain(
+                    onPressed: () {
+                      // if (provider.changePasswordFormKey.currentState!
+                      //     .validate()) {
+                      //   provider.changePasswordFormKey.currentState!.save();
+                      //   provider.changePwd(context, setIndex: provider.role == 2 ? 3 : 4);
+                      // }
+                    },
 
-                  color: AppColors.kPrimary1,
-                  text: changePassword,
-                  textColor: AppColors.kWhite,
-                  buttonState: provider.buttonChangePwdState!.buttonState,
-                ),
+                    color: AppColors.kPrimary1,
+                    text: changePassword,
+                    textColor: AppColors.kWhite,
+                    buttonState: provider.buttonChangePwdState!.buttonState,
+                  ),
+                ],
+
+              ),
+
               ],
             ),
           ),
